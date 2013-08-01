@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE4833EF17AAA12F00ECEC72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EE17AAA12F00ECEC72 /* Foundation.framework */; };
+		EE4833F417AAA12F00ECEC72 /* TicketingHub_ios.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4833F317AAA12F00ECEC72 /* TicketingHub_ios.h */; };
+		EE4833F617AAA12F00ECEC72 /* TicketingHub_ios.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4833F517AAA12F00ECEC72 /* TicketingHub_ios.m */; };
+		EE4833FD17AAA12F00ECEC72 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833FC17AAA12F00ECEC72 /* XCTest.framework */; };
+		EE4833FE17AAA12F00ECEC72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EE17AAA12F00ECEC72 /* Foundation.framework */; };
+		EE48340017AAA12F00ECEC72 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833FF17AAA12F00ECEC72 /* UIKit.framework */; };
+		EE48340317AAA12F00ECEC72 /* libTicketingHub-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */; };
+		EE48340917AAA12F00ECEC72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE48340717AAA12F00ECEC72 /* InfoPlist.strings */; };
+		EE48340B17AAA12F00ECEC72 /* TicketingHub_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE48340A17AAA12F00ECEC72 /* TicketingHub_iosTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EE48340117AAA12F00ECEC72 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE4833E317AAA12F00ECEC72 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE4833EA17AAA12F00ECEC72;
+			remoteInfo = "TicketingHub-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EE4833E917AAA12F00ECEC72 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				EE4833F417AAA12F00ECEC72 /* TicketingHub_ios.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTicketingHub-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE4833EE17AAA12F00ECEC72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EE4833F217AAA12F00ECEC72 /* TicketingHub-ios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicketingHub-ios-Prefix.pch"; sourceTree = "<group>"; };
+		EE4833F317AAA12F00ECEC72 /* TicketingHub_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketingHub_ios.h; sourceTree = "<group>"; };
+		EE4833F517AAA12F00ECEC72 /* TicketingHub_ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketingHub_ios.m; sourceTree = "<group>"; };
+		EE4833FB17AAA12F00ECEC72 /* TicketingHub-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TicketingHub-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE4833FC17AAA12F00ECEC72 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		EE4833FF17AAA12F00ECEC72 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		EE48340617AAA12F00ECEC72 /* TicketingHub-iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHub-iosTests-Info.plist"; sourceTree = "<group>"; };
+		EE48340817AAA12F00ECEC72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EE48340A17AAA12F00ECEC72 /* TicketingHub_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketingHub_iosTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE4833E817AAA12F00ECEC72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE4833EF17AAA12F00ECEC72 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE4833F817AAA12F00ECEC72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE48340317AAA12F00ECEC72 /* libTicketingHub-ios.a in Frameworks */,
+				EE4833FD17AAA12F00ECEC72 /* XCTest.framework in Frameworks */,
+				EE48340017AAA12F00ECEC72 /* UIKit.framework in Frameworks */,
+				EE4833FE17AAA12F00ECEC72 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE4833E217AAA12F00ECEC72 = {
+			isa = PBXGroup;
+			children = (
+				EE4833F017AAA12F00ECEC72 /* TicketingHub-ios */,
+				EE48340417AAA12F00ECEC72 /* TicketingHub-iosTests */,
+				EE4833ED17AAA12F00ECEC72 /* Frameworks */,
+				EE4833EC17AAA12F00ECEC72 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE4833EC17AAA12F00ECEC72 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */,
+				EE4833FB17AAA12F00ECEC72 /* TicketingHub-iosTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE4833ED17AAA12F00ECEC72 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE4833EE17AAA12F00ECEC72 /* Foundation.framework */,
+				EE4833FC17AAA12F00ECEC72 /* XCTest.framework */,
+				EE4833FF17AAA12F00ECEC72 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE4833F017AAA12F00ECEC72 /* TicketingHub-ios */ = {
+			isa = PBXGroup;
+			children = (
+				EE4833F317AAA12F00ECEC72 /* TicketingHub_ios.h */,
+				EE4833F517AAA12F00ECEC72 /* TicketingHub_ios.m */,
+				EE4833F117AAA12F00ECEC72 /* Supporting Files */,
+			);
+			path = "TicketingHub-ios";
+			sourceTree = "<group>";
+		};
+		EE4833F117AAA12F00ECEC72 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE4833F217AAA12F00ECEC72 /* TicketingHub-ios-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EE48340417AAA12F00ECEC72 /* TicketingHub-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE48340A17AAA12F00ECEC72 /* TicketingHub_iosTests.m */,
+				EE48340517AAA12F00ECEC72 /* Supporting Files */,
+			);
+			path = "TicketingHub-iosTests";
+			sourceTree = "<group>";
+		};
+		EE48340517AAA12F00ECEC72 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE48340617AAA12F00ECEC72 /* TicketingHub-iosTests-Info.plist */,
+				EE48340717AAA12F00ECEC72 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE4833EA17AAA12F00ECEC72 /* TicketingHub-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE48340E17AAA12F00ECEC72 /* Build configuration list for PBXNativeTarget "TicketingHub-ios" */;
+			buildPhases = (
+				EE4833E717AAA12F00ECEC72 /* Sources */,
+				EE4833E817AAA12F00ECEC72 /* Frameworks */,
+				EE4833E917AAA12F00ECEC72 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TicketingHub-ios";
+			productName = "TicketingHub-ios";
+			productReference = EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		EE4833FA17AAA12F00ECEC72 /* TicketingHub-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE48341117AAA12F00ECEC72 /* Build configuration list for PBXNativeTarget "TicketingHub-iosTests" */;
+			buildPhases = (
+				EE4833F717AAA12F00ECEC72 /* Sources */,
+				EE4833F817AAA12F00ECEC72 /* Frameworks */,
+				EE4833F917AAA12F00ECEC72 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE48340217AAA12F00ECEC72 /* PBXTargetDependency */,
+			);
+			name = "TicketingHub-iosTests";
+			productName = "TicketingHub-iosTests";
+			productReference = EE4833FB17AAA12F00ECEC72 /* TicketingHub-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE4833E317AAA12F00ECEC72 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = TicketingHub;
+			};
+			buildConfigurationList = EE4833E617AAA12F00ECEC72 /* Build configuration list for PBXProject "TicketingHub-ios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EE4833E217AAA12F00ECEC72;
+			productRefGroup = EE4833EC17AAA12F00ECEC72 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE4833EA17AAA12F00ECEC72 /* TicketingHub-ios */,
+				EE4833FA17AAA12F00ECEC72 /* TicketingHub-iosTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE4833F917AAA12F00ECEC72 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE48340917AAA12F00ECEC72 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE4833E717AAA12F00ECEC72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE4833F617AAA12F00ECEC72 /* TicketingHub_ios.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE4833F717AAA12F00ECEC72 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE48340B17AAA12F00ECEC72 /* TicketingHub_iosTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE48340217AAA12F00ECEC72 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE4833EA17AAA12F00ECEC72 /* TicketingHub-ios */;
+			targetProxy = EE48340117AAA12F00ECEC72 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EE48340717AAA12F00ECEC72 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE48340817AAA12F00ECEC72 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE48340C17AAA12F00ECEC72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EE48340D17AAA12F00ECEC72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE48340F17AAA12F00ECEC72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/TicketingHub_ios.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TicketingHub-ios/TicketingHub-ios-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EE48341017AAA12F00ECEC72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/TicketingHub_ios.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TicketingHub-ios/TicketingHub-ios-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		EE48341217AAA12F00ECEC72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TicketingHub-ios/TicketingHub-ios-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "TicketingHub-iosTests/TicketingHub-iosTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		EE48341317AAA12F00ECEC72 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TicketingHub-ios/TicketingHub-ios-Prefix.pch";
+				INFOPLIST_FILE = "TicketingHub-iosTests/TicketingHub-iosTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE4833E617AAA12F00ECEC72 /* Build configuration list for PBXProject "TicketingHub-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE48340C17AAA12F00ECEC72 /* Debug */,
+				EE48340D17AAA12F00ECEC72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE48340E17AAA12F00ECEC72 /* Build configuration list for PBXNativeTarget "TicketingHub-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE48340F17AAA12F00ECEC72 /* Debug */,
+				EE48341017AAA12F00ECEC72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EE48341117AAA12F00ECEC72 /* Build configuration list for PBXNativeTarget "TicketingHub-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE48341217AAA12F00ECEC72 /* Debug */,
+				EE48341317AAA12F00ECEC72 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE4833E317AAA12F00ECEC72 /* Project object */;
+}
