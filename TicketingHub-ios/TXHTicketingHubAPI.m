@@ -1,13 +1,13 @@
 //
-//  TicketingHub_ios.m
+//  TXHTicketingHubAPI.m
 //  TicketingHub-ios
 //
 //  Created by Abizer Nasir on 01/08/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TicketingHub_ios.h"
+#import "TXHTicketingHubAPI.h"
 
-@implementation TicketingHub_ios
+@implementation TXHTicketingHubAPI
 
 @end
