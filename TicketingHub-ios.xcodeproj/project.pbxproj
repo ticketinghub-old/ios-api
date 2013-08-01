@@ -12,10 +12,22 @@
 		EE4833F617AAA12F00ECEC72 /* TicketingHub_ios.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4833F517AAA12F00ECEC72 /* TicketingHub_ios.m */; };
 		EE4833FD17AAA12F00ECEC72 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833FC17AAA12F00ECEC72 /* XCTest.framework */; };
 		EE4833FE17AAA12F00ECEC72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EE17AAA12F00ECEC72 /* Foundation.framework */; };
-		EE48340017AAA12F00ECEC72 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833FF17AAA12F00ECEC72 /* UIKit.framework */; };
 		EE48340317AAA12F00ECEC72 /* libTicketingHub-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */; };
 		EE48340917AAA12F00ECEC72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE48340717AAA12F00ECEC72 /* InfoPlist.strings */; };
 		EE48340B17AAA12F00ECEC72 /* TicketingHub_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE48340A17AAA12F00ECEC72 /* TicketingHub_iosTests.m */; };
+		EE6A93E417AAAF8F00ED3D5A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93D017AAAF8F00ED3D5A /* AFHTTPClient.m */; };
+		EE6A93E517AAAF8F00ED3D5A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93D217AAAF8F00ED3D5A /* AFHTTPRequestOperation.m */; };
+		EE6A93E617AAAF8F00ED3D5A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93D417AAAF8F00ED3D5A /* AFImageRequestOperation.m */; };
+		EE6A93E717AAAF8F00ED3D5A /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93D617AAAF8F00ED3D5A /* AFJSONRequestOperation.m */; };
+		EE6A93E817AAAF8F00ED3D5A /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93D817AAAF8F00ED3D5A /* AFNetworkActivityIndicatorManager.m */; };
+		EE6A93E917AAAF8F00ED3D5A /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93DB17AAAF8F00ED3D5A /* AFPropertyListRequestOperation.m */; };
+		EE6A93EA17AAAF8F00ED3D5A /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93DD17AAAF8F00ED3D5A /* AFURLConnectionOperation.m */; };
+		EE6A93EB17AAAF8F00ED3D5A /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93DF17AAAF8F00ED3D5A /* AFXMLRequestOperation.m */; };
+		EE6A93EC17AAAF8F00ED3D5A /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93E317AAAF8F00ED3D5A /* UIImageView+AFNetworking.m */; };
+		EE6A93EE17AAB0D900ED3D5A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A93ED17AAB0D900ED3D5A /* MobileCoreServices.framework */; };
+		EE6A93F017AAB0E300ED3D5A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A93EF17AAB0E300ED3D5A /* SystemConfiguration.framework */; };
+		EE6A93F217AAB0EF00ED3D5A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A93F117AAB0EF00ED3D5A /* Security.framework */; };
+		EE6A93F417AAB0FC00ED3D5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A93F317AAB0FC00ED3D5A /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,15 +56,37 @@
 /* Begin PBXFileReference section */
 		EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTicketingHub-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4833EE17AAA12F00ECEC72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		EE4833F217AAA12F00ECEC72 /* TicketingHub-ios-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TicketingHub-ios-Prefix.pch"; sourceTree = "<group>"; };
+		EE4833F217AAA12F00ECEC72 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		EE4833F317AAA12F00ECEC72 /* TicketingHub_ios.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TicketingHub_ios.h; sourceTree = "<group>"; };
 		EE4833F517AAA12F00ECEC72 /* TicketingHub_ios.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketingHub_ios.m; sourceTree = "<group>"; };
 		EE4833FB17AAA12F00ECEC72 /* TicketingHub-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TicketingHub-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4833FC17AAA12F00ECEC72 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		EE4833FF17AAA12F00ECEC72 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		EE48340617AAA12F00ECEC72 /* TicketingHub-iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHub-iosTests-Info.plist"; sourceTree = "<group>"; };
 		EE48340817AAA12F00ECEC72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EE48340A17AAA12F00ECEC72 /* TicketingHub_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicketingHub_iosTests.m; sourceTree = "<group>"; };
+		EE6A93CF17AAAF8F00ED3D5A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		EE6A93D017AAAF8F00ED3D5A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		EE6A93D117AAAF8F00ED3D5A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		EE6A93D217AAAF8F00ED3D5A /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		EE6A93D317AAAF8F00ED3D5A /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		EE6A93D417AAAF8F00ED3D5A /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		EE6A93D517AAAF8F00ED3D5A /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		EE6A93D617AAAF8F00ED3D5A /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		EE6A93D717AAAF8F00ED3D5A /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		EE6A93D817AAAF8F00ED3D5A /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		EE6A93D917AAAF8F00ED3D5A /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		EE6A93DA17AAAF8F00ED3D5A /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		EE6A93DB17AAAF8F00ED3D5A /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		EE6A93DC17AAAF8F00ED3D5A /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		EE6A93DD17AAAF8F00ED3D5A /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		EE6A93DE17AAAF8F00ED3D5A /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		EE6A93DF17AAAF8F00ED3D5A /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		EE6A93E217AAAF8F00ED3D5A /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		EE6A93E317AAAF8F00ED3D5A /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		EE6A93ED17AAB0D900ED3D5A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		EE6A93EF17AAB0E300ED3D5A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EE6A93F117AAB0EF00ED3D5A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		EE6A93F317AAB0FC00ED3D5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +94,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE6A93F417AAB0FC00ED3D5A /* CoreGraphics.framework in Frameworks */,
+				EE6A93F217AAB0EF00ED3D5A /* Security.framework in Frameworks */,
+				EE6A93F017AAB0E300ED3D5A /* SystemConfiguration.framework in Frameworks */,
+				EE6A93EE17AAB0D900ED3D5A /* MobileCoreServices.framework in Frameworks */,
 				EE4833EF17AAA12F00ECEC72 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,7 +108,6 @@
 			files = (
 				EE48340317AAA12F00ECEC72 /* libTicketingHub-ios.a in Frameworks */,
 				EE4833FD17AAA12F00ECEC72 /* XCTest.framework in Frameworks */,
-				EE48340017AAA12F00ECEC72 /* UIKit.framework in Frameworks */,
 				EE4833FE17AAA12F00ECEC72 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,9 +137,12 @@
 		EE4833ED17AAA12F00ECEC72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EE6A93F317AAB0FC00ED3D5A /* CoreGraphics.framework */,
+				EE6A93F117AAB0EF00ED3D5A /* Security.framework */,
+				EE6A93EF17AAB0E300ED3D5A /* SystemConfiguration.framework */,
+				EE6A93ED17AAB0D900ED3D5A /* MobileCoreServices.framework */,
 				EE4833EE17AAA12F00ECEC72 /* Foundation.framework */,
 				EE4833FC17AAA12F00ECEC72 /* XCTest.framework */,
-				EE4833FF17AAA12F00ECEC72 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,6 +152,7 @@
 			children = (
 				EE4833F317AAA12F00ECEC72 /* TicketingHub_ios.h */,
 				EE4833F517AAA12F00ECEC72 /* TicketingHub_ios.m */,
+				EE6A93CC17AAAF5300ED3D5A /* Externals */,
 				EE4833F117AAA12F00ECEC72 /* Supporting Files */,
 			);
 			path = "TicketingHub-ios";
@@ -120,7 +161,7 @@
 		EE4833F117AAA12F00ECEC72 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EE4833F217AAA12F00ECEC72 /* TicketingHub-ios-Prefix.pch */,
+				EE4833F217AAA12F00ECEC72 /* Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -142,6 +183,40 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		EE6A93CC17AAAF5300ED3D5A /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				EE6A93CD17AAAF8F00ED3D5A /* AFNetworking */,
+			);
+			name = Externals;
+			sourceTree = "<group>";
+		};
+		EE6A93CD17AAAF8F00ED3D5A /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				EE6A93CF17AAAF8F00ED3D5A /* AFHTTPClient.h */,
+				EE6A93D017AAAF8F00ED3D5A /* AFHTTPClient.m */,
+				EE6A93D117AAAF8F00ED3D5A /* AFHTTPRequestOperation.h */,
+				EE6A93D217AAAF8F00ED3D5A /* AFHTTPRequestOperation.m */,
+				EE6A93D317AAAF8F00ED3D5A /* AFImageRequestOperation.h */,
+				EE6A93D417AAAF8F00ED3D5A /* AFImageRequestOperation.m */,
+				EE6A93D517AAAF8F00ED3D5A /* AFJSONRequestOperation.h */,
+				EE6A93D617AAAF8F00ED3D5A /* AFJSONRequestOperation.m */,
+				EE6A93D717AAAF8F00ED3D5A /* AFNetworkActivityIndicatorManager.h */,
+				EE6A93D817AAAF8F00ED3D5A /* AFNetworkActivityIndicatorManager.m */,
+				EE6A93D917AAAF8F00ED3D5A /* AFNetworking.h */,
+				EE6A93DA17AAAF8F00ED3D5A /* AFPropertyListRequestOperation.h */,
+				EE6A93DB17AAAF8F00ED3D5A /* AFPropertyListRequestOperation.m */,
+				EE6A93DC17AAAF8F00ED3D5A /* AFURLConnectionOperation.h */,
+				EE6A93DD17AAAF8F00ED3D5A /* AFURLConnectionOperation.m */,
+				EE6A93DE17AAAF8F00ED3D5A /* AFXMLRequestOperation.h */,
+				EE6A93DF17AAAF8F00ED3D5A /* AFXMLRequestOperation.m */,
+				EE6A93E217AAAF8F00ED3D5A /* UIImageView+AFNetworking.h */,
+				EE6A93E317AAAF8F00ED3D5A /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -224,7 +299,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE6A93EA17AAAF8F00ED3D5A /* AFURLConnectionOperation.m in Sources */,
+				EE6A93EC17AAAF8F00ED3D5A /* UIImageView+AFNetworking.m in Sources */,
+				EE6A93EB17AAAF8F00ED3D5A /* AFXMLRequestOperation.m in Sources */,
+				EE6A93E617AAAF8F00ED3D5A /* AFImageRequestOperation.m in Sources */,
+				EE6A93E917AAAF8F00ED3D5A /* AFPropertyListRequestOperation.m in Sources */,
+				EE6A93E517AAAF8F00ED3D5A /* AFHTTPRequestOperation.m in Sources */,
+				EE6A93E817AAAF8F00ED3D5A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EE4833F617AAA12F00ECEC72 /* TicketingHub_ios.m in Sources */,
+				EE6A93E717AAAF8F00ED3D5A /* AFJSONRequestOperation.m in Sources */,
+				EE6A93E417AAAF8F00ED3D5A /* AFHTTPClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +418,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DSTROOT = /tmp/TicketingHub_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TicketingHub-ios/TicketingHub-ios-Prefix.pch";
+				GCC_PREFIX_HEADER = "TicketingHub-ios/Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -348,7 +432,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DSTROOT = /tmp/TicketingHub_ios.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TicketingHub-ios/TicketingHub-ios-Prefix.pch";
+				GCC_PREFIX_HEADER = "TicketingHub-ios/Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
