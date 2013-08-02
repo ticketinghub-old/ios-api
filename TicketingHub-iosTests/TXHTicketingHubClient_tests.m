@@ -9,7 +9,17 @@
 
 #import <XCTest/XCTest.h>
 
+#import "AFNetworking.h"
 #import "TXHTicketingHubClient.h"
+#import "_TXHNetworkClient.h"
+#import "_TXHNetworkOAuthClient.h"
+
+@interface TXHTicketingHubClient (PrivateMethodes)
+
+- (_TXHNetworkOAuthClient *)oauthClient;
+- (_TXHNetworkClient *)networkClient;
+
+@end
 
 @interface TXHTicketingHubClient_tests : XCTestCase
 
@@ -29,7 +39,22 @@
 - (void)testClientIsASingleton {
     XCTAssert(self.client, @"We should be able to create the client");
     TXHTicketingHubClient *newClient = [TXHTicketingHubClient sharedClient];
-    XCTAssertEqualObjects(self.client, newClient, @"There should only be one instance of the client");
+    XCTAssertTrue(self.client == newClient, @"There should only be one instance of the client");
+}
+
+- (void)testInitialisedNetworkClient {
+    _TXHNetworkClient *networkClient = [self.client networkClient];
+
+    XCTAssertNotNil(networkClient, @"There should be a network client");
+    XCTAssertNotNil([(AFHTTPClient *)networkClient defaultValueForHeader:@"Accept-Language"], @"There should be a default language header");
+    XCTAssertEqualObjects([(AFHTTPClient *)networkClient defaultValueForHeader:@"Accept"], @"application/json", @"Accept header should be application/json");
+}
+
+- (void)testInitialisedOAuthClient {
+    _TXHNetworkOAuthClient *oauthClient = [self.client oauthClient];
+
+    XCTAssertNotNil([(AFHTTPClient *)oauthClient defaultValueForHeader:@"Accept-Language"], @"There should be a default language header");
+    XCTAssertEqualObjects([(AFHTTPClient *)oauthClient defaultValueForHeader:@"Accept"], @"application/json", @"Accept header should be application/json");
 }
 
 @end

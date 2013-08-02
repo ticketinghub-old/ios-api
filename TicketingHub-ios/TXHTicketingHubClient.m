@@ -8,6 +8,18 @@
 
 #import "TXHTicketingHubClient.h"
 
+#import "_TXHNetworkClient.h"
+#import "_TXHNetworkOAuthClient.h"
+
+@interface TXHTicketingHubClient ()
+
+@property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSString *refreshToken;
+@property (strong, readonly, nonatomic) _TXHNetworkOAuthClient *oauthClient;
+@property (strong, readonly, nonatomic) _TXHNetworkClient *networkClient;
+
+@end
+
 @implementation TXHTicketingHubClient
 
 #pragma mark - Class methods
@@ -21,6 +33,17 @@
     });
 
     return client;
+}
+
+- (id)init {
+    if (!(self = [super init])) {
+        return nil; // Bail!
+    }
+
+    _oauthClient = [_TXHNetworkOAuthClient sharedClient];
+    _networkClient = [_TXHNetworkClient sharedClient];
+
+    return self;
 }
 
 @end
