@@ -8,3 +8,4 @@ A library for interacting with the TicketingHub
 The library uses external code added as submodules:
 
 * AFNetworking - MIT licence
+

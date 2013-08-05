@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-static NSString * const kTicktetingHubOAuthURL = @"https://api.ticketinghub.com/oauth";
+static NSString * const kTicktetingHubOAuthURL = @"https://api.ticketinghub.com/oauth/";
 
 #import "_TXHNetworkOAuthClient.h"
+#import "AFNetworking.h"
 
 @implementation _TXHNetworkOAuthClient
 
@@ -36,7 +37,10 @@ static NSString * const kTicktetingHubOAuthURL = @"https://api.ticketinghub.com/
     [self setDefaultHeader:@"Accept-Language" value:[[NSLocale preferredLanguages] firstObject]];
 
     // The body is JSON formatted.
-    self.parameterEncoding = AFJSONParameterEncoding;
+    [self setParameterEncoding:AFJSONParameterEncoding];
+
+    // a 401 has a specific meaning
+
 
     return self;
 }
