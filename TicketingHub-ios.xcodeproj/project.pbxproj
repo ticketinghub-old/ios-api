@@ -38,6 +38,7 @@
 		EE8DA94A17AFC54900A58C88 /* SmokeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8DA94917AFC51F00A58C88 /* SmokeSpec.m */; };
 		EE8DA95017AFCAED00A58C88 /* TXHTicketingHubClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */; };
 		EECF963717B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */; };
+		EECF963917B0204300E288A7 /* TXHTicketingHubClientUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */; };
 		EED1537917ABAFD400059275 /* _TXHNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EED1537817ABAFD400059275 /* _TXHNetworkClient.m */; };
 		EED1538017ABC5A600059275 /* _TXHNetworkOAuthClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EED1537F17ABC5A600059275 /* _TXHNetworkOAuthClient.m */; };
 		EED1538617ABCA4200059275 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED1538517ABCA4200059275 /* UIKit.framework */; };
@@ -157,6 +158,7 @@
 		EE8DA95517AFD19000A58C88 /* OHHTTPStubsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHHTTPStubsResponse.h; sourceTree = "<group>"; };
 		EE8DA95617AFD19000A58C88 /* OHHTTPStubsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHHTTPStubsResponse.m; sourceTree = "<group>"; };
 		EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientTokenSpec.m; sourceTree = "<group>"; };
+		EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientUserSpec.m; sourceTree = "<group>"; };
 		EED1537717ABAFD400059275 /* _TXHNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHNetworkClient.h; sourceTree = "<group>"; };
 		EED1537817ABAFD400059275 /* _TXHNetworkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHNetworkClient.m; sourceTree = "<group>"; };
 		EED1537E17ABC5A600059275 /* _TXHNetworkOAuthClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHNetworkOAuthClient.h; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				EE8DA94917AFC51F00A58C88 /* SmokeSpec.m */,
 				EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */,
 				EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */,
+				EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */,
 				EE8DA90317AFC42500A58C88 /* Supporting Files */,
 			);
 			path = "TicketingHub-iosTests";
@@ -514,6 +517,7 @@
 				EE8DA95017AFCAED00A58C88 /* TXHTicketingHubClientSpec.m in Sources */,
 				EE8DA94A17AFC54900A58C88 /* SmokeSpec.m in Sources */,
 				EECF963717B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m in Sources */,
+				EECF963917B0204300E288A7 /* TXHTicketingHubClientUserSpec.m in Sources */,
 				EE4052EC17AFE77D0067B7F6 /* OHHTTPStubs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
