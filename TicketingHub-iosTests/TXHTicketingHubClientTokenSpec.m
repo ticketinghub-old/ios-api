@@ -61,7 +61,7 @@ describe(@"configuring the shared client with OAuth parameters", ^{
             }];
         });
 
-        it(@"stores the token and refresh token internally", ^AsyncBlock{
+        it(@"stores information that is need later", ^AsyncBlock{
             [_client configureWithUsername:_username password:_password clientId:_clientId clientSecret:_clientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
                 expect([_client token]).to.equal(@"bd0fbf8ee4da7472c382c28e7f7b9977cd6768dcadd7b9328a84a5bd5e7e9b5e");
                 expect([_client refreshToken]).to.equal(@"0e6314d94b3eac772d571c8da04bdeb2d1cb3ace71487672bd54e83e968681a3");
