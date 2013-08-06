@@ -22,6 +22,7 @@ static NSString * const kTokenEndpoint = @"token";
 @property (copy, nonatomic) NSString *clientSecret;
 @property (strong, readonly, nonatomic) _TXHNetworkOAuthClient *oauthClient;
 @property (strong, readonly, nonatomic) _TXHNetworkClient *networkClient;
+@property (strong, readonly, nonatomic) AFNetworkActivityIndicatorManager *activityIndicatorManager;
 
 @end
 
@@ -49,6 +50,8 @@ static NSString * const kTokenEndpoint = @"token";
 
     _oauthClient = [_TXHNetworkOAuthClient sharedClient];
     _networkClient = [_TXHNetworkClient sharedClient];
+    _activityIndicatorManager = [AFNetworkActivityIndicatorManager sharedManager];
+    _activityIndicatorManager.enabled = NO;
 
     return self;
 }
@@ -103,5 +106,9 @@ static NSString * const kTokenEndpoint = @"token";
     [self.networkClient setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", token]];
 }
 
+- (void)setShowActivityIndicatorAutomatically:(BOOL)showActivityIndicatorAutomatically {
+    _showActivityIndicatorAutomatically = showActivityIndicatorAutomatically;
+    self.activityIndicatorManager.enabled = showActivityIndicatorAutomatically;
+}
 
 @end

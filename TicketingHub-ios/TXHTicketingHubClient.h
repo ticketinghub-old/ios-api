@@ -12,6 +12,11 @@
 
 @interface TXHTicketingHubClient : NSObject
 
+/*! Whether or not the activity indicator is shown and hidden automatically for network requests
+ *  By default this is turned turned off.
+ */
+@property (assign, nonatomic) BOOL showActivityIndicatorAutomatically;
+
 /*! Singleton initialiser
  *  \returns the singleton instance of the client
  */

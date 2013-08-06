@@ -22,6 +22,7 @@
 // Expose non-public interface
 - (_TXHNetworkOAuthClient *)oauthClient;
 - (_TXHNetworkClient *)networkClient;
+- (AFNetworkActivityIndicatorManager *)activityIndicatorManager;
 
 @end
 
@@ -66,6 +67,15 @@ describe(@"sharedClient", ^{
         expect([_networkClient defaultValueForHeader:@"Accept-Language"]).to.equal(@"el-GR");
         expect([_oauthClient defaultValueForHeader:@"Accept-Language"]).to.equal(@"el-GR");
 
+    });
+
+    it(@"passes the choice of activating the activity indicator through to the network clients", ^{
+        AFNetworkActivityIndicatorManager *activityIndicator = [_client activityIndicatorManager];
+        _client.showActivityIndicatorAutomatically = NO;
+        expect(activityIndicator.enabled).to.beFalsy();
+
+        _client.showActivityIndicatorAutomatically = YES;
+        expect(activityIndicator.enabled).to.beTruthy();
     });
 
 });
