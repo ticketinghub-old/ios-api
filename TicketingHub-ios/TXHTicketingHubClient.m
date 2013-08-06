@@ -18,6 +18,8 @@ static NSString * const kTokenEndpoint = @"token";
 
 @property (strong, nonatomic) NSString *token;
 @property (strong, nonatomic) NSString *refreshToken;
+@property (strong, nonatomic) NSString *clientId;
+@property (strong ,nonatomic) NSString *clientSecret;
 @property (strong, readonly, nonatomic) _TXHNetworkOAuthClient *oauthClient;
 @property (strong, readonly, nonatomic) _TXHNetworkClient *networkClient;
 
@@ -72,19 +74,25 @@ static NSString * const kTokenEndpoint = @"token";
         if (successBlock) {
             self.token = responseObject[@"access_token"];
             self.refreshToken = responseObject[@"refresh_token"];
+            self.clientId = clientId;
+            self.clientSecret = clientSecret;
             successBlock(request, response);
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSDictionary *responseObject) {
         if (errorBlock) {
             self.token = nil;
             self.refreshToken = nil;
+            self.clientId = nil;
+            self.clientSecret = nil;
             errorBlock(response, error, responseObject);
         }
     }];
 
     [requestOperation start];
+}
 
-
+- (void)userInformationSuccess:(void (^)(NSURLRequest *, NSHTTPURLResponse *, NSDictionary *))successBlock error:(void (^)(NSHTTPURLResponse *, NSError *, id))errorBlock {
+    
 }
 
 @end

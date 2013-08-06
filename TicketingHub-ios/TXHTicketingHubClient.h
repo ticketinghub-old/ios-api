@@ -35,5 +35,6 @@
                       success:(void(^)(NSURLRequest *request, NSHTTPURLResponse *response))successBlock
                         error:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))errorBlock;
 
+- (void)userInformationSuccess:(void(^)(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *responseDictionary))successBlock error:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))errorBlock;
 
 @end
