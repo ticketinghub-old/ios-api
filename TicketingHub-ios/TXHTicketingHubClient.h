@@ -8,6 +8,8 @@
 
 @import Foundation;
 
+@class TXHUser;
+
 @interface TXHTicketingHubClient : NSObject
 
 /*! Singleton initialiser
@@ -35,6 +37,6 @@
                       success:(void(^)(NSURLRequest *request, NSHTTPURLResponse *response))successBlock
                         error:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))errorBlock;
 
-- (void)userInformationSuccess:(void(^)(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *responseDictionary))successBlock error:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))errorBlock;
+- (void)userInformationSuccess:(void(^)(TXHUser *user))successBlock error:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))errorBlock;
 
 @end

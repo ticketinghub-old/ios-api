@@ -16,10 +16,10 @@ static NSString * const kTokenEndpoint = @"token";
 
 @interface TXHTicketingHubClient ()
 
-@property (strong, nonatomic) NSString *token;
-@property (strong, nonatomic) NSString *refreshToken;
-@property (strong, nonatomic) NSString *clientId;
-@property (strong ,nonatomic) NSString *clientSecret;
+@property (copy, nonatomic) NSString *token;
+@property (copy, nonatomic) NSString *refreshToken;
+@property (copy, nonatomic) NSString *clientId;
+@property (copy, nonatomic) NSString *clientSecret;
 @property (strong, readonly, nonatomic) _TXHNetworkOAuthClient *oauthClient;
 @property (strong, readonly, nonatomic) _TXHNetworkClient *networkClient;
 
@@ -91,8 +91,17 @@ static NSString * const kTokenEndpoint = @"token";
     [requestOperation start];
 }
 
-- (void)userInformationSuccess:(void (^)(NSURLRequest *, NSHTTPURLResponse *, NSDictionary *))successBlock error:(void (^)(NSHTTPURLResponse *, NSError *, id))errorBlock {
+- (void)userInformationSuccess:(void(^)(TXHUser *user))successBlock error:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))errorBlock {
+
     
 }
+
+#pragma mark - custom accessors
+
+- (void)setToken:(NSString *)token {
+    _token = token;
+    [self.networkClient setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", token]];
+}
+
 
 @end

@@ -12,8 +12,10 @@
 #import "Specta.h"
 #import "Expecta.h"
 
+#import "AFNetworking.h"
 #import "OHHTTPStubs.h"
 #import "TXHTicketingHubClient.h"
+#import "_TXHNetworkClient.h"
 
 @interface TXHTicketingHubClient (PrivateMethods)
 
@@ -22,6 +24,7 @@
 - (NSString *)refreshToken;
 - (NSString *)clientId;
 - (NSString *)clientSecret;
+- (_TXHNetworkClient *)networkClient;
 
 @end
 
@@ -74,6 +77,17 @@ describe(@"configuring the shared client with OAuth parameters", ^{
                 done();
             }];
 
+        });
+
+        it(@"sets the authorisation header correctly with the access token", ^AsyncBlock{
+            [_client configureWithUsername:_username password:_password clientId:_clientId clientSecret:_clientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
+                expect([[_client networkClient] defaultValueForHeader:@"Authorization"]).to.equal(@"Bearer bd0fbf8ee4da7472c382c28e7f7b9977cd6768dcadd7b9328a84a5bd5e7e9b5e");
+                done();
+
+            } error:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+                expect(NO).will.beTruthy(); // We shouldn't call the error block in this case.
+                done();
+            }];
         });
     });
 

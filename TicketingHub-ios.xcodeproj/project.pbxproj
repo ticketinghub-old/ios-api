@@ -16,6 +16,9 @@
 		EE4052F017AFEA3A0067B7F6 /* TXHTicketingHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4052EF17AFEA3A0067B7F6 /* TXHTicketingHubClient.m */; };
 		EE4052F117AFEFA90067B7F6 /* libTicketingHub-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */; };
 		EE4833EF17AAA12F00ECEC72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EE17AAA12F00ECEC72 /* Foundation.framework */; };
+		EE5BF6E817B0FFD300440923 /* TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5BF6E717B0FFD300440923 /* TXHUser.m */; };
+		EE5BF6EA17B1016300440923 /* TXHUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5BF6E917B1016300440923 /* TXHUserSpec.m */; };
+		EE5BF6F317B11CA500440923 /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5BF6F217B11CA500440923 /* NSDictionary+JCSKeyMapping.m */; };
 		EE6A93E417AAAF8F00ED3D5A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93D017AAAF8F00ED3D5A /* AFHTTPClient.m */; };
 		EE6A93E517AAAF8F00ED3D5A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93D217AAAF8F00ED3D5A /* AFHTTPRequestOperation.m */; };
 		EE6A93E617AAAF8F00ED3D5A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6A93D417AAAF8F00ED3D5A /* AFImageRequestOperation.m */; };
@@ -74,6 +77,12 @@
 		EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTicketingHub-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4833EE17AAA12F00ECEC72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EE4833F217AAA12F00ECEC72 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		EE5BF6E617B0FFD300440923 /* TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUser.h; sourceTree = "<group>"; };
+		EE5BF6E717B0FFD300440923 /* TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUser.m; sourceTree = "<group>"; };
+		EE5BF6E917B1016300440923 /* TXHUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUserSpec.m; sourceTree = "<group>"; };
+		EE5BF6F117B11CA500440923 /* NSDictionary+JCSKeyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JCSKeyMapping.h"; sourceTree = "<group>"; };
+		EE5BF6F217B11CA500440923 /* NSDictionary+JCSKeyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JCSKeyMapping.m"; sourceTree = "<group>"; };
+		EE5BF6F417B1311600440923 /* user.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		EE6A93CF17AAAF8F00ED3D5A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		EE6A93D017AAAF8F00ED3D5A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		EE6A93D117AAAF8F00ED3D5A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -203,6 +212,7 @@
 			children = (
 				EE0C0DF917AFFDA600769FDC /* tokenFailure.json */,
 				EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */,
+				EE5BF6F417B1311600440923 /* user.json */,
 			);
 			name = "JSON Response Stubs";
 			sourceTree = "<group>";
@@ -245,6 +255,8 @@
 			children = (
 				EE6A93F517AAC4C800ED3D5A /* TXHTicketingHubClient.h */,
 				EE4052EF17AFEA3A0067B7F6 /* TXHTicketingHubClient.m */,
+				EE5BF6E617B0FFD300440923 /* TXHUser.h */,
+				EE5BF6E717B0FFD300440923 /* TXHUser.m */,
 				EE6A93CC17AAAF5300ED3D5A /* Externals */,
 				EED1537A17ABB36D00059275 /* Private Classes */,
 				EE4833F117AAA12F00ECEC72 /* Supporting Files */,
@@ -260,9 +272,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EE5BF6F017B11CA500440923 /* NSDictionary+JCSKeyMapping */ = {
+			isa = PBXGroup;
+			children = (
+				EE5BF6F117B11CA500440923 /* NSDictionary+JCSKeyMapping.h */,
+				EE5BF6F217B11CA500440923 /* NSDictionary+JCSKeyMapping.m */,
+			);
+			path = "NSDictionary+JCSKeyMapping";
+			sourceTree = SOURCE_ROOT;
+		};
 		EE6A93CC17AAAF5300ED3D5A /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				EE5BF6F017B11CA500440923 /* NSDictionary+JCSKeyMapping */,
 				EE6A93CD17AAAF8F00ED3D5A /* AFNetworking */,
 			);
 			name = Externals;
@@ -301,6 +323,7 @@
 				EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */,
 				EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */,
 				EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */,
+				EE5BF6E917B1016300440923 /* TXHUserSpec.m */,
 				EE8DA90317AFC42500A58C88 /* Supporting Files */,
 			);
 			path = "TicketingHub-iosTests";
@@ -504,7 +527,9 @@
 				EED1537917ABAFD400059275 /* _TXHNetworkClient.m in Sources */,
 				EED1538017ABC5A600059275 /* _TXHNetworkOAuthClient.m in Sources */,
 				EE6A93E817AAAF8F00ED3D5A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				EE5BF6F317B11CA500440923 /* NSDictionary+JCSKeyMapping.m in Sources */,
 				EE6A93E717AAAF8F00ED3D5A /* AFJSONRequestOperation.m in Sources */,
+				EE5BF6E817B0FFD300440923 /* TXHUser.m in Sources */,
 				EE6A93E417AAAF8F00ED3D5A /* AFHTTPClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE4052ED17AFE7810067B7F6 /* OHHTTPStubsResponse.m in Sources */,
+				EE5BF6EA17B1016300440923 /* TXHUserSpec.m in Sources */,
 				EE8DA95017AFCAED00A58C88 /* TXHTicketingHubClientSpec.m in Sources */,
 				EE8DA94A17AFC54900A58C88 /* SmokeSpec.m in Sources */,
 				EECF963717B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m in Sources */,

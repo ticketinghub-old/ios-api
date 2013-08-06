@@ -13,6 +13,7 @@
 
 #import "OHHTTPStubs.h"
 #import "TXHTicketingHubClient.h"
+#import "TXHUser.h"
 
 SpecBegin(TXHTicketingHubClient_User)
 
@@ -24,6 +25,30 @@ beforeEach(^{
 
 afterEach(^{
     [OHHTTPStubs removeAllRequestHandlers];
+});
+
+describe(@"Get the current user", ^{
+    context(@"with a successful request", ^{
+        before(^{
+            NSDictionary *httpHeaders = @{@"Content-Type" : @"application/json"};
+
+            [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+                return YES; // stub all requests
+            } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+                return [OHHTTPStubsResponse responseWithFile:@"user.json" statusCode:200 responseTime:0.0 headers:httpHeaders];
+            }];
+        });
+
+        it(@"returns a TXHUser object configured with the response", ^{
+            
+        });
+
+
+    });
+
+    context(@"with an unsuccessful request", ^{
+        //
+    });
 });
 
 
