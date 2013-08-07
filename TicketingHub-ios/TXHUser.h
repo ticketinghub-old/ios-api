@@ -7,7 +7,7 @@
 //
 //  Represents a user
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface TXHUser : NSObject
 

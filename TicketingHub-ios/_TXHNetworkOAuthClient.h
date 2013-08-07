@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-extern NSString * const kOAuthTokenEndpoint;
-
 #import "AFHTTPClient.h"
+
+extern NSString * const kOAuthTokenEndpoint;
 
 @interface _TXHNetworkOAuthClient : AFHTTPClient
 

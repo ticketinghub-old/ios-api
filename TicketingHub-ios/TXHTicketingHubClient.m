@@ -8,6 +8,10 @@
 
 #import "TXHTicketingHubClient.h"
 
+@import SystemConfiguration;
+@import MobileCoreServices;
+@import Security;
+
 #import "_TXHNetworkClient.h"
 #import "_TXHNetworkOAuthClient.h"
 #import "AFNetworking.h"

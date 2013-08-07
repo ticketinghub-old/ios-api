@@ -7,13 +7,17 @@
 //
 //  An AFHTTPClient subclass that performs the actual communication with the TicktetingHub server
 
+#import "_TXHNetworkClient.h"
+
+@import SystemConfiguration;
+@import MobileCoreServices;
+@import Security;
+
+#import "AFNetworking.h"
+
 static NSString * const kTicketingHubAPIURL = @"https://api.ticketinghub.com/";
 
 NSString * const kUserEndpoint = @"user";
-
-#import "_TXHNetworkClient.h"
-
-#import "AFNetworking.h"
 
 @implementation _TXHNetworkClient
 
