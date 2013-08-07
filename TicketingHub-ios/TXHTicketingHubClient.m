@@ -71,8 +71,8 @@
                                  @"client_secret" : clientSecret,
                                  @"grant_type" : @"password"};
 
-    NSMutableURLRequest *request = [self.oauthClient requestWithMethod:@"POST" path:kOAuthTokenEndpoint parameters:parameters];
-    AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary* responseObject) {
+    NSMutableURLRequest *tokenRequest = [self.oauthClient requestWithMethod:@"POST" path:kOAuthTokenEndpoint parameters:parameters];
+    AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:tokenRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary* responseObject) {
         self.token = responseObject[@"access_token"];
         self.refreshToken = responseObject[@"refresh_token"];
         self.clientId = clientId;
