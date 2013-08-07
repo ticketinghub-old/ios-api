@@ -3,9 +3,23 @@
 A library for interacting with the TicketingHub
 [Developer API](https://www.ticketinghub.com/api) from an iOS device.
 
-### External Dependencies
+### Dependencies
 
-The library uses external code added as submodules:
+* AFNetworking (MIT Licence), added as a submodule to the repository already
 
-* AFNetworking - MIT licence
+These frameworks needed to be added to the project:
+
+* System Configuration
+* MobileCoreServices
+* Security
+
+It's a good idea to add these lines to the project's pch file:
+
+    @import SystemConfiguration;
+    @import MobileCoreServices;
+    @import Security;
+
+
+
+
 
