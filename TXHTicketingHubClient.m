@@ -63,7 +63,7 @@
     [self.oauthClient setDefaultHeader:@"Accept-Language" value:identifier];
 }
 
-- (void)configureWithUsername:(NSString *)username password:(NSString *)password clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret success:(void(^)(NSURLRequest *request, NSHTTPURLResponse *response))successBlock error:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))errorBlock {
+- (void)configureWithUsername:(NSString *)username password:(NSString *)password clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret success:(void(^)(NSURLRequest *request, NSHTTPURLResponse *response))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock {
 
     NSDictionary *parameters = @{@"username" : username,
                                  @"password" : password,
@@ -87,15 +87,15 @@
         self.clientId = nil;
         self.clientSecret = nil;
 
-        if (errorBlock) {
-            errorBlock(response, error, responseObject);
+        if (failureBlock) {
+            failureBlock(response, error, responseObject);
         }
     }];
 
     [requestOperation start];
 }
 
-- (void)userInformationSuccess:(void(^)(TXHUser *user))successBlock error:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))errorBlock {
+- (void)userInformationSuccess:(void(^)(TXHUser *user))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock {
     NSMutableURLRequest *userRequest = [self.networkClient requestWithMethod:@"GET" path:kUserEndpoint parameters:nil];
     AFJSONRequestOperation *userRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:userRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *responseDictionary) {
         TXHUser *returnedUser = [TXHUser createWithDictionary:responseDictionary];
