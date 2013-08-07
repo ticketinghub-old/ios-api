@@ -43,7 +43,7 @@ describe(@"Get the current user", ^{
             [_client userInformationSuccess:^(TXHUser *returnedUser) {
                 expect(returnedUser).toNot.beNil();
                 done();
-            } error:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
                 expect(NO).to.beTruthy(); // This is expected to fail as we should not get here
                 done();
             }];

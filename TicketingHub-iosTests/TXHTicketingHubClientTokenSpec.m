@@ -72,7 +72,7 @@ describe(@"configuring the shared client with OAuth parameters", ^{
                 expect([_client clientSecret]).to.equal(_clientSecret);
                 done();
 
-            } error:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
                 expect(NO).will.beTruthy(); // We shouldn't call the error block in this case.
                 done();
             }];
@@ -84,7 +84,7 @@ describe(@"configuring the shared client with OAuth parameters", ^{
                 expect([[_client networkClient] defaultValueForHeader:@"Authorization"]).to.equal(@"Bearer bd0fbf8ee4da7472c382c28e7f7b9977cd6768dcadd7b9328a84a5bd5e7e9b5e");
                 done();
 
-            } error:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
                 expect(NO).will.beTruthy(); // We shouldn't call the error block in this case.
                 done();
             }];
@@ -108,7 +108,7 @@ describe(@"configuring the shared client with OAuth parameters", ^{
                 expect(NO).to.beTruthy(); // We should not be calling the success block in this case
                 done();
 
-            } error:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
                 expect([_client token]).to.beNil();
                 expect([_client refreshToken]).to.beNil();
                 expect([_client clientId]).to.beNil();
