@@ -74,19 +74,21 @@ static NSString * const kTokenEndpoint = @"token";
 
     NSMutableURLRequest *request = [self.oauthClient requestWithMethod:@"POST" path:kTokenEndpoint parameters:parameters];
     AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary* responseObject) {
+        self.token = responseObject[@"access_token"];
+        self.refreshToken = responseObject[@"refresh_token"];
+        self.clientId = clientId;
+        self.clientSecret = clientSecret;
+
         if (successBlock) {
-            self.token = responseObject[@"access_token"];
-            self.refreshToken = responseObject[@"refresh_token"];
-            self.clientId = clientId;
-            self.clientSecret = clientSecret;
             successBlock(request, response);
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSDictionary *responseObject) {
+        self.token = nil;
+        self.refreshToken = nil;
+        self.clientId = nil;
+        self.clientSecret = nil;
+
         if (errorBlock) {
-            self.token = nil;
-            self.refreshToken = nil;
-            self.clientId = nil;
-            self.clientSecret = nil;
             errorBlock(response, error, responseObject);
         }
     }];
@@ -109,6 +111,53 @@ static NSString * const kTokenEndpoint = @"token";
 - (void)setShowActivityIndicatorAutomatically:(BOOL)showActivityIndicatorAutomatically {
     _showActivityIndicatorAutomatically = showActivityIndicatorAutomatically;
     self.activityIndicatorManager.enabled = showActivityIndicatorAutomatically;
+}
+
+#pragma mark - Private methods
+
+// Part of the private API as it isn't something that the the consumer of the library needs to do.
+// The success and failure blocks are simple, as this is a private method it knows more about what needs to be done.
+- (void)refreshAccessTokenSucess:(void(^)(void))successBlock failure:(void(^)(NSError *error))failureBlock {
+    // Make two attempts to use the refresh token to get a new access token, and if that fails, return an error
+
+    // The success block is the same in both cases, but there are two failure blocks, the first fires the request again, the second bails.
+    void(^internalSuccessBlock)(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary* responseObject) = ^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary* responseObject) {
+        self.token = responseObject[@"access_token"];
+        self.refreshToken = responseObject[@"refresh_token"];
+
+        if (successBlock) {
+            successBlock();
+        }
+    };
+
+    void(^secondInternalFailureBlock)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSDictionary *responseObject) = ^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSDictionary *responseObject) {
+        self.token = nil;
+        self.refreshToken = nil;
+
+        if (failureBlock) {
+            failureBlock(error);
+        }
+    };
+
+    void(^firstInternalFailureBlock)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSDictionary *responseObject) = ^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSDictionary *responseObject) {
+        // second attempt
+        AFJSONRequestOperation *secondRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:internalSuccessBlock failure:secondInternalFailureBlock];
+
+        [secondRequestOperation start];
+
+    };
+
+    NSDictionary *parameters = @{@"grant_type" : @"refresh_token",
+                                 @"client_id" : self.clientId,
+                                 @"client_secret" : self.clientSecret,
+                                 @"refresh_token" : self.refreshToken};
+
+    NSMutableURLRequest *refreshTokenRequest = [self.oauthClient requestWithMethod:@"POST" path:kTokenEndpoint parameters:parameters];
+
+    AFJSONRequestOperation *firstRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:refreshTokenRequest success:internalSuccessBlock failure:firstInternalFailureBlock];
+
+    [firstRequestOperation start];
+
 }
 
 @end
