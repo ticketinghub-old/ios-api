@@ -8,6 +8,8 @@
 
 static NSString * const kTicktetingHubOAuthURL = @"https://api.ticketinghub.com/oauth/";
 
+NSString * const kOAuthTokenEndpoint = @"token";
+
 #import "_TXHNetworkOAuthClient.h"
 #import "AFNetworking.h"
 

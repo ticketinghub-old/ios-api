@@ -13,7 +13,7 @@
 
 #import "TXHUser.h"
 
-SpecBegin(TXHUserSpec)
+SpecBegin(TXHUser)
 
 __block NSDictionary *_parameters;
 
@@ -24,6 +24,28 @@ NSString * const _email = @"somebody@somewhere.net";
 before(^{
     _parameters = @{@"first_name" : _firstName, @"last_name" : _lastName, @"email" : _email};
 });
+
+describe(@"description method", ^{
+    __block TXHUser *_user;
+
+    before(^{
+        _user = [[TXHUser alloc] init];
+        [_user setValue:_firstName forKey:@"firstName"];
+        [_user setValue:_lastName forKey:@"lastName"];
+        [_user setValue:_email forKey:@"email"];
+    });
+
+    after(^{
+        _user = nil;
+    });
+
+    it(@"provides values for all the properties", ^{
+        NSString *expectedDescription = [NSString stringWithFormat:@"firstName: %@, lastName: %@, email: %@", _firstName, _lastName, _email];
+        expect([_user description]).to.equal(expectedDescription);
+    });
+});
+
+
 
 describe(@"Creation", ^{
     context(@"with a full set of parameters", ^{

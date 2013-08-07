@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
+extern NSString * const kUserEndpoint;
+
 #import "AFHTTPClient.h"
 
 @interface _TXHNetworkClient : AFHTTPClient

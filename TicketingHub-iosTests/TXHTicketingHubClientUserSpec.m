@@ -33,14 +33,21 @@ describe(@"Get the current user", ^{
             NSDictionary *httpHeaders = @{@"Content-Type" : @"application/json"};
 
             [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-                return YES; // stub all requests
+                return [request.URL.lastPathComponent isEqualToString:@"user"];
             } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
                 return [OHHTTPStubsResponse responseWithFile:@"user.json" statusCode:200 responseTime:0.0 headers:httpHeaders];
             }];
         });
 
-        it(@"returns a TXHUser object configured with the response", ^{
-            
+        it(@"returns a TXHUser object configured with the response", ^AsyncBlock{
+            [_client userInformationSuccess:^(TXHUser *returnedUser) {
+                expect(returnedUser).toNot.beNil();
+                done();
+            } error:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+                expect(NO).to.beTruthy(); // This is expected to fail as we should not get here
+                done();
+            }];
+
         });
 
 

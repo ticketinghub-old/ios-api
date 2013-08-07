@@ -42,6 +42,10 @@
     NSLog(@"Trying to set value: %@, for undefined key: %@", value, key);
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"firstName: %@, lastName: %@, email: %@", self.firstName, self.lastName, self.email];
+}
+
 #pragma mark - Private methods
 
 // Maps the parameters from the input dictionary to the property names of the class

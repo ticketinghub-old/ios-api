@@ -6,13 +6,12 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-static NSString * const kTokenEndpoint = @"token";
-
 #import "TXHTicketingHubClient.h"
 
 #import "_TXHNetworkClient.h"
 #import "_TXHNetworkOAuthClient.h"
 #import "AFNetworking.h"
+#import "TXHUser.h"
 
 @interface TXHTicketingHubClient ()
 
@@ -72,7 +71,7 @@ static NSString * const kTokenEndpoint = @"token";
                                  @"client_secret" : clientSecret,
                                  @"grant_type" : @"password"};
 
-    NSMutableURLRequest *request = [self.oauthClient requestWithMethod:@"POST" path:kTokenEndpoint parameters:parameters];
+    NSMutableURLRequest *request = [self.oauthClient requestWithMethod:@"POST" path:kOAuthTokenEndpoint parameters:parameters];
     AFJSONRequestOperation *requestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary* responseObject) {
         self.token = responseObject[@"access_token"];
         self.refreshToken = responseObject[@"refresh_token"];
@@ -97,7 +96,18 @@ static NSString * const kTokenEndpoint = @"token";
 }
 
 - (void)userInformationSuccess:(void(^)(TXHUser *user))successBlock error:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))errorBlock {
+    NSMutableURLRequest *userRequest = [self.networkClient requestWithMethod:@"GET" path:kUserEndpoint parameters:nil];
+    AFJSONRequestOperation *userRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:userRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *responseDictionary) {
+        TXHUser *returnedUser = [TXHUser createWithDictionary:responseDictionary];
 
+        if (successBlock) {
+            successBlock(returnedUser);
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        // Do something here
+    }];
+
+    [userRequestOperation start];
     
 }
 
@@ -152,7 +162,7 @@ static NSString * const kTokenEndpoint = @"token";
                                  @"client_secret" : self.clientSecret,
                                  @"refresh_token" : self.refreshToken};
 
-    NSMutableURLRequest *refreshTokenRequest = [self.oauthClient requestWithMethod:@"POST" path:kTokenEndpoint parameters:parameters];
+    NSMutableURLRequest *refreshTokenRequest = [self.oauthClient requestWithMethod:@"POST" path:kOAuthTokenEndpoint parameters:parameters];
 
     AFJSONRequestOperation *firstRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:refreshTokenRequest success:internalSuccessBlock failure:firstInternalFailureBlock];
 

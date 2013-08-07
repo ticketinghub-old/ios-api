@@ -9,6 +9,8 @@
 
 static NSString * const kTicketingHubAPIURL = @"https://api.ticketinghub.com/";
 
+NSString * const kUserEndpoint = @"user";
+
 #import "_TXHNetworkClient.h"
 
 #import "AFNetworking.h"
