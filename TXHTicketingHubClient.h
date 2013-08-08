@@ -10,6 +10,7 @@
 
 @class TXHUser;
 
+
 @interface TXHTicketingHubClient : NSObject
 
 /*! Whether or not the activity indicator is shown and hidden automatically for network requests
@@ -44,4 +45,5 @@
 
 - (void)userInformationSuccess:(void(^)(TXHUser *user))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
 
+- (void)venuesWithSuccess:(void(^)(NSArray *venues))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
 @end
