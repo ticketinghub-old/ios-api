@@ -17,6 +17,7 @@
 		EE4052F017AFEA3A0067B7F6 /* TXHTicketingHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4052EF17AFEA3A0067B7F6 /* TXHTicketingHubClient.m */; };
 		EE4052F117AFEFA90067B7F6 /* libTicketingHub-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */; };
 		EE4833EF17AAA12F00ECEC72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EE17AAA12F00ECEC72 /* Foundation.framework */; };
+		EE52114617B3987A00C04EDC /* TXHVenueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE52114517B3987A00C04EDC /* TXHVenueSpec.m */; };
 		EE5BF6E817B0FFD300440923 /* TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5BF6E717B0FFD300440923 /* TXHUser.m */; };
 		EE5BF6EA17B1016300440923 /* TXHUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5BF6E917B1016300440923 /* TXHUserSpec.m */; };
 		EE5BF6F317B11CA500440923 /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5BF6F217B11CA500440923 /* NSDictionary+JCSKeyMapping.m */; };
@@ -41,6 +42,9 @@
 		EE8DA94817AFC50800A58C88 /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8DA93517AFC4F000A58C88 /* libSpecta-ios-universal.a */; };
 		EE8DA94A17AFC54900A58C88 /* SmokeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8DA94917AFC51F00A58C88 /* SmokeSpec.m */; };
 		EE8DA95017AFCAED00A58C88 /* TXHTicketingHubClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */; };
+		EEA6862D17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6862C17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m */; };
+		EEA6862F17B3B89E0024B002 /* venuesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EEA6862E17B3B3A20024B002 /* venuesSuccess.json */; };
+		EECD8E3A17B2B3A6006A9756 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EECD8E3917B2B3A6006A9756 /* TXHVenue.m */; };
 		EECF963717B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */; };
 		EECF963917B0204300E288A7 /* TXHTicketingHubClientUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */; };
 		EED1537917ABAFD400059275 /* _TXHNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EED1537817ABAFD400059275 /* _TXHNetworkClient.m */; };
@@ -78,6 +82,7 @@
 		EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTicketingHub-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4833EE17AAA12F00ECEC72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EE4833F217AAA12F00ECEC72 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		EE52114517B3987A00C04EDC /* TXHVenueSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenueSpec.m; sourceTree = "<group>"; };
 		EE5BF6E617B0FFD300440923 /* TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUser.h; sourceTree = "<group>"; };
 		EE5BF6E717B0FFD300440923 /* TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUser.m; sourceTree = "<group>"; };
 		EE5BF6E917B1016300440923 /* TXHUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUserSpec.m; sourceTree = "<group>"; };
@@ -167,6 +172,10 @@
 		EE8DA95417AFD19000A58C88 /* OHHTTPStubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHHTTPStubs.m; sourceTree = "<group>"; };
 		EE8DA95517AFD19000A58C88 /* OHHTTPStubsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OHHTTPStubsResponse.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EE8DA95617AFD19000A58C88 /* OHHTTPStubsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OHHTTPStubsResponse.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EEA6862C17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientVenueSpec.m; sourceTree = "<group>"; };
+		EEA6862E17B3B3A20024B002 /* venuesSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = venuesSuccess.json; sourceTree = "<group>"; };
+		EECD8E3817B2B3A6006A9756 /* TXHVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
+		EECD8E3917B2B3A6006A9756 /* TXHVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
 		EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTicketingHubClientTokenSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTicketingHubClientUserSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EED1537717ABAFD400059275 /* _TXHNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHNetworkClient.h; sourceTree = "<group>"; };
@@ -214,6 +223,7 @@
 				EE0C0DF917AFFDA600769FDC /* tokenFailure.json */,
 				EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */,
 				EE5BF6F417B1311600440923 /* user.json */,
+				EEA6862E17B3B3A20024B002 /* venuesSuccess.json */,
 			);
 			name = "JSON Response Stubs";
 			sourceTree = "<group>";
@@ -258,6 +268,8 @@
 				EE4052EF17AFEA3A0067B7F6 /* TXHTicketingHubClient.m */,
 				EE5BF6E617B0FFD300440923 /* TXHUser.h */,
 				EE5BF6E717B0FFD300440923 /* TXHUser.m */,
+				EECD8E3817B2B3A6006A9756 /* TXHVenue.h */,
+				EECD8E3917B2B3A6006A9756 /* TXHVenue.m */,
 				EE6A93CC17AAAF5300ED3D5A /* Externals */,
 				EED1537A17ABB36D00059275 /* Private Classes */,
 				EE4833F117AAA12F00ECEC72 /* Supporting Files */,
@@ -324,7 +336,9 @@
 				EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */,
 				EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */,
 				EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */,
+				EEA6862C17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m */,
 				EE5BF6E917B1016300440923 /* TXHUserSpec.m */,
+				EE52114517B3987A00C04EDC /* TXHVenueSpec.m */,
 				EE8DA90317AFC42500A58C88 /* Supporting Files */,
 			);
 			path = "TicketingHub-iosTests";
@@ -505,6 +519,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEA6862F17B3B89E0024B002 /* venuesSuccess.json in Resources */,
 				EE23FFA217B24EBD005F5441 /* user.json in Resources */,
 				EE0C0DFB17AFFDBC00769FDC /* tokenFailure.json in Resources */,
 				EE0C0DFC17AFFDBC00769FDC /* tokenSuccess.json in Resources */,
@@ -521,6 +536,7 @@
 			files = (
 				EE6A93EA17AAAF8F00ED3D5A /* AFURLConnectionOperation.m in Sources */,
 				EE6A93EC17AAAF8F00ED3D5A /* UIImageView+AFNetworking.m in Sources */,
+				EECD8E3A17B2B3A6006A9756 /* TXHVenue.m in Sources */,
 				EE4052F017AFEA3A0067B7F6 /* TXHTicketingHubClient.m in Sources */,
 				EE6A93EB17AAAF8F00ED3D5A /* AFXMLRequestOperation.m in Sources */,
 				EE6A93E617AAAF8F00ED3D5A /* AFImageRequestOperation.m in Sources */,
@@ -543,8 +559,10 @@
 				EE4052ED17AFE7810067B7F6 /* OHHTTPStubsResponse.m in Sources */,
 				EE5BF6EA17B1016300440923 /* TXHUserSpec.m in Sources */,
 				EE8DA95017AFCAED00A58C88 /* TXHTicketingHubClientSpec.m in Sources */,
+				EE52114617B3987A00C04EDC /* TXHVenueSpec.m in Sources */,
 				EE8DA94A17AFC54900A58C88 /* SmokeSpec.m in Sources */,
 				EECF963717B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m in Sources */,
+				EEA6862D17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m in Sources */,
 				EECF963917B0204300E288A7 /* TXHTicketingHubClientUserSpec.m in Sources */,
 				EE4052EC17AFE77D0067B7F6 /* OHHTTPStubs.m in Sources */,
 			);

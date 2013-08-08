@@ -9,6 +9,7 @@
 #import "AFHTTPClient.h"
 
 extern NSString * const kUserEndpoint;
+extern NSString * const kVenuesEndpoint;
 
 @interface _TXHNetworkClient : AFHTTPClient
 

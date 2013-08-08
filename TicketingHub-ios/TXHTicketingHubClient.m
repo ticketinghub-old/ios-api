@@ -12,6 +12,7 @@
 #import "_TXHNetworkOAuthClient.h"
 #import "AFNetworking.h"
 #import "TXHUser.h"
+#import "TXHVenue.h"
 
 @interface TXHTicketingHubClient ()
 
@@ -97,18 +98,49 @@
 
 - (void)userInformationSuccess:(void(^)(TXHUser *user))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock {
     NSMutableURLRequest *userRequest = [self.networkClient requestWithMethod:@"GET" path:kUserEndpoint parameters:nil];
+
     AFJSONRequestOperation *userRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:userRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *responseDictionary) {
         TXHUser *returnedUser = [TXHUser createWithDictionary:responseDictionary];
 
         if (successBlock) {
             successBlock(returnedUser);
         }
+        
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         // Do something here
+        if (failureBlock) {
+            failureBlock(response, error, JSON);
+        }
+
     }];
 
     [userRequestOperation start];
     
+}
+
+- (void)venuesWithSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock {
+    NSMutableURLRequest *venuesRequest = [self.networkClient requestWithMethod:@"GET" path:kVenuesEndpoint parameters:nil];
+
+    AFJSONRequestOperation *venuesRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:venuesRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSArray *responseArray) {
+        NSMutableArray *venues = [NSMutableArray arrayWithCapacity:[responseArray count]];
+
+        [responseArray enumerateObjectsUsingBlock:^(NSDictionary *venueDictionary, NSUInteger idx, BOOL *stop) {
+            TXHVenue *venue = [TXHVenue createWithDictionary:venueDictionary];
+            [venues addObject:venue];
+        }];
+
+        if (successBlock) {
+            successBlock([venues copy]);
+        }
+
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        // Do something here
+        if (failureBlock) {
+            failureBlock(response, error, JSON);
+        }
+    }];
+
+    [venuesRequestOperation start];
 }
 
 #pragma mark - custom accessors
