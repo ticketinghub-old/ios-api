@@ -39,15 +39,6 @@
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     // Convert edge cases
 
-//    if ([key isEqualToString:@"latitude"] || [key isEqualToString:@"longitude"]) {
-//        // do nothing, this gets converted to a CLLocation
-//    } else if ([key isEqualToString:@"venueId"]) {
-//        _venueId = [value integerValue];
-//    } else {
-//        // Don't crash, just log the attempt
-//        NSLog(@"Trying to set value: %@, for undefined key: %@", value, key);
-//    }
-
     if ([key isEqualToString:@"venueId"]) {
         _venueId = [value integerValue];
     } else {
@@ -55,6 +46,49 @@
         NSLog(@"Trying to set value: %@, for undefined key: %@", value, key);
     }
 
+}
+
+- (NSString *)description {
+    NSString *formatString = @"venueId: %d\n"
+                             @"venueName: %@\n"
+                             @"street1: %@\n"
+                             @"street2: %@\n"
+                             @"city: %@\n"
+                             @"region: %@\n"
+                             @"postcode: %@\n"
+                             @"country: %@\n"
+                             @"latitude: %f\n"
+                             @"longitude: %f\n"
+                             @"currency: %@\n"
+                             @"timeZoneName: %@\n"
+                             @"website: %@\n"
+                             @"email: %@\n"
+                             @"telephone: %@\n"
+                             @"establishmentType: %@\n"
+                             @"stripePublishableKey: %@\n"
+                             @"permissions: %@\n";
+
+    NSString *description = [NSString stringWithFormat:formatString,
+                             self.venueId,
+                             self.venueName,
+                             self.street1,
+                             self.street2,
+                             self.city,
+                             self.region,
+                             self.postcode,
+                             self.country,
+                             self.latitude,
+                             self.longitude,
+                             self.currency,
+                             self.timeZoneName,
+                             self.website,
+                             self.email,
+                             self.telephone,
+                             self.establishmentType,
+                             self.stripePublishableKey,
+                             self.permissions];
+
+    return description;
 }
 
 #pragma mark custom accessors
