@@ -20,6 +20,8 @@
 
 @implementation TXHSeason
 
+#pragma mark - Convenience Constructor
+
 + (instancetype)seasonWithStartDate:(NSString *)aStartDate endDate:(NSString *)anEndDate options:(NSArray *)optionsArray {
     TXHSeason *season = [[self alloc] init];
 
