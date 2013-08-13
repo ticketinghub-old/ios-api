@@ -77,6 +77,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ADBDA15117BA7C58009ADD3E /* variationsForVenue99.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = variationsForVenue99.json; sourceTree = "<group>"; };
+		ADBDA15217BA7C92009ADD3E /* seasonsForVenue99.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = seasonsForVenue99.json; sourceTree = "<group>"; };
 		EE0C0DF917AFFDA600769FDC /* tokenFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenFailure.json; sourceTree = "<group>"; };
 		EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenSuccess.json; sourceTree = "<group>"; };
 		EE1908A817AFB5FA00194C73 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -226,9 +228,11 @@
 		EE0C0DF817AFFD2F00769FDC /* JSON Response Stubs */ = {
 			isa = PBXGroup;
 			children = (
+				ADBDA15217BA7C92009ADD3E /* seasonsForVenue99.json */,
 				EE0C0DF917AFFDA600769FDC /* tokenFailure.json */,
 				EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */,
 				EE5BF6F417B1311600440923 /* user.json */,
+				ADBDA15117BA7C58009ADD3E /* variationsForVenue99.json */,
 				EEA6862E17B3B3A20024B002 /* venuesSuccess.json */,
 			);
 			name = "JSON Response Stubs";
