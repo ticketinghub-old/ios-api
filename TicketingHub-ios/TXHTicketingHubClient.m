@@ -145,7 +145,11 @@
     [venuesRequestOperation start];
 }
 
-- (void)seasonsForVenueId:(NSUInteger)venueId WithSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
+- (void)seasonsForVenueId:(NSUInteger)venueId withSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
+    
+}
+
+- (void)variationsForVenueId:(NSUInteger)venueID withSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
     
 }
 
