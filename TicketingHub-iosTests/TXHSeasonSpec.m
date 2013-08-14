@@ -20,8 +20,7 @@ SpecBegin(TXHSeason)
 __block NSDictionary *_seasonDictionary;
 __block NSDictionary *_option1;
 __block NSDictionary *_option2;
-__block NSDictionary *_variation1;
-__block NSDictionary *_variation2;
+
 
 before(^{
     _option1 = @{@"time" : @"09:00",
@@ -29,12 +28,6 @@ before(^{
 
     _option2 = @{@"time" : @"10:00",
                  @"wday" : @1};
-
-    _variation1 = @{@"date" : @"2013-07-31",
-                    @"options" : @[@{@"time" : @"13:00"}]};
-
-    _variation2 = @{@"date" : @"2013-12-25",
-                    @"options" : @[]};
 
     _seasonDictionary = @{@"ends_on" : @"2013-12-31",
                 @"starts_on" : @"2013-07-01",
