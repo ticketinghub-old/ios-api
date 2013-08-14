@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ADBDA15417BA89B5009ADD3E /* TXHSeasonSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = ADBDA15317BA89B5009ADD3E /* TXHSeasonSpec.m */; };
 		EE0C0DFB17AFFDBC00769FDC /* tokenFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DF917AFFDA600769FDC /* tokenFailure.json */; };
 		EE0C0DFC17AFFDBC00769FDC /* tokenSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */; };
 		EE23FFA217B24EBD005F5441 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = EE5BF6F417B1311600440923 /* user.json */; };
@@ -79,6 +80,7 @@
 /* Begin PBXFileReference section */
 		ADBDA15117BA7C58009ADD3E /* variationsForVenue99.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = variationsForVenue99.json; sourceTree = "<group>"; };
 		ADBDA15217BA7C92009ADD3E /* seasonsForVenue99.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = seasonsForVenue99.json; sourceTree = "<group>"; };
+		ADBDA15317BA89B5009ADD3E /* TXHSeasonSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSeasonSpec.m; sourceTree = "<group>"; };
 		EE0C0DF917AFFDA600769FDC /* tokenFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenFailure.json; sourceTree = "<group>"; };
 		EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenSuccess.json; sourceTree = "<group>"; };
 		EE1908A817AFB5FA00194C73 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -347,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				EE8DA94917AFC51F00A58C88 /* SmokeSpec.m */,
+				ADBDA15317BA89B5009ADD3E /* TXHSeasonSpec.m */,
 				EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */,
 				EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */,
 				EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */,
@@ -574,6 +577,7 @@
 			files = (
 				EE4052ED17AFE7810067B7F6 /* OHHTTPStubsResponse.m in Sources */,
 				EE5BF6EA17B1016300440923 /* TXHUserSpec.m in Sources */,
+				ADBDA15417BA89B5009ADD3E /* TXHSeasonSpec.m in Sources */,
 				EE8DA95017AFCAED00A58C88 /* TXHTicketingHubClientSpec.m in Sources */,
 				EE52114617B3987A00C04EDC /* TXHVenueSpec.m in Sources */,
 				EE8DA94A17AFC54900A58C88 /* SmokeSpec.m in Sources */,
