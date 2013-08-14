@@ -13,13 +13,10 @@
 
 @interface TXHSeason : NSObject
 
-
 @property (strong, readonly, nonatomic) NSString *startsOnDateString;
 @property (strong, readonly, nonatomic) NSString *endsOnDateString;
-@property (copy, readonly, nonatomic) NSArray *options;
+@property (copy, readonly, nonatomic) NSArray *seasonalOptions;
 
-+ (instancetype)seasonWithStartDate:(NSString *)aStartDate endDate:(NSString *)anEndDate options:(NSArray *)optionsArray;
-
-- (void)addOption:(TXHSeasonalOption *)aSeasonalOption;
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary;
 
 @end

@@ -9,12 +9,13 @@
 #import "TXHSeason.h"
 
 #import "TXHSeasonalOption.h"
+#import "NSDictionary+JCSKeyMapping.h"
 
 @interface TXHSeason ()
 
 @property (strong, nonatomic) NSString *startsOnDateString;
 @property (strong, nonatomic) NSString *endsOnDateString;
-@property (copy, nonatomic) NSArray *options;
+@property (copy, nonatomic) NSArray *seasonalOptions;
 
 @end
 
@@ -22,31 +23,54 @@
 
 #pragma mark - Convenience Constructor
 
-+ (instancetype)seasonWithStartDate:(NSString *)aStartDate endDate:(NSString *)anEndDate options:(NSArray *)optionsArray {
++ (id)createWithDictionary:(NSDictionary *)dictionary {
     TXHSeason *season = [[self alloc] init];
 
     if (!season) {
         return nil; // Bail!
     }
 
-    season.startsOnDateString = aStartDate;
-    season.endsOnDateString = anEndDate;
-    season.options = optionsArray;
+    NSDictionary *mappedDictionary = [dictionary jcsRemapKeysWithMapping:[self mappingDictionary] removingNullValues:YES];
+
+    [season setValuesForKeysWithDictionary:mappedDictionary];
 
     return season;
 }
 
-#pragma mark - Public methods
+#pragma mark - Superclass overrides
 
-- (void)addOption:(TXHSeasonalOption *)aSeasonalOption {
-    if (!aSeasonalOption) {
-        return;
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    if ([key isEqualToString:@"options"]) {
+        // Tease apart the options array, create the correct object
+        
+        NSMutableArray *seasonalOptions = [NSMutableArray arrayWithCapacity:[value count]];
+
+        for (NSDictionary *seasonalOptionDictionary in (NSArray *)value) {
+            TXHSeasonalOption *seasonalOption = [TXHSeasonalOption createWithDictionary:seasonalOptionDictionary];
+            [seasonalOptions addObject:seasonalOption];
+        }
+
+        _seasonalOptions = seasonalOptions;
+
+    } else {
+        // Don't crash, just log the attempt
+        NSLog(@"Trying to set value: %@, for undefined key: %@", value, key);
     }
 
-    NSMutableArray *options = [self.options mutableCopy];
-    [options addObject:aSeasonalOption];
-    self.options = options;
-
 }
+
+#pragma mark - Private methods
+
+// Maps the parameters from the input dictionary to the property names of the class
++ (NSDictionary *)mappingDictionary {
+    static NSDictionary *dictionary = nil;
+
+    if (!dictionary) {
+        dictionary = @{@"starts_on" : @"startsOnDateString", @"ends_on" : @"endsOnDateString"};
+    }
+
+    return dictionary;
+}
+
 
 @end

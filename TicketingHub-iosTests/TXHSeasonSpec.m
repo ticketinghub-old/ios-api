@@ -17,7 +17,7 @@
 
 SpecBegin(TXHSeason)
 
-__block NSDictionary *_season;
+__block NSDictionary *_seasonDictionary;
 __block NSDictionary *_option1;
 __block NSDictionary *_option2;
 __block NSDictionary *_variation1;
@@ -36,9 +36,32 @@ before(^{
     _variation2 = @{@"date" : @"2013-12-25",
                     @"options" : @[]};
 
-    _season = @{@"ends_on" : @"2013-12-31",
+    _seasonDictionary = @{@"ends_on" : @"2013-12-31",
                 @"starts_on" : @"2013-07-01",
                 @"options" : @[_option1, _option2]};
+});
+
+describe(@"TXHSeason", ^{
+    __block TXHSeason *_season;
+
+    before(^{
+        _season = [TXHSeason createWithDictionary:_seasonDictionary];
+    });
+
+    after(^{
+        _season = nil;
+    });
+
+    it(@"can be properly created with a response dictionary", ^{
+        expect(_season).toNot.beNil();
+        expect(_season.startsOnDateString).to.equal(_seasonDictionary[@"starts_on"]);
+        expect(_season.endsOnDateString).to.equal(_seasonDictionary[@"ends_on"]);
+        expect([_season.seasonalOptions count]).to.equal(2);
+
+        TXHSeasonalOption *option1 = _season.seasonalOptions[0];
+        expect(option1.timeString).to.equal(_option1[@"time"]);
+        expect(option1.weekday).to.equal([_option1[@"wday"] integerValue]);
+    });
 });
 
 SpecEnd

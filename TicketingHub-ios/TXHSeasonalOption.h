@@ -15,6 +15,6 @@
 @property (strong, readonly, nonatomic) NSString *timeString;
 @property (assign, readonly, nonatomic) NSTimeInterval duration;
 
-+ (instancetype)optionWithWeekday:(NSUInteger)aWeekday timeString:(NSString *)aTimeString duration:(NSTimeInterval)aDuration;
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary;
 
 @end
