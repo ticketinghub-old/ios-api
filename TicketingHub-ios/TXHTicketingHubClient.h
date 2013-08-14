@@ -46,4 +46,7 @@
 - (void)userInformationSuccess:(void(^)(TXHUser *user))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
 
 - (void)venuesWithSuccess:(void(^)(NSArray *venues))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+
+- (void)seasonsWithSuccess:(void(^)(NSArray *seasons))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+
 @end
