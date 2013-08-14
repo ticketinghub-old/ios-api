@@ -2,7 +2,7 @@
 //  TXHSeasonSpec.m
 //  TicketingHub-ios
 //
-//  Created by Abizer Nasir on 13/08/2013.
+//  Created by Abizer Nasir on 12/08/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
@@ -10,6 +10,10 @@
 
 #import "Specta.h"
 #import "Expecta.h"
+
+#import "OHHTTPStubs.h"
+#import "TXHSeason.h"
+#import "TXHSeasonalOption.h"
 
 SpecBegin(TXHSeason)
 

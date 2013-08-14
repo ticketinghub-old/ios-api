@@ -10,6 +10,8 @@
 
 extern NSString * const kUserEndpoint;
 extern NSString * const kVenuesEndpoint;
+extern NSString * const kSeasonsEndpoint;
+extern NSString * const kVariationsEndpoint;
 
 @interface _TXHNetworkClient : AFHTTPClient
 
