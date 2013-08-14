@@ -145,8 +145,8 @@
     [venuesRequestOperation start];
 }
 
-- (void)seasonsWithSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
-    // Placeholder.
+- (void)seasonsForVenueId:(NSUInteger)venueId WithSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
+    
 }
 
 #pragma mark - custom accessors
