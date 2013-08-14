@@ -9,12 +9,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class TXHSeasonalOption;
+
 @interface TXHSeason : NSObject
+
 
 @property (strong, readonly, nonatomic) NSString *startsOnDateString;
 @property (strong, readonly, nonatomic) NSString *endsOnDateString;
-@property (strong, readonly, nonatomic) NSArray *options;
+@property (copy, readonly, nonatomic) NSArray *options;
 
 + (instancetype)seasonWithStartDate:(NSString *)aStartDate endDate:(NSString *)anEndDate options:(NSArray *)optionsArray;
+
+- (void)addOption:(TXHSeasonalOption *)aSeasonalOption;
 
 @end

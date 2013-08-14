@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) NSString *startsOnDateString;
 @property (strong, nonatomic) NSString *endsOnDateString;
-@property (strong, nonatomic) NSArray *options;
+@property (copy, nonatomic) NSArray *options;
 
 @end
 
@@ -34,6 +34,19 @@
     season.options = optionsArray;
 
     return season;
+}
+
+#pragma mark - Public methods
+
+- (void)addOption:(TXHSeasonalOption *)aSeasonalOption {
+    if (!aSeasonalOption) {
+        return;
+    }
+
+    NSMutableArray *options = [self.options mutableCopy];
+    [options addObject:aSeasonalOption];
+    self.options = options;
+
 }
 
 @end
