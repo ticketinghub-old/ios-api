@@ -48,6 +48,7 @@
 		EEA6862D17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6862C17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m */; };
 		EEA6862F17B3B89E0024B002 /* venuesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EEA6862E17B3B3A20024B002 /* venuesSuccess.json */; };
 		EECD8E3A17B2B3A6006A9756 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EECD8E3917B2B3A6006A9756 /* TXHVenue.m */; };
+		EECF40C817BBF00E00EFA409 /* TXHVariation.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF40C717BBF00E00EFA409 /* TXHVariation.m */; };
 		EECF963717B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */; };
 		EECF963917B0204300E288A7 /* TXHTicketingHubClientUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */; };
 		EED1537917ABAFD400059275 /* _TXHNetworkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EED1537817ABAFD400059275 /* _TXHNetworkClient.m */; };
@@ -186,6 +187,8 @@
 		EEA6862E17B3B3A20024B002 /* venuesSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = venuesSuccess.json; sourceTree = "<group>"; };
 		EECD8E3817B2B3A6006A9756 /* TXHVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
 		EECD8E3917B2B3A6006A9756 /* TXHVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
+		EECF40C617BBF00E00EFA409 /* TXHVariation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVariation.h; sourceTree = "<group>"; };
+		EECF40C717BBF00E00EFA409 /* TXHVariation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVariation.m; sourceTree = "<group>"; };
 		EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTicketingHubClientTokenSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTicketingHubClientUserSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EED1537717ABAFD400059275 /* _TXHNetworkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHNetworkClient.h; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 				EE4052EF17AFEA3A0067B7F6 /* TXHTicketingHubClient.m */,
 				EE5BF6E617B0FFD300440923 /* TXHUser.h */,
 				EE5BF6E717B0FFD300440923 /* TXHUser.m */,
+				EECF40C617BBF00E00EFA409 /* TXHVariation.h */,
+				EECF40C717BBF00E00EFA409 /* TXHVariation.m */,
 				EECD8E3817B2B3A6006A9756 /* TXHVenue.h */,
 				EECD8E3917B2B3A6006A9756 /* TXHVenue.m */,
 				EE6A93CC17AAAF5300ED3D5A /* Externals */,
@@ -551,6 +556,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EECF40C817BBF00E00EFA409 /* TXHVariation.m in Sources */,
 				EE6A93EA17AAAF8F00ED3D5A /* AFURLConnectionOperation.m in Sources */,
 				EE6A93EC17AAAF8F00ED3D5A /* UIImageView+AFNetworking.m in Sources */,
 				EECD8E3A17B2B3A6006A9756 /* TXHVenue.m in Sources */,
