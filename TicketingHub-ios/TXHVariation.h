@@ -10,4 +10,9 @@
 
 @interface TXHVariation : NSObject
 
+@property (copy, readonly, nonatomic) NSString *dateString;
+@property (copy, readonly, nonatomic) NSArray *options;
+
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary;
+
 @end

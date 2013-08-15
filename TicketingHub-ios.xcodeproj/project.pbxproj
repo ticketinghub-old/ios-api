@@ -10,6 +10,7 @@
 		EE0C0DFB17AFFDBC00769FDC /* tokenFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DF917AFFDA600769FDC /* tokenFailure.json */; };
 		EE0C0DFC17AFFDBC00769FDC /* tokenSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */; };
 		EE23FFA217B24EBD005F5441 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = EE5BF6F417B1311600440923 /* user.json */; };
+		EE3AF42817BCDB1400B000F0 /* TXHVariationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3AF42717BCDB1400B000F0 /* TXHVariationSpec.m */; };
 		EE4052DE17AFE5530067B7F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A93EF17AAB0E300ED3D5A /* SystemConfiguration.framework */; };
 		EE4052DF17AFE55E0067B7F6 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A93ED17AAB0D900ED3D5A /* MobileCoreServices.framework */; };
 		EE4052EC17AFE77D0067B7F6 /* OHHTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8DA95417AFD19000A58C88 /* OHHTTPStubs.m */; };
@@ -84,6 +85,7 @@
 		EE0C0DF917AFFDA600769FDC /* tokenFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenFailure.json; sourceTree = "<group>"; };
 		EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenSuccess.json; sourceTree = "<group>"; };
 		EE1908A817AFB5FA00194C73 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		EE3AF42717BCDB1400B000F0 /* TXHVariationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVariationSpec.m; sourceTree = "<group>"; };
 		EE4052EF17AFEA3A0067B7F6 /* TXHTicketingHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTicketingHubClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE4833EB17AAA12F00ECEC72 /* libTicketingHub-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libTicketingHub-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4833EE17AAA12F00ECEC72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -360,6 +362,7 @@
 				EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */,
 				EEA6862C17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m */,
 				EE5BF6E917B1016300440923 /* TXHUserSpec.m */,
+				EE3AF42717BCDB1400B000F0 /* TXHVariationSpec.m */,
 				EE52114517B3987A00C04EDC /* TXHVenueSpec.m */,
 				EE8DA90317AFC42500A58C88 /* Supporting Files */,
 			);
@@ -591,6 +594,7 @@
 				EEA6862D17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m in Sources */,
 				EECF963917B0204300E288A7 /* TXHTicketingHubClientUserSpec.m in Sources */,
 				EE4052EC17AFE77D0067B7F6 /* OHHTTPStubs.m in Sources */,
+				EE3AF42817BCDB1400B000F0 /* TXHVariationSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
