@@ -19,6 +19,8 @@ static NSString * const kTicketingHubAPIURL = @"https://api.ticketinghub.com/";
 
 NSString * const kUserEndpoint = @"user";
 NSString * const kVenuesEndpoint = @"venues";
+NSString * const kSeasonsEndpoint = @"seasons";
+NSString * const kVariationsEndpoint = @"variations";
 
 @implementation _TXHNetworkClient
 

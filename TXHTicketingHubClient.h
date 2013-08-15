@@ -49,6 +49,6 @@
 
 - (void)seasonsForVenueId:(NSUInteger)venueId withSuccess:(void(^)(NSArray *seasons))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
 
-- (void)variationsForVenueId:(NSUInteger)venueID withSuccess:(void(^)(NSArray *variations))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+- (void)variationsForVenueId:(NSUInteger)venueId withSuccess:(void(^)(NSArray *variations))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
 
 @end
