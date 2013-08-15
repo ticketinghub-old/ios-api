@@ -8,11 +8,13 @@
 
 #import "TXHTicketingHubClient.h"
 
-#import "_TXHNetworkClient.h"
-#import "_TXHNetworkOAuthClient.h"
 #import "AFNetworking.h"
+#import "TXHSeason.h"
+#import "TXHOption.h"
 #import "TXHUser.h"
 #import "TXHVenue.h"
+#import "_TXHNetworkClient.h"
+#import "_TXHNetworkOAuthClient.h"
 
 @interface TXHTicketingHubClient ()
 
@@ -141,6 +143,14 @@
     }];
 
     [venuesRequestOperation start];
+}
+
+- (void)seasonsForVenueId:(NSUInteger)venueId withSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
+    
+}
+
+- (void)variationsForVenueId:(NSUInteger)venueID withSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
+    
 }
 
 #pragma mark - custom accessors
