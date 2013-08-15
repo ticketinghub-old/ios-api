@@ -1,5 +1,5 @@
 //
-//  TXHSeasonalOption.h
+//  TXHOption.h
 //  TicketingHub-ios
 //
 //  Created by Abizer Nasir on 12/08/2013.
@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TXHSeasonalOption : NSObject
+@interface TXHOption : NSObject
 
 @property (assign, readonly, nonatomic) NSUInteger weekday;
 @property (strong, readonly, nonatomic) NSString *timeString;

@@ -10,7 +10,7 @@
 
 #import "AFNetworking.h"
 #import "TXHSeason.h"
-#import "TXHSeasonalOption.h"
+#import "TXHOption.h"
 #import "TXHUser.h"
 #import "TXHVenue.h"
 #import "_TXHNetworkClient.h"

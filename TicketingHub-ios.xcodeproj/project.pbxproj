@@ -35,7 +35,7 @@
 		EE6A93F217AAB0EF00ED3D5A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A93F117AAB0EF00ED3D5A /* Security.framework */; };
 		EE6A93F417AAB0FC00ED3D5A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A93F317AAB0FC00ED3D5A /* CoreGraphics.framework */; };
 		EE6E60B417B93C8900329699 /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6E60B317B93C8900329699 /* TXHSeason.m */; };
-		EE6E60B717B93E9400329699 /* TXHSeasonalOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6E60B617B93E9400329699 /* TXHSeasonalOption.m */; };
+		EE6E60B717B93E9400329699 /* TXHOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6E60B617B93E9400329699 /* TXHOption.m */; };
 		EE6E60B917B941B400329699 /* TXHSeasonSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6E60B817B941B400329699 /* TXHSeasonSpec.m */; };
 		EE8DA8FF17AFC42500A58C88 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1908A817AFB5FA00194C73 /* SenTestingKit.framework */; };
 		EE8DA90017AFC42500A58C88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4833EE17AAA12F00ECEC72 /* Foundation.framework */; };
@@ -119,11 +119,11 @@
 		EE6A93F117AAB0EF00ED3D5A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EE6A93F317AAB0FC00ED3D5A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EE6A93F517AAC4C800ED3D5A /* TXHTicketingHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHTicketingHubClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		EE6E60B217B93C8900329699 /* TXHSeason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeason.h; sourceTree = "<group>"; };
-		EE6E60B317B93C8900329699 /* TXHSeason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSeason.m; sourceTree = "<group>"; };
-		EE6E60B517B93E9400329699 /* TXHSeasonalOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeasonalOption.h; sourceTree = "<group>"; };
-		EE6E60B617B93E9400329699 /* TXHSeasonalOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSeasonalOption.m; sourceTree = "<group>"; };
-		EE6E60B817B941B400329699 /* TXHSeasonSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSeasonSpec.m; sourceTree = "<group>"; };
+		EE6E60B217B93C8900329699 /* TXHSeason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHSeason.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EE6E60B317B93C8900329699 /* TXHSeason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHSeason.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EE6E60B517B93E9400329699 /* TXHOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TXHOption.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EE6E60B617B93E9400329699 /* TXHOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHOption.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EE6E60B817B941B400329699 /* TXHSeasonSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHSeasonSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE8DA8FE17AFC42500A58C88 /* TicketingHub-iosTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TicketingHub-iosTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE8DA90417AFC42500A58C88 /* TicketingHub-iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TicketingHub-iosTests-Info.plist"; sourceTree = "<group>"; };
 		EE8DA90617AFC42500A58C88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -281,8 +281,8 @@
 			children = (
 				EE6E60B217B93C8900329699 /* TXHSeason.h */,
 				EE6E60B317B93C8900329699 /* TXHSeason.m */,
-				EE6E60B517B93E9400329699 /* TXHSeasonalOption.h */,
-				EE6E60B617B93E9400329699 /* TXHSeasonalOption.m */,
+				EE6E60B517B93E9400329699 /* TXHOption.h */,
+				EE6E60B617B93E9400329699 /* TXHOption.m */,
 				EE6A93F517AAC4C800ED3D5A /* TXHTicketingHubClient.h */,
 				EE4052EF17AFEA3A0067B7F6 /* TXHTicketingHubClient.m */,
 				EE5BF6E617B0FFD300440923 /* TXHUser.h */,
@@ -563,7 +563,7 @@
 				EE6E60B417B93C8900329699 /* TXHSeason.m in Sources */,
 				EE4052F017AFEA3A0067B7F6 /* TXHTicketingHubClient.m in Sources */,
 				EE6A93EB17AAAF8F00ED3D5A /* AFXMLRequestOperation.m in Sources */,
-				EE6E60B717B93E9400329699 /* TXHSeasonalOption.m in Sources */,
+				EE6E60B717B93E9400329699 /* TXHOption.m in Sources */,
 				EE6A93E617AAAF8F00ED3D5A /* AFImageRequestOperation.m in Sources */,
 				EE6A93E917AAAF8F00ED3D5A /* AFPropertyListRequestOperation.m in Sources */,
 				EE6A93E517AAAF8F00ED3D5A /* AFHTTPRequestOperation.m in Sources */,

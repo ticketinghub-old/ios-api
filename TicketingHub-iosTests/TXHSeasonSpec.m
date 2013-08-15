@@ -13,7 +13,7 @@
 
 #import "OHHTTPStubs.h"
 #import "TXHSeason.h"
-#import "TXHSeasonalOption.h"
+#import "TXHOption.h"
 
 SpecBegin(TXHSeason)
 
@@ -51,7 +51,7 @@ describe(@"TXHSeason", ^{
         expect(_season.endsOnDateString).to.equal(_seasonDictionary[@"ends_on"]);
         expect([_season.seasonalOptions count]).to.equal(2);
 
-        TXHSeasonalOption *option1 = _season.seasonalOptions[0];
+        TXHOption *option1 = _season.seasonalOptions[0];
         expect(option1.timeString).to.equal(_option1[@"time"]);
         expect(option1.weekday).to.equal([_option1[@"wday"] integerValue]);
     });

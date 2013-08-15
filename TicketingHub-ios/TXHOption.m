@@ -1,16 +1,16 @@
 //
-//  TXHSeasonalOption.m
+//  TXHOption.m
 //  TicketingHub-ios
 //
 //  Created by Abizer Nasir on 12/08/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "TXHSeasonalOption.h"
+#import "TXHOption.h"
 
 #import "NSDictionary+JCSKeyMapping.h"
 
-@interface TXHSeasonalOption ()
+@interface TXHOption ()
 
 @property (assign, nonatomic) NSUInteger weekday;
 @property (strong, nonatomic) NSString *timeString;
@@ -18,12 +18,12 @@
 
 @end
 
-@implementation TXHSeasonalOption
+@implementation TXHOption
 
 #pragma  mark - Convenience constructor
 
 + (instancetype)createWithDictionary:(NSDictionary *)dictionary {
-    TXHSeasonalOption *option = [[self alloc] init];
+    TXHOption *option = [[self alloc] init];
 
     if (!option) {
         return nil; // Bail!

@@ -8,7 +8,7 @@
 
 #import "TXHSeason.h"
 
-#import "TXHSeasonalOption.h"
+#import "TXHOption.h"
 #import "NSDictionary+JCSKeyMapping.h"
 
 @interface TXHSeason ()
@@ -46,7 +46,7 @@
         NSMutableArray *seasonalOptions = [NSMutableArray arrayWithCapacity:[value count]];
 
         for (NSDictionary *seasonalOptionDictionary in (NSArray *)value) {
-            TXHSeasonalOption *seasonalOption = [TXHSeasonalOption createWithDictionary:seasonalOptionDictionary];
+            TXHOption *seasonalOption = [TXHOption createWithDictionary:seasonalOptionDictionary];
             [seasonalOptions addObject:seasonalOption];
         }
 

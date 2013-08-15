@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class TXHSeasonalOption;
+@class TXHOption;
 
 @interface TXHSeason : NSObject
 
