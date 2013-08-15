@@ -1,5 +1,5 @@
 //
-//  TXHTicketingHubClientSeasonsSpec.m
+//  TXHTicketingHubClientVariationsSpec.m
 //  TicketingHub-ios
 //
 //  Created by Abizer Nasir on 15/08/2013.
@@ -13,10 +13,9 @@
 
 #import "OHHTTPStubs.h"
 #import "TXHOption.h"
-#import "TXHSeason.h"
 #import "TXHTicketingHubClient.h"
 
-SpecBegin(TXHTicketingHubClient_Seasons)
+SpecBegin(TXHTicketingHubClient_Variations)
 
 __block TXHTicketingHubClient *_client;
 
@@ -29,21 +28,21 @@ afterEach(^{
 });
 
 
-describe(@"Getting seasons for a venue", ^{
+describe(@"Getting variations for a venue", ^{
     context(@"with a successful request", ^{
         before(^{
             NSDictionary *httpHeaders = @{@"Content-Type" : @"application/json"};
 
             [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-                return [request.URL.lastPathComponent isEqualToString:@"seasons"];
+                return [request.URL.lastPathComponent isEqualToString:@"variations"];
             } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
-                return [OHHTTPStubsResponse responseWithFile:@"seasonsForVenue99.json" statusCode:200 responseTime:0.0 headers:httpHeaders];
+                return [OHHTTPStubsResponse responseWithFile:@"variationsForVenue99.json" statusCode:200 responseTime:0.0 headers:httpHeaders];
             }];
         });
 
-        it(@"returns an array of seasons", ^AsyncBlock{
-            [_client seasonsForVenueId:99 withSuccess:^(NSArray *seasons) {
-                expect([seasons count]).to.beGreaterThan(0);
+        it(@"returns an array of variations", ^AsyncBlock{
+            [_client variationsForVenueId:99 withSuccess:^(NSArray *variations) {
+                expect([variations count]).to.beGreaterThan(0);
                 done();
 
             } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
@@ -52,12 +51,10 @@ describe(@"Getting seasons for a venue", ^{
             }];
         });
     });
-
-    context(@"with an unsuccessful request", ^{
-        // 
-    });
-
+    
 });
+
+
 
 
 SpecEnd

@@ -9,9 +9,10 @@
 #import "TXHTicketingHubClient.h"
 
 #import "AFNetworking.h"
-#import "TXHSeason.h"
 #import "TXHOption.h"
+#import "TXHSeason.h"
 #import "TXHUser.h"
+#import "TXHVariation.h"
 #import "TXHVenue.h"
 #import "_TXHNetworkClient.h"
 #import "_TXHNetworkOAuthClient.h"
@@ -147,11 +148,55 @@
 
 - (void)seasonsForVenueId:(NSUInteger)venueId withSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
     NSString *endpoint = [NSString stringWithFormat:@"%@/%d/%@", kVenuesEndpoint, venueId, kSeasonsEndpoint];
+    NSMutableURLRequest *seasonsRequest = [self.networkClient requestWithMethod:@"GET" path:endpoint parameters:nil];
+
+    AFJSONRequestOperation *seasonsRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:seasonsRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSArray *responseArray) {
+        NSMutableArray *seasons = [NSMutableArray arrayWithCapacity:[responseArray count]];
+
+        [responseArray enumerateObjectsUsingBlock:^(NSDictionary *seasonDictionary, NSUInteger idx, BOOL *stop) {
+            TXHSeason *season = [TXHSeason createWithDictionary:seasonDictionary];
+            [seasons addObject:season];
+        }];
+
+        if (successBlock) {
+            successBlock(seasons);
+        }
+
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        // Do something here
+        if (failureBlock) {
+            failureBlock(response, error, JSON);
+        }
+    }];
+
+    [seasonsRequestOperation start];
 
 }
 
-- (void)variationsForVenueId:(NSUInteger)venueID withSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
-    
+- (void)variationsForVenueId:(NSUInteger)venueId withSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
+    NSString *endpoint = [NSString stringWithFormat:@"%@/%d/%@", kVenuesEndpoint, venueId, kVariationsEndpoint];
+    NSMutableURLRequest *variationsRequest = [self.networkClient requestWithMethod:@"GET" path:endpoint parameters:nil];
+
+    AFJSONRequestOperation *variationsRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:variationsRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSArray *responseArray) {
+        NSMutableArray *variations = [NSMutableArray arrayWithCapacity:[responseArray count]];
+
+        [responseArray enumerateObjectsUsingBlock:^(NSDictionary *variationDictionary, NSUInteger idx, BOOL *stop) {
+            TXHVariation *variation = [TXHVariation createWithDictionary:variationDictionary];
+            [variations addObject:variation];
+        }];
+
+        if (successBlock) {
+            successBlock(variations);
+        }
+
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        // Do something here
+        if (failureBlock) {
+            failureBlock(response, error, JSON);
+        }
+    }];
+
+    [variationsRequestOperation start];
 }
 
 #pragma mark - custom accessors

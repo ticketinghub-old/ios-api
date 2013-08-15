@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE0C0DFB17AFFDBC00769FDC /* tokenFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DF917AFFDA600769FDC /* tokenFailure.json */; };
 		EE0C0DFC17AFFDBC00769FDC /* tokenSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */; };
+		EE11ADCB17BCFF72000042B2 /* TXHTicketingHubClientVariationsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADCA17BCFF72000042B2 /* TXHTicketingHubClientVariationsSpec.m */; };
 		EE23FFA217B24EBD005F5441 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = EE5BF6F417B1311600440923 /* user.json */; };
 		EE3AF42817BCDB1400B000F0 /* TXHVariationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3AF42717BCDB1400B000F0 /* TXHVariationSpec.m */; };
 		EE4052DE17AFE5530067B7F6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6A93EF17AAB0E300ED3D5A /* SystemConfiguration.framework */; };
@@ -44,11 +45,12 @@
 		EE8DA90717AFC42500A58C88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE8DA90517AFC42500A58C88 /* InfoPlist.strings */; };
 		EE8DA94717AFC4F700A58C88 /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8DA92F17AFC4F000A58C88 /* libExpecta-ios-universal.a */; };
 		EE8DA94817AFC50800A58C88 /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8DA93517AFC4F000A58C88 /* libSpecta-ios-universal.a */; };
-		EE8DA94A17AFC54900A58C88 /* SmokeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8DA94917AFC51F00A58C88 /* SmokeSpec.m */; };
 		EE8DA95017AFCAED00A58C88 /* TXHTicketingHubClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */; };
 		EEA6862D17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA6862C17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m */; };
 		EEA6862F17B3B89E0024B002 /* venuesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EEA6862E17B3B3A20024B002 /* venuesSuccess.json */; };
 		EECD273B17BCEA4500B5F535 /* TXHTicketingHubClientSeasonsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECD273A17BCEA4500B5F535 /* TXHTicketingHubClientSeasonsSpec.m */; };
+		EECD273C17BCF2B200B5F535 /* seasonsForVenue99.json in Resources */ = {isa = PBXBuildFile; fileRef = ADBDA15217BA7C92009ADD3E /* seasonsForVenue99.json */; };
+		EECD273D17BCF2B200B5F535 /* variationsForVenue99.json in Resources */ = {isa = PBXBuildFile; fileRef = ADBDA15117BA7C58009ADD3E /* variationsForVenue99.json */; };
 		EECD8E3A17B2B3A6006A9756 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EECD8E3917B2B3A6006A9756 /* TXHVenue.m */; };
 		EECF40C817BBF00E00EFA409 /* TXHVariation.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF40C717BBF00E00EFA409 /* TXHVariation.m */; };
 		EECF963717B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */; };
@@ -85,6 +87,7 @@
 		ADBDA15217BA7C92009ADD3E /* seasonsForVenue99.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = seasonsForVenue99.json; sourceTree = "<group>"; };
 		EE0C0DF917AFFDA600769FDC /* tokenFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenFailure.json; sourceTree = "<group>"; };
 		EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenSuccess.json; sourceTree = "<group>"; };
+		EE11ADCA17BCFF72000042B2 /* TXHTicketingHubClientVariationsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientVariationsSpec.m; sourceTree = "<group>"; };
 		EE1908A817AFB5FA00194C73 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		EE3AF42717BCDB1400B000F0 /* TXHVariationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVariationSpec.m; sourceTree = "<group>"; };
 		EE4052EF17AFEA3A0067B7F6 /* TXHTicketingHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTicketingHubClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -180,7 +183,6 @@
 		EE8DA94417AFC4F000A58C88 /* SPTSenTestInvocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPTSenTestInvocation.h; sourceTree = "<group>"; };
 		EE8DA94517AFC4F000A58C88 /* SPTSharedExampleGroups.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPTSharedExampleGroups.h; sourceTree = "<group>"; };
 		EE8DA94617AFC4F000A58C88 /* SPTSpec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPTSpec.h; sourceTree = "<group>"; };
-		EE8DA94917AFC51F00A58C88 /* SmokeSpec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmokeSpec.m; sourceTree = "<group>"; };
 		EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientSpec.m; sourceTree = "<group>"; };
 		EE8DA95317AFD19000A58C88 /* OHHTTPStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHHTTPStubs.h; sourceTree = "<group>"; };
 		EE8DA95417AFD19000A58C88 /* OHHTTPStubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHHTTPStubs.m; sourceTree = "<group>"; };
@@ -357,12 +359,12 @@
 		EE8DA90217AFC42500A58C88 /* TicketingHub-iosTests */ = {
 			isa = PBXGroup;
 			children = (
-				EE8DA94917AFC51F00A58C88 /* SmokeSpec.m */,
 				EE6E60B817B941B400329699 /* TXHSeasonSpec.m */,
 				EECD273A17BCEA4500B5F535 /* TXHTicketingHubClientSeasonsSpec.m */,
 				EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */,
 				EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */,
 				EECF963817B0204300E288A7 /* TXHTicketingHubClientUserSpec.m */,
+				EE11ADCA17BCFF72000042B2 /* TXHTicketingHubClientVariationsSpec.m */,
 				EEA6862C17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m */,
 				EE5BF6E917B1016300440923 /* TXHUserSpec.m */,
 				EE3AF42717BCDB1400B000F0 /* TXHVariationSpec.m */,
@@ -547,6 +549,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EECD273C17BCF2B200B5F535 /* seasonsForVenue99.json in Resources */,
+				EECD273D17BCF2B200B5F535 /* variationsForVenue99.json in Resources */,
 				EEA6862F17B3B89E0024B002 /* venuesSuccess.json in Resources */,
 				EE23FFA217B24EBD005F5441 /* user.json in Resources */,
 				EE0C0DFB17AFFDBC00769FDC /* tokenFailure.json in Resources */,
@@ -593,9 +597,9 @@
 				EE8DA95017AFCAED00A58C88 /* TXHTicketingHubClientSpec.m in Sources */,
 				EECD273B17BCEA4500B5F535 /* TXHTicketingHubClientSeasonsSpec.m in Sources */,
 				EE52114617B3987A00C04EDC /* TXHVenueSpec.m in Sources */,
-				EE8DA94A17AFC54900A58C88 /* SmokeSpec.m in Sources */,
 				EECF963717B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m in Sources */,
 				EEA6862D17B3B0E10024B002 /* TXHTicketingHubClientVenueSpec.m in Sources */,
+				EE11ADCB17BCFF72000042B2 /* TXHTicketingHubClientVariationsSpec.m in Sources */,
 				EECF963917B0204300E288A7 /* TXHTicketingHubClientUserSpec.m in Sources */,
 				EE4052EC17AFE77D0067B7F6 /* OHHTTPStubs.m in Sources */,
 				EE3AF42817BCDB1400B000F0 /* TXHVariationSpec.m in Sources */,
