@@ -146,7 +146,8 @@
 }
 
 - (void)seasonsForVenueId:(NSUInteger)venueId withSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
-    
+    NSString *endpoint = [NSString stringWithFormat:@"%@/%d/%@", kVenuesEndpoint, venueId, kSeasonsEndpoint];
+
 }
 
 - (void)variationsForVenueId:(NSUInteger)venueID withSuccess:(void (^)(NSArray *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
