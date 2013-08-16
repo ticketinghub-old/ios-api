@@ -54,6 +54,7 @@ describe(@"TXHSeason", ^{
         TXHOption *option1 = _season.seasonalOptions[0];
         expect(option1.timeString).to.equal(_option1[@"time"]);
         expect(option1.weekday).to.equal([_option1[@"wday"] integerValue]);
+        
     });
 });
 

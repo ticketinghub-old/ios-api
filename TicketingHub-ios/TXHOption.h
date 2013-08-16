@@ -13,7 +13,7 @@
 
 @property (assign, readonly, nonatomic) NSUInteger weekday;
 @property (strong, readonly, nonatomic) NSString *timeString;
-@property (assign, readonly, nonatomic) NSTimeInterval duration;
+@property (copy, readonly, nonatomic) NSString *duration;
 
 + (instancetype)createWithDictionary:(NSDictionary *)dictionary;
 

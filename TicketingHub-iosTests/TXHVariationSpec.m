@@ -18,13 +18,21 @@ SpecBegin(TXHVariation)
 
 __block NSDictionary *_variation1;
 __block NSDictionary *_variation2;
+__block NSDictionary *_variation3;
 
 beforeAll(^{
-    _variation1 = @{@"date" : @"2013-07-31",
-                    @"options" : @[@{@"time" : @"13:00"}, @{@"time" : @"17:00"}]};
+    _variation1 = @{@"date" : @"2013-08-30",
+                    @"options" : @[@{@"time" : @"13:00",
+                                     @"duration" : @"PT110M"},
+                                   @{@"time" : @"17:00",
+                                     @"duration" : @"PT110M"}]};
 
-    _variation2 = @{@"date" : @"2013-12-25",
+    _variation2 = @{@"date" : @"2013-08-31",
                     @"options" : @[]};
+
+    _variation3 = @{@"date" : @"2013-08-29",
+                    @"options" : @[@{@"time" : @"13:00",
+                                     @"duration" : @"PT110M"}]};
 
 });
 
@@ -37,6 +45,16 @@ describe(@"TXHVariation", ^{
         expect([options count]).to.equal(2);
         expect(options[0]).to.beKindOf([TXHOption class]);
         expect(options[1]).to.beKindOf([TXHOption class]);
+    });
+
+    it(@"translates iso8601 date formats correctly", ^{
+        TXHVariation *variation = [TXHVariation createWithDictionary:_variation3];
+
+        TXHOption *option = variation.options[0];
+
+        expect(option.timeString).to.equal(@"13:00");
+        expect(option.duration).to.equal(@"PT110M");
+
     });
 
     it(@"has an empty array for nil options for a date", ^{
