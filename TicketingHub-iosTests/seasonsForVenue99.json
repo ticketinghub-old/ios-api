@@ -3,10 +3,12 @@
         "ends_on": "2013-12-31", 
         "options": [
             {
+                "duration": "PT1H", 
                 "time": "09:00", 
                 "wday": 1
             }, 
             {
+                "duration": "PT1H", 
                 "time": "10:00", 
                 "wday": 1
             }
