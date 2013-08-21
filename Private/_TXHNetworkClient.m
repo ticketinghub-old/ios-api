@@ -21,6 +21,7 @@ NSString * const kUserEndpoint = @"user";
 NSString * const kVenuesEndpoint = @"venues";
 NSString * const kSeasonsEndpoint = @"seasons";
 NSString * const kVariationsEndpoint = @"variations";
+NSString * const kAvailabilityEndpoint = @"availability";
 
 @implementation _TXHNetworkClient
 
