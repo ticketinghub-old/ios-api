@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD68B28217C4F32C007AA5A2 /* TXHTicketingHubAvailabilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68B28117C4F32C007AA5A2 /* TXHTicketingHubAvailabilitySpec.m */; };
 		EE0C0DFB17AFFDBC00769FDC /* tokenFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DF917AFFDA600769FDC /* tokenFailure.json */; };
 		EE0C0DFC17AFFDBC00769FDC /* tokenSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */; };
 		EE11ADCB17BCFF72000042B2 /* TXHTicketingHubClientVariationsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADCA17BCFF72000042B2 /* TXHTicketingHubClientVariationsSpec.m */; };
@@ -83,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AD68B28117C4F32C007AA5A2 /* TXHTicketingHubAvailabilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubAvailabilitySpec.m; sourceTree = "<group>"; };
 		ADBDA15117BA7C58009ADD3E /* variationsForVenue99.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = variationsForVenue99.json; sourceTree = "<group>"; };
 		ADBDA15217BA7C92009ADD3E /* seasonsForVenue99.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = seasonsForVenue99.json; sourceTree = "<group>"; };
 		EE0C0DF917AFFDA600769FDC /* tokenFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenFailure.json; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				EE6E60B817B941B400329699 /* TXHSeasonSpec.m */,
+				AD68B28117C4F32C007AA5A2 /* TXHTicketingHubAvailabilitySpec.m */,
 				EECD273A17BCEA4500B5F535 /* TXHTicketingHubClientSeasonsSpec.m */,
 				EE8DA94F17AFCAED00A58C88 /* TXHTicketingHubClientSpec.m */,
 				EECF963617B01E3B00E288A7 /* TXHTicketingHubClientTokenSpec.m */,
@@ -591,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD68B28217C4F32C007AA5A2 /* TXHTicketingHubAvailabilitySpec.m in Sources */,
 				EE4052ED17AFE7810067B7F6 /* OHHTTPStubsResponse.m in Sources */,
 				EE5BF6EA17B1016300440923 /* TXHUserSpec.m in Sources */,
 				EE6E60B917B941B400329699 /* TXHSeasonSpec.m in Sources */,
