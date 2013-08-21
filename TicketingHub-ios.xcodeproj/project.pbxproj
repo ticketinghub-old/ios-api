@@ -753,8 +753,8 @@
 				INFOPLIST_FILE = "TicketingHub-iosTests/TicketingHub-iosTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/abizer/dev/ios/client/TicketingHub-ios/TicketingHub-iosTests/Expecta",
-					"/Users/abizer/dev/ios/client/TicketingHub-ios/TicketingHub-iosTests/Specta",
+					"$(SRCROOT)/TicketingHub-iosTests/Expecta",
+					"$(SRCROOT)/TicketingHub-iosTests/Specta",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -778,8 +778,8 @@
 				INFOPLIST_FILE = "TicketingHub-iosTests/TicketingHub-iosTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/abizer/dev/ios/client/TicketingHub-ios/TicketingHub-iosTests/Expecta",
-					"/Users/abizer/dev/ios/client/TicketingHub-ios/TicketingHub-iosTests/Specta",
+					"$(SRCROOT)/TicketingHub-iosTests/Expecta",
+					"$(SRCROOT)/TicketingHub-iosTests/Specta",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
