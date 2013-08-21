@@ -51,4 +51,6 @@
 
 - (void)variationsForVenueId:(NSUInteger)venueId withSuccess:(void(^)(NSArray *variations))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
 
+- (void)availabilityForVenueId:(NSUInteger)venueId from:(NSString *)fromDateString to:(NSString *)toDateString withSuccess:(void(^)(NSDictionary *unavailableDates))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+
 @end

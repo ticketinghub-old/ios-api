@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AD68B28217C4F32C007AA5A2 /* TXHTicketingHubAvailabilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AD68B28117C4F32C007AA5A2 /* TXHTicketingHubAvailabilitySpec.m */; };
+		AD68B31E17C50B03007AA5A2 /* availabilityForVenue99.json in Resources */ = {isa = PBXBuildFile; fileRef = AD68B31D17C50B03007AA5A2 /* availabilityForVenue99.json */; };
 		EE0C0DFB17AFFDBC00769FDC /* tokenFailure.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DF917AFFDA600769FDC /* tokenFailure.json */; };
 		EE0C0DFC17AFFDBC00769FDC /* tokenSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */; };
 		EE11ADCB17BCFF72000042B2 /* TXHTicketingHubClientVariationsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE11ADCA17BCFF72000042B2 /* TXHTicketingHubClientVariationsSpec.m */; };
@@ -85,6 +86,7 @@
 
 /* Begin PBXFileReference section */
 		AD68B28117C4F32C007AA5A2 /* TXHTicketingHubAvailabilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubAvailabilitySpec.m; sourceTree = "<group>"; };
+		AD68B31D17C50B03007AA5A2 /* availabilityForVenue99.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = availabilityForVenue99.json; sourceTree = "<group>"; };
 		ADBDA15117BA7C58009ADD3E /* variationsForVenue99.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = variationsForVenue99.json; sourceTree = "<group>"; };
 		ADBDA15217BA7C92009ADD3E /* seasonsForVenue99.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = seasonsForVenue99.json; sourceTree = "<group>"; };
 		EE0C0DF917AFFDA600769FDC /* tokenFailure.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tokenFailure.json; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		EE0C0DF817AFFD2F00769FDC /* JSON Response Stubs */ = {
 			isa = PBXGroup;
 			children = (
+				AD68B31D17C50B03007AA5A2 /* availabilityForVenue99.json */,
 				ADBDA15217BA7C92009ADD3E /* seasonsForVenue99.json */,
 				EE0C0DF917AFFDA600769FDC /* tokenFailure.json */,
 				EE0C0DFA17AFFDA600769FDC /* tokenSuccess.json */,
@@ -554,6 +557,7 @@
 			files = (
 				EECD273C17BCF2B200B5F535 /* seasonsForVenue99.json in Resources */,
 				EECD273D17BCF2B200B5F535 /* variationsForVenue99.json in Resources */,
+				AD68B31E17C50B03007AA5A2 /* availabilityForVenue99.json in Resources */,
 				EEA6862F17B3B89E0024B002 /* venuesSuccess.json in Resources */,
 				EE23FFA217B24EBD005F5441 /* user.json in Resources */,
 				EE0C0DFB17AFFDBC00769FDC /* tokenFailure.json in Resources */,

@@ -199,6 +199,28 @@
     [variationsRequestOperation start];
 }
 
+- (void)availabilityForVenueId:(NSUInteger)venueId from:(NSString *)fromDateString to:(NSString *)toDateString withSuccess:(void (^)(NSDictionary *))successBlock failure:(void (^)(NSHTTPURLResponse *, NSError *, id))failureBlock {
+    NSString *endpoint = [NSString stringWithFormat:@"%@/%d/%@", kVenuesEndpoint, venueId, kAvailabilityEndpoint];
+    NSDictionary *parameters = @{@"from" : fromDateString, @"to" : toDateString};
+
+    NSMutableURLRequest *availabilityRequest = [self.networkClient requestWithMethod:@"GET" path:endpoint parameters:parameters];
+
+    AFJSONRequestOperation *availabilityRequestOperation = [AFJSONRequestOperation JSONRequestOperationWithRequest:availabilityRequest success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *unavailableDates) {
+
+        if (successBlock) {
+            successBlock(unavailableDates);
+        }
+
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        // Do something here
+        if (failureBlock) {
+            failureBlock(response, error, JSON);
+        }
+    }];
+
+    [availabilityRequestOperation start];
+}
+
 #pragma mark - custom accessors
 
 - (void)setToken:(NSString *)token {
