@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/ticketinghub/ios-api.png)](https://travis-ci.org/ticketinghub/ios-api)
-
 ## TicketingHub-ios
 
 A library for interacting with the TicketingHub
