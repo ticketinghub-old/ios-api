@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ollym/TicketingHub-ios.png)](https://travis-ci.org/ollym/TicketingHub-ios)
+
 ## TicketingHub-ios
 
 A library for interacting with the TicketingHub
