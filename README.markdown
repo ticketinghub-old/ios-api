@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ollym/TicketingHub-ios.png)](https://travis-ci.org/ollym/TicketingHub-ios)
+[![Build Status](https://travis-ci.org/ticketinghub/ios-api.png)](https://travis-ci.org/ticketinghub/ios-api)
 
 ## TicketingHub-ios
 
