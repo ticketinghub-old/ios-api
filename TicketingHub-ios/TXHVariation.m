@@ -45,7 +45,7 @@
 #pragma mark - Public methods
 
 - (id)init {
-    if (!(self == [super init])) {
+    if (!(self = [super init])) {
         return nil; // Bail!
     }
 
