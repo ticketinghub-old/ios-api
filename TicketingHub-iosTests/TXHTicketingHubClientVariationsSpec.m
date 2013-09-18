@@ -41,14 +41,19 @@ describe(@"Getting variations for a venue", ^{
         });
 
         it(@"returns an array of variations", ^AsyncBlock{
-            [_client variationsForVenueId:99 withSuccess:^(NSArray *variations) {
+            [_client variationsForVenueId:99 withCompletion:^(NSArray *variations, NSError *error) {
+                expect(error).to.beNil();
                 expect([variations count]).to.beGreaterThan(0);
                 done();
-
-            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-                expect(NO).to.beTruthy(); // This is expected to fail as we should not get here
-                done();
             }];
+        });
+    });
+
+    context(@"without a completion block", ^{
+        it(@"raises an exception", ^{
+            expect(^{
+                [_client variationsForVenueId:99 withCompletion:nil];
+            }).to.raiseAny();
         });
     });
     

@@ -25,7 +25,7 @@ NSString * const kAvailabilityEndpoint = @"availability";
 
 @implementation _TXHNetworkClient
 
-+ (instancetype)sharedClient {
++ (instancetype)sharedNetworkClient {
     static _TXHNetworkClient *client = nil;
 
     static dispatch_once_t onceToken;

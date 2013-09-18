@@ -19,6 +19,6 @@ extern NSString * const kAvailabilityEndpoint;
 /*! Singleton initialise
  *  \returns The singleton instance of the network client
  */
-+ (instancetype)sharedClient;
++ (instancetype)sharedNetworkClient;
 
 @end

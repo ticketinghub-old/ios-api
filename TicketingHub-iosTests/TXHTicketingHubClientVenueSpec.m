@@ -40,15 +40,20 @@ describe(@"venues for current user", ^{
         });
 
         it(@"returns an array of venues", ^AsyncBlock{
-            [_client venuesWithSuccess:^(NSArray *venues) {
+            [_client venuesWithCompletion:^(NSArray *venues, NSError *error) {
+                expect(error).to.beNil();
                 expect([venues isKindOfClass:[NSArray class]]).to.beTruthy();
                 expect([venues count]).to.equal(2);
                 done();
-
-            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-                expect(NO).to.beTruthy(); // This is expected to fail as we should not get here
-                done();
             }];
+        });
+    });
+
+    context(@"without a completion block", ^{
+        it(@"raises an exception", ^{
+            expect(^{
+                [_client venuesWithCompletion:nil];
+            }).to.raiseAny();
         });
     });
 

@@ -42,14 +42,19 @@ describe(@"Getting seasons for a venue", ^{
         });
 
         it(@"returns an array of seasons", ^AsyncBlock{
-            [_client seasonsForVenueId:99 withSuccess:^(NSArray *seasons) {
+            [_client seasonsForVenueId:99 withCompletion:^(NSArray *seasons, NSError *error) {
+                expect(error).to.beNil();
                 expect([seasons count]).to.beGreaterThan(0);
                 done();
-
-            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-                expect(NO).to.beTruthy(); // This is expected to fail as we should not get here
-                done();
             }];
+        });
+    });
+
+    context(@"without a completion block", ^{
+        it(@"raises an exception", ^{
+            expect(^{
+                [_client seasonsForVenueId:99 withCompletion:nil];
+            }).to.raiseAny();
         });
     });
 

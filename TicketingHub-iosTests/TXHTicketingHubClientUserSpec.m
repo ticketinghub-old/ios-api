@@ -40,17 +40,22 @@ describe(@"Get the current user", ^{
         });
 
         it(@"returns a TXHUser object configured with the response", ^AsyncBlock{
-            [_client userInformationSuccess:^(TXHUser *returnedUser) {
-                expect(returnedUser).toNot.beNil();
-                done();
-            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-                expect(NO).to.beTruthy(); // This is expected to fail as we should not get here
+            [_client userInformationWithCompletion:^(TXHUser *user, NSError *error) {
+                expect(user).toNot.beNil();
+                expect(error).to.beNil();
                 done();
             }];
-
         });
 
 
+    });
+
+    context(@"without a completion block", ^{
+        it(@"Raises an exception", ^{
+            expect(^{
+                [_client userInformationWithCompletion:nil];
+            }).to.raiseAny();
+        });
     });
 
     context(@"with an unsuccessful request", ^{

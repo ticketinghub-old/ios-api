@@ -39,16 +39,22 @@ describe(@"Availability for for a venue", ^{
         });
 
         it(@"returns a dictionary contaning list of unavailable dates", ^AsyncBlock{
-            [_client availabilityForVenueId:99 from:@"2013-07-01" to:@"2013-12-12" withSuccess:^(NSDictionary *unavailableDates) {
+            [_client availabilityForVenueId:99 from:@"2013-07-01" to:@"2013-12-12" withCompletion:^(NSDictionary *unavailableDates, NSError *error) {
+                expect(error).to.beNil();
                 expect([unavailableDates count]).to.equal(2);
                 expect([unavailableDates[@"unavailable"] count]).to.equal(148);
                 expect([unavailableDates[@"sold_out"] count]).to.equal(1);
                 done();
-
-            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-                expect(NO).to.beTruthy(); // This is expected to fail as we should not get here
-                done();
             }];
+        });
+    });
+
+    context(@"without a completion block", ^{
+        // Not testing the date parameters, as that is covered by the server.
+        it(@"throws an exception", ^{
+            expect(^{
+                [_client availabilityForVenueId:99 from:@"2013-07-01" to:@"2013-12-12" withCompletion:nil];
+            }).to.raiseAny();
         });
     });
     

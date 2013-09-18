@@ -64,28 +64,21 @@ describe(@"configuring the shared client with OAuth parameters", ^{
             }];
         });
 
-        it(@"stores information that is need later", ^AsyncBlock{
-            [_client configureWithUsername:_username password:_password clientId:_clientId clientSecret:_clientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
+        it(@"stores the information that is needed later", ^AsyncBlock{
+            [_client configureWithUsername:_username password:_password clientId:_clientId clientSecret:_clientSecret completion:^(id JSON, NSError *error) {
+                expect(JSON).to.beNil();
+                expect(error).to.beNil();
                 expect([_client token]).to.equal(@"bd0fbf8ee4da7472c382c28e7f7b9977cd6768dcadd7b9328a84a5bd5e7e9b5e");
                 expect([_client refreshToken]).to.equal(@"0e6314d94b3eac772d571c8da04bdeb2d1cb3ace71487672bd54e83e968681a3");
                 expect([_client clientId]).to.equal(_clientId);
                 expect([_client clientSecret]).to.equal(_clientSecret);
                 done();
-
-            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-                expect(NO).will.beTruthy(); // We shouldn't call the error block in this case.
-                done();
             }];
-
         });
 
         it(@"sets the authorisation header correctly with the access token", ^AsyncBlock{
-            [_client configureWithUsername:_username password:_password clientId:_clientId clientSecret:_clientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
+            [_client configureWithUsername:_username password:_password clientId:_clientId clientSecret:_clientSecret completion:^(id JSON, NSError *error) {
                 expect([[_client networkClient] defaultValueForHeader:@"Authorization"]).to.equal(@"Bearer bd0fbf8ee4da7472c382c28e7f7b9977cd6768dcadd7b9328a84a5bd5e7e9b5e");
-                done();
-
-            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
-                expect(NO).will.beTruthy(); // We shouldn't call the error block in this case.
                 done();
             }];
         });
@@ -104,11 +97,9 @@ describe(@"configuring the shared client with OAuth parameters", ^{
         });
 
         it(@"calls the error block and doesn't set a token or refreshToken", ^AsyncBlock{
-            [_client configureWithUsername:_username password:_password clientId:_clientId clientSecret:_clientSecret success:^(NSURLRequest *request, NSHTTPURLResponse *response) {
-                expect(NO).to.beTruthy(); // We should not be calling the success block in this case
-                done();
-
-            } failure:^(NSHTTPURLResponse *response, NSError *error, id JSON) {
+            [_client configureWithUsername:_username password:_password clientId:_clientId clientSecret:_clientSecret completion:^(id JSON, NSError *error) {
+                expect(JSON).to.beTruthy();
+                expect(error).to.beTruthy();
                 expect([_client token]).to.beNil();
                 expect([_client refreshToken]).to.beNil();
                 expect([_client clientId]).to.beNil();
