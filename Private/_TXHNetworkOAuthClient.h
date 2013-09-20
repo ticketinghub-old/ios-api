@@ -15,6 +15,6 @@ extern NSString * const kOAuthTokenEndpoint;
 /*! Singleton initialise
  *  \returns the singleton instance
  */
-+ (instancetype)sharedClient;
++ (instancetype)sharedOAuthClient;
 
 @end

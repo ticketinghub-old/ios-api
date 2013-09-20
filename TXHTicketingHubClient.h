@@ -28,29 +28,23 @@
  */
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
 
-/*! Configure the client with the access token and the refresh token, which performs the server request.
- *  \param username the username
- *  \param password the password
- *  \param clientId the clientId
- *  \param clientSecret clientSecret
- *  \param successBlock a block to perform on success. It has no return and takes three parameters, the NSURLRequest, and the NSHTTPURLResponse returned by the server. The dictionary is not returned as the token and refresh token are kept internally.
- *  \param failureBlock a block to perform on failure. It has no return and takes three parameters, the NSHTTPURLResponse, an NSError describing the error, and the JSON object returned by the server (which could be an NSArray or a NSDictionary)
+/** Configure the client with the access token and the refresh token.
+ @param username the username
+ @param password the password
+ @param clientId the clientId
+ @param clientSecret the clientSecret
+ @param completionBlock a block to perform when the request is completed This takes two parameters, the JSON return (could be an NSArray or an NSDictionary and an NSError. On success, both are nil, as the response is just used internally.
  */
-- (void)configureWithUsername:(NSString *)username
-                     password:(NSString *)password
-                     clientId:(NSString *)clientId
-                 clientSecret:(NSString *)clientSecret
-                      success:(void(^)(NSURLRequest *request, NSHTTPURLResponse *response))successBlock
-                        failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+- (void)configureWithUsername:(NSString *)username password:(NSString *)password clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret completion:(void(^)(id JSON, NSError *error))completionBlock;
 
-- (void)userInformationSuccess:(void(^)(TXHUser *user))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+- (void)userInformationWithCompletion:(void(^)(TXHUser *user, NSError *error))completionBlock;
 
-- (void)venuesWithSuccess:(void(^)(NSArray *venues))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+- (void)venuesWithCompletion:(void(^)(NSArray *venues, NSError *error))completionBlock;
 
-- (void)seasonsForVenueId:(NSUInteger)venueId withSuccess:(void(^)(NSArray *seasons))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+- (void)seasonsForVenueId:(NSUInteger)venueId withCompletion:(void(^)(NSArray *seasons, NSError *error))completionBlock;
 
-- (void)variationsForVenueId:(NSUInteger)venueId withSuccess:(void(^)(NSArray *variations))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+- (void)variationsForVenueId:(NSUInteger)venueId withCompletion:(void(^)(NSArray *variations, NSError *error))completionBlock;
 
-- (void)availabilityForVenueId:(NSUInteger)venueId from:(NSString *)fromDateString to:(NSString *)toDateString withSuccess:(void(^)(NSDictionary *unavailableDates))successBlock failure:(void(^)(NSHTTPURLResponse *response, NSError *error, id JSON))failureBlock;
+- (void)availabilityForVenueId:(NSUInteger)venueId from:(NSString *)fromDateString to:(NSString *)toDateString withCompletion:(void(^)(NSDictionary *unavailableDates, NSError *error))completionBlock;
 
 @end

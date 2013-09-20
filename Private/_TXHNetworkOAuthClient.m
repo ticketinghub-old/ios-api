@@ -20,7 +20,7 @@ NSString * const kOAuthTokenEndpoint = @"token";
 
 @implementation _TXHNetworkOAuthClient
 
-+ (instancetype)sharedClient {
++ (instancetype)sharedOAuthClient {
     static _TXHNetworkOAuthClient *client = nil;
 
     static dispatch_once_t onceToken;
