@@ -35,16 +35,16 @@
  @param clientSecret the clientSecret
  @param completionBlock a block to perform when the request is completed This takes two parameters, the JSON return (could be an NSArray or an NSDictionary and an NSError. On success, both are nil, as the response is just used internally.
  */
-- (void)configureWithUsername:(NSString *)username password:(NSString *)password clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret completion:(void(^)(id JSON, NSError *error))completionBlock;
+- (void)configureWithUsername:(NSString *)username password:(NSString *)password clientId:(NSString *)clientId clientSecret:(NSString *)clientSecret completion:(void(^)(id JSON, NSError *error))completionBlock __attribute__((nonnull));
 
-- (void)userInformationWithCompletion:(void(^)(TXHUser *user, NSError *error))completionBlock;
+- (void)userInformationWithCompletion:(void(^)(TXHUser *user, NSError *error))completionBlock __attribute__((nonnull));
 
-- (void)venuesWithCompletion:(void(^)(NSArray *venues, NSError *error))completionBlock;
+- (void)venuesWithCompletion:(void(^)(NSArray *venues, NSError *error))completionBlock __attribute__((nonnull));
 
-- (void)seasonsForVenueId:(NSUInteger)venueId withCompletion:(void(^)(NSArray *seasons, NSError *error))completionBlock;
+- (void)seasonsForVenueId:(NSUInteger)venueId withCompletion:(void(^)(NSArray *seasons, NSError *error))completionBlock __attribute__((nonnull));
 
-- (void)variationsForVenueId:(NSUInteger)venueId withCompletion:(void(^)(NSArray *variations, NSError *error))completionBlock;
+- (void)variationsForVenueId:(NSUInteger)venueId withCompletion:(void(^)(NSArray *variations, NSError *error))completionBlock __attribute__((nonnull));
 
-- (void)availabilityForVenueId:(NSUInteger)venueId from:(NSString *)fromDateString to:(NSString *)toDateString withCompletion:(void(^)(NSDictionary *unavailableDates, NSError *error))completionBlock;
+- (void)availabilityForVenueId:(NSUInteger)venueId from:(NSString *)fromDateString to:(NSString *)toDateString withCompletion:(void(^)(NSDictionary *unavailableDates, NSError *error))completionBlock __attribute__((nonnull));
 
 @end
