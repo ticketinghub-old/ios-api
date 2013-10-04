@@ -49,6 +49,9 @@ describe(@"Availability for for a venue", ^{
         });
     });
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+
     context(@"without a completion block", ^{
         // Not testing the date parameters, as that is covered by the server.
         it(@"throws an exception", ^{
@@ -57,6 +60,8 @@ describe(@"Availability for for a venue", ^{
             }).to.raiseAny();
         });
     });
+
+#pragma clang diagnostic pop
     
 });
 

@@ -50,6 +50,9 @@ describe(@"Get the current user", ^{
 
     });
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+
     context(@"without a completion block", ^{
         it(@"Raises an exception", ^{
             expect(^{
@@ -57,6 +60,8 @@ describe(@"Get the current user", ^{
             }).to.raiseAny();
         });
     });
+
+#pragma clang diagnostic pop
 
     context(@"with an unsuccessful request", ^{
         //

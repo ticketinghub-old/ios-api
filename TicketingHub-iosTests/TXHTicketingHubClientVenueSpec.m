@@ -49,6 +49,9 @@ describe(@"venues for current user", ^{
         });
     });
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+
     context(@"without a completion block", ^{
         it(@"raises an exception", ^{
             expect(^{
@@ -56,6 +59,8 @@ describe(@"venues for current user", ^{
             }).to.raiseAny();
         });
     });
+    
+#pragma clang diagnostic pop
 
     context(@"with an unsuccessful request", ^{
         //

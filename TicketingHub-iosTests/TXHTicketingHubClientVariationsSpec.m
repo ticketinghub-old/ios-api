@@ -49,6 +49,9 @@ describe(@"Getting variations for a venue", ^{
         });
     });
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+
     context(@"without a completion block", ^{
         it(@"raises an exception", ^{
             expect(^{
@@ -56,6 +59,8 @@ describe(@"Getting variations for a venue", ^{
             }).to.raiseAny();
         });
     });
+
+#pragma clang diagnostic pop
     
 });
 

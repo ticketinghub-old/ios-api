@@ -50,6 +50,9 @@ describe(@"Getting seasons for a venue", ^{
         });
     });
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+
     context(@"without a completion block", ^{
         it(@"raises an exception", ^{
             expect(^{
@@ -57,6 +60,8 @@ describe(@"Getting seasons for a venue", ^{
             }).to.raiseAny();
         });
     });
+
+#pragma clang diagnostic pop
 
     context(@"with an unsuccessful request", ^{
         // 
