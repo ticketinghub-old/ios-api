@@ -7,7 +7,7 @@
 //
 //  Options within a season
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface TXHOption : NSObject
 

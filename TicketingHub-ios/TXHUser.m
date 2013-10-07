@@ -12,8 +12,10 @@
 
 @interface TXHUser ()
 
-// strong, not copy because this is a lazily loaded convenience dictionary.
-@property (strong, nonatomic) NSDictionary *mappingDictionary;
+// make properties readwrite internally
+@property (copy, readwrite, nonatomic) NSString *firstName;
+@property (copy, readwrite, nonatomic) NSString *lastName;
+@property (copy, readwrite, nonatomic) NSString *email;
 
 @end
 
@@ -28,7 +30,7 @@
         return nil; // Bail!
     }
 
-    NSDictionary *mappedDictionary = [dictionary jcsRemapKeysWithMapping:[self mappingDictionary] removingNullValues:NO];
+    NSDictionary *mappedDictionary = [dictionary jcsRemapKeysWithMapping:[[self class] mappingDictionary] removingNullValues:NO];
 
     [user setValuesForKeysWithDictionary:mappedDictionary];
 
@@ -38,7 +40,7 @@
 #pragma mark - Superclass overrides
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
-    // Rather than crash when trying to set undefined key values, do nothing;
+    // Rather than crash when trying to set undefined key values, log the request and do nothing;
     NSLog(@"Trying to set value: %@, for undefined key: %@", value, key);
 }
 

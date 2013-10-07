@@ -13,9 +13,7 @@
 @interface TXHVariation ()
 
 // Redclare public property
-@property (copy, nonatomic) NSString *dateString;
-
-
+@property (copy, readwrite, nonatomic) NSString *dateString;
 @property (strong, nonatomic) NSMutableSet *optionsSet;
 
 @end

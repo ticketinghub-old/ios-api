@@ -13,9 +13,9 @@
 
 @interface TXHSeason ()
 
-@property (strong, nonatomic) NSString *startsOnDateString;
-@property (strong, nonatomic) NSString *endsOnDateString;
-@property (copy, nonatomic) NSArray *seasonalOptions;
+@property (strong, readwrite, nonatomic) NSString *startsOnDateString;
+@property (strong, readwrite, nonatomic) NSString *endsOnDateString;
+@property (copy, readwrite, nonatomic) NSArray *seasonalOptions;
 
 @end
 
@@ -50,7 +50,7 @@
             [seasonalOptions addObject:seasonalOption];
         }
 
-        _seasonalOptions = seasonalOptions;
+        self.seasonalOptions = seasonalOptions;
 
     } else {
         // Don't crash, just log the attempt

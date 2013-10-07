@@ -671,7 +671,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				WARNING_CFLAGS = "-Weverything";
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -704,7 +704,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				WARNING_CFLAGS = "-Weverything";
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};

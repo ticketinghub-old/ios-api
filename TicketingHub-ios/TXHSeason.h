@@ -7,7 +7,7 @@
 //
 //  Representation of a season
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @class TXHOption;
 

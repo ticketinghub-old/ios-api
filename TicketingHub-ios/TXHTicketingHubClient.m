@@ -23,13 +23,17 @@
 @property (copy, nonatomic) NSString *refreshToken;
 @property (copy, nonatomic) NSString *clientId;
 @property (copy, nonatomic) NSString *clientSecret;
-@property (strong, readonly, nonatomic) _TXHNetworkOAuthClient *oauthClient;
-@property (strong, readonly, nonatomic) _TXHNetworkClient *networkClient;
-@property (strong, readonly, nonatomic) AFNetworkActivityIndicatorManager *activityIndicatorManager;
+@property (readonly, nonatomic) _TXHNetworkOAuthClient *oauthClient;
+@property (readonly, nonatomic) _TXHNetworkClient *networkClient;
+@property (readonly, nonatomic) AFNetworkActivityIndicatorManager *activityIndicatorManager;
 
 @end
 
 @implementation TXHTicketingHubClient
+
+@synthesize oauthClient = _oauthClient;
+@synthesize networkClient = _networkClient;
+@synthesize activityIndicatorManager = _activityIndicatorManager;
 
 #pragma mark - Class methods
 
