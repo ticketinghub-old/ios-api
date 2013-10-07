@@ -12,8 +12,8 @@
 
 @interface TXHVenue ()
 
-@property (assign, readonly) CLLocationDegrees latitude;
-@property (assign, readonly) CLLocationDegrees longitude;
+@property (assign, nonatomic) CLLocationDegrees latitude;
+@property (assign, nonatomic) CLLocationDegrees longitude;
 
 @end
 
