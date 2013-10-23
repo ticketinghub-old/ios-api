@@ -5,8 +5,3 @@
 //
 
 @import Foundation;
-@import SystemConfiguration;
-@import MobileCoreServices;
-@import Security;
-
-#import "AFNetworking.h"
