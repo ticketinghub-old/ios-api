@@ -5,3 +5,10 @@
 //
 
 @import Foundation;
+
+// Specta
+#import "Specta.h"
+
+// Expecta
+#define EXP_SHORTHAND
+#import "Expecta.h"

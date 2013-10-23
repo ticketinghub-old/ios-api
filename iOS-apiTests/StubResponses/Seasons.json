@@ -1,0 +1,18 @@
+[
+    {
+        "ends_on": "2014-03-31", 
+        "options": [
+            {
+                "duration": "P0MT8H", 
+                "time": "09:00", 
+                "wday": 1
+            }
+        ], 
+        "starts_on": "2013-09-01"
+    }, 
+    {
+        "ends_on": "2014-08-31", 
+        "options": [], 
+        "starts_on": "2014-04-01"
+    }
+]

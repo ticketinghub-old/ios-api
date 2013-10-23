@@ -1,0 +1,207 @@
+[
+    {
+        "address": {
+            "building": "5 Welmar Mews", 
+            "city": "London", 
+            "country": "GB", 
+            "formatted": "London\nSW4 7DD\nUnited Kingdom", 
+            "postalcode": "SW4 7DD", 
+            "recipient": null, 
+            "region": "", 
+            "street": ""
+        }, 
+        "business_contact": {
+            "email": "ollym@me.com", 
+            "telephone": "07840739436", 
+            "website": "london.com"
+        }, 
+        "currency": "GBP", 
+        "gateways": [
+            {
+                "id": "stripe", 
+                "name": "Stripe", 
+                "publishable_key": "pk_live_s2SGq0oeMSuebjyXOs5e0I9V", 
+                "supported_cards": [
+                    "visa", 
+                    "master", 
+                    "american_express", 
+                    "discover", 
+                    "jcb", 
+                    "diners_club"
+                ]
+            }
+        ], 
+        "id": "5", 
+        "name": "My Second Venue", 
+        "primary_gateway": {
+            "id": "stripe", 
+            "name": "Stripe", 
+            "publishable_key": "pk_live_s2SGq0oeMSuebjyXOs5e0I9V", 
+            "supported_cards": [
+                "visa", 
+                "master", 
+                "american_express", 
+                "discover", 
+                "jcb", 
+                "diners_club"
+            ]
+        }, 
+        "subscription": {
+            "created_at": "2013-10-23T15:07:36.907Z", 
+            "package_id": "1"
+        }, 
+        "support_contact": {
+            "email": "ollym@me.com", 
+            "telephone": "07840739436", 
+            "website": "london.com"
+        }, 
+        "time_zone": {
+            "current_period": {
+                "end_transition": null, 
+                "offset": {
+                    "abbreviation": "UTC", 
+                    "std_offset": 0, 
+                    "utc_offset": 0, 
+                    "utc_total_offset": 0
+                }, 
+                "start_transition": null, 
+                "utc_total_offset_rational": null
+            }, 
+            "name": "UTC", 
+            "tzinfo": {
+                "identifier": "Etc/UTC", 
+                "real_timezone": {
+                    "info": {
+                        "identifier": "Etc/UTC", 
+                        "offsets": {
+                            "o0": {
+                                "abbreviation": "UTC", 
+                                "std_offset": 0, 
+                                "utc_offset": 0, 
+                                "utc_total_offset": 0
+                            }
+                        }, 
+                        "previous_offset": {
+                            "abbreviation": "UTC", 
+                            "std_offset": 0, 
+                            "utc_offset": 0, 
+                            "utc_total_offset": 0
+                        }, 
+                        "transitions": [], 
+                        "transitions_index": null
+                    }
+                }
+            }, 
+            "utc_offset": null
+        }, 
+        "token": {
+            "access_token": "at~ETmbU67N2VI97PXx-_1gIw", 
+            "expires_at": null, 
+            "public_token": "pt~57vf8yi2QdDRqL0fYKjroQ", 
+            "refresh_token": "rt~MBvFrTratQy360VdR5Di1g"
+        }
+    }, 
+    {
+        "address": {
+            "building": "5 Welmar Mews", 
+            "city": "London", 
+            "country": "GB", 
+            "formatted": "London\nSW4 7DD\nUnited Kingdom", 
+            "postalcode": "SW4 7DD", 
+            "recipient": null, 
+            "region": "", 
+            "street": ""
+        }, 
+        "business_contact": {
+            "email": "ollym@me.com", 
+            "telephone": "07840739436", 
+            "website": "http://www.google.com"
+        }, 
+        "currency": "GBP", 
+        "gateways": [
+            {
+                "id": "stripe", 
+                "name": "Stripe", 
+                "publishable_key": "pk_live_8ppy08uXuU0NwZGUZxkxGU1y", 
+                "supported_cards": [
+                    "visa", 
+                    "master", 
+                    "american_express", 
+                    "discover", 
+                    "jcb", 
+                    "diners_club"
+                ]
+            }
+        ], 
+        "id": "1", 
+        "name": "Olly's Walking Tour", 
+        "primary_gateway": {
+            "id": "stripe", 
+            "name": "Stripe", 
+            "publishable_key": "pk_live_8ppy08uXuU0NwZGUZxkxGU1y", 
+            "supported_cards": [
+                "visa", 
+                "master", 
+                "american_express", 
+                "discover", 
+                "jcb", 
+                "diners_club"
+            ]
+        }, 
+        "subscription": {
+            "created_at": "2013-10-23T10:29:17.717Z", 
+            "package_id": "1"
+        }, 
+        "support_contact": {
+            "email": "ollym@me.com", 
+            "telephone": "07840739436", 
+            "website": "http://www.google.com"
+        }, 
+        "time_zone": {
+            "current_period": {
+                "end_transition": null, 
+                "offset": {
+                    "abbreviation": "UTC", 
+                    "std_offset": 0, 
+                    "utc_offset": 0, 
+                    "utc_total_offset": 0
+                }, 
+                "start_transition": null, 
+                "utc_total_offset_rational": null
+            }, 
+            "name": "UTC", 
+            "tzinfo": {
+                "identifier": "Etc/UTC", 
+                "real_timezone": {
+                    "info": {
+                        "identifier": "Etc/UTC", 
+                        "offsets": {
+                            "o0": {
+                                "abbreviation": "UTC", 
+                                "std_offset": 0, 
+                                "utc_offset": 0, 
+                                "utc_total_offset": 0
+                            }
+                        }, 
+                        "previous_offset": {
+                            "abbreviation": "UTC", 
+                            "std_offset": 0, 
+                            "utc_offset": 0, 
+                            "utc_total_offset": 0
+                        }, 
+                        "transitions": [], 
+                        "transitions_index": null
+                    }
+                }
+            }, 
+            "utc_offset": null
+        }, 
+        "token": {
+            "access_token": "at~u9QQaq4-P58Xbg5hVBdN7Q", 
+            "expires_at": null, 
+            "public_token": "pt~Xa4xHc1NwVZEWVQgUgsjAQ", 
+            "refresh_token": "rt~RTWCuHSu7M9irWZliubZnA"
+        }
+    }
+]
+
