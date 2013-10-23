@@ -10,4 +10,10 @@
 
 @interface TXHTicketingHubClient : NSObject
 
+/*! Singleton initialiser
+ *  @returns the singleton instance of the client
+ */
++ (instancetype)sharedClient;
+
+
 @end

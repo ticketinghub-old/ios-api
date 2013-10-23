@@ -13,8 +13,8 @@
 		EEF85C7718183D9200658409 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C7618183D9200658409 /* UIKit.framework */; };
 		EEF85C7A18183D9200658409 /* libiOS-api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C6218183D9200658409 /* libiOS-api.a */; };
 		EEF85C8018183D9200658409 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEF85C7E18183D9200658409 /* InfoPlist.strings */; };
-		EEF85C8218183D9200658409 /* iOS_apiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF85C8118183D9200658409 /* iOS_apiTests.m */; };
 		EEF85C8E181840A100658409 /* TXHTicketingHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF85C8D181840A100658409 /* TXHTicketingHubClient.m */; };
+		EEF85C901818415600658409 /* ClientCreationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF85C8F1818415600658409 /* ClientCreationTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,10 +48,10 @@
 		EEF85C7618183D9200658409 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		EEF85C7D18183D9200658409 /* iOS-apiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS-apiTests-Info.plist"; sourceTree = "<group>"; };
 		EEF85C7F18183D9200658409 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		EEF85C8118183D9200658409 /* iOS_apiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOS_apiTests.m; sourceTree = "<group>"; };
 		EEF85C8B18183F5A00658409 /* TestsPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestsPrefix.pch; sourceTree = "<group>"; };
 		EEF85C8C181840A100658409 /* TXHTicketingHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketingHubClient.h; sourceTree = "<group>"; };
 		EEF85C8D181840A100658409 /* TXHTicketingHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClient.m; sourceTree = "<group>"; };
+		EEF85C8F1818415600658409 /* ClientCreationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientCreationTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +127,7 @@
 		EEF85C7B18183D9200658409 /* iOS-apiTests */ = {
 			isa = PBXGroup;
 			children = (
-				EEF85C8118183D9200658409 /* iOS_apiTests.m */,
+				EEF85C8F1818415600658409 /* ClientCreationTests.m */,
 				EEF85C7C18183D9200658409 /* Supporting Files */,
 			);
 			path = "iOS-apiTests";
@@ -232,7 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEF85C8218183D9200658409 /* iOS_apiTests.m in Sources */,
+				EEF85C901818415600658409 /* ClientCreationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
