@@ -27,27 +27,16 @@ static NSString * const
 
 #pragma mark - Set up and tear down
 
-+ (instancetype)sharedClient {
-    static TXHTicketingHubClient *client = nil;
-
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        client = [[[self class] alloc] init];
-    });
-
-    return client;
-}
-
 - (id)init {
     if (!(self = [super init])) {
         return nil; // Bail!
     }
+    _appSessionManager = [_TXHAppSessionManager new];
+    [_appSessionManager setDefaultAcceptLanguage:[[NSLocale preferredLanguages] firstObject]];
 
     _sessionManager = [_TXHAPISessionManager new];
     [_sessionManager setDefaultAcceptLanguage:[[NSLocale preferredLanguages] firstObject]];
 
-    _appSessionManager = [_TXHAppSessionManager new];
-    [_appSessionManager setDefaultAcceptLanguage:[[NSLocale preferredLanguages] firstObject]];
 
 
     return self;
@@ -62,10 +51,12 @@ static NSString * const
     
 }
 
-- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(id responseObject, NSError *error))completion {
+- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(NSArray *, NSError *))completion {
     [self.appSessionManager fetchVenuesWithUsername:username password:password completion:completion];
 }
 
-
+- (void)fetchSeasonsForVenueToken:(NSString *)venueToken completion:(void (^)(NSArray *, NSError *))completion {
+    [self.sessionManager fetchSeasonsForVenueToken:venueToken completion:completion];
+}
 
 @end

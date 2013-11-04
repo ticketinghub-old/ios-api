@@ -22,7 +22,7 @@
 #pragma mark - Set up and tear down
 
 + (instancetype)createWithDictionary:(NSDictionary *)dictionary {
-    if (!dictionary) {
+    if (!dictionary || ![dictionary count]) {
         return nil;
     }
 

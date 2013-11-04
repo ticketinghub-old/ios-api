@@ -8,7 +8,10 @@
 
 #import "_TXHAPISessionManager.h"
 
+#import "TXHAPIError.h"
+
 static NSString * const kAPIBaseURL = @"https://api.ticketinghub.com/";
+static NSString * const kSeasonsEndPoint = @"seasons";
 
 @implementation _TXHAPISessionManager
 
@@ -28,6 +31,23 @@ static NSString * const kAPIBaseURL = @"https://api.ticketinghub.com/";
 
 - (void)setDefaultAcceptLanguage:(NSString *)identifier {
     [self.requestSerializer setValue:identifier forHTTPHeaderField:@"Accept-Language"];
+}
+
+- (void)fetchSeasonsForVenueToken:(NSString *)venueToken completion:(void (^)(NSArray *, NSError *))completion {
+    [self.requestSerializer setAuthorizationHeaderFieldWithToken:[NSString stringWithFormat:@"Bearer %@", venueToken]];
+
+    [self GET:kSeasonsEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (![responseObject count]) {
+            responseObject = nil;
+            NSString *localisedDescription = NSLocalizedString(@"No seasons available for this venue", @"");
+            NSError *error = [NSError errorWithDomain:TXHAPIErrorDomain code:TXHAPIErrorNoSeasons userInfo:@{NSLocalizedDescriptionKey: localisedDescription}];
+            completion(nil, error);
+        } else {
+            completion(responseObject, nil);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    }];
 }
 
 @end

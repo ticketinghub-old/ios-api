@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ADA2FADE182BB13D0075E6B3 /* FetchSeasonsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA2FADD182BB13D0075E6B3 /* FetchSeasonsSpec.m */; };
 		EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DB3181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m */; };
 		EE1C01A418214F1A005D754A /* TXHOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1C01A318214F1A005D754A /* TXHOption.m */; };
 		EE1C01A718214F3F005D754A /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1C01A618214F3F005D754A /* TXHSeason.m */; };
@@ -29,8 +30,9 @@
 		EE3361C31819343400FC511A /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3361B31819343400FC511A /* UIWebView+AFNetworking.m */; };
 		EE5B98D21827BF7500591875 /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98BE1827BF7500591875 /* libExpecta-ios-universal.a */; };
 		EE5B98D51827BF7500591875 /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98C41827BF7500591875 /* libSpecta-ios-universal.a */; };
+		EE74D466182AD4D0000266C3 /* VenueSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE74D465182AD4D0000266C3 /* VenueSpec.m */; };
+		EE74D468182ADF34000266C3 /* ClientCreationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE74D467182ADF34000266C3 /* ClientCreationSpec.m */; };
 		EE81677518240B8D00E673EB /* FetchVenuesSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE81677418240B8D00E673EB /* FetchVenuesSpec.m */; };
-		EE8C3DA6181AD43B0036AE92 /* VenueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DA5181AD43B0036AE92 /* VenueTests.m */; };
 		EE8C3DAB181ADA510036AE92 /* VenuesEmpty.json in Resources */ = {isa = PBXBuildFile; fileRef = EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */; };
 		EE8C3DAC181ADA510036AE92 /* VenuesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */; };
 		EE8C3DB0181AE0E80036AE92 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DAF181AE0E80036AE92 /* TXHVenue.m */; };
@@ -47,7 +49,6 @@
 		EEF85C7A18183D9200658409 /* libiOS-api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C6218183D9200658409 /* libiOS-api.a */; };
 		EEF85C8018183D9200658409 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEF85C7E18183D9200658409 /* InfoPlist.strings */; };
 		EEF85C8E181840A100658409 /* TXHTicketingHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF85C8D181840A100658409 /* TXHTicketingHubClient.m */; };
-		EEF85C901818415600658409 /* ClientCreationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF85C8F1818415600658409 /* ClientCreationTests.m */; };
 		EEF85CC41818478700658409 /* _TXHAppSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF85CC31818478700658409 /* _TXHAppSessionManager.m */; };
 		EEF85CC7181847B700658409 /* _TXHAPISessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF85CC6181847B700658409 /* _TXHAPISessionManager.m */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		ADA2FADD182BB13D0075E6B3 /* FetchSeasonsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchSeasonsSpec.m; sourceTree = "<group>"; };
 		EE1C01A218214F19005D754A /* TXHOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOption.h; sourceTree = "<group>"; };
 		EE1C01A318214F1A005D754A /* TXHOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOption.m; sourceTree = "<group>"; };
 		EE1C01A518214F3F005D754A /* TXHSeason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeason.h; sourceTree = "<group>"; };
@@ -163,8 +165,9 @@
 		EE5B98D01827BF7500591875 /* SPTXCTestInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTXCTestInvocation.h; sourceTree = "<group>"; };
 		EE5B98D11827BF7500591875 /* XCTestCase+Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+Specta.h"; sourceTree = "<group>"; };
 		EE5B98DA1827F26D00591875 /* TXHAPIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHAPIError.h; sourceTree = "<group>"; };
+		EE74D465182AD4D0000266C3 /* VenueSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueSpec.m; sourceTree = "<group>"; };
+		EE74D467182ADF34000266C3 /* ClientCreationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientCreationSpec.m; sourceTree = "<group>"; };
 		EE81677418240B8D00E673EB /* FetchVenuesSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchVenuesSpec.m; sourceTree = "<group>"; };
-		EE8C3DA5181AD43B0036AE92 /* VenueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueTests.m; sourceTree = "<group>"; };
 		EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenuesEmpty.json; sourceTree = "<group>"; };
 		EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenuesSuccess.json; sourceTree = "<group>"; };
 		EE8C3DAE181AE0E80036AE92 /* TXHVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
@@ -191,7 +194,6 @@
 		EEF85C8B18183F5A00658409 /* TestsPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestsPrefix.pch; sourceTree = "<group>"; };
 		EEF85C8C181840A100658409 /* TXHTicketingHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketingHubClient.h; sourceTree = "<group>"; };
 		EEF85C8D181840A100658409 /* TXHTicketingHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTicketingHubClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EEF85C8F1818415600658409 /* ClientCreationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ClientCreationTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EEF85CC21818478700658409 /* _TXHAppSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = _TXHAppSessionManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		EEF85CC31818478700658409 /* _TXHAppSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = _TXHAppSessionManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EEF85CC5181847B700658409 /* _TXHAPISessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHAPISessionManager.h; sourceTree = "<group>"; };
@@ -446,10 +448,11 @@
 		EEF85C7B18183D9200658409 /* iOS-apiTests */ = {
 			isa = PBXGroup;
 			children = (
-				EEF85C8F1818415600658409 /* ClientCreationTests.m */,
+				EE74D467182ADF34000266C3 /* ClientCreationSpec.m */,
+				ADA2FADD182BB13D0075E6B3 /* FetchSeasonsSpec.m */,
 				EE81677418240B8D00E673EB /* FetchVenuesSpec.m */,
+				EE74D465182AD4D0000266C3 /* VenueSpec.m */,
 				EEF85C7C18183D9200658409 /* Supporting Files */,
-				EE8C3DA5181AD43B0036AE92 /* VenueTests.m */,
 			);
 			path = "iOS-apiTests";
 			sourceTree = "<group>";
@@ -602,14 +605,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA2FADE182BB13D0075E6B3 /* FetchSeasonsSpec.m in Sources */,
 				EE8C3DBE181AE2EB0036AE92 /* OHHTTPStubsResponse.m in Sources */,
 				EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */,
 				EE8C3DC7181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m in Sources */,
 				EE8C3DC6181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m in Sources */,
 				EE8C3DBD181AE2EB0036AE92 /* OHHTTPStubs.m in Sources */,
 				EE81677518240B8D00E673EB /* FetchVenuesSpec.m in Sources */,
-				EEF85C901818415600658409 /* ClientCreationTests.m in Sources */,
-				EE8C3DA6181AD43B0036AE92 /* VenueTests.m in Sources */,
+				EE74D468182ADF34000266C3 /* ClientCreationSpec.m in Sources */,
+				EE74D466182AD4D0000266C3 /* VenueSpec.m in Sources */,
 				EE8C3DC5181AE5830036AE92 /* OHHTTPStubs+NSURLSessionConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -748,14 +752,14 @@
 				INFOPLIST_FILE = "iOS-apiTests/iOS-apiTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/abizer/tmp/ios-api/iOS-apiTests/Externals/TestKits/expecta",
-					"/Users/abizer/tmp/ios-api/iOS-apiTests/Externals/TestKits/specta",
+					"$(SRCROOT)/iOS-apiTests/Externals/TestKits/expecta",
+					"$(SRCROOT)/iOS-apiTests/Externals/TestKits/specta",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-framework",
 					XCTest,
-					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
@@ -776,14 +780,14 @@
 				INFOPLIST_FILE = "iOS-apiTests/iOS-apiTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/abizer/tmp/ios-api/iOS-apiTests/Externals/TestKits/expecta",
-					"/Users/abizer/tmp/ios-api/iOS-apiTests/Externals/TestKits/specta",
+					"$(SRCROOT)/iOS-apiTests/Externals/TestKits/expecta",
+					"$(SRCROOT)/iOS-apiTests/Externals/TestKits/specta",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-framework",
 					XCTest,
-					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;

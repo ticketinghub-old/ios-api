@@ -12,16 +12,13 @@
 
 @interface TXHTicketingHubClient : NSObject
 
-/*! Singleton initialiser
- *  @returns the singleton instance of the client
- */
-+ (instancetype)sharedClient;
-
 /*! Set the "Accept-Language" header for subsequent network callso
  *  \param identifier the string identifier of the language, e.g "en-GB"
  */
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
 
-- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(id responseObject, NSError *error))completion;
+- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(NSArray *venues, NSError *error))completion;
+
+- (void)fetchSeasonsForVenueToken:(NSString *)venueToken completion:(void(^)(NSArray *seasons, NSError *error))completion;
 
 @end

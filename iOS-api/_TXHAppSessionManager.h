@@ -15,6 +15,6 @@
  */
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
 
-- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(id responseObject, NSError *error))completion;
+- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(NSArray *venues, NSError *error))completion;
 
 @end
