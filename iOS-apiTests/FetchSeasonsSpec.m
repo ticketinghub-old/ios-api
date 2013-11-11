@@ -56,7 +56,7 @@ describe(@"when fetching seasons for a venue", ^{
                 [_client fetchSeasonsForVenueToken:@"abcdefg" completion:^(NSArray *seasons, NSError *error) {
                     expect(seasons).to.beKindOf([NSArray class]);
                     expect(seasons).to.haveCountOf(2);
-//                    expect([seasons firstObject]).to.beKindOf([TXHSeason class]);
+                    expect([seasons firstObject]).to.beKindOf([TXHSeason class]);
                     expect(error).to.beNil();
 
                     done();

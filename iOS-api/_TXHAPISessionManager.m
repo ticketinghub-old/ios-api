@@ -9,6 +9,7 @@
 #import "_TXHAPISessionManager.h"
 
 #import "TXHAPIError.h"
+#import "TXHSeason.h"
 
 static NSString * const kAPIBaseURL = @"https://api.ticketinghub.com/";
 static NSString * const kSeasonsEndPoint = @"seasons";
@@ -43,7 +44,16 @@ static NSString * const kSeasonsEndPoint = @"seasons";
             NSError *error = [NSError errorWithDomain:TXHAPIErrorDomain code:TXHAPIErrorNoSeasons userInfo:@{NSLocalizedDescriptionKey: localisedDescription}];
             completion(nil, error);
         } else {
-            completion(responseObject, nil);
+            NSMutableArray *seasons = [[NSMutableArray alloc] initWithCapacity:[responseObject count]];
+
+            for (NSDictionary *seasonDictionary in responseObject) {
+                TXHSeason *season = [TXHSeason createWithDictionary:seasonDictionary];
+                if (season) {
+                    [seasons addObject:season];
+                }
+            }
+
+            completion(seasons, nil);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         completion(nil, error);
