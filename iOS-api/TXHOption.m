@@ -13,7 +13,7 @@
 @interface TXHOption ()
 
 @property (assign, nonatomic) NSUInteger weekday;
-@property (strong, nonatomic) NSString *timeString;
+@property (copy, nonatomic) NSString *timeString;
 @property (copy, nonatomic) NSString *duration;
 
 @end

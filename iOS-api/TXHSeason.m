@@ -42,6 +42,9 @@
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key {
     if ([key isEqualToString:@"options"]) {
         // Tease apart the options array, create the correct object
+        if (![value count]) {
+            return;
+        }
         
         NSMutableArray *seasonalOptions = [NSMutableArray arrayWithCapacity:[value count]];
 

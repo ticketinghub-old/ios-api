@@ -12,7 +12,7 @@
 @interface TXHOption : NSObject
 
 @property (assign, readonly, nonatomic) NSUInteger weekday;
-@property (strong, readonly, nonatomic) NSString *timeString;
+@property (copy, readonly, nonatomic) NSString *timeString;
 @property (copy, readonly, nonatomic) NSString *duration;
 
 + (instancetype)createWithDictionary:(NSDictionary *)dictionary;
