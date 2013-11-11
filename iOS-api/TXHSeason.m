@@ -24,6 +24,10 @@
 #pragma mark - Convenience Constructor
 
 + (id)createWithDictionary:(NSDictionary *)dictionary {
+    if (![dictionary count]) {
+        return nil;
+    }
+    
     TXHSeason *season = [[self alloc] init];
 
     if (!season) {

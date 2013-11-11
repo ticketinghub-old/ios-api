@@ -74,6 +74,20 @@ describe(@"createWithDictionary:", ^{
             expect(_season.seasonalOptions).to.beNil();
         });
     });
+
+    context(@"with an empty seasons dictionary", ^{
+        before(^{
+            _season = [TXHSeason createWithDictionary:@{}];
+        });
+
+        after(^{
+            _season = nil;
+        });
+
+        it(@"should return nil", ^{
+            expect(_season).to.beNil();
+        });
+    });
 });
 
 SpecEnd
