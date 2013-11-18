@@ -43,6 +43,7 @@
 		EE8C3DC5181AE5830036AE92 /* OHHTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC0181AE5830036AE92 /* OHHTTPStubs+NSURLSessionConfiguration.m */; };
 		EE8C3DC6181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC2181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m */; };
 		EE8C3DC7181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */; };
+		EEECF735183A67650087472B /* Suppliers.json in Resources */ = {isa = PBXBuildFile; fileRef = EEECF734183A67650087472B /* Suppliers.json */; };
 		EEF85C6618183D9200658409 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C6518183D9200658409 /* Foundation.framework */; };
 		EEF85C7418183D9200658409 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C7318183D9200658409 /* XCTest.framework */; };
 		EEF85C7518183D9200658409 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C6518183D9200658409 /* Foundation.framework */; };
@@ -185,6 +186,7 @@
 		EE8C3DC2181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+HTTPMessage.m"; sourceTree = "<group>"; };
 		EE8C3DC3181AE5830036AE92 /* OHHTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHHTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
 		EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
+		EEECF734183A67650087472B /* Suppliers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Suppliers.json; sourceTree = "<group>"; };
 		EEF85C6218183D9200658409 /* libiOS-api.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libiOS-api.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF85C6518183D9200658409 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EEF85C6918183D9200658409 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				EE1C01A818215007005D754A /* Seasons.json */,
+				EEECF734183A67650087472B /* Suppliers.json */,
 				EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */,
 				EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */,
 			);
@@ -566,6 +569,7 @@
 			files = (
 				EEF85C8018183D9200658409 /* InfoPlist.strings in Resources */,
 				EE8C3DAB181ADA510036AE92 /* VenuesEmpty.json in Resources */,
+				EEECF735183A67650087472B /* Suppliers.json in Resources */,
 				EE1C01A918215007005D754A /* Seasons.json in Resources */,
 				EE8C3DAC181ADA510036AE92 /* VenuesSuccess.json in Resources */,
 			);
