@@ -9,14 +9,12 @@
 #import "TXHTicketingHubClient.h"
 
 #import "_TXHAPISessionManager.h"
-#import "_TXHAppSessionManager.h"
 
 // Expose internal properties of TXHTicketingHubClient
 
 @interface TXHTicketingHubClient (TXHTesting)
 
 @property (strong, nonatomic) _TXHAPISessionManager *sessionManager;
-@property (strong, nonatomic) _TXHAppSessionManager *appSessionManager;
 
 @end
 
@@ -33,19 +31,21 @@ afterEach(^{
 });
 
 describe(@"when creating a client", ^{
+    it(@"has an internal session manager object", ^{
+        expect(_client.sessionManager).toNot.beNil();
+        expect(_client.sessionManager).to.beKindOf([_TXHAPISessionManager class]);
+    });
+
     it(@"has correctly configured base URLs for the session managers", ^{
         expect(_client.sessionManager.baseURL).to.equal([NSURL URLWithString:@"https://api.ticketinghub.com/"]);
-        expect(_client.appSessionManager.baseURL).to.equal([NSURL URLWithString:@"https://mpos.th-apps.com/"]);
     });
 
     it(@"has AFJSONRequestSerializers for the session managers", ^{
         expect(_client.sessionManager.requestSerializer).to.beKindOf([AFJSONRequestSerializer class]);
-        expect(_client.appSessionManager.requestSerializer).to.beKindOf([AFJSONRequestSerializer class]);
     });
 
     it(@"has AFJSONResponseSerializers for the session managers", ^{
         expect(_client.sessionManager.responseSerializer).to.beKindOf([AFJSONResponseSerializer class]);
-        expect(_client.appSessionManager.responseSerializer).to.beKindOf([AFJSONResponseSerializer class]);
     });
 });
 
@@ -56,10 +56,8 @@ describe(@"setDefaultAcceptLanguage", ^{
 
     it(@"passes the language setting to the session managers", ^{
         NSString *sessionManagerAcceptLanguage = _client.sessionManager.requestSerializer.HTTPRequestHeaders[@"Accept-Language"];
-        NSString *appSessionManagerAcceptLanguage = _client.appSessionManager.requestSerializer.HTTPRequestHeaders[@"Accept-Language"];
 
         expect(sessionManagerAcceptLanguage).to.equal(@"el_GR");
-        expect(appSessionManagerAcceptLanguage).to.equal(@"el_GR");
     });
 });
 

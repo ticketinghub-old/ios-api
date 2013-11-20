@@ -34,30 +34,30 @@ static NSString * const kSeasonsEndPoint = @"seasons";
     [self.requestSerializer setValue:identifier forHTTPHeaderField:@"Accept-Language"];
 }
 
-- (void)fetchSeasonsForVenueToken:(NSString *)venueToken completion:(void (^)(NSArray *, NSError *))completion {
-    [self.requestSerializer setAuthorizationHeaderFieldWithToken:[NSString stringWithFormat:@"Bearer %@", venueToken]];
-
-    [self GET:kSeasonsEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (![responseObject count]) {
-            responseObject = nil;
-            NSString *localisedDescription = NSLocalizedString(@"No seasons available for this venue", @"");
-            NSError *error = [NSError errorWithDomain:TXHAPIErrorDomain code:TXHAPIErrorNoSeasons userInfo:@{NSLocalizedDescriptionKey: localisedDescription}];
-            completion(nil, error);
-        } else {
-            NSMutableArray *seasons = [[NSMutableArray alloc] initWithCapacity:[responseObject count]];
-
-            for (NSDictionary *seasonDictionary in responseObject) {
-                TXHSeason *season = [TXHSeason createWithDictionary:seasonDictionary];
-                if (season) {
-                    [seasons addObject:season];
-                }
-            }
-
-            completion(seasons, nil);
-        }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        completion(nil, error);
-    }];
-}
+//- (void)fetchSeasonsForVenueToken:(NSString *)venueToken completion:(void (^)(NSArray *, NSError *))completion {
+//    [self.requestSerializer setAuthorizationHeaderFieldWithToken:[NSString stringWithFormat:@"Bearer %@", venueToken]];
+//
+//    [self GET:kSeasonsEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        if (![responseObject count]) {
+//            responseObject = nil;
+//            NSString *localisedDescription = NSLocalizedString(@"No seasons available for this venue", @"");
+//            NSError *error = [NSError errorWithDomain:TXHAPIErrorDomain code:TXHAPIErrorNoSeasons userInfo:@{NSLocalizedDescriptionKey: localisedDescription}];
+//            completion(nil, error);
+//        } else {
+//            NSMutableArray *seasons = [[NSMutableArray alloc] initWithCapacity:[responseObject count]];
+//
+//            for (NSDictionary *seasonDictionary in responseObject) {
+//                TXHSeason *season = [TXHSeason createWithDictionary:seasonDictionary];
+//                if (season) {
+//                    [seasons addObject:season];
+//                }
+//            }
+//
+//            completion(seasons, nil);
+//        }
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//        completion(nil, error);
+//    }];
+//}
 
 @end

@@ -15,6 +15,6 @@
  */
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
 
-- (void)fetchSeasonsForVenueToken:(NSString *)venueToken completion:(void(^)(NSArray *seasons, NSError *error))completion;
+//- (void)fetchSeasonsForVenueToken:(NSString *)venueToken completion:(void(^)(NSArray *seasons, NSError *error))completion;
 
 @end
