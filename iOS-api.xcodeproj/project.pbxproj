@@ -29,6 +29,8 @@
 		EE3361C31819343400FC511A /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3361B31819343400FC511A /* UIWebView+AFNetworking.m */; };
 		EE5B98D21827BF7500591875 /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98BE1827BF7500591875 /* libExpecta-ios-universal.a */; };
 		EE5B98D51827BF7500591875 /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98C41827BF7500591875 /* libSpecta-ios-universal.a */; };
+		EE67B39A183D175D0021B76A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE67B399183D175D0021B76A /* CoreFoundation.framework */; };
+		EE67B3A7183D17A90021B76A /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE67B3A5183D17A90021B76A /* CoreDataModel.xcdatamodeld */; };
 		EE74D468182ADF34000266C3 /* ClientCreationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE74D467182ADF34000266C3 /* ClientCreationSpec.m */; };
 		EE8C3DAB181ADA510036AE92 /* VenuesEmpty.json in Resources */ = {isa = PBXBuildFile; fileRef = EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */; };
 		EE8C3DAC181ADA510036AE92 /* VenuesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */; };
@@ -51,6 +53,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EE67B3A8183D17CC0021B76A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEF85C5A18183D9200658409 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE67B397183D175D0021B76A;
+			remoteInfo = "iOS-api-Model";
+		};
 		EEF85C7818183D9200658409 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EEF85C5A18183D9200658409 /* Project object */;
@@ -161,6 +170,10 @@
 		EE5B98D01827BF7500591875 /* SPTXCTestInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTXCTestInvocation.h; sourceTree = "<group>"; };
 		EE5B98D11827BF7500591875 /* XCTestCase+Specta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+Specta.h"; sourceTree = "<group>"; };
 		EE5B98DA1827F26D00591875 /* TXHAPIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHAPIError.h; sourceTree = "<group>"; };
+		EE67B398183D175D0021B76A /* iOS-api-Model.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-api-Model.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE67B399183D175D0021B76A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		EE67B39D183D175D0021B76A /* iOS-api-Model-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS-api-Model-Info.plist"; sourceTree = "<group>"; };
+		EE67B3A6183D17A90021B76A /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		EE74D467182ADF34000266C3 /* ClientCreationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientCreationSpec.m; sourceTree = "<group>"; };
 		EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenuesEmpty.json; sourceTree = "<group>"; };
 		EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenuesSuccess.json; sourceTree = "<group>"; };
@@ -194,6 +207,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EE67B395183D175D0021B76A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE67B39A183D175D0021B76A /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EEF85C5F18183D9200658409 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +360,23 @@
 			path = Externals/TestKits/specta;
 			sourceTree = "<group>";
 		};
+		EE67B39B183D175D0021B76A /* iOS-api-Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE67B3A5183D17A90021B76A /* CoreDataModel.xcdatamodeld */,
+				EE67B39C183D175D0021B76A /* Supporting Files */,
+			);
+			path = "iOS-api-Model";
+			sourceTree = "<group>";
+		};
+		EE67B39C183D175D0021B76A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE67B39D183D175D0021B76A /* iOS-api-Model-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		EE8C3DA8181ADA510036AE92 /* StubResponses */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				EEF85C6718183D9200658409 /* iOS-api */,
+				EE67B39B183D175D0021B76A /* iOS-api-Model */,
 				EEF85C7B18183D9200658409 /* iOS-apiTests */,
 				EEF85C6418183D9200658409 /* Frameworks */,
 				EEF85C6318183D9200658409 /* Products */,
@@ -403,6 +442,7 @@
 			children = (
 				EEF85C6218183D9200658409 /* libiOS-api.a */,
 				EEF85C7218183D9200658409 /* iOS-apiTests.xctest */,
+				EE67B398183D175D0021B76A /* iOS-api-Model.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -413,6 +453,7 @@
 				EEF85C6518183D9200658409 /* Foundation.framework */,
 				EEF85C7318183D9200658409 /* XCTest.framework */,
 				EEF85C7618183D9200658409 /* UIKit.framework */,
+				EE67B399183D175D0021B76A /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -483,6 +524,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EE67B397183D175D0021B76A /* iOS-api-Model */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE67B3A2183D175D0021B76A /* Build configuration list for PBXNativeTarget "iOS-api-Model" */;
+			buildPhases = (
+				EE67B394183D175D0021B76A /* Sources */,
+				EE67B395183D175D0021B76A /* Frameworks */,
+				EE67B396183D175D0021B76A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS-api-Model";
+			productName = "iOS-api-Model";
+			productReference = EE67B398183D175D0021B76A /* iOS-api-Model.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		EEF85C6118183D9200658409 /* iOS-api */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEF85C8518183D9200658409 /* Build configuration list for PBXNativeTarget "iOS-api" */;
@@ -494,6 +552,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EE67B3A9183D17CC0021B76A /* PBXTargetDependency */,
 			);
 			name = "iOS-api";
 			productName = "iOS-api";
@@ -541,11 +600,19 @@
 			targets = (
 				EEF85C6118183D9200658409 /* iOS-api */,
 				EEF85C7118183D9200658409 /* iOS-apiTests */,
+				EE67B397183D175D0021B76A /* iOS-api-Model */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EE67B396183D175D0021B76A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EEF85C7018183D9200658409 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -561,6 +628,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EE67B394183D175D0021B76A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE67B3A7183D17A90021B76A /* CoreDataModel.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EEF85C5E18183D9200658409 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -607,6 +682,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		EE67B3A9183D17CC0021B76A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE67B397183D175D0021B76A /* iOS-api-Model */;
+			targetProxy = EE67B3A8183D17CC0021B76A /* PBXContainerItemProxy */;
+		};
 		EEF85C7918183D9200658409 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EEF85C6118183D9200658409 /* iOS-api */;
@@ -626,6 +706,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		EE67B3A3183D175D0021B76A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS-api-Model/iOS-api-Model-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "iOS-api-Model/iOS-api-Model-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		EE67B3A4183D175D0021B76A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iOS-api-Model/iOS-api-Model-Prefix.pch";
+				INFOPLIST_FILE = "iOS-api-Model/iOS-api-Model-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		EEF85C8318183D9200658409 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -783,6 +900,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EE67B3A2183D175D0021B76A /* Build configuration list for PBXNativeTarget "iOS-api-Model" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE67B3A3183D175D0021B76A /* Debug */,
+				EE67B3A4183D175D0021B76A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		EEF85C5D18183D9200658409 /* Build configuration list for PBXProject "iOS-api" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -811,6 +936,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EE67B3A5183D17A90021B76A /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EE67B3A6183D17A90021B76A /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = EE67B3A6183D17A90021B76A /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EEF85C5A18183D9200658409 /* Project object */;
 }
