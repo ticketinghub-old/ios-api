@@ -30,7 +30,6 @@
 		EE5B98D21827BF7500591875 /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98BE1827BF7500591875 /* libExpecta-ios-universal.a */; };
 		EE5B98D51827BF7500591875 /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98C41827BF7500591875 /* libSpecta-ios-universal.a */; };
 		EE67B39A183D175D0021B76A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE67B399183D175D0021B76A /* CoreFoundation.framework */; };
-		EE67B3A7183D17A90021B76A /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE67B3A5183D17A90021B76A /* CoreDataModel.xcdatamodeld */; };
 		EE74D468182ADF34000266C3 /* ClientCreationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE74D467182ADF34000266C3 /* ClientCreationSpec.m */; };
 		EE8C3DAB181ADA510036AE92 /* VenuesEmpty.json in Resources */ = {isa = PBXBuildFile; fileRef = EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */; };
 		EE8C3DAC181ADA510036AE92 /* VenuesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */; };
@@ -41,6 +40,11 @@
 		EE8C3DC5181AE5830036AE92 /* OHHTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC0181AE5830036AE92 /* OHHTTPStubs+NSURLSessionConfiguration.m */; };
 		EE8C3DC6181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC2181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m */; };
 		EE8C3DC7181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */; };
+		EED7E84E183E2BC500853E73 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EED7E84C183E2BC500853E73 /* CoreDataModel.xcdatamodeld */; };
+		EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E851183E2CA000853E73 /* TXHProduct.m */; };
+		EED7E85A183E2CA000853E73 /* TXHSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E853183E2CA000853E73 /* TXHSupplier.m */; };
+		EED7E85B183E2CA000853E73 /* _TXHProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E856183E2CA000853E73 /* _TXHProduct.m */; };
+		EED7E85C183E2CA000853E73 /* _TXHSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E858183E2CA000853E73 /* _TXHSupplier.m */; };
 		EEECF735183A67650087472B /* Suppliers.json in Resources */ = {isa = PBXBuildFile; fileRef = EEECF734183A67650087472B /* Suppliers.json */; };
 		EEF85C6618183D9200658409 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C6518183D9200658409 /* Foundation.framework */; };
 		EEF85C7418183D9200658409 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C7318183D9200658409 /* XCTest.framework */; };
@@ -173,7 +177,6 @@
 		EE67B398183D175D0021B76A /* iOS-api-Model.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-api-Model.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE67B399183D175D0021B76A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		EE67B39D183D175D0021B76A /* iOS-api-Model-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS-api-Model-Info.plist"; sourceTree = "<group>"; };
-		EE67B3A6183D17A90021B76A /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		EE74D467182ADF34000266C3 /* ClientCreationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientCreationSpec.m; sourceTree = "<group>"; };
 		EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenuesEmpty.json; sourceTree = "<group>"; };
 		EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenuesSuccess.json; sourceTree = "<group>"; };
@@ -190,6 +193,15 @@
 		EE8C3DC2181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+HTTPMessage.m"; sourceTree = "<group>"; };
 		EE8C3DC3181AE5830036AE92 /* OHHTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHHTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
 		EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
+		EED7E84D183E2BC500853E73 /* CoreDataModel 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 1.xcdatamodel"; sourceTree = "<group>"; };
+		EED7E850183E2CA000853E73 /* TXHProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHProduct.h; sourceTree = "<group>"; };
+		EED7E851183E2CA000853E73 /* TXHProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProduct.m; sourceTree = "<group>"; };
+		EED7E852183E2CA000853E73 /* TXHSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSupplier.h; sourceTree = "<group>"; };
+		EED7E853183E2CA000853E73 /* TXHSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSupplier.m; sourceTree = "<group>"; };
+		EED7E855183E2CA000853E73 /* _TXHProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHProduct.h; sourceTree = "<group>"; };
+		EED7E856183E2CA000853E73 /* _TXHProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHProduct.m; sourceTree = "<group>"; };
+		EED7E857183E2CA000853E73 /* _TXHSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHSupplier.h; sourceTree = "<group>"; };
+		EED7E858183E2CA000853E73 /* _TXHSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHSupplier.m; sourceTree = "<group>"; };
 		EEECF734183A67650087472B /* Suppliers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Suppliers.json; sourceTree = "<group>"; };
 		EEF85C6218183D9200658409 /* libiOS-api.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libiOS-api.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF85C6518183D9200658409 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -363,7 +375,7 @@
 		EE67B39B183D175D0021B76A /* iOS-api-Model */ = {
 			isa = PBXGroup;
 			children = (
-				EE67B3A5183D17A90021B76A /* CoreDataModel.xcdatamodeld */,
+				EED7E84C183E2BC500853E73 /* CoreDataModel.xcdatamodeld */,
 				EE67B39C183D175D0021B76A /* Supporting Files */,
 			);
 			path = "iOS-api-Model";
@@ -391,6 +403,8 @@
 		EE8C3DAD181AE0D10036AE92 /* Model Files */ = {
 			isa = PBXGroup;
 			children = (
+				EED7E84F183E2CA000853E73 /* Human */,
+				EED7E854183E2CA000853E73 /* Machine */,
 				EE1C01A218214F19005D754A /* TXHOption.h */,
 				EE1C01A318214F1A005D754A /* TXHOption.m */,
 				EE1C01A518214F3F005D754A /* TXHSeason.h */,
@@ -424,6 +438,28 @@
 				EE8C3DBA181AE2EB0036AE92 /* OHHTTPStubsResponse.m */,
 			);
 			path = OHHTTPStubs;
+			sourceTree = "<group>";
+		};
+		EED7E84F183E2CA000853E73 /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				EED7E850183E2CA000853E73 /* TXHProduct.h */,
+				EED7E851183E2CA000853E73 /* TXHProduct.m */,
+				EED7E852183E2CA000853E73 /* TXHSupplier.h */,
+				EED7E853183E2CA000853E73 /* TXHSupplier.m */,
+			);
+			path = Human;
+			sourceTree = "<group>";
+		};
+		EED7E854183E2CA000853E73 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				EED7E855183E2CA000853E73 /* _TXHProduct.h */,
+				EED7E856183E2CA000853E73 /* _TXHProduct.m */,
+				EED7E857183E2CA000853E73 /* _TXHSupplier.h */,
+				EED7E858183E2CA000853E73 /* _TXHSupplier.m */,
+			);
+			path = Machine;
 			sourceTree = "<group>";
 		};
 		EEF85C5918183D9200658409 = {
@@ -632,7 +668,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE67B3A7183D17A90021B76A /* CoreDataModel.xcdatamodeld in Sources */,
+				EED7E84E183E2BC500853E73 /* CoreDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,9 +676,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EED7E85A183E2CA000853E73 /* TXHSupplier.m in Sources */,
 				EE3361B41819343400FC511A /* AFHTTPRequestOperation.m in Sources */,
+				EED7E85C183E2CA000853E73 /* _TXHSupplier.m in Sources */,
 				EE3361C11819343400FC511A /* UIImageView+AFNetworking.m in Sources */,
 				EEF85C8E181840A100658409 /* TXHTicketingHubClient.m in Sources */,
+				EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */,
 				EE3361B51819343400FC511A /* AFHTTPRequestOperationManager.m in Sources */,
 				EE3361C21819343400FC511A /* UIProgressView+AFNetworking.m in Sources */,
 				EE3361B71819343400FC511A /* AFNetworkReachabilityManager.m in Sources */,
@@ -651,6 +690,7 @@
 				EE3361B91819343400FC511A /* AFURLConnectionOperation.m in Sources */,
 				EE1C01A718214F3F005D754A /* TXHSeason.m in Sources */,
 				EE3361C01819343400FC511A /* UIButton+AFNetworking.m in Sources */,
+				EED7E85B183E2CA000853E73 /* _TXHProduct.m in Sources */,
 				EE3361BE1819343400FC511A /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				EE8C3DB4181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m in Sources */,
 				EE3361B81819343400FC511A /* AFSecurityPolicy.m in Sources */,
@@ -907,6 +947,7 @@
 				EE67B3A4183D175D0021B76A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EEF85C5D18183D9200658409 /* Build configuration list for PBXProject "iOS-api" */ = {
 			isa = XCConfigurationList;
@@ -938,12 +979,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EE67B3A5183D17A90021B76A /* CoreDataModel.xcdatamodeld */ = {
+		EED7E84C183E2BC500853E73 /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EE67B3A6183D17A90021B76A /* CoreDataModel.xcdatamodel */,
+				EED7E84D183E2BC500853E73 /* CoreDataModel 1.xcdatamodel */,
 			);
-			currentVersion = EE67B3A6183D17A90021B76A /* CoreDataModel.xcdatamodel */;
+			currentVersion = EED7E84D183E2BC500853E73 /* CoreDataModel 1.xcdatamodel */;
 			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
