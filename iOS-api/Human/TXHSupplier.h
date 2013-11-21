@@ -1,5 +1,7 @@
 #import "_TXHSupplier.h"
 
 @interface TXHSupplier : _TXHSupplier {}
-// Custom logic goes here.
+
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc;
+
 @end

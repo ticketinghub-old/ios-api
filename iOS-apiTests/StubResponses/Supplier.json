@@ -1,0 +1,80 @@
+{
+    "active": false, 
+    "contact": {
+        "email": "ollym@me.com", 
+        "telephone": "07840739436", 
+        "website": "google.com"
+    }, 
+    "country": "GB", 
+    "currency": "GBP", 
+    "gateways": [
+        {
+            "name": "Stripe", 
+            "primary": true, 
+            "publishable_key": "key1", 
+            "schemes": [
+                "visa", 
+                "master", 
+                "american_express", 
+                "discover", 
+                "jcb", 
+                "diners_club"
+            ], 
+            "type": "stripe"
+        }
+    ], 
+    "id": "26", 
+    "logo": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/06a64da875685db12b61a1e27911060007e4628d.png", 
+    "name": "Merlin Entertainment Ltd", 
+    "products": [
+        {
+            "address": {
+                "building": "5 Welmar Mews", 
+                "city": "London", 
+                "country": "GB", 
+                "formatted": "London\nSW4 7DD\nW14 0AU\nUnited Kingdom", 
+                "postalcode": "W14 0AU", 
+                "recipient": null, 
+                "region": "SW4 7DD", 
+                "street": ""
+            }, 
+            "contact": {
+                "email": "ollym@me.com", 
+                "telephone": "07840739436", 
+                "website": "google.com"
+            }, 
+            "id": "45", 
+            "logo": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/161cb791a0780d546a87dbdf983a2f8c0dde8733.png", 
+            "name": "Thorpe Park"
+        }, 
+        {
+            "address": {
+                "building": "5 Welmar Mews", 
+                "city": "London", 
+                "country": "GB", 
+                "formatted": "London\nSW4 7DD\nUnited Kingdom", 
+                "postalcode": "SW4 7DD", 
+                "recipient": null, 
+                "region": "", 
+                "street": ""
+            }, 
+            "contact": {
+                "email": "ollym@me.com", 
+                "telephone": "07840739436", 
+                "website": "google.com"
+            }, 
+            "id": "44", 
+            "logo": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/a3dd577c41798f6fb1b59b4631721d63a04b3b10.png", 
+            "name": "London Eye"
+        }
+    ], 
+    "service_tier": "basic", 
+    "time_zone": "Europe/London", 
+    "token": {
+        "access_token": "accessToken1", 
+        "expires_at": null, 
+        "public_token": "publicToken1", 
+        "refresh_token": "refreshToken1"
+    }
+}
+

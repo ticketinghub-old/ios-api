@@ -12,7 +12,7 @@
             {
                 "name": "Stripe", 
                 "primary": true, 
-                "publishable_key": "pk_live_s2SGq0oeMSuebjyXOs5e0I9V", 
+                "publishable_key": "key1", 
                 "schemes": [
                     "visa", 
                     "master", 
@@ -72,10 +72,10 @@
         "service_tier": "basic", 
         "time_zone": "Europe/London", 
         "token": {
-            "access_token": "at~jv0LZxeeMES1XEQKkCRHdA", 
+            "access_token": "accessToken1", 
             "expires_at": null, 
-            "public_token": "pt~KDafp16B-YDuBqYW3UKOmQ", 
-            "refresh_token": "rt~icrKMa1Ds-5kPRuApmz60A"
+            "public_token": "publicToken1", 
+            "refresh_token": "refreshToken1"
         }
     }, 
     {
@@ -116,10 +116,10 @@
         "service_tier": "basic", 
         "time_zone": "Europe/Amsterdam", 
         "token": {
-            "access_token": "at~OVIQep6sXG49LGVNBuk2vA", 
+            "access_token": "accessToken2", 
             "expires_at": null, 
-            "public_token": "pt~qoeCw2u6y90NF3zrjiARDg", 
-            "refresh_token": "rt~-nryz3b16iVMPVqvfgNPhQ"
+            "public_token": "publicToken2", 
+            "refresh_token": "refreshToken2"
         }
     }
 ]
