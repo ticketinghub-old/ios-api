@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A598" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Product" representedClassName="TXHProduct" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="productId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="productId" attributeType="String" syncable="YES"/>
         <relationship name="supplier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="products" inverseEntity="Supplier" syncable="YES"/>
     </entity>
     <entity name="Supplier" representedClassName="TXHSupplier" syncable="YES">
-        <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="refreshToken" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeZoneName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="accessToken" attributeType="String" syncable="YES"/>
+        <attribute name="country" attributeType="String" syncable="YES"/>
+        <attribute name="currency" attributeType="String" syncable="YES"/>
+        <attribute name="refreshToken" attributeType="String" syncable="YES"/>
+        <attribute name="timeZoneName" attributeType="String" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="supplier" inverseEntity="Product" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Supplier" positionX="169" positionY="90" width="128" height="133"/>
-        <element name="Product" positionX="376" positionY="198" width="128" height="88"/>
+        <element name="Product" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Supplier" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
