@@ -12,3 +12,6 @@
 // Expecta
 #define EXP_SHORTHAND
 #import "Expecta.h"
+
+// OHHTTPStubs
+#import "OHHTTPStubs.h"

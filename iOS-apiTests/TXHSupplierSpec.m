@@ -16,7 +16,7 @@
 
 SpecBegin(TXHSupplier)
 
-describe(@"createWithDictionary", ^{
+describe(@"createWithDictionary:inManagedObjectContext:", ^{
     __block NSDictionary *_supplierDictionary;
     __block NSManagedObjectContext *_moc;
 
@@ -36,21 +36,6 @@ describe(@"createWithDictionary", ^{
     });
 
     context(@"With a valid dictionary", ^{
-
-        __block TXHProduct *_product1;
-        __block TXHProduct *_product2;
-
-        before(^{
-            _product1 = [TXHProduct insertInManagedObjectContext:_moc];
-            _product1.productId = @"45";
-            _product1.name = @"Thorpe Park";
-
-            _product2 = [TXHProduct insertInManagedObjectContext:_moc];
-            _product2.productId = @"44";
-            _product2.name = @"London Eye";
-
-        });
-
         it(@"should create a valid object with products", ^{
             TXHSupplier *supplier = [TXHSupplier createWithDictionary:_supplierDictionary inManagedObjectContext:_moc];
             expect(supplier).toNot.beNil();
@@ -59,15 +44,20 @@ describe(@"createWithDictionary", ^{
             expect(supplier.country).to.equal(@"GB");
             expect(supplier.currency).to.equal(@"GBP");
             expect(supplier.timeZoneName).to.equal(@"Europe/London");
+            expect(supplier.products).to.haveCountOf(2);
+        });
+    });
+
+    context(@"with an empty array of products", ^{
+        __block NSMutableDictionary *_noProductsSupplierDictionary;
+        before(^{
+            _noProductsSupplierDictionary = [_supplierDictionary mutableCopy];
+            _noProductsSupplierDictionary[@"products"] = @[];
         });
 
-        it(@"should create valid products", ^{
-            TXHSupplier *supplier = [TXHSupplier createWithDictionary:_supplierDictionary inManagedObjectContext:_moc];
-            expect(supplier.products).to.haveCountOf(2);
-
-            NSArray *products = [supplier.products allObjects];
-            expect(products).to.contain(_product1);
-            expect(products).to.contain(_product2);
+        it(@"doesn't have any related products", ^{
+            TXHSupplier *supplier = [TXHSupplier createWithDictionary:_noProductsSupplierDictionary inManagedObjectContext:_moc];
+            expect(supplier.products).to.haveCountOf(0);
         });
     });
 });
