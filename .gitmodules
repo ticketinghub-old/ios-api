@@ -4,3 +4,6 @@
 [submodule "iOS-apiTests/Externals/TestKits"]
 	path = iOS-apiTests/Externals/TestKits
 	url = https://github.com/Abizern/TestKits-iOS.git
+[submodule "DCTCoreDataStack"]
+	path = DCTCoreDataStack
+	url = git@github.com:Abizern/DCTCoreDataStack.git

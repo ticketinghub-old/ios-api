@@ -12,7 +12,7 @@
 #import "TXHSeason.h"
 
 static NSString * const kAPIBaseURL = @"https://api.ticketinghub.com/";
-static NSString * const kSeasonsEndPoint = @"seasons";
+static NSString * const kSuppliersEndPoint = @"suppliers";
 
 @implementation _TXHAPISessionManager
 
@@ -32,6 +32,20 @@ static NSString * const kSeasonsEndPoint = @"seasons";
 
 - (void)setDefaultAcceptLanguage:(NSString *)identifier {
     [self.requestSerializer setValue:identifier forHTTPHeaderField:@"Accept-Language"];
+}
+
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(NSArray *, NSError *))completion {
+    NSAssert(username, @"username parameter cannot be nil");
+    NSAssert(password, @"password parameter cannot be nil");
+    NSAssert(completion, @"completion block cannot be nil");
+
+    [self.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
+    [self GET:kSuppliersEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        // No need to check response object as it you cannot have a user without any suppliers
+        completion(responseObject, nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    }];
 }
 
 //- (void)fetchSeasonsForVenueToken:(NSString *)venueToken completion:(void (^)(NSArray *, NSError *))completion {

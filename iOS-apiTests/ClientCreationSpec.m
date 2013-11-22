@@ -9,6 +9,7 @@
 #import "TXHTicketingHubClient.h"
 
 #import "_TXHAPISessionManager.h"
+#import "CoreDataTestsHelper.h"
 
 // Expose internal properties of TXHTicketingHubClient
 
@@ -23,7 +24,7 @@ SpecBegin(ClientCreation)
 __block TXHTicketingHubClient *_client;
 
 beforeEach(^{
-    _client = [TXHTicketingHubClient new];
+    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil];
 });
 
 afterEach(^{
@@ -46,6 +47,10 @@ describe(@"when creating a client", ^{
 
     it(@"has AFJSONResponseSerializers for the session managers", ^{
         expect(_client.sessionManager.responseSerializer).to.beKindOf([AFJSONResponseSerializer class]);
+    });
+
+    it(@"has a managed object context", ^{
+        expect(_client.managedObjectContext).to.beKindOf([NSManagedObjectContext class]);
     });
 });
 
