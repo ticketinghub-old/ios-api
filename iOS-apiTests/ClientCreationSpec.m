@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
+@import CoreData;
+
 #import "TXHTicketingHubClient.h"
 
 #import "_TXHAPISessionManager.h"
-#import "CoreDataTestsHelper.h"
 
 // Expose internal properties of TXHTicketingHubClient
 

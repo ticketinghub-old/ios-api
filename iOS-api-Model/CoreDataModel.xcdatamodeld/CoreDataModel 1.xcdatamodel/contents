@@ -12,9 +12,18 @@
         <attribute name="refreshToken" attributeType="String" syncable="YES"/>
         <attribute name="timeZoneName" attributeType="String" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="supplier" inverseEntity="Product" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="suppliers" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="TXHUser" syncable="YES">
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" attributeType="String" syncable="YES"/>
+        <relationship name="suppliers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Supplier" inverseName="user" inverseEntity="Supplier" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Product" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Supplier" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Product" positionX="423" positionY="-90" width="128" height="90"/>
+        <element name="Supplier" positionX="169" positionY="-18" width="128" height="150"/>
+        <element name="User" positionX="421" positionY="27" width="128" height="118"/>
     </elements>
 </model>

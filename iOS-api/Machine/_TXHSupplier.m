@@ -13,6 +13,7 @@ const struct TXHSupplierAttributes TXHSupplierAttributes = {
 
 const struct TXHSupplierRelationships TXHSupplierRelationships = {
 	.products = @"products",
+	.user = @"user",
 };
 
 const struct TXHSupplierFetchedProperties TXHSupplierFetchedProperties = {
@@ -99,6 +100,10 @@ const struct TXHSupplierFetchedProperties TXHSupplierFetchedProperties = {
 }
 	
 
+@dynamic user;
+
+	
+
 
 
 
@@ -119,6 +124,8 @@ const struct TXHSupplierFetchedProperties TXHSupplierFetchedProperties = {
 												 sectionNameKeyPath:nil
 														  cacheName:nil];
 }
+
+
 
 
 #endif

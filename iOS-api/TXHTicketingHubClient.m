@@ -74,9 +74,14 @@ static NSString * const
             [TXHSupplier createWithDictionary:supplierDictionary inManagedObjectContext:moc];
         }
     }];
+}
 
-    
-    
+- (void)fetchSuppliersForUsername:(NSString *)username password:(NSString *)password withCompletion:(void (^)(NSArray *, NSError *))completion {
+    NSAssert(username, @"username parameter cannot be nil");
+    NSAssert(password, @"password parameter cannot be nil");
+    NSAssert(completion, @"completion handler cannot be nil");
+
+
 }
 
 #pragma mark - Custom accessors

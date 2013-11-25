@@ -30,6 +30,7 @@
 		EE3B6BA3183F69DE00BC7B92 /* TXHProductSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */; };
 		EE3B6BA5183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */; };
 		EE3B6BBB183FE84200BC7B92 /* libDCTCoreDataStack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3B6BB4183FDEBC00BC7B92 /* libDCTCoreDataStack.a */; };
+		EE4B18B918438CD700CE6D5E /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = EE4B18B818438CD700CE6D5E /* User.json */; };
 		EE5B98D21827BF7500591875 /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98BE1827BF7500591875 /* libExpecta-ios-universal.a */; };
 		EE5B98D51827BF7500591875 /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98C41827BF7500591875 /* libSpecta-ios-universal.a */; };
 		EE67B39A183D175D0021B76A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE67B399183D175D0021B76A /* CoreFoundation.framework */; };
@@ -170,6 +171,7 @@
 		EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProductSpec.m; sourceTree = "<group>"; };
 		EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientSpec.m; sourceTree = "<group>"; };
 		EE3B6BAD183FDEBA00BC7B92 /* DCTCoreDataStack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DCTCoreDataStack.xcodeproj; path = DCTCoreDataStack/DCTCoreDataStack.xcodeproj; sourceTree = SOURCE_ROOT; };
+		EE4B18B818438CD700CE6D5E /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		EE5B989D1827BF7500591875 /* EXPBackwardCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBackwardCompatibility.h; sourceTree = "<group>"; };
 		EE5B989E1827BF7500591875 /* EXPBlockDefinedMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBlockDefinedMatcher.h; sourceTree = "<group>"; };
 		EE5B989F1827BF7500591875 /* EXPDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDefines.h; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				EEECF734183A67650087472B /* Suppliers.json */,
 				EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */,
 				EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */,
+				EE4B18B818438CD700CE6D5E /* User.json */,
 			);
 			path = StubResponses;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				EEF85C8018183D9200658409 /* InfoPlist.strings in Resources */,
 				EE8C3DAB181ADA510036AE92 /* VenuesEmpty.json in Resources */,
 				EEECF735183A67650087472B /* Suppliers.json in Resources */,
+				EE4B18B918438CD700CE6D5E /* User.json in Resources */,
 				EE689EB4183E686B000952F7 /* Supplier.json in Resources */,
 				EE1C01A918215007005D754A /* Seasons.json in Resources */,
 				EE8C3DAC181ADA510036AE92 /* VenuesSuccess.json in Resources */,

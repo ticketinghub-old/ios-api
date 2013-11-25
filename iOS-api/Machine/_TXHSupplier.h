@@ -14,12 +14,14 @@ extern const struct TXHSupplierAttributes {
 
 extern const struct TXHSupplierRelationships {
 	__unsafe_unretained NSString *products;
+	__unsafe_unretained NSString *user;
 } TXHSupplierRelationships;
 
 extern const struct TXHSupplierFetchedProperties {
 } TXHSupplierFetchedProperties;
 
 @class TXHProduct;
+@class TXHUser;
 
 
 
@@ -97,11 +99,20 @@ extern const struct TXHSupplierFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHUser *user;
+
+//- (BOOL)validateUser:(id*)value_ error:(NSError**)error_;
+
+
+
+
 
 #if TARGET_OS_IPHONE
 
 
 - (NSFetchedResultsController*)newProductsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
+
+
 
 
 #endif
@@ -153,6 +164,11 @@ extern const struct TXHSupplierFetchedProperties {
 
 - (NSMutableSet*)primitiveProducts;
 - (void)setPrimitiveProducts:(NSMutableSet*)value;
+
+
+
+- (TXHUser*)primitiveUser;
+- (void)setPrimitiveUser:(TXHUser*)value;
 
 
 @end

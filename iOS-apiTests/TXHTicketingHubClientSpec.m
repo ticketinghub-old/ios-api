@@ -7,7 +7,6 @@
 //
 
 #import "TXHTicketingHubClient.h"
-#import "CoreDataTestsHelper.h"
 #import "OHHTTPStubs.h"
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
@@ -19,12 +18,13 @@ SpecBegin(TXHTicketingHubClient)
 __block TXHTicketingHubClient *_client;
 
 before(^{
-    _client = [[TXHTicketingHubClient alloc] initWithManagedObjectContext:[CoreDataTestsHelper managedObjectContextForTests]];
+    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil];
 });
 
 after(^{
     _client = nil;
 });
+
 
 describe(@"initial login", ^{
     __block NSFetchRequest *_suppliersRequest;
@@ -54,7 +54,11 @@ describe(@"initial login", ^{
         });
 
         xit(@"creates the suppliers and related products entities", ^AsyncBlock{
+            [_client fetchSuppliersForUsername:@"abc" password:@"cde" withCompletion:^(NSArray *suppliers, NSError *error) {
+                
 
+                done();
+            }];
         });
 
     });
