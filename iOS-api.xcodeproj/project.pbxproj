@@ -31,6 +31,9 @@
 		EE3B6BA5183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */; };
 		EE3B6BBB183FE84200BC7B92 /* libDCTCoreDataStack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3B6BB4183FDEBC00BC7B92 /* libDCTCoreDataStack.a */; };
 		EE4B18B918438CD700CE6D5E /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = EE4B18B818438CD700CE6D5E /* User.json */; };
+		EE4B18BD18439A1400CE6D5E /* TXHUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4B18BC18439A1400CE6D5E /* TXHUserSpec.m */; };
+		EE4B18C018439A7200CE6D5E /* TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4B18BF18439A7200CE6D5E /* TXHUser.m */; };
+		EE4B18C318439A7D00CE6D5E /* _TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4B18C218439A7D00CE6D5E /* _TXHUser.m */; };
 		EE5B98D21827BF7500591875 /* libExpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98BE1827BF7500591875 /* libExpecta-ios-universal.a */; };
 		EE5B98D51827BF7500591875 /* libSpecta-ios-universal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE5B98C41827BF7500591875 /* libSpecta-ios-universal.a */; };
 		EE67B39A183D175D0021B76A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE67B399183D175D0021B76A /* CoreFoundation.framework */; };
@@ -172,6 +175,11 @@
 		EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientSpec.m; sourceTree = "<group>"; };
 		EE3B6BAD183FDEBA00BC7B92 /* DCTCoreDataStack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DCTCoreDataStack.xcodeproj; path = DCTCoreDataStack/DCTCoreDataStack.xcodeproj; sourceTree = SOURCE_ROOT; };
 		EE4B18B818438CD700CE6D5E /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
+		EE4B18BC18439A1400CE6D5E /* TXHUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUserSpec.m; sourceTree = "<group>"; };
+		EE4B18BE18439A7200CE6D5E /* TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUser.h; sourceTree = "<group>"; };
+		EE4B18BF18439A7200CE6D5E /* TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUser.m; sourceTree = "<group>"; };
+		EE4B18C118439A7D00CE6D5E /* _TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHUser.h; sourceTree = "<group>"; };
+		EE4B18C218439A7D00CE6D5E /* _TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHUser.m; sourceTree = "<group>"; };
 		EE5B989D1827BF7500591875 /* EXPBackwardCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBackwardCompatibility.h; sourceTree = "<group>"; };
 		EE5B989E1827BF7500591875 /* EXPBlockDefinedMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPBlockDefinedMatcher.h; sourceTree = "<group>"; };
 		EE5B989F1827BF7500591875 /* EXPDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXPDefines.h; sourceTree = "<group>"; };
@@ -511,6 +519,8 @@
 				EED7E851183E2CA000853E73 /* TXHProduct.m */,
 				EED7E852183E2CA000853E73 /* TXHSupplier.h */,
 				EED7E853183E2CA000853E73 /* TXHSupplier.m */,
+				EE4B18BE18439A7200CE6D5E /* TXHUser.h */,
+				EE4B18BF18439A7200CE6D5E /* TXHUser.m */,
 			);
 			path = Human;
 			sourceTree = "<group>";
@@ -522,6 +532,8 @@
 				EED7E856183E2CA000853E73 /* _TXHProduct.m */,
 				EED7E857183E2CA000853E73 /* _TXHSupplier.h */,
 				EED7E858183E2CA000853E73 /* _TXHSupplier.m */,
+				EE4B18C118439A7D00CE6D5E /* _TXHUser.h */,
+				EE4B18C218439A7D00CE6D5E /* _TXHUser.m */,
 			);
 			path = Machine;
 			sourceTree = "<group>";
@@ -587,6 +599,7 @@
 				EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */,
 				EED7E85D183E363D00853E73 /* TXHSupplierSpec.m */,
 				EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */,
+				EE4B18BC18439A1400CE6D5E /* TXHUserSpec.m */,
 				EEF85C7C18183D9200658409 /* Supporting Files */,
 			);
 			path = "iOS-apiTests";
@@ -799,9 +812,11 @@
 				EE8C3DB4181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m in Sources */,
 				EE3361B81819343400FC511A /* AFSecurityPolicy.m in Sources */,
 				EE3361B61819343400FC511A /* AFHTTPSessionManager.m in Sources */,
+				EE4B18C318439A7D00CE6D5E /* _TXHUser.m in Sources */,
 				EE8C3DB0181AE0E80036AE92 /* TXHVenue.m in Sources */,
 				EE3361BF1819343400FC511A /* UIAlertView+AFNetworking.m in Sources */,
 				EE3361BA1819343400FC511A /* AFURLRequestSerialization.m in Sources */,
+				EE4B18C018439A7200CE6D5E /* TXHUser.m in Sources */,
 				EE3361BD1819343400FC511A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EE3361C31819343400FC511A /* UIWebView+AFNetworking.m in Sources */,
 				EE3361BC1819343400FC511A /* AFURLSessionManager.m in Sources */,
@@ -824,6 +839,7 @@
 				EE74D468182ADF34000266C3 /* ClientCreationSpec.m in Sources */,
 				EE8C3DC5181AE5830036AE92 /* OHHTTPStubs+NSURLSessionConfiguration.m in Sources */,
 				EE3B6BA3183F69DE00BC7B92 /* TXHProductSpec.m in Sources */,
+				EE4B18BD18439A1400CE6D5E /* TXHUserSpec.m in Sources */,
 				EED7E85E183E363D00853E73 /* TXHSupplierSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

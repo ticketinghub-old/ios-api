@@ -1,5 +1,6 @@
 #import "_TXHUser.h"
 
 @interface TXHUser : _TXHUser {}
-// Custom logic goes here.
+
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull));
 @end
