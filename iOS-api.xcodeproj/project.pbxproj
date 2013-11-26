@@ -64,7 +64,6 @@
 		EEF85C7A18183D9200658409 /* libiOS-api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C6218183D9200658409 /* libiOS-api.a */; };
 		EEF85C8018183D9200658409 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EEF85C7E18183D9200658409 /* InfoPlist.strings */; };
 		EEF85C8E181840A100658409 /* TXHTicketingHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF85C8D181840A100658409 /* TXHTicketingHubClient.m */; };
-		EEF85CC7181847B700658409 /* _TXHAPISessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF85CC6181847B700658409 /* _TXHAPISessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,8 +272,6 @@
 		EEF85C8B18183F5A00658409 /* TestsPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestsPrefix.pch; sourceTree = "<group>"; };
 		EEF85C8C181840A100658409 /* TXHTicketingHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTicketingHubClient.h; sourceTree = "<group>"; };
 		EEF85C8D181840A100658409 /* TXHTicketingHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTicketingHubClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EEF85CC5181847B700658409 /* _TXHAPISessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHAPISessionManager.h; sourceTree = "<group>"; };
-		EEF85CC6181847B700658409 /* _TXHAPISessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHAPISessionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -624,8 +621,6 @@
 		EEF85C911818446F00658409 /* Private Classes */ = {
 			isa = PBXGroup;
 			children = (
-				EEF85CC5181847B700658409 /* _TXHAPISessionManager.h */,
-				EEF85CC6181847B700658409 /* _TXHAPISessionManager.m */,
 			);
 			name = "Private Classes";
 			sourceTree = "<group>";
@@ -820,7 +815,6 @@
 				EE3361BD1819343400FC511A /* AFNetworkActivityIndicatorManager.m in Sources */,
 				EE3361C31819343400FC511A /* UIWebView+AFNetworking.m in Sources */,
 				EE3361BC1819343400FC511A /* AFURLSessionManager.m in Sources */,
-				EEF85CC7181847B700658409 /* _TXHAPISessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,7 +890,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
@@ -913,7 +907,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;

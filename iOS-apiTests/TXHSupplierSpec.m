@@ -45,6 +45,13 @@ describe(@"createWithDictionary:inManagedObjectContext:", ^{
             expect(supplier.currency).to.equal(@"GBP");
             expect(supplier.timeZoneName).to.equal(@"Europe/London");
             expect(supplier.products).to.haveCountOf(2);
+
+            NSManagedObjectModel *model = [[_moc persistentStoreCoordinator] managedObjectModel];
+            NSArray *entityNames = [[model entitiesByName] allKeys];
+
+            expect(entityNames).toNot.beNil();
+            expect(entityNames).to.haveCountOf(3);
+
         });
     });
 

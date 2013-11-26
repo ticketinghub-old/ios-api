@@ -10,13 +10,13 @@
 
 #import "TXHTicketingHubClient.h"
 
-#import "_TXHAPISessionManager.h"
+#import "AFNetworking.h"
 
 // Expose internal properties of TXHTicketingHubClient
 
 @interface TXHTicketingHubClient (TXHTesting)
 
-@property (strong, nonatomic) _TXHAPISessionManager *sessionManager;
+@property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
 
 @end
 
@@ -35,7 +35,7 @@ afterEach(^{
 describe(@"when creating a client", ^{
     it(@"has an internal session manager object", ^{
         expect(_client.sessionManager).toNot.beNil();
-        expect(_client.sessionManager).to.beKindOf([_TXHAPISessionManager class]);
+        expect(_client.sessionManager).to.beKindOf([AFHTTPSessionManager class]);
     });
 
     it(@"has correctly configured base URLs for the session managers", ^{
@@ -50,9 +50,17 @@ describe(@"when creating a client", ^{
         expect(_client.sessionManager.responseSerializer).to.beKindOf([AFJSONResponseSerializer class]);
     });
 
-    it(@"has a managed object context", ^{
+    it(@"has a managed object context with the required entities in the model", ^{
         expect(_client.managedObjectContext).to.beKindOf([NSManagedObjectContext class]);
+
+        NSManagedObjectModel *model = [[_client.managedObjectContext persistentStoreCoordinator] managedObjectModel];
+        NSArray *entityNames = [[model entitiesByName] allKeys];
+
+        expect(entityNames).toNot.beNil();
+        expect(entityNames).to.haveCountOf(3);
+
     });
+
 });
 
 describe(@"setDefaultAcceptLanguage", ^{

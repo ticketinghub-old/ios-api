@@ -53,9 +53,9 @@ describe(@"initial login", ^{
             [OHHTTPStubs removeStub:_suppliersStub];
         });
 
-        xit(@"creates the suppliers and related products entities", ^AsyncBlock{
+        it(@"creates the suppliers and related products entities", ^AsyncBlock{
             [_client fetchSuppliersForUsername:@"abc" password:@"cde" withCompletion:^(NSArray *suppliers, NSError *error) {
-                
+                expect(suppliers).to.haveCountOf(2);
 
                 done();
             }];
