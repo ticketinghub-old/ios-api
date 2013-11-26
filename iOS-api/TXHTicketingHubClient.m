@@ -6,8 +6,11 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
+// Base URLs and endpoints.
 static NSString * const kAPIBaseURL = @"https://api.ticketinghub.com/";
 static NSString * const kSuppliersEndPoint = @"suppliers";
+static NSString * const kUserEndPoint = @"user";
+static NSString * const kVenuesEndpoint = @"venues";
 
 #import "TXHTicketingHubClient.h"
 #import <DCTCoreDataStack/DCTCoreDataStack.h>
@@ -15,11 +18,7 @@ static NSString * const kSuppliersEndPoint = @"suppliers";
 #import "AFNetworking.h"
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
-
-// Static declaration of endpoints
-static NSString * const
-    kVenuesEndpoint = @"venues"
-;
+#import "TXHUser.h"
 
 @interface TXHTicketingHubClient ()
 
@@ -62,23 +61,6 @@ static NSString * const
     [self.sessionManager.requestSerializer setValue:identifier forHTTPHeaderField:@"Accept-Language"];
 }
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password createSuppliersInManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSAssert(username, @"username parameter cannot be nil");
-    NSAssert(password, @"password parameter cannot be nil");
-    NSAssert(moc, @"managed object context parameter cannot be nil");
-
-//    [self.sessionManager loginWithUsername:username password:password completion:^(NSArray *suppliers, NSError *error) {
-//        if (!suppliers) {
-//            NSLog(@"API Error with suppliers %@", error);
-//            return;
-//        }
-//
-//        for (NSDictionary *supplierDictionary in suppliers) {
-//            [TXHSupplier createWithDictionary:supplierDictionary inManagedObjectContext:moc];
-//        }
-//    }];
-}
-
 - (void)fetchSuppliersForUsername:(NSString *)username password:(NSString *)password withCompletion:(void (^)(NSArray *, NSError *))completion {
     NSAssert(username, @"username parameter cannot be nil");
     NSAssert(password, @"password parameter cannot be nil");
@@ -87,14 +69,40 @@ static NSString * const
     [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
     [self.sessionManager GET:kSuppliersEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         // No need to check for empty response as you can't have a user without any suppliers
-        completion([self suppliersFromResponseArray:responseObject], nil);
+        NSArray *suppliers = [self suppliersFromResponseArray:responseObject inManagedObjectContext:self.managedObjectContext];
+
+        // Create a TXHUser object with the email address and add it to the suppliers we are still in the import context
+        TXHUser *user = [TXHUser createIfNeededWithDictionary:@{@"email" : username} inManagedObjectContext:self.managedObjectContext];
+        user.suppliers = [NSSet setWithArray:suppliers];
+
+        completion(suppliers, nil);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Unable to get suppliers because: %@", error);
         completion(nil, error);
     }];
 }
 
+- (void)fetchUserWithToken:(NSString *)accessToken completion:(void (^)(TXHUser *, NSError *))completion {
+    NSAssert(accessToken, @"accessToken cannot be nil");
+    NSAssert(completion, @"completion handler cannot be nil");
+
+    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:accessToken];
+    [self.sessionManager GET:kUserEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        //
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Unable to get the user because: %@", error);
+        completion(nil, error);
+    }];
+}
+
 #pragma mark - Custom accessors
+
+
+- (NSManagedObjectContext *)managedObjectContext {
+    return self.coreDataStack.managedObjectContext;
+}
+
+#pragma mark - Private methods
 
 + (AFHTTPSessionManager *)configuredSessionManager {
     NSURL *baseURL = [NSURL URLWithString:kAPIBaseURL];
@@ -103,20 +111,6 @@ static NSString * const
     [sessionManager.requestSerializer setValue:[[NSLocale preferredLanguages] firstObject] forHTTPHeaderField:@"Accept-Language"];
 
     return sessionManager;
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    return self.coreDataStack.managedObjectContext;
-}
-
-- (NSArray *)suppliersFromResponseArray:(NSArray *)responseArray {
-    NSMutableArray *suppliers = [NSMutableArray arrayWithCapacity:[responseArray count]];
-    for (NSDictionary *supplierDictionary in responseArray) {
-        TXHSupplier *supplier = [TXHSupplier createWithDictionary:supplierDictionary inManagedObjectContext:self.managedObjectContext];
-        [suppliers addObject:supplier];
-    }
-
-    return [suppliers copy];
 }
 
 + (NSURL *)coreDataModelURL {
@@ -132,6 +126,16 @@ static NSString * const
     }];
 
     return modelURL;
+}
+
+- (NSArray *)suppliersFromResponseArray:(NSArray *)responseArray inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+    NSMutableArray *suppliers = [NSMutableArray arrayWithCapacity:[responseArray count]];
+    for (NSDictionary *supplierDictionary in responseArray) {
+        TXHSupplier *supplier = [TXHSupplier createWithDictionary:supplierDictionary inManagedObjectContext:managedObjectContext];
+        [suppliers addObject:supplier];
+    }
+
+    return [suppliers copy];
 }
 
 //- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(NSArray *, NSError *))completion {

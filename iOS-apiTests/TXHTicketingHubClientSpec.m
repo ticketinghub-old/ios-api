@@ -10,6 +10,7 @@
 #import "OHHTTPStubs.h"
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
+#import "TXHUser.h"
 
 @import CoreData;
 
@@ -53,10 +54,23 @@ describe(@"initial login", ^{
             [OHHTTPStubs removeStub:_suppliersStub];
         });
 
-        it(@"creates the suppliers and related products entities", ^AsyncBlock{
+        it(@"creates the suppliers and related products and users", ^AsyncBlock{
             [_client fetchSuppliersForUsername:@"abc" password:@"cde" withCompletion:^(NSArray *suppliers, NSError *error) {
                 expect(suppliers).to.haveCountOf(2);
+                expect(suppliers[0]).to.beKindOf([TXHSupplier class]);
+                for(TXHSupplier *supplier in suppliers) {
+                    expect([supplier.products count]).to.beGreaterThan(0);
+                    expect(supplier.user.email).to.equal(@"abc");
+                }
 
+                done();
+            }];
+        });
+
+        it(@"uses the main moc for the objects in the block", ^AsyncBlock{
+            [_client fetchSuppliersForUsername:@"abc" password:@"cde" withCompletion:^(NSArray *suppliers, NSError *error) {
+                TXHSupplier *anySupplier = [suppliers firstObject];
+                expect(anySupplier.managedObjectContext).to.equal([_client managedObjectContext]);
                 done();
             }];
         });

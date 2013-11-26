@@ -11,6 +11,7 @@
 #import "TXHAPIError.h"
 
 @class NSManagedObjectContext;
+@class TXHUser;
 
 @interface TXHTicketingHubClient : NSObject
 
@@ -25,6 +26,8 @@
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
 
 - (void)fetchSuppliersForUsername:(NSString *)username password:(NSString *)password withCompletion:(void(^)(NSArray *suppliers, NSError *error))completion __attribute__((nonnull));
+
+- (void)fetchUserWithToken:(NSString *)accessToken completion:(void(^)(TXHUser *user, NSError *error))completion __attribute__((nonnull));
 
 //- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(NSArray *venues, NSError *error))completion;
 //
