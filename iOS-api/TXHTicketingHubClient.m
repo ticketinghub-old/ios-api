@@ -24,6 +24,7 @@ static NSString * const kVenuesEndpoint = @"venues";
 
 @property (strong, nonatomic) DCTCoreDataStack *coreDataStack;
 @property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
+@property (strong, nonatomic) NSManagedObjectContext *importContext;
 
 @end
 
@@ -55,6 +56,10 @@ static NSString * const kVenuesEndpoint = @"venues";
     return [self initWithStoreURL:nil];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSManagedObjectContextDidSaveNotification object:_importContext];
+}
+
 #pragma mark - Public
 
 - (void)setDefaultAcceptLanguage:(NSString *)identifier {
@@ -69,13 +74,21 @@ static NSString * const kVenuesEndpoint = @"venues";
     [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
     [self.sessionManager GET:kSuppliersEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         // No need to check for empty response as you can't have a user without any suppliers
-        NSArray *suppliers = [self suppliersFromResponseArray:responseObject inManagedObjectContext:self.managedObjectContext];
+        NSArray *suppliers = [self suppliersFromResponseArray:responseObject inManagedObjectContext:self.importContext];
 
         // Create a TXHUser object with the email address and add it to the suppliers we are still in the import context
-        TXHUser *user = [TXHUser createIfNeededWithDictionary:@{@"email" : username} inManagedObjectContext:self.managedObjectContext];
+        TXHUser *user = [TXHUser createIfNeededWithDictionary:@{@"email" : username} inManagedObjectContext:self.importContext];
         user.suppliers = [NSSet setWithArray:suppliers];
 
-        completion(suppliers, nil);
+        NSError *error;
+        BOOL success = [self.importContext save:&error];
+
+        if (!success) {
+            completion(nil, error);
+            return;
+        }
+
+        completion([self objectsInMainManagedObjectContext:suppliers], nil);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Unable to get suppliers because: %@", error);
         completion(nil, error);
@@ -95,12 +108,55 @@ static NSString * const kVenuesEndpoint = @"venues";
     }];
 }
 
+- (void)updateUser:(TXHUser *)user completion:(void (^)(TXHUser *, NSError *))completion {
+    NSAssert(user, @"user cannot be nil");
+    NSAssert(completion, @"completion handler cannot be nil");
+
+    TXHSupplier *anySupplier = [user.suppliers anyObject];
+    TXHUser *updatedUser = (TXHUser *)[self.importContext existingObjectWithID:user.objectID error:NULL];
+
+    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:anySupplier.accessToken];
+    [self.sessionManager GET:kUserEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [updatedUser updateWithDictionary:responseObject];
+
+        NSError *error;
+        BOOL success = [self.importContext save:&error];
+
+        if (!success) {
+            completion(nil, error);
+            return;
+        }
+
+        completion([[self objectsInMainManagedObjectContext:@[updatedUser]] firstObject], nil);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Unable to get the user because: %@", error);
+        completion(nil, error);
+    }];
+}
+
 #pragma mark - Custom accessors
 
 
 - (NSManagedObjectContext *)managedObjectContext {
     return self.coreDataStack.managedObjectContext;
 }
+
+- (NSManagedObjectContext *)importContext {
+    if (!_importContext) {
+        _importContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_importContext setPersistentStoreCoordinator:[self.managedObjectContext persistentStoreCoordinator]];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:_importContext];
+    }
+
+    return _importContext;
+}
+
+#pragma mark - Notification handlers
+
+- (void)managedObjectContextDidSave:(NSNotification *)notification {
+    [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+};
 
 #pragma mark - Private methods
 
@@ -137,6 +193,18 @@ static NSString * const kVenuesEndpoint = @"venues";
 
     return [suppliers copy];
 }
+
+- (NSArray *)objectsInMainManagedObjectContext:(NSArray *)managedObjects {
+    NSMutableArray *mainContextObjects = [NSMutableArray arrayWithCapacity:[managedObjects count]];
+    NSArray *objectIDs = [managedObjects valueForKey:@"objectID"];
+
+    for (NSManagedObjectID *objectID in objectIDs) {
+        NSManagedObject *object = [self.managedObjectContext existingObjectWithID:objectID error:NULL];
+        [mainContextObjects addObject:object];
+    }
+
+    return [mainContextObjects copy];
+};
 
 //- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(NSArray *, NSError *))completion {
 //    [self.appSessionManager fetchVenuesWithUsername:username password:password completion:completion];

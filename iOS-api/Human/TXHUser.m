@@ -11,6 +11,8 @@
 
 @implementation TXHUser
 
+#pragma mark - set up and tear down
+
 + (instancetype)createIfNeededWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc {
     NSAssert(dictionary, @"cannot pass a nil for the dictionary paramater");
     // mogenerated code asserts the managed object context
@@ -24,11 +26,17 @@
         user = [[self class] insertInManagedObjectContext:moc];
     }
 
+    return [user updateWithDictionary:dictionary];
+}
+
+#pragma mark - Public methods
+
+- (id)updateWithDictionary:(NSDictionary *)dictionary {
     NSDictionary *userDictionary = [dictionary jcsRemapKeysWithMapping:[[self class] mappingDictionary] removingNullValues:YES];
 
-    [user setValuesForKeysWithDictionary:userDictionary];
+    [self setValuesForKeysWithDictionary:userDictionary];
 
-    return user;
+    return self;
 }
 
 #pragma mark - Private methods

@@ -25,9 +25,11 @@
  */
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
 
+// Returns suppliers in the mainManagedObjectContext
 - (void)fetchSuppliersForUsername:(NSString *)username password:(NSString *)password withCompletion:(void(^)(NSArray *suppliers, NSError *error))completion __attribute__((nonnull));
 
-- (void)fetchUserWithToken:(NSString *)accessToken completion:(void(^)(TXHUser *user, NSError *error))completion __attribute__((nonnull));
+// Returns the user in the mainManagedObjectContext
+- (void)updateUser:(TXHUser *)user completion:(void(^)(TXHUser *user, NSError *error))completion __attribute__((nonnull));
 
 //- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(NSArray *venues, NSError *error))completion;
 //
