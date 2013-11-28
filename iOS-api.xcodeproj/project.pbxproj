@@ -57,6 +57,7 @@
 		EEB32C37184754CC006045AF /* _TXHProduct.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E855183E2CA000853E73 /* _TXHProduct.h */; };
 		EEB32C38184754CC006045AF /* _TXHSupplier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E857183E2CA000853E73 /* _TXHSupplier.h */; };
 		EEB32C39184754CC006045AF /* _TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18C118439A7D00CE6D5E /* _TXHUser.h */; };
+		EEB32C911847C9AB006045AF /* iOS-api.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEB32C8E1847C90E006045AF /* iOS-api.h */; };
 		EED7E84E183E2BC500853E73 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EED7E84C183E2BC500853E73 /* CoreDataModel.xcdatamodeld */; };
 		EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E851183E2CA000853E73 /* TXHProduct.m */; };
 		EED7E85A183E2CA000853E73 /* TXHSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E853183E2CA000853E73 /* TXHSupplier.m */; };
@@ -133,6 +134,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				EEB32C911847C9AB006045AF /* iOS-api.h in CopyFiles */,
 				EEB32C37184754CC006045AF /* _TXHProduct.h in CopyFiles */,
 				EEB32C38184754CC006045AF /* _TXHSupplier.h in CopyFiles */,
 				EEB32C39184754CC006045AF /* _TXHUser.h in CopyFiles */,
@@ -264,6 +266,7 @@
 		EE8C3DC2181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+HTTPMessage.m"; sourceTree = "<group>"; };
 		EE8C3DC3181AE5830036AE92 /* OHHTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHHTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
 		EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
+		EEB32C8E1847C90E006045AF /* iOS-api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS-api.h"; sourceTree = "<group>"; };
 		EED7E84D183E2BC500853E73 /* CoreDataModel 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 1.xcdatamodel"; sourceTree = "<group>"; };
 		EED7E850183E2CA000853E73 /* TXHProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHProduct.h; sourceTree = "<group>"; };
 		EED7E851183E2CA000853E73 /* TXHProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProduct.m; sourceTree = "<group>"; };
@@ -586,6 +589,7 @@
 		EEF85C6718183D9200658409 /* iOS-api */ = {
 			isa = PBXGroup;
 			children = (
+				EEB32C8E1847C90E006045AF /* iOS-api.h */,
 				EE5B98DA1827F26D00591875 /* TXHAPIError.h */,
 				EEF85C8C181840A100658409 /* TXHTicketingHubClient.h */,
 				EEF85C8D181840A100658409 /* TXHTicketingHubClient.m */,
