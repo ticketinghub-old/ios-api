@@ -44,8 +44,12 @@ static NSString * const kVenuesEndpoint = @"venues";
         storeType = NSInMemoryStoreType;
     }
 
+    NSDictionary *options = @{DCTCoreDataStackExcludeFromBackupStoreOption : @YES,
+                              NSMigratePersistentStoresAutomaticallyOption : @YES,
+                              NSInferMappingModelAutomaticallyOption : @YES};
+
     NSURL *modelURL = [[self class] coreDataModelURL];
-    _coreDataStack = [[DCTCoreDataStack alloc] initWithStoreURL:storeURL storeType:storeType storeOptions:nil modelConfiguration:nil modelURL:modelURL];
+    _coreDataStack = [[DCTCoreDataStack alloc] initWithStoreURL:storeURL storeType:storeType storeOptions:options modelConfiguration:nil modelURL:modelURL];
 
     _sessionManager = [[self class] configuredSessionManager];
 
