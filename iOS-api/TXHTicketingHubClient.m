@@ -48,8 +48,7 @@ static NSString * const kVenuesEndpoint = @"venues";
                               NSMigratePersistentStoresAutomaticallyOption : @YES,
                               NSInferMappingModelAutomaticallyOption : @YES};
 
-    NSURL *modelURL = [[self class] coreDataModelURL];
-    _coreDataStack = [[DCTCoreDataStack alloc] initWithStoreURL:storeURL storeType:storeType storeOptions:options modelConfiguration:nil modelURL:modelURL];
+    _coreDataStack = [[DCTCoreDataStack alloc] initWithStoreURL:storeURL storeType:storeType storeOptions:options modelConfiguration:nil modelURL:[[self class] coreDataModelURL]];
 
     _sessionManager = [[self class] configuredSessionManager];
 
@@ -174,18 +173,17 @@ static NSString * const kVenuesEndpoint = @"venues";
 }
 
 + (NSURL *)coreDataModelURL {
-    NSArray *allBundles = [NSBundle allBundles];
+    NSBundle *bundle;
+    NSString *bundleName = @"iOS-api-Model.bundle";
+    NSDirectoryEnumerator *enumerator = [[NSFileManager new] enumeratorAtURL:[[NSBundle bundleForClass:[self class]] bundleURL] includingPropertiesForKeys:nil options:NSDirectoryEnumerationSkipsHiddenFiles errorHandler:nil];
 
-    __block NSURL *modelURL;
-
-    [allBundles enumerateObjectsUsingBlock:^(NSBundle *bundle, NSUInteger idx, BOOL *stop) {
-        modelURL = [bundle URLForResource:@"CoreDataModel" withExtension:@"momd"];
-        if (modelURL) {
-            *stop = YES;
+    for (NSURL *url in enumerator) {
+        if ([[url lastPathComponent] isEqualToString:bundleName]) {
+            bundle = [NSBundle bundleWithURL:url];
         }
-    }];
+    }
 
-    return modelURL;
+    return [bundle URLForResource:@"CoreDataModel" withExtension:@"momd"];
 }
 
 - (NSArray *)suppliersFromResponseArray:(NSArray *)responseArray inManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {

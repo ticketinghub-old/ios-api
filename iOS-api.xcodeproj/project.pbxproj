@@ -58,6 +58,7 @@
 		EEB32C38184754CC006045AF /* _TXHSupplier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E857183E2CA000853E73 /* _TXHSupplier.h */; };
 		EEB32C39184754CC006045AF /* _TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18C118439A7D00CE6D5E /* _TXHUser.h */; };
 		EEB32C911847C9AB006045AF /* iOS-api.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEB32C8E1847C90E006045AF /* iOS-api.h */; };
+		EEB8CB64184911ED00BDDDAB /* iOS-api-Model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EE67B398183D175D0021B76A /* iOS-api-Model.bundle */; };
 		EED7E84E183E2BC500853E73 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EED7E84C183E2BC500853E73 /* CoreDataModel.xcdatamodeld */; };
 		EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E851183E2CA000853E73 /* TXHProduct.m */; };
 		EED7E85A183E2CA000853E73 /* TXHSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E853183E2CA000853E73 /* TXHSupplier.m */; };
@@ -790,6 +791,7 @@
 				EE689EB4183E686B000952F7 /* Supplier.json in Resources */,
 				EE1C01A918215007005D754A /* Seasons.json in Resources */,
 				EE8C3DAC181ADA510036AE92 /* VenuesSuccess.json in Resources */,
+				EEB8CB64184911ED00BDDDAB /* iOS-api-Model.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
