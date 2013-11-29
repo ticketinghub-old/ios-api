@@ -39,6 +39,21 @@
     return self;
 }
 
+- (NSString *)fullName {
+    NSString *fullName;
+    if (self.firstName && self.lastName) {
+        fullName = [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+    } else if (self.firstName) {
+        fullName = self.firstName;
+    } else if (self.lastName) {
+        fullName = self.lastName;
+    } else {
+        fullName = self.email;
+    }
+
+    return fullName;
+}
+
 #pragma mark - Private methods
 
 + (NSDictionary *)mappingDictionary {

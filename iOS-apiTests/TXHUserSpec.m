@@ -13,17 +13,26 @@ SpecBegin(TXHUser)
 
 __block NSManagedObjectContext *_moc;
 __block NSDictionary *_userDictionary;
+__block NSDictionary *_userDictionaryEmailOnly;
 
 beforeAll(^{
-    _moc = [CoreDataTestsHelper managedObjectContextForTests];
     _userDictionary = @{@"email" : @"abc@gmail.com",
                         @"first_name" : @"firstName",
                         @"last_name" : @"lastName",
                         @"id" : @"11"};
+    _userDictionaryEmailOnly = @{@"email" : @"cde@gmail.com"};
+});
+
+beforeEach(^{
+    _moc = [CoreDataTestsHelper managedObjectContextForTests];
 });
 
 afterAll(^{
     _userDictionary = nil;
+    _userDictionaryEmailOnly = nil;
+});
+
+afterEach(^{
     _moc = nil;
 });
 
@@ -42,7 +51,7 @@ describe(@"createIfNeededWithDictionary:inManagedObjectContext:", ^{
 
         context(@"with just an email address", ^{
             it(@"returns a valid object", ^{
-                TXHUser *user = [TXHUser createIfNeededWithDictionary:@{@"email" : @"cde@gmail.com"} inManagedObjectContext:_moc];
+                TXHUser *user = [TXHUser createIfNeededWithDictionary:_userDictionaryEmailOnly inManagedObjectContext:_moc];
                 expect(user.email).to.equal(@"cde@gmail.com");
                 expect(user.userId).to.beNil();
                 expect(user.firstName).to.beNil();
@@ -72,6 +81,59 @@ describe(@"createIfNeededWithDictionary:inManagedObjectContext:", ^{
 
 });
 
+describe(@"fullName", ^{
+    __block TXHUser *_user;
+
+    afterEach(^{
+        _user = nil;
+    });
+
+    context(@"with first name only", ^{
+        before(^{
+            NSMutableDictionary *dict = [_userDictionaryEmailOnly mutableCopy];
+            [dict addEntriesFromDictionary:@{@"first_name": @"first"}];
+            _user = [TXHUser createIfNeededWithDictionary:[dict copy] inManagedObjectContext:_moc];
+        });
+
+        it(@"returns the first name", ^{
+            expect([_user fullName]).to.equal(@"first");
+        });
+    });
+
+    context(@"with last name only", ^{
+        before(^{
+            NSMutableDictionary *dict = [_userDictionaryEmailOnly mutableCopy];
+            [dict addEntriesFromDictionary:@{@"last_name": @"last"}];
+            _user = [TXHUser createIfNeededWithDictionary:[dict copy] inManagedObjectContext:_moc];
+        });
+
+        it(@"returns the last name", ^{
+            expect([_user fullName]).to.equal(@"last");
+        });
+    });
+
+    context(@"with first and last name", ^{
+        before(^{
+            NSMutableDictionary *dict = [_userDictionaryEmailOnly mutableCopy];
+            [dict addEntriesFromDictionary:@{@"first_name": @"first", @"last_name": @"last"}];
+            _user = [TXHUser createIfNeededWithDictionary:[dict copy] inManagedObjectContext:_moc];
+        });
+
+        it(@"returns the full name", ^{
+            expect([_user fullName]).to.equal(@"first last");
+        });
+    });
+
+    context(@"with no first or last name", ^{
+        beforeEach(^{
+            _user = [TXHUser createIfNeededWithDictionary:_userDictionaryEmailOnly inManagedObjectContext:_moc];
+        });
+
+        it(@"returns the email", ^{
+            expect([_user fullName]).to.equal(_userDictionaryEmailOnly[@"email"]);
+        });
+    });
+});
 
 
 SpecEnd

@@ -5,4 +5,6 @@
 + (instancetype)createIfNeededWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull));
 
 - (id)updateWithDictionary:(NSDictionary *)dictionary;
+
+- (NSString *)fullName;
 @end
