@@ -29,6 +29,16 @@
     return [user updateWithDictionary:dictionary];
 }
 
+#pragma mark - superclass overrides
+
++ (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
+    if ([key isEqualToString:@"fullName"]) {
+        return [NSSet setWithArray:@[TXHUserAttributes.firstName, TXHUserAttributes.lastName]];
+    }
+
+    return [super keyPathsForValuesAffectingValueForKey:key];
+}
+
 #pragma mark - Public methods
 
 - (id)updateWithDictionary:(NSDictionary *)dictionary {
@@ -38,6 +48,8 @@
 
     return self;
 }
+
+#pragma mark - Custom accessors
 
 - (NSString *)fullName {
     NSString *fullName;

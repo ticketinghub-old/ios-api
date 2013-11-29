@@ -108,7 +108,7 @@ describe(@"fullName", ^{
         });
 
         it(@"returns the last name", ^{
-            expect([_user fullName]).to.equal(@"last");
+            expect(_user.fullName).to.equal(@"last");
         });
     });
 
@@ -120,7 +120,7 @@ describe(@"fullName", ^{
         });
 
         it(@"returns the full name", ^{
-            expect([_user fullName]).to.equal(@"first last");
+            expect(_user.fullName).to.equal(@"first last");
         });
     });
 
@@ -130,7 +130,7 @@ describe(@"fullName", ^{
         });
 
         it(@"returns the email", ^{
-            expect([_user fullName]).to.equal(_userDictionaryEmailOnly[@"email"]);
+            expect(_user.fullName).to.equal(_userDictionaryEmailOnly[@"email"]);
         });
     });
 });
