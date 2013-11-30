@@ -91,22 +91,15 @@ static NSString * const kVenuesEndpoint = @"venues";
             return;
         }
 
+        [self updateUser:user completion:^(TXHUser *user, NSError *error) {
+            if (error) {
+                NSLog(@"Unable to update the user because: %@", error);
+            }
+        }]; 
+
         completion([self objectsInMainManagedObjectContext:suppliers], nil);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Unable to get suppliers because: %@", error);
-        completion(nil, error);
-    }];
-}
-
-- (void)fetchUserWithToken:(NSString *)accessToken completion:(void (^)(TXHUser *, NSError *))completion {
-    NSAssert(accessToken, @"accessToken cannot be nil");
-    NSAssert(completion, @"completion handler cannot be nil");
-
-    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:accessToken];
-    [self.sessionManager GET:kUserEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        //
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"Unable to get the user because: %@", error);
         completion(nil, error);
     }];
 }
@@ -118,7 +111,8 @@ static NSString * const kVenuesEndpoint = @"venues";
     TXHSupplier *anySupplier = [user.suppliers anyObject];
     TXHUser *updatedUser = (TXHUser *)[self.importContext existingObjectWithID:user.objectID error:NULL];
 
-    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:anySupplier.accessToken];
+    NSString *tokenString = [NSString stringWithFormat:@"Bearer %@", anySupplier.accessToken];
+    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:tokenString];
     [self.sessionManager GET:kUserEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [updatedUser updateWithDictionary:responseObject];
 
@@ -131,6 +125,7 @@ static NSString * const kVenuesEndpoint = @"venues";
         }
 
         completion([[self objectsInMainManagedObjectContext:@[updatedUser]] firstObject], nil);
+
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"Unable to get the user because: %@", error);
         completion(nil, error);
