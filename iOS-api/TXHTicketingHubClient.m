@@ -16,6 +16,7 @@ static NSString * const kVenuesEndpoint = @"venues";
 #import <DCTCoreDataStack/DCTCoreDataStack.h>
 
 #import "AFNetworking.h"
+#import "AFNetworkActivityIndicatorManager.h"
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
 #import "TXHUser.h"
@@ -139,6 +140,10 @@ static NSString * const kVenuesEndpoint = @"venues";
     return self.coreDataStack.managedObjectContext;
 }
 
+- (void)setShowNetworkActivityIndicatorAutomatically:(BOOL)showNetworkActivityIndicatorAutomatically {
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = showNetworkActivityIndicatorAutomatically;
+}
+
 - (NSManagedObjectContext *)importContext {
     if (!_importContext) {
         _importContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
@@ -202,15 +207,5 @@ static NSString * const kVenuesEndpoint = @"venues";
 
     return [mainContextObjects copy];
 };
-
-//- (void)fetchVenuesWithUsername:(NSString *)username password:(NSString *)password completion:(void(^)(NSArray *, NSError *))completion {
-//    [self.appSessionManager fetchVenuesWithUsername:username password:password completion:completion];
-//}
-//
-//- (void)fetchSeasonsForVenueToken:(NSString *)venueToken completion:(void (^)(NSArray *, NSError *))completion {
-//    [self.sessionManager fetchSeasonsForVenueToken:venueToken completion:completion];
-//}
-
-
 
 @end
