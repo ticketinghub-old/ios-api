@@ -92,8 +92,8 @@
         return nil;
     }
 
-    if (![users count] || [users count] > 1) {
-        NSLog(@"None or too many users");
+    if ([users count] > 1) {
+        NSLog(@"Too many users");
         return nil;
     }
 
