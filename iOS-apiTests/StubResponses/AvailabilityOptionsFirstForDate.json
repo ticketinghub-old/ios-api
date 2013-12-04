@@ -1,0 +1,41 @@
+ [
+  {
+  "duration": null,
+  "limit": null,
+  "tiers": [
+            {
+            "description": "18 or over",
+            "discount": 0,
+            "id": "155",
+            "limit": 10,
+            "name": "Adult",
+            "price": 1000,
+            "size": 1,
+            "upgrades": [
+                         {
+                         "bit": "0x1",
+                         "description": "",
+                         "id": "15",
+                         "name": "VIP Access",
+                         "price": 1000
+                         }
+                         ]
+            },
+            {
+            "description": "Under 18",
+            "discount": 0,
+            "id": "156",
+            "limit": 10,
+            "name": "Child",
+            "price": 600,
+            "size": 1,
+            "upgrades": [
+            {
+            
+            }
+            ]
+            }
+            ],
+  "time": "09:00"
+  }
+  ]
