@@ -65,6 +65,9 @@
 		EEBFB9A4184FA8DF00DBF9FA /* Availability.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBFB9A3184FA8DF00DBF9FA /* Availability.json */; };
 		EEBFB9A8184FAA5100DBF9FA /* AvailibilityDecember2013.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */; };
 		EEBFB9AA184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBFB9A9184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json */; };
+		EECAE8BB1850E11D00AC9959 /* TXHAvailabilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECAE8BA1850E11D00AC9959 /* TXHAvailabilitySpec.m */; };
+		EECAE8BD1850E81900AC9959 /* TXHUpgradeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECAE8BC1850E81900AC9959 /* TXHUpgradeSpec.m */; };
+		EECAE8BF1850E83000AC9959 /* TXHTierSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EECAE8BE1850E83000AC9959 /* TXHTierSpec.m */; };
 		EED7E84E183E2BC500853E73 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EED7E84C183E2BC500853E73 /* CoreDataModel.xcdatamodeld */; };
 		EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E851183E2CA000853E73 /* TXHProduct.m */; };
 		EED7E85A183E2CA000853E73 /* TXHSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E853183E2CA000853E73 /* TXHSupplier.m */; };
@@ -283,6 +286,9 @@
 		EEBFB9A3184FA8DF00DBF9FA /* Availability.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Availability.json; sourceTree = "<group>"; };
 		EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AvailibilityDecember2013.json; sourceTree = "<group>"; };
 		EEBFB9A9184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AvailabilityOptionsFirstForDate.json; sourceTree = "<group>"; };
+		EECAE8BA1850E11D00AC9959 /* TXHAvailabilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHAvailabilitySpec.m; sourceTree = "<group>"; };
+		EECAE8BC1850E81900AC9959 /* TXHUpgradeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUpgradeSpec.m; sourceTree = "<group>"; };
+		EECAE8BE1850E83000AC9959 /* TXHTierSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTierSpec.m; sourceTree = "<group>"; };
 		EED7E84D183E2BC500853E73 /* CoreDataModel 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 1.xcdatamodel"; sourceTree = "<group>"; };
 		EED7E850183E2CA000853E73 /* TXHProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHProduct.h; sourceTree = "<group>"; };
 		EED7E851183E2CA000853E73 /* TXHProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProduct.m; sourceTree = "<group>"; };
@@ -638,9 +644,12 @@
 			isa = PBXGroup;
 			children = (
 				EE74D467182ADF34000266C3 /* ClientCreationSpec.m */,
+				EECAE8BA1850E11D00AC9959 /* TXHAvailabilitySpec.m */,
 				EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */,
 				EED7E85D183E363D00853E73 /* TXHSupplierSpec.m */,
 				EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */,
+				EECAE8BE1850E83000AC9959 /* TXHTierSpec.m */,
+				EECAE8BC1850E81900AC9959 /* TXHUpgradeSpec.m */,
 				EE4B18BC18439A1400CE6D5E /* TXHUserSpec.m */,
 				EEF85C7C18183D9200658409 /* Supporting Files */,
 			);
@@ -879,12 +888,15 @@
 				EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */,
 				EE8C3DC7181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m in Sources */,
 				EE689EB2183E6484000952F7 /* CoreDataModel.xcdatamodeld in Sources */,
+				EECAE8BD1850E81900AC9959 /* TXHUpgradeSpec.m in Sources */,
 				EE3B6BA5183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m in Sources */,
 				EE8C3DC6181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m in Sources */,
 				EE8C3DBD181AE2EB0036AE92 /* OHHTTPStubs.m in Sources */,
 				EE74D468182ADF34000266C3 /* ClientCreationSpec.m in Sources */,
 				EE8C3DC5181AE5830036AE92 /* OHHTTPStubs+NSURLSessionConfiguration.m in Sources */,
+				EECAE8BF1850E83000AC9959 /* TXHTierSpec.m in Sources */,
 				EE3B6BA3183F69DE00BC7B92 /* TXHProductSpec.m in Sources */,
+				EECAE8BB1850E11D00AC9959 /* TXHAvailabilitySpec.m in Sources */,
 				EE4B18BD18439A1400CE6D5E /* TXHUserSpec.m in Sources */,
 				EED7E85E183E363D00853E73 /* TXHSupplierSpec.m in Sources */,
 			);

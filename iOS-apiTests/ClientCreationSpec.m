@@ -57,7 +57,7 @@ describe(@"when creating a client", ^{
         NSArray *entityNames = [[model entitiesByName] allKeys];
 
         expect(entityNames).toNot.beNil();
-        expect(entityNames).to.haveCountOf(3);
+        expect(entityNames).to.haveCountOf(6);
 
     });
 
