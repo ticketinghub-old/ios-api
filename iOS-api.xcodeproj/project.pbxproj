@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DB3181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m */; };
-		EE1C01A418214F1A005D754A /* TXHOption.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1C01A318214F1A005D754A /* TXHOption.m */; };
-		EE1C01A718214F3F005D754A /* TXHSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1C01A618214F3F005D754A /* TXHSeason.m */; };
 		EE1C01A918215007005D754A /* Seasons.json in Resources */ = {isa = PBXBuildFile; fileRef = EE1C01A818215007005D754A /* Seasons.json */; };
 		EE3361B41819343400FC511A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3361901819343400FC511A /* AFHTTPRequestOperation.m */; };
 		EE3361B51819343400FC511A /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3361921819343400FC511A /* AFHTTPRequestOperationManager.m */; };
@@ -48,7 +46,6 @@
 		EE74D468182ADF34000266C3 /* ClientCreationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE74D467182ADF34000266C3 /* ClientCreationSpec.m */; };
 		EE8C3DAB181ADA510036AE92 /* VenuesEmpty.json in Resources */ = {isa = PBXBuildFile; fileRef = EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */; };
 		EE8C3DAC181ADA510036AE92 /* VenuesSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */; };
-		EE8C3DB0181AE0E80036AE92 /* TXHVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DAF181AE0E80036AE92 /* TXHVenue.m */; };
 		EE8C3DB4181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DB3181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m */; };
 		EE8C3DBD181AE2EB0036AE92 /* OHHTTPStubs.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DB8181AE2EB0036AE92 /* OHHTTPStubs.m */; };
 		EE8C3DBE181AE2EB0036AE92 /* OHHTTPStubsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DBA181AE2EB0036AE92 /* OHHTTPStubsResponse.m */; };
@@ -159,10 +156,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EE1C01A218214F19005D754A /* TXHOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHOption.h; sourceTree = "<group>"; };
-		EE1C01A318214F1A005D754A /* TXHOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOption.m; sourceTree = "<group>"; };
-		EE1C01A518214F3F005D754A /* TXHSeason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHSeason.h; sourceTree = "<group>"; };
-		EE1C01A618214F3F005D754A /* TXHSeason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSeason.m; sourceTree = "<group>"; };
 		EE1C01A818215007005D754A /* Seasons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Seasons.json; sourceTree = "<group>"; };
 		EE33618F1819343400FC511A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		EE3361901819343400FC511A /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -275,8 +268,6 @@
 		EE74D467182ADF34000266C3 /* ClientCreationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientCreationSpec.m; sourceTree = "<group>"; };
 		EE8C3DA9181ADA510036AE92 /* VenuesEmpty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenuesEmpty.json; sourceTree = "<group>"; };
 		EE8C3DAA181ADA510036AE92 /* VenuesSuccess.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VenuesSuccess.json; sourceTree = "<group>"; };
-		EE8C3DAE181AE0E80036AE92 /* TXHVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHVenue.h; sourceTree = "<group>"; };
-		EE8C3DAF181AE0E80036AE92 /* TXHVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHVenue.m; sourceTree = "<group>"; };
 		EE8C3DB2181AE1840036AE92 /* NSDictionary+JCSKeyMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JCSKeyMapping.h"; sourceTree = "<group>"; };
 		EE8C3DB3181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JCSKeyMapping.m"; sourceTree = "<group>"; };
 		EE8C3DB7181AE2EB0036AE92 /* OHHTTPStubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHHTTPStubs.h; sourceTree = "<group>"; };
@@ -521,12 +512,6 @@
 			children = (
 				EED7E84F183E2CA000853E73 /* Human */,
 				EED7E854183E2CA000853E73 /* Machine */,
-				EE1C01A218214F19005D754A /* TXHOption.h */,
-				EE1C01A318214F1A005D754A /* TXHOption.m */,
-				EE1C01A518214F3F005D754A /* TXHSeason.h */,
-				EE1C01A618214F3F005D754A /* TXHSeason.m */,
-				EE8C3DAE181AE0E80036AE92 /* TXHVenue.h */,
-				EE8C3DAF181AE0E80036AE92 /* TXHVenue.m */,
 			);
 			name = "Model Files";
 			sourceTree = "<group>";
@@ -863,12 +848,10 @@
 				EE3361C21819343400FC511A /* UIProgressView+AFNetworking.m in Sources */,
 				EE3361B71819343400FC511A /* AFNetworkReachabilityManager.m in Sources */,
 				EE3361BB1819343400FC511A /* AFURLResponseSerialization.m in Sources */,
-				EE1C01A418214F1A005D754A /* TXHOption.m in Sources */,
 				EE4926B51850C27800336A2D /* TXHAvailability.m in Sources */,
 				EE4926C11850C2A000336A2D /* _TXHTier.m in Sources */,
 				EE3361B91819343400FC511A /* AFURLConnectionOperation.m in Sources */,
 				EE4926B61850C27800336A2D /* TXHTier.m in Sources */,
-				EE1C01A718214F3F005D754A /* TXHSeason.m in Sources */,
 				EE3361C01819343400FC511A /* UIButton+AFNetworking.m in Sources */,
 				EED7E85B183E2CA000853E73 /* _TXHProduct.m in Sources */,
 				EE3361BE1819343400FC511A /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -876,7 +859,6 @@
 				EE3361B81819343400FC511A /* AFSecurityPolicy.m in Sources */,
 				EE3361B61819343400FC511A /* AFHTTPSessionManager.m in Sources */,
 				EE4B18C318439A7D00CE6D5E /* _TXHUser.m in Sources */,
-				EE8C3DB0181AE0E80036AE92 /* TXHVenue.m in Sources */,
 				EE3361BF1819343400FC511A /* UIAlertView+AFNetworking.m in Sources */,
 				EE3361BA1819343400FC511A /* AFURLRequestSerialization.m in Sources */,
 				EE4B18C018439A7200CE6D5E /* TXHUser.m in Sources */,
