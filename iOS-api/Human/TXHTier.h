@@ -1,5 +1,7 @@
 #import "_TXHTier.h"
 
 @interface TXHTier : _TXHTier {}
-// Custom logic goes here.
+
++ (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc;
+
 @end

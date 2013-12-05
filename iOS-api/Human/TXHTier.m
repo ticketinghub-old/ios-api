@@ -10,6 +10,9 @@
 
 @implementation TXHTier
 
-// Custom logic goes here.
++ (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
+
+    return nil;
+}
 
 @end

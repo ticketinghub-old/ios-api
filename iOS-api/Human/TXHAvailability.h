@@ -1,5 +1,8 @@
 #import "_TXHAvailability.h"
 
 @interface TXHAvailability : _TXHAvailability {}
-// Custom logic goes here.
+
+
++ (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc;
+
 @end

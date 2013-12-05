@@ -1,5 +1,7 @@
 #import "_TXHUpgrade.h"
 
 @interface TXHUpgrade : _TXHUpgrade {}
-// Custom logic goes here.
+
++ (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc;
+
 @end
