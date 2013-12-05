@@ -30,6 +30,12 @@
 		EE3B6BA3183F69DE00BC7B92 /* TXHProductSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */; };
 		EE3B6BA5183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */; };
 		EE3B6BBB183FE84200BC7B92 /* libDCTCoreDataStack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3B6BB4183FDEBC00BC7B92 /* libDCTCoreDataStack.a */; };
+		EE4926B51850C27800336A2D /* TXHAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926B01850C27800336A2D /* TXHAvailability.m */; };
+		EE4926B61850C27800336A2D /* TXHTier.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926B21850C27800336A2D /* TXHTier.m */; };
+		EE4926B71850C27800336A2D /* TXHUpgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926B41850C27800336A2D /* TXHUpgrade.m */; };
+		EE4926BD1850C28C00336A2D /* _TXHAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926BB1850C28C00336A2D /* _TXHAvailability.m */; };
+		EE4926C11850C2A000336A2D /* _TXHTier.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926BE1850C2A000336A2D /* _TXHTier.m */; };
+		EE4926C21850C2A000336A2D /* _TXHUpgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926C01850C2A000336A2D /* _TXHUpgrade.m */; };
 		EE4B18B918438CD700CE6D5E /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = EE4B18B818438CD700CE6D5E /* User.json */; };
 		EE4B18BD18439A1400CE6D5E /* TXHUserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4B18BC18439A1400CE6D5E /* TXHUserSpec.m */; };
 		EE4B18C018439A7200CE6D5E /* TXHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4B18BF18439A7200CE6D5E /* TXHUser.m */; };
@@ -195,6 +201,18 @@
 		EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProductSpec.m; sourceTree = "<group>"; };
 		EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientSpec.m; sourceTree = "<group>"; };
 		EE3B6BAD183FDEBA00BC7B92 /* DCTCoreDataStack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DCTCoreDataStack.xcodeproj; path = DCTCoreDataStack/DCTCoreDataStack.xcodeproj; sourceTree = SOURCE_ROOT; };
+		EE4926AF1850C27800336A2D /* TXHAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHAvailability.h; sourceTree = "<group>"; };
+		EE4926B01850C27800336A2D /* TXHAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHAvailability.m; sourceTree = "<group>"; };
+		EE4926B11850C27800336A2D /* TXHTier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHTier.h; sourceTree = "<group>"; };
+		EE4926B21850C27800336A2D /* TXHTier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTier.m; sourceTree = "<group>"; };
+		EE4926B31850C27800336A2D /* TXHUpgrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUpgrade.h; sourceTree = "<group>"; };
+		EE4926B41850C27800336A2D /* TXHUpgrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUpgrade.m; sourceTree = "<group>"; };
+		EE4926BA1850C28C00336A2D /* _TXHAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHAvailability.h; sourceTree = "<group>"; };
+		EE4926BB1850C28C00336A2D /* _TXHAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHAvailability.m; sourceTree = "<group>"; };
+		EE4926BC1850C28C00336A2D /* _TXHTier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHTier.h; sourceTree = "<group>"; };
+		EE4926BE1850C2A000336A2D /* _TXHTier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHTier.m; sourceTree = "<group>"; };
+		EE4926BF1850C2A000336A2D /* _TXHUpgrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHUpgrade.h; sourceTree = "<group>"; };
+		EE4926C01850C2A000336A2D /* _TXHUpgrade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHUpgrade.m; sourceTree = "<group>"; };
 		EE4B18B818438CD700CE6D5E /* User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		EE4B18BC18439A1400CE6D5E /* TXHUserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUserSpec.m; sourceTree = "<group>"; };
 		EE4B18BE18439A7200CE6D5E /* TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHUser.h; sourceTree = "<group>"; };
@@ -541,10 +559,16 @@
 		EED7E84F183E2CA000853E73 /* Human */ = {
 			isa = PBXGroup;
 			children = (
+				EE4926AF1850C27800336A2D /* TXHAvailability.h */,
+				EE4926B01850C27800336A2D /* TXHAvailability.m */,
 				EED7E850183E2CA000853E73 /* TXHProduct.h */,
 				EED7E851183E2CA000853E73 /* TXHProduct.m */,
 				EED7E852183E2CA000853E73 /* TXHSupplier.h */,
 				EED7E853183E2CA000853E73 /* TXHSupplier.m */,
+				EE4926B11850C27800336A2D /* TXHTier.h */,
+				EE4926B21850C27800336A2D /* TXHTier.m */,
+				EE4926B31850C27800336A2D /* TXHUpgrade.h */,
+				EE4926B41850C27800336A2D /* TXHUpgrade.m */,
 				EE4B18BE18439A7200CE6D5E /* TXHUser.h */,
 				EE4B18BF18439A7200CE6D5E /* TXHUser.m */,
 			);
@@ -554,10 +578,16 @@
 		EED7E854183E2CA000853E73 /* Machine */ = {
 			isa = PBXGroup;
 			children = (
+				EE4926BA1850C28C00336A2D /* _TXHAvailability.h */,
+				EE4926BB1850C28C00336A2D /* _TXHAvailability.m */,
 				EED7E855183E2CA000853E73 /* _TXHProduct.h */,
 				EED7E856183E2CA000853E73 /* _TXHProduct.m */,
 				EED7E857183E2CA000853E73 /* _TXHSupplier.h */,
 				EED7E858183E2CA000853E73 /* _TXHSupplier.m */,
+				EE4926BC1850C28C00336A2D /* _TXHTier.h */,
+				EE4926BE1850C2A000336A2D /* _TXHTier.m */,
+				EE4926BF1850C2A000336A2D /* _TXHUpgrade.h */,
+				EE4926C01850C2A000336A2D /* _TXHUpgrade.m */,
 				EE4B18C118439A7D00CE6D5E /* _TXHUser.h */,
 				EE4B18C218439A7D00CE6D5E /* _TXHUser.m */,
 			);
@@ -825,6 +855,7 @@
 				EED7E85A183E2CA000853E73 /* TXHSupplier.m in Sources */,
 				EE3361B41819343400FC511A /* AFHTTPRequestOperation.m in Sources */,
 				EED7E85C183E2CA000853E73 /* _TXHSupplier.m in Sources */,
+				EE4926C21850C2A000336A2D /* _TXHUpgrade.m in Sources */,
 				EE3361C11819343400FC511A /* UIImageView+AFNetworking.m in Sources */,
 				EEF85C8E181840A100658409 /* TXHTicketingHubClient.m in Sources */,
 				EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */,
@@ -833,7 +864,10 @@
 				EE3361B71819343400FC511A /* AFNetworkReachabilityManager.m in Sources */,
 				EE3361BB1819343400FC511A /* AFURLResponseSerialization.m in Sources */,
 				EE1C01A418214F1A005D754A /* TXHOption.m in Sources */,
+				EE4926B51850C27800336A2D /* TXHAvailability.m in Sources */,
+				EE4926C11850C2A000336A2D /* _TXHTier.m in Sources */,
 				EE3361B91819343400FC511A /* AFURLConnectionOperation.m in Sources */,
+				EE4926B61850C27800336A2D /* TXHTier.m in Sources */,
 				EE1C01A718214F3F005D754A /* TXHSeason.m in Sources */,
 				EE3361C01819343400FC511A /* UIButton+AFNetworking.m in Sources */,
 				EED7E85B183E2CA000853E73 /* _TXHProduct.m in Sources */,
@@ -847,6 +881,8 @@
 				EE3361BA1819343400FC511A /* AFURLRequestSerialization.m in Sources */,
 				EE4B18C018439A7200CE6D5E /* TXHUser.m in Sources */,
 				EE3361BD1819343400FC511A /* AFNetworkActivityIndicatorManager.m in Sources */,
+				EE4926BD1850C28C00336A2D /* _TXHAvailability.m in Sources */,
+				EE4926B71850C27800336A2D /* TXHUpgrade.m in Sources */,
 				EE3361C31819343400FC511A /* UIWebView+AFNetworking.m in Sources */,
 				EE3361BC1819343400FC511A /* AFURLSessionManager.m in Sources */,
 			);
