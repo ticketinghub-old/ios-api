@@ -36,11 +36,11 @@ afterEach(^{
     _moc = nil;
 });
 
-describe(@"createIfNeededWithDictionary:inManagedObjectContext:", ^{
+describe(@"updateWithDictionaryCreateIfNeeded:inManagedObjectContext:", ^{
     context(@"without there being an existing user with the same email address", ^{
         context(@"with a complete dictionary", ^{
             it(@"returns a valid object", ^{
-                TXHUser *user = [TXHUser createIfNeededWithDictionary:_userDictionary inManagedObjectContext:_moc];
+                TXHUser *user = [TXHUser updateWithDictionaryCreateIfNeeded:_userDictionary inManagedObjectContext:_moc];
                 expect(user).to.beKindOf([TXHUser class]);
                 expect(user.userId).to.equal(@"11");
                 expect(user.email).to.equal(@"abc@gmail.com");
@@ -51,7 +51,7 @@ describe(@"createIfNeededWithDictionary:inManagedObjectContext:", ^{
 
         context(@"with just an email address", ^{
             it(@"returns a valid object", ^{
-                TXHUser *user = [TXHUser createIfNeededWithDictionary:_userDictionaryEmailOnly inManagedObjectContext:_moc];
+                TXHUser *user = [TXHUser updateWithDictionaryCreateIfNeeded:_userDictionaryEmailOnly inManagedObjectContext:_moc];
                 expect(user.email).to.equal(@"cde@gmail.com");
                 expect(user.userId).to.beNil();
                 expect(user.firstName).to.beNil();
@@ -61,7 +61,7 @@ describe(@"createIfNeededWithDictionary:inManagedObjectContext:", ^{
 
         context(@"with an empty dictionary", ^{
             it(@"returns a nil", ^{
-                TXHUser *user = [TXHUser createIfNeededWithDictionary:@{} inManagedObjectContext:_moc];
+                TXHUser *user = [TXHUser updateWithDictionaryCreateIfNeeded:@{} inManagedObjectContext:_moc];
                 expect(user).to.beNil();
             });
         });
@@ -71,10 +71,10 @@ describe(@"createIfNeededWithDictionary:inManagedObjectContext:", ^{
         __block TXHUser *_user;
 
         before(^{
-            _user = [TXHUser createIfNeededWithDictionary:@{@"email": @"abc@gmail.com"} inManagedObjectContext:_moc];
+            _user = [TXHUser updateWithDictionaryCreateIfNeeded:@{@"email": @"abc@gmail.com"} inManagedObjectContext:_moc];
         });
         it(@"Updates the current user", ^{
-            TXHUser *newUser = [TXHUser createIfNeededWithDictionary:_userDictionary inManagedObjectContext:_moc];
+            TXHUser *newUser = [TXHUser updateWithDictionaryCreateIfNeeded:_userDictionary inManagedObjectContext:_moc];
             expect(newUser).to.equal(_user);
         });
     });
@@ -92,7 +92,7 @@ describe(@"fullName", ^{
         before(^{
             NSMutableDictionary *dict = [_userDictionaryEmailOnly mutableCopy];
             [dict addEntriesFromDictionary:@{@"first_name": @"first"}];
-            _user = [TXHUser createIfNeededWithDictionary:[dict copy] inManagedObjectContext:_moc];
+            _user = [TXHUser updateWithDictionaryCreateIfNeeded:[dict copy] inManagedObjectContext:_moc];
         });
 
         it(@"returns the first name", ^{
@@ -104,7 +104,7 @@ describe(@"fullName", ^{
         before(^{
             NSMutableDictionary *dict = [_userDictionaryEmailOnly mutableCopy];
             [dict addEntriesFromDictionary:@{@"last_name": @"last"}];
-            _user = [TXHUser createIfNeededWithDictionary:[dict copy] inManagedObjectContext:_moc];
+            _user = [TXHUser updateWithDictionaryCreateIfNeeded:[dict copy] inManagedObjectContext:_moc];
         });
 
         it(@"returns the last name", ^{
@@ -116,7 +116,7 @@ describe(@"fullName", ^{
         before(^{
             NSMutableDictionary *dict = [_userDictionaryEmailOnly mutableCopy];
             [dict addEntriesFromDictionary:@{@"first_name": @"first", @"last_name": @"last"}];
-            _user = [TXHUser createIfNeededWithDictionary:[dict copy] inManagedObjectContext:_moc];
+            _user = [TXHUser updateWithDictionaryCreateIfNeeded:[dict copy] inManagedObjectContext:_moc];
         });
 
         it(@"returns the full name", ^{
@@ -126,7 +126,7 @@ describe(@"fullName", ^{
 
     context(@"with no first or last name", ^{
         beforeEach(^{
-            _user = [TXHUser createIfNeededWithDictionary:_userDictionaryEmailOnly inManagedObjectContext:_moc];
+            _user = [TXHUser updateWithDictionaryCreateIfNeeded:_userDictionaryEmailOnly inManagedObjectContext:_moc];
         });
 
         it(@"returns the email", ^{

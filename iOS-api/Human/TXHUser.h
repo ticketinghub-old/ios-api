@@ -4,7 +4,7 @@
 
 @property (copy, readonly, nonatomic) NSString *fullName;
 
-+ (instancetype)createIfNeededWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull));
++ (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull));
 
 - (id)updateWithDictionary:(NSDictionary *)dictionary;
 @end

@@ -81,7 +81,7 @@ static NSString * const kVenuesEndpoint = @"venues";
         NSArray *suppliers = [self suppliersFromResponseArray:responseObject inManagedObjectContext:self.importContext];
 
         // Create a TXHUser object with the email address and add it to the suppliers we are still in the import context
-        TXHUser *user = [TXHUser createIfNeededWithDictionary:@{@"email" : username} inManagedObjectContext:self.importContext];
+        TXHUser *user = [TXHUser updateWithDictionaryCreateIfNeeded:@{@"email" : username} inManagedObjectContext:self.importContext];
         user.suppliers = [NSSet setWithArray:suppliers];
 
         NSError *error;

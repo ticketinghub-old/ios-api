@@ -13,7 +13,7 @@
 
 #pragma mark - set up and tear down
 
-+ (instancetype)createIfNeededWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc {
++ (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc {
     NSAssert(dictionary, @"cannot pass a nil for the dictionary paramater");
     // mogenerated code asserts the managed object context
 
