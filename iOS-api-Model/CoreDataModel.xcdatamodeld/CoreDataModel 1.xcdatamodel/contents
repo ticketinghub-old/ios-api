@@ -5,14 +5,14 @@
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="limit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="timeString" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="availabilities" inverseEntity="Product" syncable="YES"/>
+        <relationship name="product" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="availabilities" inverseEntity="Product" syncable="YES"/>
         <relationship name="tiers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tier" inverseName="availability" inverseEntity="Tier" syncable="YES"/>
     </entity>
     <entity name="Product" representedClassName="TXHProduct" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="productId" attributeType="String" syncable="YES"/>
         <relationship name="availabilities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Availability" inverseName="product" inverseEntity="Availability" syncable="YES"/>
-        <relationship name="supplier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="products" inverseEntity="Supplier" syncable="YES"/>
+        <relationship name="supplier" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="products" inverseEntity="Supplier" syncable="YES"/>
     </entity>
     <entity name="Supplier" representedClassName="TXHSupplier" syncable="YES">
         <attribute name="accessToken" attributeType="String" syncable="YES"/>
@@ -31,7 +31,7 @@
         <attribute name="size" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="tierDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tierId" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="availability" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Availability" inverseName="tiers" inverseEntity="Availability" syncable="YES"/>
+        <relationship name="availability" maxCount="1" deletionRule="Nullify" destinationEntity="Availability" inverseName="tiers" inverseEntity="Availability" syncable="YES"/>
         <relationship name="upgrades" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Upgrade" inverseName="tier" inverseEntity="Upgrade" syncable="YES"/>
     </entity>
     <entity name="Upgrade" representedClassName="TXHUpgrade" syncable="YES">
@@ -40,7 +40,7 @@
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="upgradeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="upgradeId" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tier" inverseName="upgrades" inverseEntity="Tier" syncable="YES"/>
+        <relationship name="tier" maxCount="1" deletionRule="Nullify" destinationEntity="Tier" inverseName="upgrades" inverseEntity="Tier" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="TXHUser" syncable="YES">
         <attribute name="email" attributeType="String" syncable="YES"/>
@@ -50,11 +50,11 @@
         <relationship name="suppliers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Supplier" inverseName="user" inverseEntity="Supplier" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Availability" positionX="106" positionY="2" width="128" height="133"/>
         <element name="Product" positionX="349" positionY="-90" width="128" height="103"/>
         <element name="Supplier" positionX="88" positionY="-222" width="128" height="150"/>
-        <element name="User" positionX="-135" positionY="-144" width="128" height="120"/>
-        <element name="Availability" positionX="99" positionY="27" width="128" height="133"/>
         <element name="Tier" positionX="-63" positionY="54" width="128" height="178"/>
         <element name="Upgrade" positionX="99" positionY="153" width="128" height="133"/>
+        <element name="User" positionX="-135" positionY="-144" width="128" height="120"/>
     </elements>
 </model>
