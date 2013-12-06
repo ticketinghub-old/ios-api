@@ -11,7 +11,7 @@
 #import "Expecta.h"
 #import "Specta.h"
 
-SpecBegin(SPEC_NAME)
+SpecBegin(TXHUpgrade)
 
 
 
