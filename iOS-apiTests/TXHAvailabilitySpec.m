@@ -39,6 +39,7 @@ describe(@"With a basic availability dictionary with no tiers", ^{
     context(@"given a valid dictionary", ^{
         beforeEach(^{
             _availabilityDictionary = @{@"time" : @"09:00",
+                                        @"duration" : @"2H",
                                         @"dateString" : @"2013-12-29"};
         });
 
@@ -51,6 +52,7 @@ describe(@"With a basic availability dictionary with no tiers", ^{
             expect(availability).toNot.beNil();
             expect(availability.dateString).to.equal(@"2013-12-29");
             expect(availability.timeString).to.equal(@"09:00");
+            expect(availability.duration).to.equal(@"2H");
         });
     });
 
