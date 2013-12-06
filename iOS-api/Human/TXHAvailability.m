@@ -58,9 +58,9 @@
         formattedPredicate = [NSPredicate predicateWithFormat:@"dateString == $DATE_STRING AND timeString == $TIME_STRING AND product == $PRODUCT"];
     }
 
-    NSDictionary *variables = @{@"$DATE_STRING" : date,
-                                @"$TIME_STRING" : time,
-                                @"$PRODUCT" : product};
+    NSDictionary *variables = @{@"DATE_STRING" : date,
+                                @"TIME_STRING" : time,
+                                @"PRODUCT" : product};
 
     NSPredicate *predicate = [formattedPredicate predicateWithSubstitutionVariables:variables];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
