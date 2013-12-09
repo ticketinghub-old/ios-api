@@ -54,6 +54,7 @@
 		EE8C3DC5181AE5830036AE92 /* OHHTTPStubs+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC0181AE5830036AE92 /* OHHTTPStubs+NSURLSessionConfiguration.m */; };
 		EE8C3DC6181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC2181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m */; };
 		EE8C3DC7181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */; };
+		EEACDA271855D33900BF46C3 /* Upgrade.json in Resources */ = {isa = PBXBuildFile; fileRef = EEACDA261855D33800BF46C3 /* Upgrade.json */; };
 		EEB32C29184753DD006045AF /* TXHAPIError.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE5B98DA1827F26D00591875 /* TXHAPIError.h */; };
 		EEB32C2A184753DD006045AF /* TXHTicketingHubClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEF85C8C181840A100658409 /* TXHTicketingHubClient.h */; };
 		EEB32C2B184753DD006045AF /* TXHProduct.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E850183E2CA000853E73 /* TXHProduct.h */; };
@@ -286,6 +287,7 @@
 		EE8C3DC2181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+HTTPMessage.m"; sourceTree = "<group>"; };
 		EE8C3DC3181AE5830036AE92 /* OHHTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHHTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
 		EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
+		EEACDA261855D33800BF46C3 /* Upgrade.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Upgrade.json; sourceTree = "<group>"; };
 		EEB32C8E1847C90E006045AF /* iOS-api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS-api.h"; sourceTree = "<group>"; };
 		EEBFB9A3184FA8DF00DBF9FA /* Availability.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Availability.json; sourceTree = "<group>"; };
 		EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AvailibilityDecember2013.json; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				EEBFB9A3184FA8DF00DBF9FA /* Availability.json */,
 				EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */,
 				EEBFB9A9184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json */,
+				EEACDA261855D33800BF46C3 /* Upgrade.json */,
 			);
 			path = StubResponses;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 			files = (
 				EEF85C8018183D9200658409 /* InfoPlist.strings in Resources */,
 				EE8C3DAB181ADA510036AE92 /* VenuesEmpty.json in Resources */,
+				EEACDA271855D33900BF46C3 /* Upgrade.json in Resources */,
 				EEBFB9AA184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json in Resources */,
 				EEECF735183A67650087472B /* Suppliers.json in Resources */,
 				EEBFB9A4184FA8DF00DBF9FA /* Availability.json in Resources */,
