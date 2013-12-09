@@ -23,7 +23,7 @@
  @param moc A managed object context in which to create the object
  @returns A TXHTier object or nil if the dictionary is empty.
  */
-+ (TXHTier *)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull));
++ (instancetype)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull));
 
 /** Update with values from a dictionary
  @param dict A dictionary of key values. The keys are the raw keys from the API.
