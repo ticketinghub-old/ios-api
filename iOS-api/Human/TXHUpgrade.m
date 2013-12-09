@@ -23,14 +23,10 @@
     TXHUpgrade *upgrade = [self upgradeWithID:dict[@"id"] inManagedObjectContext:moc];
 
     if (!upgrade) {
-        upgrade = [TXHUpgrade insertInManagedObjectContext:moc];
+        upgrade = [TXHUpgrade createWithDictionary:dict inManagedObjectContext:moc];;
+    } else {
+        [upgrade updateWithDictionary:dict];
     }
-
-    upgrade.bit = dict[@"bit"];
-    upgrade.upgradeDescription = dict[@"description"];
-    upgrade.upgradeId = dict[@"id"];
-    upgrade.name = dict[@"name"];
-    upgrade.price = dict[@"price"];
 
     return upgrade;
 }
@@ -41,7 +37,7 @@
 
     static NSPredicate *formattedPredicate = nil;
     if (!formattedPredicate) {
-       formattedPredicate = [NSPredicate predicateWithFormat:@"upgradeID == $UPGRADE_ID"];
+       formattedPredicate = [NSPredicate predicateWithFormat:@"upgradeId == $UPGRADE_ID"];
     }
 
     NSDictionary *variables = @{@"UPGRADE_ID": upgradeID};
@@ -56,6 +52,31 @@
     }
 
     return [upgrades firstObject];
+
+}
+
++ (instancetype)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
+    NSAssert(dict, @"dict parameter cannot be nil");
+    NSAssert(moc, @"moc parameter cannot be nil");
+
+    if (![dict count]) {
+        return nil;
+    }
+
+    TXHUpgrade *upgrade = [TXHUpgrade insertInManagedObjectContext:moc];
+    [upgrade updateWithDictionary:dict];
+
+    return upgrade;
+}
+
+- (void)updateWithDictionary:(NSDictionary *)dict {
+    NSAssert(dict, @"dict parameter cannot be nil");
+
+    self.bit = dict[@"bit"];
+    self.upgradeDescription = dict[@"description"];
+    self.upgradeId = dict[@"id"];
+    self.name = dict[@"name"];
+    self.price = dict[@"price"];
 
 }
 

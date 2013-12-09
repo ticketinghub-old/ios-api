@@ -17,4 +17,16 @@
  @returns the TXHUpgrade object with the given ID if it exists or nil.
  */
 + (instancetype)upgradeWithID:(NSString *)upgradeID inManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull));
+
+/** Create a TXHUpgrade object from a dictionary
+ @param dict A dictionary of key values. The keys are the raw keys from the API.
+ @param moc A managed object context in which to create the object
+ @returns A TXHUpgrade object or nil if the dictionary is empty.
+ */
++ (instancetype)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull));
+
+/** Update with values from a dictionary
+ @param dict A dictionary of key values. The keys are the raw keys from the API.
+ */
+- (void)updateWithDictionary:(NSDictionary *)dict __attribute__((nonnull));
 @end
