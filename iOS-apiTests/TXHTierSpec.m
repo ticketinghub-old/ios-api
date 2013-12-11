@@ -11,7 +11,61 @@
 #import "Expecta.h"
 #import "Specta.h"
 
-SpecBegin(SPEC_NAME)
+#import "TXHTier.h"
+
+#import "CoreDataTestsHelper.h"
+
+SpecBegin(TXHTier)
+
+__block NSManagedObjectContext *_moc;
+__block TXHTier *_tier;
+
+beforeEach(^{
+    _moc = [CoreDataTestsHelper managedObjectContextForTests];
+});
+
+afterEach(^{
+    _moc = nil;
+    _tier = nil;
+});
+
+describe(@"creating a new object", ^{
+    context(@"when it doesn't already exist", ^{
+        __block NSDictionary *_dict;
+
+        before(^{
+//            dict = @{
+        });
+
+        it(@"creates the object", ^{
+
+        });
+    });
+
+    context(@"when it does already exist", ^{
+        __block NSDictionary *_dict;
+
+        before(^{
+
+        });
+
+        it(@"updates the existing object", ^{
+
+        });
+    });
+
+    context(@"when the object exists and there are different upgrades", ^{
+        __block NSDictionary *_dict;
+
+        before(^{
+
+        });
+
+        it(@"correctly updates the object and merges the changes", ^{
+
+        });
+    });
+});
 
 
 
