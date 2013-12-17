@@ -11,7 +11,7 @@
         {
             "name": "Stripe", 
             "primary": true, 
-            "publishable_key": "key1", 
+            "publishable_key": "pk_live_s2SGq0oeMSuebjyXOs5e0I9V", 
             "schemes": [
                 "visa", 
                 "master", 
@@ -23,30 +23,13 @@
             "type": "stripe"
         }
     ], 
-    "id": "26", 
-    "logo": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/06a64da875685db12b61a1e27911060007e4628d.png", 
+    "id": "d92d0801-2836-4833-aa54-baad122f979b", 
+    "logo": {
+        "banner": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/banner_ebb090ee-d8a5-4d76-8fd0-fcdd1d47ccf2.jpeg", 
+        "original": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/ebb090ee-d8a5-4d76-8fd0-fcdd1d47ccf2.jpeg"
+    }, 
     "name": "Merlin Entertainment Ltd", 
     "products": [
-        {
-            "address": {
-                "building": "5 Welmar Mews", 
-                "city": "London", 
-                "country": "GB", 
-                "formatted": "London\nSW4 7DD\nW14 0AU\nUnited Kingdom", 
-                "postalcode": "W14 0AU", 
-                "recipient": null, 
-                "region": "SW4 7DD", 
-                "street": ""
-            }, 
-            "contact": {
-                "email": "ollym@me.com", 
-                "telephone": "07840739436", 
-                "website": "google.com"
-            }, 
-            "id": "45", 
-            "logo": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/161cb791a0780d546a87dbdf983a2f8c0dde8733.png", 
-            "name": "Thorpe Park"
-        }, 
         {
             "address": {
                 "building": "5 Welmar Mews", 
@@ -63,18 +46,67 @@
                 "telephone": "07840739436", 
                 "website": "google.com"
             }, 
-            "id": "44", 
-            "logo": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/a3dd577c41798f6fb1b59b4631721d63a04b3b10.png", 
-            "name": "London Eye"
+            "id": "22ad5eba-1d23-4260-b2ca-193d8fedf58e", 
+            "logo": {
+                "banner": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/banner_36f19412-71dd-4809-ab90-508d62265521.jpeg", 
+                "original": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/36f19412-71dd-4809-ab90-508d62265521.jpeg"
+            }, 
+            "name": "London Eye", 
+            "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBtzCCASsGByqGSM44BAEwggEeAoGBAP1yjDrHcc/XpZgFskGnz1MmevKgvim6\nihhMp/FNx+4sgJJB0KcgQT2hTSFl3JdPgpmn37YUzaqLbN971/9E1ZsLCAOPpgFG\nzvVQpl1S7dFqLLsmgQCT9/zUyXLVv+scQHTUmcIdcuWB8vDsBpszhCBRQeQZD9Fo\nIgWfBFo5DvVrAhUA8PuNKpdVEk1AcC9UQWSyHsaTh7cCgYADPgHhF6YOQsAuks7V\nikUj23fh49JLJybjjbXnfmuYn7kH1G49g+DZ27q+XmG7hc/tN1KmeeA85x1Kzt2s\nQJp2mDpJwfPR2FmtKByOwD0M093PuWbZom/7CBJquW5lJ9s+VAi/dDN37LqaGUis\n2UfYBl7F+OHQazGVHqXr+iE9pwOBhQACgYEA4KpDraql1MlYRWht7SvCUZwe7Pcq\nDj/TCA7IoYqlmqjVvxPEM7TPRgT6d9KVqWdDU3eDIOxwazQVEZ641RSvnF2HydsY\nxYCSLQ7+qqKkF0oAJ51hnHdspukKQ9Yo1YoJ6Fc+CtdoarUhnrEKsURNWH+1IXjr\nB6qMLd4uQ0lvpVI=\n-----END PUBLIC KEY-----\n", 
+            "seq_id": 1
+        }, 
+        {
+            "address": {
+                "building": "5 Welmar Mews", 
+                "city": "London", 
+                "country": "GB", 
+                "formatted": "London\nSW4 7DD\nW14 0AU\nUnited Kingdom", 
+                "postalcode": "W14 0AU", 
+                "recipient": null, 
+                "region": "SW4 7DD", 
+                "street": ""
+            }, 
+            "contact": {
+                "email": "ollym@me.com", 
+                "telephone": "07840739436", 
+                "website": "google.com"
+            }, 
+            "id": "c15d943e-8742-4b05-8d74-53859349b0c2", 
+            "logo": {
+                "banner": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/banner_106ee90f-3914-438c-b11a-011aa919806b.jpeg", 
+                "original": "https://6a1d59af750712989a7f-ed97eeb11279369f1e23fe85798b2635.ssl.cf3.rackcdn.com/uploads/106ee90f-3914-438c-b11a-011aa919806b.jpeg"
+            }, 
+            "name": "Thorpe Park", 
+            "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBtzCCASwGByqGSM44BAEwggEfAoGBAMUgiSTOBtZpwDzzfFfRN+U6VAfd9Del\nVaq53blg/wHjLs/rv/WkyeG+g2S5v3Gs4XRAg3X8QfVogXTahbfpyIFgqLCR4UL/\nISIS1+zGVuMs3rmDZiLF8ymFuDMi3Z0GI6rIJhpN0J9BUAuTsU7l5eOAzlZfKoHN\nQAHXV3/Lw2e/AhUAuegx7jgrN1GrqCIj/ibigxfu2J8CgYEAnsrU7ATPGUd9PiDh\nPi2qdyE3B8jV+a0s+Ts0lfnz16gHH4N+2CU1QCUztgpJCdBdY9HpZ3mK6x5Bs2um\njsuukbGuckEjvNO2P4wAlLNezR2FVZanTvGHEOxYBDM2FSboYu+yBurH1ilOOSKW\n4H1IzCMDbd1MaHqi4sz7aewvBdoDgYQAAoGAfi9rSaKkEH+8Y6mlpIzP1RPu/7r+\nmrGG3+iFMu0qW+V2Ma++5nuAhBASDnPuaq86EqN1z1gFyLh3/8wIO+/EDLb9lmTd\nvQtLA3qPGX9rW6FcKyC/VrP6oyawvxmyBkLXiJQkNVCW5IzcOi2Qsr4xMqMgjnNw\nL+vpmtxbohyb9Fs=\n-----END PUBLIC KEY-----\n", 
+            "seq_id": 2
         }
     ], 
-    "service_tier": "basic", 
     "time_zone": "Europe/London", 
     "token": {
         "access_token": "accessToken1", 
         "expires_at": null, 
+        "id": "96781e0f-d220-496b-b78d-5a38e7d8abcb", 
         "public_token": "publicToken1", 
-        "refresh_token": "refreshToken1"
+        "refresh_token": "refreshToken1", 
+        "scope": [
+            "read_supplier", 
+            "read_products", 
+            "read_tiers", 
+            "read_upgrades", 
+            "read_availability", 
+            "read_orders", 
+            "write_orders", 
+            "manage_orders", 
+            "read_tickets", 
+            "write_tickets", 
+            "read_coupons", 
+            "write_coupons", 
+            "write_products", 
+            "write_tiers", 
+            "write_upgrades", 
+            "read_vouchers", 
+            "write_vouchers", 
+            "write_availability"
+        ]
     }
 }
-
