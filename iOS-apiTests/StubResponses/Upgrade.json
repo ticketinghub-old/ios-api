@@ -1,7 +1,8 @@
 {
     "bit": "0x1",
     "description": "",
-    "id": "15",
+    "id": "2ae6571b-f803-48c3-9ece-2bb5614dc3f9",
     "name": "VIP Access",
-    "price": 1000
+    "price": 1000,
+    "seq_id": 1
 }
