@@ -1,12 +1,14 @@
 {
     "description": "Under 18", 
     "discount": 0, 
-    "id": "156", 
+    "id": "98fdb140-dd64-4fc2-826c-0e02c84275d5", 
     "limit": 10, 
     "name": "Child", 
     "price": 600, 
+    "seq_id": 2, 
     "size": 1, 
     "upgrades": [
         {}
     ]
 }
+
