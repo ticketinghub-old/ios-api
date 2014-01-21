@@ -15,8 +15,9 @@ static NSString * const kVenuesEndpoint = @"venues";
 #import "TXHTicketingHubClient.h"
 #import <DCTCoreDataStack/DCTCoreDataStack.h>
 
-#import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "AFNetworking.h"
+#import "TXHAPIError.h"
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
 #import "TXHUser.h"
@@ -74,6 +75,10 @@ static NSString * const kVenuesEndpoint = @"venues";
     NSAssert(username, @"username parameter cannot be nil");
     NSAssert(password, @"password parameter cannot be nil");
     NSAssert(completion, @"completion handler cannot be nil");
+
+    if (!username || !password || !completion) {
+        return;
+    }
 
     [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
     [self.sessionManager GET:kSuppliersEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {

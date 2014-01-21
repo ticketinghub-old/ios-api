@@ -12,6 +12,7 @@
 static NSString * const TXHAPIErrorDomain = @"com.ticketinghub.ios-api.ErrorDomain";
 
 typedef NS_ENUM(NSUInteger, TXHAPIError) {
+    TXHAPIErrorInvalidMethodParameters,
     TXHAPIErrorInvalidCredentials,
     TXHAPIErrorNoVenues,
     TXHAPIErrorNoSeasons

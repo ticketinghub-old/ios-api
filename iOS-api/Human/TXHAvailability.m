@@ -13,6 +13,7 @@
 @implementation TXHAvailability
 
 #pragma mark - Public
+
 + (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict forProductID:(NSManagedObjectID *)productId inManagedObjectContext:(NSManagedObjectContext *)moc {
     NSAssert(dict, @"The dict paramater cannot be nil");
     NSAssert(productId, @"The productID parameter cannot be nill");
@@ -34,7 +35,9 @@
 }
 
 - (id)updateWithDictionary:(NSDictionary *)dictionary {
-    NSAssert(dictionary, @"The dictionary parameter cannot be nil");
+    if (!dictionary) {
+        return nil;
+    }
 
     NSDictionary *userDictionary = [dictionary jcsRemapKeysWithMapping:[[self class] mappingDictionary] removingNullValues:YES];
 
@@ -50,9 +53,15 @@
  @param time A string for the time in the format HH:MM
  @param product A TXHProduct object in the managed object context
  @param moc The managed object context in which to search
- @returns A TXHAvailability object if one exists for these parameters, on nil.
+
+ @return A TXHAvailability object if one exists for these parameters, or nil.
  */
-+ (instancetype)availabilityForDate:(NSString *)date andTime:(NSString *)time forProduct:(TXHProduct *)product inManagedObjectContext:(NSManagedObjectContext *)moc __attribute__((nonnull)) {
++ (instancetype)availabilityForDate:(NSString *)date andTime:(NSString *)time forProduct:(TXHProduct *)product inManagedObjectContext:(NSManagedObjectContext *)moc {
+    if (!date || !time || !product || !moc) {
+        // Returns nil if any of the parameters are nil
+        return nil;
+    }
+    
     static NSPredicate *formattedPredicate = nil;
     if (!formattedPredicate) {
         formattedPredicate = [NSPredicate predicateWithFormat:@"dateString == $DATE_STRING AND timeString == $TIME_STRING AND product == $PRODUCT"];
