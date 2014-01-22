@@ -13,8 +13,8 @@
 #pragma mark - Public
 
 + (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSAssert(dict, @"The dict parameter cannot be nil");
-    NSAssert(moc, @"the moc parameter cannot be nil");
+    NSParameterAssert(dict);
+    NSParameterAssert(moc);
 
     if (![dict count]) {
         return nil; // Nothing to do here
@@ -32,8 +32,8 @@
 }
 
 + (instancetype)upgradeWithID:(NSString *)upgradeID inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSAssert(upgradeID, @"upgradeID cannot be nil");
-    NSAssert(moc, @"moc parameter cannot be nil");
+    NSParameterAssert(upgradeID);
+    NSParameterAssert(moc);
 
     static NSPredicate *formattedPredicate = nil;
     if (!formattedPredicate) {
@@ -56,8 +56,8 @@
 }
 
 + (instancetype)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSAssert(dict, @"dict parameter cannot be nil");
-    NSAssert(moc, @"moc parameter cannot be nil");
+    NSParameterAssert(dict);
+    NSParameterAssert(moc);
 
     if (![dict count]) {
         return nil;
@@ -70,7 +70,7 @@
 }
 
 - (void)updateWithDictionary:(NSDictionary *)dict {
-    NSAssert(dict, @"dict parameter cannot be nil");
+    NSParameterAssert(dict);
 
     self.bit = dict[@"bit"];
     self.upgradeDescription = dict[@"description"];

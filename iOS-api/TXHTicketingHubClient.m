@@ -72,9 +72,9 @@ static NSString * const kVenuesEndpoint = @"venues";
 }
 
 - (void)fetchSuppliersForUsername:(NSString *)username password:(NSString *)password withCompletion:(void (^)(NSArray *, NSError *))completion {
-    NSAssert(username, @"username parameter cannot be nil");
-    NSAssert(password, @"password parameter cannot be nil");
-    NSAssert(completion, @"completion handler cannot be nil");
+    NSParameterAssert(username);
+    NSParameterAssert(password);
+    NSParameterAssert(completion);
 
     if (!username || !password || !completion) {
         return;
@@ -111,9 +111,9 @@ static NSString * const kVenuesEndpoint = @"venues";
 }
 
 - (void)updateUser:(TXHUser *)user completion:(void (^)(TXHUser *, NSError *))completion {
-    NSAssert(user, @"user cannot be nil");
-    NSAssert(completion, @"completion handler cannot be nil");
-
+    NSParameterAssert(user);
+    NSParameterAssert(completion);
+    
     TXHSupplier *anySupplier = [user.suppliers anyObject];
     TXHUser *updatedUser = (TXHUser *)[self.importContext existingObjectWithID:user.objectID error:NULL];
 

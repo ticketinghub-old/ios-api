@@ -15,8 +15,8 @@
 #pragma mark - Public
 
 + (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSAssert(dict, @"The dict parameter cannot be nil");
-    NSAssert(moc, @"The moc parameter cannot be nil");
+    NSParameterAssert(dict);
+    NSParameterAssert(moc);
 
     if (![dict count]) {
         return nil;
@@ -35,8 +35,8 @@
 }
 
 + (instancetype)tierWithID:(NSString *)tierID inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSAssert(tierID, @"tierID cannot be nil");
-    NSAssert(moc, @"moc parameter cannot be nil");
+    NSParameterAssert(tierID);
+    NSParameterAssert(moc);
 
     static NSPredicate *formattedPredicate = nil;
     if (!formattedPredicate) {
@@ -73,8 +73,8 @@
 }
 
 + (TXHTier *)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSAssert(dict, @"dict parameter cannot be nil");
-    NSAssert(moc, @"moc parameter cannot be nil");
+    NSParameterAssert(dict);
+    NSParameterAssert(moc);
 
     if (![dict count]) {
         return nil;

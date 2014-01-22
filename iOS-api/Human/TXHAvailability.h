@@ -16,7 +16,7 @@
 /** Updates the object with values from the dictionary
  @param dictionary A dictionary of key values to update with. These are raw values, the keys are substituted to those of the actual properties internally.
 
- @return an updated TXHAvailability object, on nil if the dictionary was nil.
+ @return an updated TXHAvailability object, or nil if the dictionary was nil.
  */
 - (id)updateWithDictionary:(NSDictionary *)dictionary;
 

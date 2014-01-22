@@ -15,9 +15,9 @@
 #pragma mark - Public
 
 + (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict forProductID:(NSManagedObjectID *)productId inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSAssert(dict, @"The dict paramater cannot be nil");
-    NSAssert(productId, @"The productID parameter cannot be nill");
-    NSAssert(moc, @"The managed object context cannot be nil");
+    NSParameterAssert(dict);
+    NSParameterAssert(productId);
+    NSParameterAssert(moc);
 
     NSString *dateString = dict[@"dateString"];
     NSString *timeString = dict[@"time"];
