@@ -2,6 +2,10 @@
 
 @interface TXHUser : _TXHUser {}
 
+/** The full name for the user.
+ 
+ If one can't be created, the login email is used instead.
+ */
 @property (copy, readonly, nonatomic) NSString *fullName;
 
 /** Create or update an User object.

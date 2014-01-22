@@ -49,6 +49,7 @@
 #pragma mark - Private
 
 /** Returns a TXHAvailability object for a product on a particular date and time
+ 
  @param date A string for the date in the format YYYY-MM-DD
  @param time A string for the time in the format HH:MM
  @param product A TXHProduct object in the managed object context
