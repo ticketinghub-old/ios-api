@@ -12,6 +12,7 @@
 #import "Specta.h"
 
 #import "TXHUpgrade.h"
+
 #import "TestsHelper.h"
 
 SpecBegin(TXHUpgrade)
@@ -20,8 +21,7 @@ __block NSManagedObjectContext *_moc;
 __block NSDictionary *_upgradeDict;
 
 beforeAll(^{
-    NSURL *url = [[NSBundle bundleForClass:[self class]] URLForResource:@"Upgrade" withExtension:@"json"];
-    _upgradeDict = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:url] options:NSJSONReadingMutableContainers error:NULL];
+    _upgradeDict = [TestsHelper objectFromJSONFile:@"Upgrade"];
 });
 
 afterAll(^{

@@ -34,7 +34,7 @@ describe(@"creating a new object", ^{
         __block NSDictionary *_dict;
 
         before(^{
-//            dict = @{
+            
         });
 
         it(@"creates the object", ^{

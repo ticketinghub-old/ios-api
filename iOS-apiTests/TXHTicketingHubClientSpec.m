@@ -7,7 +7,12 @@
 //
 
 #import "TXHTicketingHubClient.h"
+
+#define EXP_SHORTHAND
+#import "Specta.h"
+#import "Expecta.h"
 #import "OHHTTPStubs.h"
+
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
 #import "TXHUser.h"
