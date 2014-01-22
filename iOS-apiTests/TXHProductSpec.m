@@ -7,7 +7,7 @@
 //
 
 #import "TXHProduct.h"
-#import "CoreDataTestsHelper.h"
+#import "TestsHelper.h"
 
 SpecBegin(TXHProduct)
 
@@ -21,7 +21,7 @@ describe(@"createWithDictionary:inManagedObjectContext", ^{
     });
 
     before(^{
-        _moc = [CoreDataTestsHelper managedObjectContextForTests];
+        _moc = [TestsHelper managedObjectContextForTests];
     });
 
     after(^{

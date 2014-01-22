@@ -13,7 +13,7 @@
 
 #import "TXHAvailability.h"
 
-#import "CoreDataTestsHelper.h"
+#import "TestsHelper.h"
 #import "TXHProduct.h"
 
 SpecBegin(TXHAvailability)
@@ -22,7 +22,7 @@ __block NSManagedObjectContext *_moc;
 __block TXHProduct *_product;
 
 beforeEach(^{
-    _moc = [CoreDataTestsHelper managedObjectContextForTests];
+    _moc = [TestsHelper managedObjectContextForTests];
     NSDictionary *productDictionary = @{@"id": @"123",
                                         @"name": @"Product Name"};
     _product = [TXHProduct createWithDictionary:productDictionary inManagedObjectContext:_moc];
@@ -57,7 +57,11 @@ describe(@"With a basic availability dictionary with no tiers", ^{
     });
 
     context(@"given a availability dictionary with tiers but no upgrades", ^{
-        
+        __block NSDictionary *_availabilityDictionary;
+//        beforeEach(^{
+//            _availabilityDictionary =
+//        });
+
     });
 });
 

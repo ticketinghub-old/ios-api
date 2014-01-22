@@ -1,14 +1,14 @@
 //
-//  CoreDataTestsHelper.m
+//  TestsHelper.m
 //  iOS-api
 //
 //  Created by Abizer Nasir on 21/11/2013.
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#import "CoreDataTestsHelper.h"
+#import "TestsHelper.h"
 
-@implementation CoreDataTestsHelper
+@implementation TestsHelper
 
 + (NSManagedObjectContext *)managedObjectContextForTests {
     static NSManagedObjectModel *model = nil;

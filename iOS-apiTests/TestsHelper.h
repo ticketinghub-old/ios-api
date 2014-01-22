@@ -1,5 +1,5 @@
 //
-//  CoreDataTestsHelper.h
+//  TestsHelper.h
 //  iOS-api
 //
 //  Created by Abizer Nasir on 21/11/2013.
@@ -10,7 +10,7 @@
 @import Foundation;
 @import CoreData;
 
-@interface CoreDataTestsHelper : NSObject
+@interface TestsHelper : NSObject
 
 + (NSManagedObjectContext *)managedObjectContextForTests;
 

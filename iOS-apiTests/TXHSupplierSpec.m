@@ -9,7 +9,7 @@
 #define EXP_SHORTHAND
 
 @import CoreData;
-#import "CoreDataTestsHelper.h"
+#import "TestsHelper.h"
 
 #import "TXHSupplier.h"
 #import "TXHProduct.h"
@@ -28,7 +28,7 @@ describe(@"createWithDictionary:inManagedObjectContext:", ^{
     });
 
     before(^{
-        _moc = [CoreDataTestsHelper managedObjectContextForTests];
+        _moc = [TestsHelper managedObjectContextForTests];
     });
     
     after(^{

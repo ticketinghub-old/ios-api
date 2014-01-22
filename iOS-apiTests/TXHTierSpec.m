@@ -13,7 +13,7 @@
 
 #import "TXHTier.h"
 
-#import "CoreDataTestsHelper.h"
+#import "TestsHelper.h"
 
 SpecBegin(TXHTier)
 
@@ -21,7 +21,7 @@ __block NSManagedObjectContext *_moc;
 __block TXHTier *_tier;
 
 beforeEach(^{
-    _moc = [CoreDataTestsHelper managedObjectContextForTests];
+    _moc = [TestsHelper managedObjectContextForTests];
 });
 
 afterEach(^{

@@ -75,7 +75,7 @@
 		EED7E85B183E2CA000853E73 /* _TXHProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E856183E2CA000853E73 /* _TXHProduct.m */; };
 		EED7E85C183E2CA000853E73 /* _TXHSupplier.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E858183E2CA000853E73 /* _TXHSupplier.m */; };
 		EED7E85E183E363D00853E73 /* TXHSupplierSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E85D183E363D00853E73 /* TXHSupplierSpec.m */; };
-		EED7E861183E3C7200853E73 /* CoreDataTestsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E860183E3C7200853E73 /* CoreDataTestsHelper.m */; };
+		EED7E861183E3C7200853E73 /* TestsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EED7E860183E3C7200853E73 /* TestsHelper.m */; };
 		EEECF735183A67650087472B /* Suppliers.json in Resources */ = {isa = PBXBuildFile; fileRef = EEECF734183A67650087472B /* Suppliers.json */; };
 		EEF85C6618183D9200658409 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C6518183D9200658409 /* Foundation.framework */; };
 		EEF85C7418183D9200658409 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF85C7318183D9200658409 /* XCTest.framework */; };
@@ -197,7 +197,7 @@
 		EE3361B11819343400FC511A /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		EE3361B21819343400FC511A /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		EE3361B31819343400FC511A /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProductSpec.m; sourceTree = "<group>"; };
+		EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHProductSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientSpec.m; sourceTree = "<group>"; };
 		EE3B6BAD183FDEBA00BC7B92 /* DCTCoreDataStack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DCTCoreDataStack.xcodeproj; path = DCTCoreDataStack/DCTCoreDataStack.xcodeproj; sourceTree = SOURCE_ROOT; };
 		EE4926AF1850C27800336A2D /* TXHAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHAvailability.h; sourceTree = "<group>"; };
@@ -288,9 +288,9 @@
 		EEBFB9A3184FA8DF00DBF9FA /* Availability.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Availability.json; sourceTree = "<group>"; };
 		EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AvailibilityDecember2013.json; sourceTree = "<group>"; };
 		EEBFB9A9184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AvailabilityOptionsFirstForDate.json; sourceTree = "<group>"; };
-		EECAE8BA1850E11D00AC9959 /* TXHAvailabilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHAvailabilitySpec.m; sourceTree = "<group>"; };
-		EECAE8BC1850E81900AC9959 /* TXHUpgradeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHUpgradeSpec.m; sourceTree = "<group>"; };
-		EECAE8BE1850E83000AC9959 /* TXHTierSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTierSpec.m; sourceTree = "<group>"; };
+		EECAE8BA1850E11D00AC9959 /* TXHAvailabilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHAvailabilitySpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EECAE8BC1850E81900AC9959 /* TXHUpgradeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHUpgradeSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EECAE8BE1850E83000AC9959 /* TXHTierSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHTierSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EED7E84D183E2BC500853E73 /* CoreDataModel 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 1.xcdatamodel"; sourceTree = "<group>"; };
 		EED7E850183E2CA000853E73 /* TXHProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHProduct.h; sourceTree = "<group>"; };
 		EED7E851183E2CA000853E73 /* TXHProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHProduct.m; sourceTree = "<group>"; };
@@ -300,9 +300,9 @@
 		EED7E856183E2CA000853E73 /* _TXHProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHProduct.m; sourceTree = "<group>"; };
 		EED7E857183E2CA000853E73 /* _TXHSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHSupplier.h; sourceTree = "<group>"; };
 		EED7E858183E2CA000853E73 /* _TXHSupplier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHSupplier.m; sourceTree = "<group>"; };
-		EED7E85D183E363D00853E73 /* TXHSupplierSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHSupplierSpec.m; sourceTree = "<group>"; };
-		EED7E85F183E3C7200853E73 /* CoreDataTestsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTestsHelper.h; sourceTree = "<group>"; };
-		EED7E860183E3C7200853E73 /* CoreDataTestsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTestsHelper.m; sourceTree = "<group>"; };
+		EED7E85D183E363D00853E73 /* TXHSupplierSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHSupplierSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		EED7E85F183E3C7200853E73 /* TestsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TestsHelper.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		EED7E860183E3C7200853E73 /* TestsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TestsHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EEECF734183A67650087472B /* Suppliers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Suppliers.json; sourceTree = "<group>"; };
 		EEF85C6218183D9200658409 /* libiOS-api.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libiOS-api.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF85C6518183D9200658409 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -664,13 +664,13 @@
 			children = (
 				EEF85C7E18183D9200658409 /* InfoPlist.strings */,
 				EEF85C7D18183D9200658409 /* iOS-apiTests-Info.plist */,
+				EED7E85F183E3C7200853E73 /* TestsHelper.h */,
+				EED7E860183E3C7200853E73 /* TestsHelper.m */,
 				EEF85C8B18183F5A00658409 /* TestsPrefix.pch */,
 				EE5B989C1827BF7500591875 /* expecta */,
 				EE8C3DB5181AE2EB0036AE92 /* OHHTTPStubs */,
 				EE5B98C31827BF7500591875 /* specta */,
 				EE8C3DA8181ADA510036AE92 /* StubResponses */,
-				EED7E85F183E3C7200853E73 /* CoreDataTestsHelper.h */,
-				EED7E860183E3C7200853E73 /* CoreDataTestsHelper.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -888,7 +888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE8C3DBE181AE2EB0036AE92 /* OHHTTPStubsResponse.m in Sources */,
-				EED7E861183E3C7200853E73 /* CoreDataTestsHelper.m in Sources */,
+				EED7E861183E3C7200853E73 /* TestsHelper.m in Sources */,
 				EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */,
 				EE8C3DC7181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m in Sources */,
 				EE689EB2183E6484000952F7 /* CoreDataModel.xcdatamodeld in Sources */,

@@ -12,7 +12,7 @@
 #import "Specta.h"
 
 #import "TXHUpgrade.h"
-#import "CoreDataTestsHelper.h"
+#import "TestsHelper.h"
 
 SpecBegin(TXHUpgrade)
 
@@ -29,7 +29,7 @@ afterAll(^{
 });
 
 beforeEach(^{
-    _moc = [CoreDataTestsHelper managedObjectContextForTests];
+    _moc = [TestsHelper managedObjectContextForTests];
 });
 
 afterEach(^{

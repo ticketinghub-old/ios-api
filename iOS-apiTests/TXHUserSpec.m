@@ -7,7 +7,7 @@
 //
 
 #import "TXHUser.h"
-#import "CoreDataTestsHelper.h"
+#import "TestsHelper.h"
 
 SpecBegin(TXHUser)
 
@@ -24,7 +24,7 @@ beforeAll(^{
 });
 
 beforeEach(^{
-    _moc = [CoreDataTestsHelper managedObjectContextForTests];
+    _moc = [TestsHelper managedObjectContextForTests];
 });
 
 afterAll(^{
