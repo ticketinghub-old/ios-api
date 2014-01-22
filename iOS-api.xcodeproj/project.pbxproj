@@ -1053,6 +1053,7 @@
 		EEF85C8618183D9200658409 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DSTROOT = /tmp/iOS_api.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1066,6 +1067,7 @@
 		EEF85C8718183D9200658409 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DSTROOT = /tmp/iOS_api.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

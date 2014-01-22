@@ -26,6 +26,15 @@
     return moc;
 }
 
++ (id)objectFromJSONFile:(NSString *)fileNameWithoutExtension {
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSURL *url = [bundle URLForResource:fileNameWithoutExtension withExtension:@"json"];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+
+}
+
 #pragma mark - Private methods
 
 @end

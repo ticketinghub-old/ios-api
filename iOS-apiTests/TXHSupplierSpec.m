@@ -13,6 +13,8 @@
 
 #import "TXHSupplier.h"
 #import "TXHProduct.h"
+#import "Specta.h"
+#import "Expecta.h"
 
 SpecBegin(TXHSupplier)
 
@@ -21,10 +23,7 @@ describe(@"createWithDictionary:inManagedObjectContext:", ^{
     __block NSManagedObjectContext *_moc;
 
     beforeAll(^{
-        NSBundle *testsBundle = [NSBundle bundleForClass:[self class]];
-        NSURL *fileURL = [testsBundle URLForResource:@"Supplier" withExtension:@"json"];
-        NSData *responseData = [NSData dataWithContentsOfURL:fileURL];
-        _supplierDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
+        _supplierDictionary = [TestsHelper objectFromJSONFile:@"Supplier"];
     });
 
     before(^{
