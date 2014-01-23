@@ -36,7 +36,8 @@
 - (id)initWithStoreURL:(NSURL *)storeURL;
 
 /** Set the "Accept-Language" header for subsequent network call
-    @param identifier the string identifier of the language, e.g "en-GB"
+
+ @param identifier the string identifier of the language, e.g "en-GB"
  */
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
 

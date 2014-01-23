@@ -14,36 +14,25 @@
 
 #pragma mark - Public
 
-+ (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict forProductID:(NSManagedObjectID *)productId inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSParameterAssert(dict);
++ (instancetype)updateForDateCreateIfNeeded:(NSString *)date withDictionary:(NSDictionary *)dictionary productId:(NSManagedObjectID *)productId nManagedObjectContext:(NSManagedObjectContext *)moc {
+    NSParameterAssert(date);
+    NSParameterAssert(dictionary);
     NSParameterAssert(productId);
     NSParameterAssert(moc);
 
-    NSString *dateString = dict[@"dateString"];
-    NSString *timeString = dict[@"time"];
+    NSString *timeString = dictionary[@"time"];
     TXHProduct *product = (TXHProduct *)[moc existingObjectWithID:productId error:NULL];
 
-    TXHAvailability *availability = [self availabilityForDate:dateString andTime:timeString forProduct:product inManagedObjectContext:moc];
+    TXHAvailability *availability = [self availabilityForDate:date andTime:timeString forProduct:product inManagedObjectContext:moc];
     if (!availability) {
         availability = [TXHAvailability insertInManagedObjectContext:moc];
+        availability.dateString = date;
     }
 
-    [availability updateWithDictionary:dict];
+    [availability updateWithDictionary:dictionary];
     availability.product = product; // Set up the relationship
 
     return availability;
-}
-
-- (id)updateWithDictionary:(NSDictionary *)dictionary {
-    if (!dictionary) {
-        return nil;
-    }
-
-    NSDictionary *userDictionary = [dictionary jcsRemapKeysWithMapping:[[self class] mappingDictionary] removingNullValues:YES];
-
-    [self setValuesForKeysWithDictionary:userDictionary];
-
-    return self;
 }
 
 #pragma mark - Private
@@ -93,6 +82,23 @@
     }
 
     return dict;
+}
+
+/** Updates the object with values from the dictionary
+ @param dictionary A dictionary of key values to update with. These are raw values, the keys are substituted to those of the actual properties internally.
+
+ @return an updated TXHAvailability object, or nil if the dictionary was nil.
+ */
+- (id)updateWithDictionary:(NSDictionary *)dictionary {
+    if (!dictionary) {
+        return nil;
+    }
+
+    NSDictionary *userDictionary = [dictionary jcsRemapKeysWithMapping:[[self class] mappingDictionary] removingNullValues:YES];
+
+    [self setValuesForKeysWithDictionary:userDictionary];
+
+    return self;
 }
 
 @end

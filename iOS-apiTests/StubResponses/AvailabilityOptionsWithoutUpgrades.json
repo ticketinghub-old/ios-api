@@ -1,0 +1,22 @@
+[
+    {
+        "duration": null, 
+        "limit": null, 
+        "tiers": [
+            {
+                "description": "18 or over", 
+                "discount": 0, 
+                "id": "d4d9efc1-a6d7-4b3f-8023-5bd36d96a3bb", 
+                "limit": 10, 
+                "name": "Adult", 
+                "price": 1000, 
+                "seq_id": 1, 
+                "size": 1, 
+                "upgrades": [
+                    {}
+                ]
+            }
+        ], 
+        "time": "09:00"
+    }
+]
