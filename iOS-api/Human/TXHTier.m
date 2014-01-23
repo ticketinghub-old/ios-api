@@ -57,21 +57,9 @@
     return [tiers firstObject];
 }
 
-- (void)updateWithDictionary:(NSDictionary *)dict {
-    self.tierDescription = dict[@"description"];
-    self.discount = dict[@"discount"];
-    self.tierId = dict[@"id"];
-    self.limit = dict[@"limit"];
-    self.name = dict[@"name"];
-    self.price = dict[@"price"];
-    self.size = dict[@"size"];
+#pragma mark - Private
 
-    if (dict[@"upgrades"]) {
-        // Do something here.
-    }
-
-}
-
+// Create the object in the managed object context from the dictionary
 + (TXHTier *)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
     NSParameterAssert(dict);
     NSParameterAssert(moc);
@@ -86,26 +74,31 @@
     return tier;
 }
 
-#pragma mark - Private
+// Updates the reciever with values from the dictionary
+- (void)updateWithDictionary:(NSDictionary *)dict {
+    self.tierDescription = dict[@"description"];
+    self.discount = dict[@"discount"];
+    self.tierId = dict[@"id"];
+    self.limit = dict[@"limit"];
+    self.name = dict[@"name"];
+    self.price = dict[@"price"];
+    self.size = dict[@"size"];
 
-// synchronize the tiers relationship with the objects from the array
-- (void)updateUpgradesFromArray:(NSArray *)upgradesArray {
-    if (![upgradesArray count]) {
-        // Empty array so remove all upgrades
-        NSSet *upgrades = self.upgrades;
-        for (TXHUpgrade *upgrade in upgrades) {
-            [upgrade.managedObjectContext deleteObject:upgrade];
-        }
-
-        return;
+    // If there are any current upgrades, remove them and recreate them from the dictionary
+    // This is brute force for now, not sure if it will need to be optimised. Profiling will tell.
+    for (TXHUpgrade *upgrade in self.upgrades) {
+        upgrade.tier = nil;
+        [self.managedObjectContext deleteObject:upgrade];
     }
 
-    // Richard told me about the efficient update algorithm which might work. Two sorted arrays with cursors.
-    // Create sets for:
-    // - objects that exist in the relationship already. - update
-    // - objects that are in the array and not in the relationship - create and add.
-    // - the above two can be done at once.
-    // - objects that are in the relationship but not in the array - delete
+    if (dict[@"upgrades"]) {
+        NSArray *upgradeDicts = dict[@"upgrades"];
+        for (NSDictionary *dict in upgradeDicts) {
+            TXHUpgrade *upgrade = [TXHUpgrade createWithDictionary:dict inManagedObjectContext:self.managedObjectContext];
+            upgrade.tier = self;
+        }
+    }
+    
 }
 
 @end
