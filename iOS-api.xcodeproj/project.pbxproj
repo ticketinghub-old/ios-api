@@ -63,7 +63,6 @@
 		EEB32C39184754CC006045AF /* _TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18C118439A7D00CE6D5E /* _TXHUser.h */; };
 		EEB32C911847C9AB006045AF /* iOS-api.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEB32C8E1847C90E006045AF /* iOS-api.h */; };
 		EEB8CB64184911ED00BDDDAB /* iOS-api-Model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EE67B398183D175D0021B76A /* iOS-api-Model.bundle */; };
-		EEBA68B11897C63700CE6644 /* AvailabilityOptionsWithoutUpgrades.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBA68B01897C63700CE6644 /* AvailabilityOptionsWithoutUpgrades.json */; };
 		EEBFB9A4184FA8DF00DBF9FA /* Availability.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBFB9A3184FA8DF00DBF9FA /* Availability.json */; };
 		EEBFB9A8184FAA5100DBF9FA /* AvailibilityDecember2013.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */; };
 		EEBFB9AA184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBFB9A9184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json */; };
@@ -286,7 +285,6 @@
 		EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
 		EEACDA261855D33800BF46C3 /* Upgrade.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Upgrade.json; sourceTree = "<group>"; };
 		EEB32C8E1847C90E006045AF /* iOS-api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS-api.h"; sourceTree = "<group>"; };
-		EEBA68B01897C63700CE6644 /* AvailabilityOptionsWithoutUpgrades.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AvailabilityOptionsWithoutUpgrades.json; sourceTree = "<group>"; };
 		EEBFB9A3184FA8DF00DBF9FA /* Availability.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Availability.json; sourceTree = "<group>"; };
 		EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AvailibilityDecember2013.json; sourceTree = "<group>"; };
 		EEBFB9A9184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AvailabilityOptionsFirstForDate.json; sourceTree = "<group>"; };
@@ -506,7 +504,6 @@
 			children = (
 				EEBFB9A3184FA8DF00DBF9FA /* Availability.json */,
 				EEBFB9A9184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json */,
-				EEBA68B01897C63700CE6644 /* AvailabilityOptionsWithoutUpgrades.json */,
 				EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */,
 				EE1C01A818215007005D754A /* Seasons.json */,
 				EE689EB3183E686B000952F7 /* Supplier.json */,
@@ -827,7 +824,6 @@
 				EEACDA271855D33900BF46C3 /* Upgrade.json in Resources */,
 				EEBFB9AA184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json in Resources */,
 				EEECF735183A67650087472B /* Suppliers.json in Resources */,
-				EEBA68B11897C63700CE6644 /* AvailabilityOptionsWithoutUpgrades.json in Resources */,
 				EEBFB9A4184FA8DF00DBF9FA /* Availability.json in Resources */,
 				EE4B18B918438CD700CE6D5E /* User.json in Resources */,
 				EE689EB4183E686B000952F7 /* Supplier.json in Resources */,

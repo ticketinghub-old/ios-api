@@ -14,7 +14,5 @@
  @return an object of type TXHAvailability.
 
  */
-+ (instancetype)updateForDateCreateIfNeeded:(NSString *)date withDictionary:(NSDictionary *)dictionary productId:(NSManagedObjectID *)productId nManagedObjectContext:(NSManagedObjectContext *)moc;
-
-
++ (instancetype)updateForDateCreateIfNeeded:(NSString *)date withDictionary:(NSDictionary *)dictionary productId:(NSManagedObjectID *)productId inManagedObjectContext:(NSManagedObjectContext *)moc;
 @end

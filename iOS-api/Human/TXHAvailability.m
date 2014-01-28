@@ -1,7 +1,7 @@
 #import "TXHAvailability.h"
 
-#import "NSDictionary+JCSKeyMapping.h"
 #import "TXHProduct.h"
+#import "TXHTier.h"
 
 @interface TXHAvailability ()
 
@@ -14,7 +14,7 @@
 
 #pragma mark - Public
 
-+ (instancetype)updateForDateCreateIfNeeded:(NSString *)date withDictionary:(NSDictionary *)dictionary productId:(NSManagedObjectID *)productId nManagedObjectContext:(NSManagedObjectContext *)moc {
++ (instancetype)updateForDateCreateIfNeeded:(NSString *)date withDictionary:(NSDictionary *)dictionary productId:(NSManagedObjectID *)productId inManagedObjectContext:(NSManagedObjectContext *)moc {
     NSParameterAssert(date);
     NSParameterAssert(dictionary);
     NSParameterAssert(productId);
@@ -74,16 +74,6 @@
     return [availabilities firstObject];
 }
 
-+ (NSDictionary *)mappingDictionary {
-    static NSDictionary *dict = nil;
-
-    if (!dict) {
-        dict = @{@"time" : @"timeString"};
-    }
-
-    return dict;
-}
-
 /** Updates the object with values from the dictionary
  @param dictionary A dictionary of key values to update with. These are raw values, the keys are substituted to those of the actual properties internally.
 
@@ -94,9 +84,16 @@
         return nil;
     }
 
-    NSDictionary *userDictionary = [dictionary jcsRemapKeysWithMapping:[[self class] mappingDictionary] removingNullValues:YES];
+    self.duration = dictionary[@"duration"] != [NSNull null] ? dictionary[@"duration"] : nil;
+    self.limit = dictionary[@"limit"] != [NSNull null] ? dictionary [@"limit"] : nil;
+    self.timeString = dictionary[@"time"] != [NSNull null] ? dictionary[@"time"] : nil;
 
-    [self setValuesForKeysWithDictionary:userDictionary];
+    if (dictionary[@"tiers"]) {
+        for (NSDictionary *tiersDict in dictionary[@"tiers"]) {
+            TXHTier *tier = [TXHTier updateWithDictionaryCreateIfNeeded:tiersDict inManagedObjectContext:self.managedObjectContext];
+            tier.availability = self;
+        }
+    }
 
     return self;
 }

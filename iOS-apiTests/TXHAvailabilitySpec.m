@@ -47,7 +47,7 @@ describe(@"With a basic availability dictionary with no tiers", ^{
         });
 
         it(@"creates a basic availability object", ^{
-            TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:_availabilityDictionary productId:_product.objectID nManagedObjectContext:_moc];
+            TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:_availabilityDictionary productId:_product.objectID inManagedObjectContext:_moc];
             expect(availability).toNot.beNil();
             expect(availability.dateString).to.equal(@"2013-12-29");
             expect(availability.timeString).to.equal(@"09:00");
@@ -61,7 +61,7 @@ describe(@"With a basic availability dictionary with no tiers", ^{
         beforeEach(^{
             NSDictionary *dict = @{@"time" : @"09:00",
                                    @"duration" : @"2H"};
-            [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:dict productId:_product.objectID nManagedObjectContext:_moc];
+            [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:dict productId:_product.objectID inManagedObjectContext:_moc];
 
             NSMutableDictionary *newDict = [dict mutableCopy];
             newDict[@"duration"] = @"3H";
@@ -74,7 +74,7 @@ describe(@"With a basic availability dictionary with no tiers", ^{
         });
 
         it(@"updates the existing object with new values", ^{
-            TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:_newDict productId:_product.objectID nManagedObjectContext:_moc];
+            TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:_newDict productId:_product.objectID inManagedObjectContext:_moc];
             expect(availability).toNot.beNil();
             expect(availability.dateString).to.equal(@"2013-12-29");
             expect(availability.timeString).to.equal(@"09:00");
@@ -89,7 +89,7 @@ describe(@"With a basic availability dictionary with no tiers", ^{
         beforeEach(^{
             NSDictionary *dict = @{@"time" : @"09:00",
                                    @"duration" : @"2H"};
-            [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:dict productId:_product.objectID nManagedObjectContext:_moc];
+            [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:dict productId:_product.objectID inManagedObjectContext:_moc];
 
             NSMutableDictionary *newDict = [dict mutableCopy];
             newDict[@"duration"] = @"3H";
@@ -103,7 +103,7 @@ describe(@"With a basic availability dictionary with no tiers", ^{
         });
 
         it(@"updates the existing object with new values", ^{
-            TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:_newDict productId:_product.objectID nManagedObjectContext:_moc];
+            TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:_newDict productId:_product.objectID inManagedObjectContext:_moc];
             expect(availability).toNot.beNil();
             expect(availability.dateString).to.equal(@"2013-12-29");
             expect(availability.timeString).to.equal(@"10:00");
@@ -113,16 +113,16 @@ describe(@"With a basic availability dictionary with no tiers", ^{
         });
     });
 
-    xcontext(@"given a availability dictionary with tiers but no upgrades", ^{
+    context(@"given a availability dictionary with tiers for a given date", ^{
         __block NSDictionary *_availabilityDictionary;
         beforeEach(^{
-            _availabilityDictionary = [TestsHelper objectFromJSONFile:@"AvailabilityOptionsWithoutUpgrades"];
+            _availabilityDictionary = [[TestsHelper objectFromJSONFile:@"AvailabilityOptionsFirstForDate"] firstObject];
         });
 
-        it(@"Creates a full availability object without upgrades", ^{
-            TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:_availabilityDictionary productId:_product.objectID nManagedObjectContext:_moc];
+        it(@"Creates a full availability object with two tiers", ^{
+            TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:@"2013-12-29" withDictionary:_availabilityDictionary productId:_product.objectID inManagedObjectContext:_moc];
             expect(availability).toNot.beFalsy();
-            expect(availability.tiers).to.haveCountOf(1);
+            expect(availability.tiers).to.haveCountOf(2);
 
         });
 
