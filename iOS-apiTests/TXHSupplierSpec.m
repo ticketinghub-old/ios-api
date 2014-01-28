@@ -8,13 +8,15 @@
 
 #define EXP_SHORTHAND
 
-@import CoreData;
-#import "TestsHelper.h"
-
 #import "TXHSupplier.h"
-#import "TXHProduct.h"
+
+#define EXP_SHORTHAND
 #import "Specta.h"
 #import "Expecta.h"
+
+#import "TestsHelper.h"
+#import "TXHProduct.h"
+
 
 SpecBegin(TXHSupplier)
 

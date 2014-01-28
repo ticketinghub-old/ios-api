@@ -6,12 +6,11 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-#define EXP_SHORTHAND
-
-#import "Expecta.h"
-#import "Specta.h"
-
 #import "TXHAvailability.h"
+
+#define EXP_SHORTHAND
+#import "Specta.h"
+#import "Expecta.h"
 
 #import "TestsHelper.h"
 #import "TXHProduct.h"

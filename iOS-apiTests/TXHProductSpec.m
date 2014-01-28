@@ -9,6 +9,10 @@
 #import "TXHProduct.h"
 #import "TestsHelper.h"
 
+#define EXP_SHORTHAND
+#import "Specta.h"
+#import "Expecta.h"
+
 SpecBegin(TXHProduct)
 
 describe(@"createWithDictionary:inManagedObjectContext", ^{

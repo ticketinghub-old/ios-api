@@ -10,6 +10,11 @@
 
 #import "TXHTicketingHubClient.h"
 
+#define EXP_SHORTHAND
+#import "Specta.h"
+#import "Expecta.h"
+#import "OHHTTPStubs.h"
+
 #import "AFNetworking.h"
 
 // Expose internal properties of TXHTicketingHubClient

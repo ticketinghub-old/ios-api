@@ -7,6 +7,11 @@
 //
 
 #import "TXHUser.h"
+
+#define EXP_SHORTHAND
+#import "Specta.h"
+#import "Expecta.h"
+
 #import "TestsHelper.h"
 
 SpecBegin(TXHUser)
