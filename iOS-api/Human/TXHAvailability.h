@@ -15,4 +15,13 @@
 
  */
 + (instancetype)updateForDateCreateIfNeeded:(NSString *)date withDictionary:(NSDictionary *)dictionary productId:(NSManagedObjectID *)productId inManagedObjectContext:(NSManagedObjectContext *)moc;
+
+/** deletes an availability for the product if it exists
+
+ @param date An ISO formatted string
+ @param productId the NSManagedObjectID for the product
+ @param moc the managed object that from which the object is to be deleted.
+
+ */
++ (void)deleteForDateIfExists:(NSString *)date productId:(NSManagedObjectID *)productId fromManagedObjectContext:(NSManagedObjectContext *)moc;
 @end

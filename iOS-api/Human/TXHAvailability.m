@@ -35,6 +35,22 @@
     return availability;
 }
 
++ (void)deleteForDateIfExists:(NSString *)date productId:(NSManagedObjectID *)productId fromManagedObjectContext:(NSManagedObjectContext *)moc {
+    NSParameterAssert(date);
+    NSParameterAssert(productId);
+    NSParameterAssert(moc);
+
+    TXHProduct *product = (TXHProduct *)[moc existingObjectWithID:productId error:NULL];
+
+    TXHAvailability *availability = [[self class] avalabilityForDate:date product:product inManagedObjectContext:moc];
+
+    if (!availability) {
+        return;
+    }
+
+    [moc deleteObject:availability];
+}
+
 #pragma mark - Private
 
 /** Returns a TXHAvailability object for a product on a particular date and time
@@ -59,6 +75,32 @@
 
     NSDictionary *variables = @{@"DATE_STRING" : date,
                                 @"TIME_STRING" : time,
+                                @"PRODUCT" : product};
+
+    NSPredicate *predicate = [formattedPredicate predicateWithSubstitutionVariables:variables];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+    [request setPredicate:predicate];
+
+    NSArray *availabilities = [moc executeFetchRequest:request error:NULL];
+
+    if (!availabilities) {
+        return nil;
+    }
+
+    return [availabilities firstObject];
+}
+
++ (instancetype)avalabilityForDate:(NSString *)date product:(TXHProduct *)product inManagedObjectContext:(NSManagedObjectContext *)moc {
+    NSParameterAssert(date);
+    NSParameterAssert(product);
+    NSParameterAssert(moc);
+
+    static NSPredicate *formattedPredicate = nil;
+    if (!formattedPredicate) {
+        formattedPredicate = [NSPredicate predicateWithFormat:@"dateString == $DATE_STRING AND product == $PRODUCT"];
+    }
+
+    NSDictionary *variables = @{@"DATE_STRING" : date,
                                 @"PRODUCT" : product};
 
     NSPredicate *predicate = [formattedPredicate predicateWithSubstitutionVariables:variables];

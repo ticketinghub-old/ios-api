@@ -81,6 +81,12 @@ describe(@"With a basic availability dictionary with no tiers", ^{
             expect(availability.duration).to.equal(@"3H");
 
         });
+
+        it(@"can delete the object", ^{
+            [TXHAvailability deleteForDateIfExists:@"2013-12-29" productId:_product.objectID fromManagedObjectContext:_moc];
+            [_moc save:NULL];
+            expect(_product.availabilities).to.haveCountOf(0);
+        });
     });
 
     context(@"With an existing availability for a date, but adding a new one for a different time", ^{
