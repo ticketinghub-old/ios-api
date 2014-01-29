@@ -1,5 +1,5 @@
 //
-//  TXHTicketingHubClientSpec.m
+//  ClientLoginSpec.m
 //  iOS-api
 //
 //  Created by Abizer Nasir on 22/11/2013.

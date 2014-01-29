@@ -28,7 +28,7 @@
 		EE3361C21819343400FC511A /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3361B11819343400FC511A /* UIProgressView+AFNetworking.m */; };
 		EE3361C31819343400FC511A /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3361B31819343400FC511A /* UIWebView+AFNetworking.m */; };
 		EE3B6BA3183F69DE00BC7B92 /* TXHProductSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */; };
-		EE3B6BA5183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */; };
+		EE3B6BA5183F8A2700BC7B92 /* ClientLoginSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3B6BA4183F8A2700BC7B92 /* ClientLoginSpec.m */; };
 		EE3B6BBB183FE84200BC7B92 /* libDCTCoreDataStack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3B6BB4183FDEBC00BC7B92 /* libDCTCoreDataStack.a */; };
 		EE4926B51850C27800336A2D /* TXHAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926B01850C27800336A2D /* TXHAvailability.m */; };
 		EE4926B61850C27800336A2D /* TXHTier.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926B21850C27800336A2D /* TXHTier.m */; };
@@ -198,7 +198,7 @@
 		EE3361B21819343400FC511A /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		EE3361B31819343400FC511A /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHProductSpec.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketingHubClientSpec.m; sourceTree = "<group>"; };
+		EE3B6BA4183F8A2700BC7B92 /* ClientLoginSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientLoginSpec.m; sourceTree = "<group>"; };
 		EE3B6BAD183FDEBA00BC7B92 /* DCTCoreDataStack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DCTCoreDataStack.xcodeproj; path = DCTCoreDataStack/DCTCoreDataStack.xcodeproj; sourceTree = SOURCE_ROOT; };
 		EE4926AF1850C27800336A2D /* TXHAvailability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHAvailability.h; sourceTree = "<group>"; };
 		EE4926B01850C27800336A2D /* TXHAvailability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHAvailability.m; sourceTree = "<group>"; };
@@ -647,10 +647,10 @@
 			isa = PBXGroup;
 			children = (
 				EE74D467182ADF34000266C3 /* ClientCreationSpec.m */,
+				EE3B6BA4183F8A2700BC7B92 /* ClientLoginSpec.m */,
 				EECAE8BA1850E11D00AC9959 /* TXHAvailabilitySpec.m */,
 				EE3B6BA2183F69DE00BC7B92 /* TXHProductSpec.m */,
 				EED7E85D183E363D00853E73 /* TXHSupplierSpec.m */,
-				EE3B6BA4183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m */,
 				EECAE8BE1850E83000AC9959 /* TXHTierSpec.m */,
 				EECAE8BC1850E81900AC9959 /* TXHUpgradeSpec.m */,
 				EE4B18BC18439A1400CE6D5E /* TXHUserSpec.m */,
@@ -893,7 +893,7 @@
 				EE8C3DC7181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m in Sources */,
 				EE689EB2183E6484000952F7 /* CoreDataModel.xcdatamodeld in Sources */,
 				EECAE8BD1850E81900AC9959 /* TXHUpgradeSpec.m in Sources */,
-				EE3B6BA5183F8A2700BC7B92 /* TXHTicketingHubClientSpec.m in Sources */,
+				EE3B6BA5183F8A2700BC7B92 /* ClientLoginSpec.m in Sources */,
 				EE8C3DC6181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m in Sources */,
 				EE8C3DBD181AE2EB0036AE92 /* OHHTTPStubs.m in Sources */,
 				EE74D468182ADF34000266C3 /* ClientCreationSpec.m in Sources */,
