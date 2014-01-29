@@ -26,10 +26,10 @@
  */
 @property (assign, nonatomic) BOOL showNetworkActivityIndicatorAutomatically;
 
-/** The designated initialiser
+/** The designated initialiser.
 
- Creates a client that uses the managed object model from the iOS-api-Model bundle
- 
+ Creates a client that uses the managed object model from the iOS-api-Model bundle.
+
  @param storeURL The URL to use for the persistent store. Will be created if it does not exist. Pass `nil` to use an in-memory-store.
 
  @return An initialised TXHTicketingHubClient.
@@ -42,7 +42,7 @@
  */
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
 
-/** Fetches the suppliers and the associated user from the login parameters
+/** Fetches the suppliers and the associated user from the login parameters.
 
  On a successful login the `updateUser:completion:` method is called in the background.
  
@@ -54,17 +54,28 @@
  */
 - (void)fetchSuppliersForUsername:(NSString *)username password:(NSString *)password withCompletion:(void(^)(NSArray *suppliers, NSError *error))completion;
 
-/** Fetches the user details for a TXHUser object
+/** Fetches the user details for a TXHUser object.
 
  The basic TXHUser object is created at login with just the email address, this fetches the fields required to create the full name. It uses an access token from a random object from it's list of suppliers.
  
  @param user the partially created TXHUser object. Can be on any context as long as it has been saved.
  @param completion The completion block to run when the user object has been updated which takes a user and an error parameter. The TXHUser object is in the main managed object context.
  
- @warning `user` or `completion` must not be nil.
+ @warning `user` or `completion` must not be `nil`.
  */
 - (void)updateUser:(TXHUser *)user completion:(void(^)(TXHUser *user, NSError *error))completion;
 
+/** Update the availabilities for a product for a day or a range of days.
+ 
+ If `from` and `to` are `nil`, the generic availabilities call is made. If only `from` is given, the availbilities for that date only are provided. If only `to` is given, the range of availabilities from today to that date is given. For the options first calls, just pass the date in the from parameter.
+
+ @param product The product for which the availibilities are to be updated - can be on any managed object context. Cannot be nil
+ @param from an ISO date string for the start date of a range query.
+ @param to an ISO date string for the end date of a range query.
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an array of TXHAvailabilities in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an erro, this containes the error object and the availabilities array is not nil (it can be empty)
+ 
+ @warning `product` or `completion` must not be `nil`.
+ */
 - (void)availabilitiesForProductId:(TXHProduct *)product from:(NSString *)from to:(NSString *)to completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
 
