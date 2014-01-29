@@ -18,6 +18,7 @@ static NSString * const kVenuesEndpoint = @"venues";
 #import "AFNetworkActivityIndicatorManager.h"
 #import "AFNetworking.h"
 #import "TXHAPIError.h"
+#import "TXHAvailability.h"
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
 #import "TXHUser.h"
@@ -138,6 +139,63 @@ static NSString * const kVenuesEndpoint = @"venues";
     }];
 }
 
+- (void)availabilitiesForProductId:(TXHProduct *)product from:(NSString *)from to:(NSString *)to completion:(void (^)(NSArray *, NSError *))completion {
+    NSParameterAssert(product);
+    NSParameterAssert(completion);
+
+    NSManagedObjectContext *moc = self.importContext;
+
+    TXHProduct *localProduct = (TXHProduct *)[moc existingObjectWithID:product.objectID error:NULL];
+
+    NSString *tokenString = [NSString stringWithFormat:@"Bearer %@", localProduct.supplier.accessToken];
+    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:tokenString];
+
+    NSDictionary *params;
+
+    if (!from && !to) {
+        params = nil;
+    } else if (from) {
+        params = @{@"date": from};
+    } else if (to) {
+        params = @{@"to": to};
+    } else {
+        params = @{@"from": from,
+                   @"to": to};
+    }
+
+    NSString *endpoint = [NSString stringWithFormat:@"products/%@/availability", localProduct.productId];
+
+    [self.sessionManager GET:endpoint parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+        // For a single date this is an array of dictionaries, each dictionary being an availability with tiers
+        // For a range of dates, this is a dictionary of key values where key is the date and the value is an array of simple availabilities.
+        // If the array is empty, there is no availability for that date.
+
+        NSArray *availabilities; // This is the list of updated availabilities.
+
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            availabilities = [self updateAvailabilitiesForDate:from fromArray:responseObject inProductID:product.objectID];
+        } else {
+            availabilities = [self updateAvailabilitiesFromDictionary:responseObject inProductID:product.objectID];
+        }
+
+        NSError *error;
+        BOOL success = [moc save:&error];
+
+        if (!success) {
+            completion(nil, error);
+            return;
+        }
+
+        completion([self objectsInMainManagedObjectContext:availabilities], nil);
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Unable to get the user because: %@", error);
+        completion(nil, error);
+    }];
+
+    
+}
+
 #pragma mark - Custom accessors
 
 
@@ -201,7 +259,51 @@ static NSString * const kVenuesEndpoint = @"venues";
     return [suppliers copy];
 }
 
+// Update the availabilities when the API returns an array
+- (NSArray *)updateAvailabilitiesForDate:(NSString *)date fromArray:(NSArray *)array inProductID:(TXHProductID *)productId {
+    NSUInteger numberOfAvailabilities = [array count];
+
+    // If the array is empty, there are not availibilities, so delete any stored values for this date and return an empty array
+    if (!numberOfAvailabilities) {
+        [TXHAvailability deleteForDateIfExists:date productId:productId fromManagedObjectContext:self.importContext];
+        return @[];
+    }
+
+    NSMutableArray *availabilities = [[NSMutableArray alloc] initWithCapacity:numberOfAvailabilities];
+
+    for (NSDictionary *dict in array) {
+        TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:date withDictionary:dict productId:productId inManagedObjectContext:self.importContext];
+        [availabilities addObject:availability];
+    }
+
+    return availabilities;
+}
+
+// Update the availabilities when the API returns a dictionary
+- (NSArray *)updateAvailabilitiesFromDictionary:(NSDictionary *)dictionary inProductID:(TXHProductID *)productId {
+    NSMutableArray *availabilities = [[NSMutableArray alloc] initWithCapacity:[dictionary count]];
+
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSString *date = key;
+        if ([obj count]) {
+            for (NSDictionary *dict in obj) {
+                TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:date withDictionary:dict productId:productId inManagedObjectContext:self.importContext];
+                [availabilities addObject:availability];
+            }
+        } else {
+            [TXHAvailability deleteForDateIfExists:date productId:productId fromManagedObjectContext:self.importContext];
+        }
+    }];
+
+    return availabilities;
+
+}
+
 - (NSArray *)objectsInMainManagedObjectContext:(NSArray *)managedObjects {
+    if (![managedObjects count]) {
+        return @[];
+    }
+    
     NSMutableArray *mainContextObjects = [NSMutableArray arrayWithCapacity:[managedObjects count]];
     NSArray *objectIDs = [managedObjects valueForKey:@"objectID"];
 

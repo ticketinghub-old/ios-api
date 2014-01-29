@@ -10,6 +10,7 @@
 
 @class NSManagedObjectContext;
 @class TXHUser;
+@class TXHProduct;
 
 @interface TXHTicketingHubClient : NSObject
 
@@ -63,6 +64,8 @@
  @warning `user` or `completion` must not be nil.
  */
 - (void)updateUser:(TXHUser *)user completion:(void(^)(TXHUser *user, NSError *error))completion;
+
+- (void)availabilitiesForProductId:(TXHProduct *)product from:(NSString *)from to:(NSString *)to completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
 
 @end
