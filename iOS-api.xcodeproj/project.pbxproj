@@ -53,6 +53,7 @@
 		EE8C3DC6181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC2181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m */; };
 		EE8C3DC7181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */; };
 		EEACDA271855D33900BF46C3 /* Upgrade.json in Resources */ = {isa = PBXBuildFile; fileRef = EEACDA261855D33800BF46C3 /* Upgrade.json */; };
+		EEAD47621899736F005CBC67 /* ClientAvailabilitySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAD47611899736F005CBC67 /* ClientAvailabilitySpec.m */; };
 		EEB32C29184753DD006045AF /* TXHAPIError.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE5B98DA1827F26D00591875 /* TXHAPIError.h */; };
 		EEB32C2A184753DD006045AF /* TXHTicketingHubClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEF85C8C181840A100658409 /* TXHTicketingHubClient.h */; };
 		EEB32C2B184753DD006045AF /* TXHProduct.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E850183E2CA000853E73 /* TXHProduct.h */; };
@@ -284,6 +285,7 @@
 		EE8C3DC3181AE5830036AE92 /* OHHTTPStubsResponse+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHHTTPStubsResponse+JSON.h"; sourceTree = "<group>"; };
 		EE8C3DC4181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubsResponse+JSON.m"; sourceTree = "<group>"; };
 		EEACDA261855D33800BF46C3 /* Upgrade.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Upgrade.json; sourceTree = "<group>"; };
+		EEAD47611899736F005CBC67 /* ClientAvailabilitySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientAvailabilitySpec.m; sourceTree = "<group>"; };
 		EEB32C8E1847C90E006045AF /* iOS-api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS-api.h"; sourceTree = "<group>"; };
 		EEBFB9A3184FA8DF00DBF9FA /* Availability.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Availability.json; sourceTree = "<group>"; };
 		EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AvailibilityDecember2013.json; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 		EEF85C7B18183D9200658409 /* iOS-apiTests */ = {
 			isa = PBXGroup;
 			children = (
+				EEAD47611899736F005CBC67 /* ClientAvailabilitySpec.m */,
 				EE74D467182ADF34000266C3 /* ClientCreationSpec.m */,
 				EE3B6BA4183F8A2700BC7B92 /* ClientLoginSpec.m */,
 				EECAE8BA1850E11D00AC9959 /* TXHAvailabilitySpec.m */,
@@ -893,6 +896,7 @@
 				EE8C3DC7181AE5830036AE92 /* OHHTTPStubsResponse+JSON.m in Sources */,
 				EE689EB2183E6484000952F7 /* CoreDataModel.xcdatamodeld in Sources */,
 				EECAE8BD1850E81900AC9959 /* TXHUpgradeSpec.m in Sources */,
+				EEAD47621899736F005CBC67 /* ClientAvailabilitySpec.m in Sources */,
 				EE3B6BA5183F8A2700BC7B92 /* ClientLoginSpec.m in Sources */,
 				EE8C3DC6181AE5830036AE92 /* OHHTTPStubsResponse+HTTPMessage.m in Sources */,
 				EE8C3DBD181AE2EB0036AE92 /* OHHTTPStubs.m in Sources */,
