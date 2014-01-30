@@ -59,11 +59,17 @@
 		EEB32C2B184753DD006045AF /* TXHProduct.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E850183E2CA000853E73 /* TXHProduct.h */; };
 		EEB32C2C184753DD006045AF /* TXHSupplier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E852183E2CA000853E73 /* TXHSupplier.h */; };
 		EEB32C2D184753DD006045AF /* TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18BE18439A7200CE6D5E /* TXHUser.h */; };
-		EEB32C37184754CC006045AF /* _TXHProduct.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E855183E2CA000853E73 /* _TXHProduct.h */; };
-		EEB32C38184754CC006045AF /* _TXHSupplier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E857183E2CA000853E73 /* _TXHSupplier.h */; };
-		EEB32C39184754CC006045AF /* _TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18C118439A7D00CE6D5E /* _TXHUser.h */; };
 		EEB32C911847C9AB006045AF /* iOS-api.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEB32C8E1847C90E006045AF /* iOS-api.h */; };
 		EEB8CB64184911ED00BDDDAB /* iOS-api-Model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EE67B398183D175D0021B76A /* iOS-api-Model.bundle */; };
+		EEBC86F9189AA8AA00AA09E9 /* TXHAvailability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926AF1850C27800336A2D /* TXHAvailability.h */; };
+		EEBC86FA189AA8B500AA09E9 /* TXHTier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926B11850C27800336A2D /* TXHTier.h */; };
+		EEBC86FB189AA8BD00AA09E9 /* TXHUpgrade.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926B31850C27800336A2D /* TXHUpgrade.h */; };
+		EEBC86FC189AA90900AA09E9 /* _TXHAvailability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926BA1850C28C00336A2D /* _TXHAvailability.h */; };
+		EEBC86FD189AA90C00AA09E9 /* _TXHProduct.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E855183E2CA000853E73 /* _TXHProduct.h */; };
+		EEBC86FE189AA90F00AA09E9 /* _TXHSupplier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E857183E2CA000853E73 /* _TXHSupplier.h */; };
+		EEBC86FF189AA91200AA09E9 /* _TXHTier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926BC1850C28C00336A2D /* _TXHTier.h */; };
+		EEBC8700189AA91600AA09E9 /* _TXHUpgrade.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926BF1850C2A000336A2D /* _TXHUpgrade.h */; };
+		EEBC8701189AA91A00AA09E9 /* _TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18C118439A7D00CE6D5E /* _TXHUser.h */; };
 		EEBFB9A4184FA8DF00DBF9FA /* Availability.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBFB9A3184FA8DF00DBF9FA /* Availability.json */; };
 		EEBFB9A8184FAA5100DBF9FA /* AvailibilityDecember2013.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBFB9A7184FAA5100DBF9FA /* AvailibilityDecember2013.json */; };
 		EEBFB9AA184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json in Resources */ = {isa = PBXBuildFile; fileRef = EEBFB9A9184FABA500DBF9FA /* AvailabilityOptionsFirstForDate.json */; };
@@ -147,14 +153,20 @@
 			dstSubfolderSpec = 16;
 			files = (
 				EEB32C911847C9AB006045AF /* iOS-api.h in CopyFiles */,
-				EEB32C37184754CC006045AF /* _TXHProduct.h in CopyFiles */,
-				EEB32C38184754CC006045AF /* _TXHSupplier.h in CopyFiles */,
-				EEB32C39184754CC006045AF /* _TXHUser.h in CopyFiles */,
+				EEBC86FC189AA90900AA09E9 /* _TXHAvailability.h in CopyFiles */,
+				EEBC86FD189AA90C00AA09E9 /* _TXHProduct.h in CopyFiles */,
+				EEBC86FE189AA90F00AA09E9 /* _TXHSupplier.h in CopyFiles */,
+				EEBC86FF189AA91200AA09E9 /* _TXHTier.h in CopyFiles */,
+				EEBC8700189AA91600AA09E9 /* _TXHUpgrade.h in CopyFiles */,
+				EEBC8701189AA91A00AA09E9 /* _TXHUser.h in CopyFiles */,
+				EEBC86F9189AA8AA00AA09E9 /* TXHAvailability.h in CopyFiles */,
+				EEBC86FA189AA8B500AA09E9 /* TXHTier.h in CopyFiles */,
 				EEB32C29184753DD006045AF /* TXHAPIError.h in CopyFiles */,
 				EEB32C2A184753DD006045AF /* TXHTicketingHubClient.h in CopyFiles */,
 				EEB32C2B184753DD006045AF /* TXHProduct.h in CopyFiles */,
 				EEB32C2C184753DD006045AF /* TXHSupplier.h in CopyFiles */,
 				EEB32C2D184753DD006045AF /* TXHUser.h in CopyFiles */,
+				EEBC86FB189AA8BD00AA09E9 /* TXHUpgrade.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
