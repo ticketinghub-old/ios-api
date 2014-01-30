@@ -10,6 +10,9 @@
 #import "TXHTicketingHubClient.h"
 #import "TXHAPIError.h"
 
+#import "TXHAvailability.h"
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
+#import "TXHTier.h"
+#import "TXHUpgrade.h"
 #import "TXHUser.h"
