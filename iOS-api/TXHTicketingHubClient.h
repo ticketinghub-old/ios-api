@@ -76,7 +76,7 @@
  
  @warning `product` or `completion` must not be `nil`.
  */
-- (void)availabilitiesForProductId:(TXHProduct *)product from:(NSString *)from to:(NSString *)to completion:(void(^)(NSArray *availabilities, NSError *error))completion;
+- (void)availabilitiesForProduct:(TXHProduct *)product from:(NSString *)from to:(NSString *)to completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
 
 @end

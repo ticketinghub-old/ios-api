@@ -139,7 +139,7 @@ static NSString * const kVenuesEndpoint = @"venues";
     }];
 }
 
-- (void)availabilitiesForProductId:(TXHProduct *)product from:(NSString *)from to:(NSString *)to completion:(void (^)(NSArray *, NSError *))completion {
+- (void)availabilitiesForProduct:(TXHProduct *)product from:(NSString *)from to:(NSString *)to completion:(void (^)(NSArray *, NSError *))completion {
     NSParameterAssert(product);
     NSParameterAssert(completion);
 
