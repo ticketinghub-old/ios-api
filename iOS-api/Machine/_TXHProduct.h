@@ -5,6 +5,7 @@
 
 
 extern const struct TXHProductAttributes {
+	__unsafe_unretained NSString *availabilitiesUpdated;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *productId;
 } TXHProductAttributes;
@@ -23,6 +24,7 @@ extern const struct TXHProductFetchedProperties {
 
 
 
+
 @interface TXHProductID : NSManagedObjectID {}
 @end
 
@@ -31,6 +33,16 @@ extern const struct TXHProductFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (TXHProductID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSDate* availabilitiesUpdated;
+
+
+
+//- (BOOL)validateAvailabilitiesUpdated:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -93,6 +105,12 @@ extern const struct TXHProductFetchedProperties {
 @end
 
 @interface _TXHProduct (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSDate*)primitiveAvailabilitiesUpdated;
+- (void)setPrimitiveAvailabilitiesUpdated:(NSDate*)value;
+
+
 
 
 - (NSString*)primitiveName;

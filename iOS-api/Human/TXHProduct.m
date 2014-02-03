@@ -28,4 +28,10 @@ static NSString * const kNameKey = @"name";
     return product;
 }
 
+- (void)awakeFromInsert {
+    [super awakeFromInsert];
+    // This should be set for large availability updates
+    self.availabilitiesUpdated = nil;
+}
+
 @end

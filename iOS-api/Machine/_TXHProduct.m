@@ -4,6 +4,7 @@
 #import "_TXHProduct.h"
 
 const struct TXHProductAttributes TXHProductAttributes = {
+	.availabilitiesUpdated = @"availabilitiesUpdated",
 	.name = @"name",
 	.productId = @"productId",
 };
@@ -45,6 +46,13 @@ const struct TXHProductFetchedProperties TXHProductFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic availabilitiesUpdated;
+
+
 
 
 

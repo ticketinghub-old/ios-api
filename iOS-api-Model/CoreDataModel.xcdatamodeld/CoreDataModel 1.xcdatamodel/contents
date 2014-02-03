@@ -9,6 +9,7 @@
         <relationship name="tiers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tier" inverseName="availability" inverseEntity="Tier" syncable="YES"/>
     </entity>
     <entity name="Product" representedClassName="TXHProduct" syncable="YES">
+        <attribute name="availabilitiesUpdated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="productId" attributeType="String" syncable="YES"/>
         <relationship name="availabilities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Availability" inverseName="product" inverseEntity="Availability" syncable="YES"/>
@@ -50,11 +51,11 @@
         <relationship name="suppliers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Supplier" inverseName="user" inverseEntity="Supplier" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Availability" positionX="106" positionY="-45" width="128" height="133"/>
-        <element name="Product" positionX="315" positionY="9" width="128" height="103"/>
-        <element name="Supplier" positionX="259" positionY="180" width="128" height="150"/>
-        <element name="Tier" positionX="-63" positionY="54" width="128" height="178"/>
-        <element name="Upgrade" positionX="-227" positionY="99" width="128" height="133"/>
-        <element name="User" positionX="468" positionY="213" width="128" height="120"/>
+        <element name="Availability" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Product" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Supplier" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Tier" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Upgrade" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
