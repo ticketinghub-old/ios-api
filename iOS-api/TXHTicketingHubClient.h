@@ -72,7 +72,7 @@
  @param product The product for which the availibilities are to be updated - can be on any managed object context. Cannot be nil
  @param from an ISO date string for the start date of a range query.
  @param to an ISO date string for the end date of a range query.
- @param completion the completion block to run with the request is completed. The block takes two parameters, an array of TXHAvailabilities in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an erro, this containes the error object and the availabilities array is not nil (it can be empty)
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an array of TXHAvailabilities in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the availabilities array is not nil (it can be empty)
  
  @warning `product` or `completion` must not be `nil`.
  */
