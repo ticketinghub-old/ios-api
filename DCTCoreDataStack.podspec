@@ -4,6 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = 'Easily sets up a read to use core data stack.'
   s.homepage     = 'https://github.com/danielctull/DCTCoreDataStack'
   s.license      = 'BSD'
+  s.author       = { "daniel" => "daniel" }
   
   s.source       = { :git => 'https://github.com/danielctull/DCTCoreDataStack.git' }
   s.platform     = :ios, '7.0'

@@ -1,6 +1,6 @@
 platform :ios, '7.0'
 
-target "iOS-api", :exclusive => true  do
+target "iOS-api" do
    pod 'AFNetworking', '~> 2.1.0'
    pod 'DCTCoreDataStack', :podspec => '.'
 end
