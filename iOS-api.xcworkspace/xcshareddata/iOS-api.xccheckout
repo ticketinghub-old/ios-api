@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CDD9043B-350D-467D-A705-C41CAE90599E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iOS-api</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>27D6AFF8-0030-41BF-AE20-00EA40B42405</key>
+		<string>https://github.com/ticketinghub/ios-api.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iOS-api.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>27D6AFF8-0030-41BF-AE20-00EA40B42405</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ticketinghub/ios-api.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>27D6AFF8-0030-41BF-AE20-00EA40B42405</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>27D6AFF8-0030-41BF-AE20-00EA40B42405</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-api</string>
+		</dict>
+	</array>
+</dict>
+</plist>
