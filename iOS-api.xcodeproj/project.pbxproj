@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D9774BD0CA44D75AD47FCCB /* libPods-iOS-api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1752490C43436B92ED2894 /* libPods-iOS-api.a */; };
+		3E4DB46518A93D3A00F8793C /* TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18BE18439A7200CE6D5E /* TXHUser.h */; };
 		6E5CA0B60B0A400086115A07 /* libPods-iOS-apiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD264B27593482C816B5A6C /* libPods-iOS-apiTests.a */; };
 		EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DB3181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m */; };
 		EE1C01A918215007005D754A /* Seasons.json in Resources */ = {isa = PBXBuildFile; fileRef = EE1C01A818215007005D754A /* Seasons.json */; };
@@ -21,7 +22,6 @@
 		EE44712118A0057D00E5F95B /* TXHSupplier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E852183E2CA000853E73 /* TXHSupplier.h */; };
 		EE44712218A0057D00E5F95B /* TXHTier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926B11850C27800336A2D /* TXHTier.h */; };
 		EE44712318A0057D00E5F95B /* TXHUpgrade.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926B31850C27800336A2D /* TXHUpgrade.h */; };
-		EE44712418A0057D00E5F95B /* TXHUser.m in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18BF18439A7200CE6D5E /* TXHUser.m */; };
 		EE44712518A0057D00E5F95B /* _TXHAvailability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926BA1850C28C00336A2D /* _TXHAvailability.h */; };
 		EE44712618A0057D00E5F95B /* _TXHProduct.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E855183E2CA000853E73 /* _TXHProduct.h */; };
 		EE44712718A0057D00E5F95B /* _TXHSupplier.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EED7E857183E2CA000853E73 /* _TXHSupplier.h */; };
@@ -101,6 +101,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				3E4DB46518A93D3A00F8793C /* TXHUser.h in CopyFiles */,
 				EE44712C18A0059800E5F95B /* TXHAPIError.h in CopyFiles */,
 				EE44712B18A0059000E5F95B /* TXHTicketingHubClient.h in CopyFiles */,
 				EE44711F18A0057D00E5F95B /* TXHAvailability.h in CopyFiles */,
@@ -108,7 +109,6 @@
 				EE44712118A0057D00E5F95B /* TXHSupplier.h in CopyFiles */,
 				EE44712218A0057D00E5F95B /* TXHTier.h in CopyFiles */,
 				EE44712318A0057D00E5F95B /* TXHUpgrade.h in CopyFiles */,
-				EE44712418A0057D00E5F95B /* TXHUser.m in CopyFiles */,
 				EE44712518A0057D00E5F95B /* _TXHAvailability.h in CopyFiles */,
 				EE44712618A0057D00E5F95B /* _TXHProduct.h in CopyFiles */,
 				EE44712718A0057D00E5F95B /* _TXHSupplier.h in CopyFiles */,
