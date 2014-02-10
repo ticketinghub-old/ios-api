@@ -5,20 +5,16 @@ A library for interacting with the TicketingHub
 
 ### Dependencies
 
-* AFNetworking (MIT Licence), added as a submodule to the repository already
+* AFNetworking (MIT Licence)
+* DCTCoreDataStack (Copyright © 2012 Daniel Tull)
 
-If running the tests target, then there is a further dependency on Specta,
-Expecta and OHHTTPStubs which are already added as submodules.
+If running the tests target, then there is a further dependency on Specta, 
+Expecta and OHHTTPStubs.
 
-It's a good idea to add these lines to the project's pch file:
+### Installation
 
-    @import SystemConfiguration;
-    @import MobileCoreServices;
-    @import Security;
-
-Xcode 5's module support means that the relevant libraries will be included
-automatically.
-
+Project is using [cocoaPods](http://cocoapods.org) dependency manager.
+After installing cocoaPods just run "pod install" 
 
 
 
