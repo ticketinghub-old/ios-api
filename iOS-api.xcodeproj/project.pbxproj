@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D9774BD0CA44D75AD47FCCB /* libPods-iOS-api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1752490C43436B92ED2894 /* libPods-iOS-api.a */; };
 		3E4DB46518A93D3A00F8793C /* TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18BE18439A7200CE6D5E /* TXHUser.h */; };
 		6E5CA0B60B0A400086115A07 /* libPods-iOS-apiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCD264B27593482C816B5A6C /* libPods-iOS-apiTests.a */; };
+		7C87548FCE56472DA2520DE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30763511322449E59D9C1873 /* libPods.a */; };
 		EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DB3181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m */; };
 		EE1C01A918215007005D754A /* Seasons.json in Resources */ = {isa = PBXBuildFile; fileRef = EE1C01A818215007005D754A /* Seasons.json */; };
 		EE29FD5B18522F3800E83196 /* TierWithoutUpgrades.json in Resources */ = {isa = PBXBuildFile; fileRef = EE29FD5918522F3800E83196 /* TierWithoutUpgrades.json */; };
@@ -71,7 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EE67B3A8183D17CC0021B76A /* PBXContainerItemProxy */ = {
+		3EFF9A1618A97ED700E5DA47 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EEF85C5A18183D9200658409 /* Project object */;
 			proxyType = 1;
@@ -122,10 +122,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		30763511322449E59D9C1873 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E1752490C43436B92ED2894 /* libPods-iOS-api.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS-api.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4479EB46B680434BB68553EE /* Pods-iOS-apiTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-apiTests.xcconfig"; path = "Pods/Pods-iOS-apiTests.xcconfig"; sourceTree = "<group>"; };
 		5CBD043221F74DE48870A56E /* Pods-iOS-api.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS-api.xcconfig"; path = "Pods/Pods-iOS-api.xcconfig"; sourceTree = "<group>"; };
 		CCD264B27593482C816B5A6C /* libPods-iOS-apiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS-apiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50FD8A6853B4CD5AB63E74E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		EE1C01A818215007005D754A /* Seasons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Seasons.json; sourceTree = "<group>"; };
 		EE29FD5918522F3800E83196 /* TierWithoutUpgrades.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TierWithoutUpgrades.json; sourceTree = "<group>"; };
 		EE29FD5A18522F3800E83196 /* TierWithUpgrades.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TierWithUpgrades.json; sourceTree = "<group>"; };
@@ -205,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF85C6618183D9200658409 /* Foundation.framework in Frameworks */,
-				1D9774BD0CA44D75AD47FCCB /* libPods-iOS-api.a in Frameworks */,
+				7C87548FCE56472DA2520DE7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +325,7 @@
 				EEF85C6318183D9200658409 /* Products */,
 				5CBD043221F74DE48870A56E /* Pods-iOS-api.xcconfig */,
 				4479EB46B680434BB68553EE /* Pods-iOS-apiTests.xcconfig */,
+				E50FD8A6853B4CD5AB63E74E /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -344,6 +347,7 @@
 				EE67B399183D175D0021B76A /* CoreFoundation.framework */,
 				3E1752490C43436B92ED2894 /* libPods-iOS-api.a */,
 				CCD264B27593482C816B5A6C /* libPods-iOS-apiTests.a */,
+				30763511322449E59D9C1873 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -449,7 +453,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				EE67B3A9183D17CC0021B76A /* PBXTargetDependency */,
+				3EFF9A1718A97ED700E5DA47 /* PBXTargetDependency */,
 			);
 			name = "iOS-api";
 			productName = "iOS-api";
@@ -649,10 +653,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EE67B3A9183D17CC0021B76A /* PBXTargetDependency */ = {
+		3EFF9A1718A97ED700E5DA47 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EE67B397183D175D0021B76A /* iOS-api-Model */;
-			targetProxy = EE67B3A8183D17CC0021B76A /* PBXContainerItemProxy */;
+			targetProxy = 3EFF9A1618A97ED700E5DA47 /* PBXContainerItemProxy */;
 		};
 		EE689E54183E3D00000952F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -789,7 +793,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CBD043221F74DE48870A56E /* Pods-iOS-api.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DSTROOT = /tmp/iOS_api.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -798,7 +801,10 @@
 					"\"${PODS_ROOT}/Headers/AFNetworking\"",
 					"\"${PODS_ROOT}/Headers/DCTCoreDataStack\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -808,7 +814,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5CBD043221F74DE48870A56E /* Pods-iOS-api.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DSTROOT = /tmp/iOS_api.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -817,7 +822,10 @@
 					"\"${PODS_ROOT}/Headers/AFNetworking\"",
 					"\"${PODS_ROOT}/Headers/DCTCoreDataStack\"",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -839,15 +847,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "iOS-apiTests/iOS-apiTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-framework",
-					XCTest,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -865,15 +865,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iOS-apiTests/TestsPrefix.pch";
-				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "iOS-apiTests/iOS-apiTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-framework",
-					XCTest,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
