@@ -24,18 +24,14 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.1.0)
-  - DCTCoreDataStack (from `.`)
+  - DCTCoreDataStack (~> 1.1)
   - Expecta (~> 0.2.3)
   - OHHTTPStubs (~> 3.1.0)
   - Specta (~> 0.2.1)
 
-EXTERNAL SOURCES:
-  DCTCoreDataStack:
-    :podspec: .
-
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
-  DCTCoreDataStack: 492e7fd5e39a8b2971cafda5cfd60938694eef25
+  DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
   Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
   OHHTTPStubs: d67c42c0212f0883ddb8592375aa0dc00dc50a36
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
