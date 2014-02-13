@@ -318,4 +318,18 @@ static NSString * const kVenuesEndpoint = @"venues";
     return [mainContextObjects copy];
 };
 
+- (TXHUser *)currentUser
+{
+    NSFetchRequest *userRequest = [NSFetchRequest fetchRequestWithEntityName:[TXHUser entityName]];
+    
+    NSError *error;
+    NSArray *users = [self.managedObjectContext executeFetchRequest:userRequest error:&error];
+    
+    if (!users) {
+        NSLog(@"Unable to fetch users because: %@", error);
+    }
+    
+    return [users firstObject];
+}
+
 @end

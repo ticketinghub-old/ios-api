@@ -78,5 +78,10 @@
  */
 - (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
+/** Returns currently logged in user. Returns nil if no user looged in.
+
+ @return currently logged in user or nil
+ */
+- (TXHUser *)currentUser;
 
 @end
