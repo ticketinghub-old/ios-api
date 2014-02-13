@@ -23,6 +23,8 @@ static NSString * const kVenuesEndpoint = @"venues";
 #import "TXHSupplier.h"
 #import "TXHUser.h"
 
+#import "NSDate+ISO.h"
+
 @interface TXHTicketingHubClient ()
 
 @property (strong, nonatomic) DCTCoreDataStack *coreDataStack;
@@ -139,7 +141,8 @@ static NSString * const kVenuesEndpoint = @"venues";
     }];
 }
 
-- (void)availabilitiesForProduct:(TXHProduct *)product from:(NSString *)from to:(NSString *)to completion:(void (^)(NSArray *, NSError *))completion {
+- (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate completion:(void(^)(NSArray *availabilities, NSError *error))completion
+{
     NSParameterAssert(product);
     NSParameterAssert(completion);
 
@@ -152,15 +155,15 @@ static NSString * const kVenuesEndpoint = @"venues";
 
     NSDictionary *params;
 
-    if (!from && !to) {
+    if (!fromDate && !toDate) {
         params = nil;
-    } else if (from) {
-        params = @{@"date": from};
-    } else if (to) {
-        params = @{@"to": to};
+    } else if (fromDate) {
+        params = @{@"date": [fromDate isoDateString]};
+    } else if (toDate) {
+        params = @{@"to": [toDate isoDateString]};
     } else {
-        params = @{@"from": from,
-                   @"to": to};
+        params = @{@"from": [fromDate isoDateString],
+                   @"to": [toDate isoDateString]};
     }
 
     NSString *endpoint = [NSString stringWithFormat:@"products/%@/availability", localProduct.productId];
@@ -173,7 +176,7 @@ static NSString * const kVenuesEndpoint = @"venues";
         NSArray *availabilities; // This is the list of updated availabilities.
 
         if ([responseObject isKindOfClass:[NSArray class]]) {
-            availabilities = [self updateAvailabilitiesForDate:from fromArray:responseObject inProductID:product.objectID];
+            availabilities = [self updateAvailabilitiesForDate:fromDate fromArray:responseObject inProductID:product.objectID];
         } else {
             availabilities = [self updateAvailabilitiesFromDictionary:responseObject inProductID:product.objectID];
         }
@@ -260,19 +263,19 @@ static NSString * const kVenuesEndpoint = @"venues";
 }
 
 // Update the availabilities when the API returns an array
-- (NSArray *)updateAvailabilitiesForDate:(NSString *)date fromArray:(NSArray *)array inProductID:(TXHProductID *)productId {
+- (NSArray *)updateAvailabilitiesForDate:(NSDate *)date fromArray:(NSArray *)array inProductID:(TXHProductID *)productId {
     NSUInteger numberOfAvailabilities = [array count];
 
     // If the array is empty, there are not availibilities, so delete any stored values for this date and return an empty array
     if (!numberOfAvailabilities) {
-        [TXHAvailability deleteForDateIfExists:date productId:productId fromManagedObjectContext:self.importContext];
+        [TXHAvailability deleteForDateIfExists:[date isoDateString] productId:productId fromManagedObjectContext:self.importContext];
         return @[];
     }
 
     NSMutableArray *availabilities = [[NSMutableArray alloc] initWithCapacity:numberOfAvailabilities];
 
     for (NSDictionary *dict in array) {
-        TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:date withDictionary:dict productId:productId inManagedObjectContext:self.importContext];
+        TXHAvailability *availability = [TXHAvailability updateForDateCreateIfNeeded:[date isoDateString] withDictionary:dict productId:productId inManagedObjectContext:self.importContext];
         [availabilities addObject:availability];
     }
 

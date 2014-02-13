@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E4DB46518A93D3A00F8793C /* TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18BE18439A7200CE6D5E /* TXHUser.h */; };
+		3EF722D718ACC8C000E86FBE /* NSDate+ISO.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */; };
 		B876DDB016274378A1A77EF5 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104872410D26403FA500E626 /* libPods-test.a */; };
 		EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DB3181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m */; };
 		EE1C01A918215007005D754A /* Seasons.json in Resources */ = {isa = PBXBuildFile; fileRef = EE1C01A818215007005D754A /* Seasons.json */; };
@@ -123,6 +124,8 @@
 
 /* Begin PBXFileReference section */
 		104872410D26403FA500E626 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EF722D518ACC8C000E86FBE /* NSDate+ISO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+ISO.h"; path = "Classes/NSDate+ISO.h"; sourceTree = "<group>"; };
+		3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+ISO.m"; path = "Classes/NSDate+ISO.m"; sourceTree = "<group>"; };
 		6D08F867AC524A9BBF9B4173 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C6B38C5037A349A8B3384700 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		DBF275EF2FB24D9098ECDDBE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -404,6 +407,8 @@
 		EEF85C911818446F00658409 /* Private Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3EF722D518ACC8C000E86FBE /* NSDate+ISO.h */,
+				3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */,
 			);
 			name = "Private Classes";
 			sourceTree = "<group>";
@@ -612,6 +617,7 @@
 			files = (
 				EED7E85A183E2CA000853E73 /* TXHSupplier.m in Sources */,
 				EED7E85C183E2CA000853E73 /* _TXHSupplier.m in Sources */,
+				3EF722D718ACC8C000E86FBE /* NSDate+ISO.m in Sources */,
 				EE4926C21850C2A000336A2D /* _TXHUpgrade.m in Sources */,
 				EEF85C8E181840A100658409 /* TXHTicketingHubClient.m in Sources */,
 				EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */,

@@ -70,13 +70,13 @@
  If `from` and `to` are `nil`, the generic availabilities call is made. If only `from` is given, the availbilities for that date only are provided. If only `to` is given, the range of availabilities from today to that date is given. For the options first calls, just pass the date in the from parameter.
 
  @param product The product for which the availibilities are to be updated - can be on any managed object context. Cannot be nil
- @param from an ISO date string for the start date of a range query.
- @param to an ISO date string for the end date of a range query.
+ @param fromDate the start date of a range query.
+ @param toDate the end date of a range query.
  @param completion the completion block to run with the request is completed. The block takes two parameters, an array of TXHAvailabilities in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the availabilities array is not nil (it can be empty)
  
  @warning `product` or `completion` must not be `nil`.
  */
-- (void)availabilitiesForProduct:(TXHProduct *)product from:(NSString *)from to:(NSString *)to completion:(void(^)(NSArray *availabilities, NSError *error))completion;
+- (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
 
 @end
