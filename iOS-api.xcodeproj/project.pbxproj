@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		3ECE131D18B4AE8700E7148F /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3ECE131E18B4AE8700E7148F /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				3ECE132118B4AE9200E7148F /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		3E4DB46518A93D3A00F8793C /* TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18BE18439A7200CE6D5E /* TXHUser.h */; };
 		3E4EE8B018AD0C66000BF0C8 /* TXHTier+PriceFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EE8AF18AD0C66000BF0C8 /* TXHTier+PriceFormatter.m */; };
@@ -449,6 +463,7 @@
 				EE67B394183D175D0021B76A /* Sources */,
 				EE67B395183D175D0021B76A /* Frameworks */,
 				EE67B396183D175D0021B76A /* Resources */,
+				3ECE131C18B42DE000E7148F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -524,6 +539,7 @@
 				EEF85C6118183D9200658409 /* iOS-api */,
 				EEF85C7118183D9200658409 /* iOS-apiTests */,
 				EE67B397183D175D0021B76A /* iOS-api-Model */,
+				3ECE131D18B4AE8700E7148F /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -587,6 +603,32 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Pods-test-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3ECE131C18B42DE000E7148F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+		3ECE132118B4AE9200E7148F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mogenerator -m iOS-api-Model/CoreDataModel.xcdatamodeld -M iOS-api/Machine -H iOS-api/Human --template-var arc=true";
 		};
 		458ED211C5464649BF5F1DC1 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -704,6 +746,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3ECE131F18B4AE8700E7148F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3ECE132018B4AE8700E7148F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		EE67B3A3183D175D0021B76A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -916,6 +972,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3ECE131E18B4AE8700E7148F /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ECE131F18B4AE8700E7148F /* Debug */,
+				3ECE132018B4AE8700E7148F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		EE67B3A2183D175D0021B76A /* Build configuration list for PBXNativeTarget "iOS-api-Model" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
