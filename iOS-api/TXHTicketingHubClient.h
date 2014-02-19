@@ -65,6 +65,15 @@
  */
 - (void)updateUser:(TXHUser *)user completion:(void(^)(TXHUser *user, NSError *error))completion;
 
+/** Update the tiers for a product.
+
+ @param product The product for which the tiers are to be updated - can be on any managed object context. Cannot be nil
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an array of TXHTiers in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the tiers array is not nil (it can be empty)
+ 
+ @warning `product` or `completion` must not be `nil`.
+ */
+- (void)tiersForProduct:(TXHProduct *)product completion:(void(^)(NSArray *availabilities, NSError *error))completion; // TODO: documentation and test
+
 /** Update the availabilities for a product for a day or a range of days.
  
  If `from` and `to` are `nil`, the generic availabilities call is made. If only `from` is given, the availbilities for that date only are provided. If only `to` is given, the range of availabilities from today to that date is given. For the options first calls, just pass the date in the from parameter.

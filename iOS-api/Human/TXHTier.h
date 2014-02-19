@@ -22,4 +22,7 @@
  */
 + (instancetype)tierWithID:(NSString *)tierID inManagedObjectContext:(NSManagedObjectContext *)moc;
 
+// TODO: documentation and test
++ (void)deleteTiersForProductId:(NSManagedObjectID *)productId fromManagedObjectContext:(NSManagedObjectContext *)moc;
+
 @end

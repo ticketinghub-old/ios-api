@@ -1,6 +1,7 @@
 #import "TXHTier.h"
 
 #import "TXHUpgrade.h"
+#import "TXHProduct.h"
 
 
 @interface TXHTier ()
@@ -57,6 +58,30 @@
     return [tiers firstObject];
 }
 
++ (void)deleteTiersForProductId:(NSManagedObjectID *)productId fromManagedObjectContext:(NSManagedObjectContext *)moc {
+    NSParameterAssert(productId);
+    NSParameterAssert(moc);
+    
+    TXHProduct *product = (TXHProduct *)[moc existingObjectWithID:productId error:NULL];
+    
+    static NSPredicate *formattedPredicate = nil;
+    if (!formattedPredicate) {
+        formattedPredicate = [NSPredicate predicateWithFormat:@"product == $PRODUCT"];
+    }
+    NSDictionary *variables = @{@"PRODUCT" : product};
+    
+    NSPredicate *predicate = [formattedPredicate predicateWithSubstitutionVariables:variables];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+    [request setPredicate:predicate];
+    
+    NSArray *tiers = [moc executeFetchRequest:request error:NULL];
+    
+    for (TXHTier *tier in tiers)
+    {
+        [moc deleteObject:tier];
+    }
+}
+
 #pragma mark - Private
 
 // Create the object in the managed object context from the dictionary
@@ -100,5 +125,6 @@
     }
     
 }
+
 
 @end

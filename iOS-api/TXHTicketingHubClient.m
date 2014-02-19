@@ -22,6 +22,7 @@ static NSString * const kVenuesEndpoint = @"venues";
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
 #import "TXHUser.h"
+#import "TXHTier.h"
 
 #import "NSDate+ISO.h"
 
@@ -139,6 +140,48 @@ static NSString * const kVenuesEndpoint = @"venues";
         NSLog(@"Unable to get the user because: %@", error);
         completion(nil, error);
     }];
+}
+
+- (void)tiersForProduct:(TXHProduct *)product completion:(void(^)(NSArray *availabilities, NSError *error))completion
+{
+    NSParameterAssert(product);
+    NSParameterAssert(completion);
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    TXHProduct *localProduct = (TXHProduct *)[moc existingObjectWithID:product.objectID error:NULL];
+    
+    NSString *tokenString = [NSString stringWithFormat:@"Bearer %@", localProduct.supplier.accessToken];
+    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:tokenString];
+
+    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tiers", localProduct.productId];
+    
+    [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSArray *tiers;
+        
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            tiers = [self updateTiersFromArray:responseObject inProductID:product.objectID];
+        } else {
+            tiers = [self updateTiresFromDictionary:responseObject inProductID:product.objectID];
+        }
+        
+        NSError *error;
+        BOOL success = [moc save:&error];
+        
+        if (!success) {
+            completion(nil, error);
+            return;
+        }
+        
+        completion([self objectsInMainManagedObjectContext:tiers], nil);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Unable to get the user because: %@", error);
+        completion(nil, error);
+    }];
+    
+
 }
 
 - (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate completion:(void(^)(NSArray *availabilities, NSError *error))completion
@@ -262,6 +305,8 @@ static NSString * const kVenuesEndpoint = @"venues";
     return [suppliers copy];
 }
 
+#pragma mark - updating availabilities (extract)
+
 // Update the availabilities when the API returns an array
 - (NSArray *)updateAvailabilitiesForDate:(NSDate *)date fromArray:(NSArray *)array inProductID:(TXHProductID *)productId {
     NSUInteger numberOfAvailabilities = [array count];
@@ -300,6 +345,47 @@ static NSString * const kVenuesEndpoint = @"venues";
 
     return availabilities;
 
+}
+
+#pragma mark - updating tiers (extract)
+
+// Update the availabilities when the API returns an array
+- (NSArray *)updateTiersFromArray:(NSArray *)array inProductID:(TXHProductID *)productId {
+    NSUInteger numberOfTiers = [array count];
+    
+    // If the array is empty, there are not availibilities, so delete any stored values for this date and return an empty array
+    if (!numberOfTiers) {
+        [TXHTier deleteTiersForProductId:productId fromManagedObjectContext:self.importContext];
+        return @[];
+    }
+    
+    NSMutableArray *tiers = [[NSMutableArray alloc] initWithCapacity:numberOfTiers];
+    
+    for (NSDictionary *dict in array) {
+        TXHTier *tier = [TXHTier updateWithDictionaryCreateIfNeeded:dict inManagedObjectContext:self.importContext];
+        [tiers addObject:tier];
+    }
+    
+    return tiers;
+}
+
+// Update the availabilities when the API returns a dictionary
+- (NSArray *)updateTiresFromDictionary:(NSDictionary *)dictionary inProductID:(TXHProductID *)productId {
+    NSMutableArray *tiers = [[NSMutableArray alloc] initWithCapacity:[dictionary count]];
+    
+    [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        NSString *date = key;
+        if ([obj count]) {
+            for (NSDictionary *dict in obj) {
+                TXHTier *tier = [TXHTier updateWithDictionaryCreateIfNeeded:dict inManagedObjectContext:self.importContext];
+                [tiers addObject:tier];
+            }
+        } else {
+            [TXHAvailability deleteForDateIfExists:date productId:productId fromManagedObjectContext:self.importContext];
+        }
+    }];
+    
+    return tiers;
 }
 
 - (NSArray *)objectsInMainManagedObjectContext:(NSArray *)managedObjects {
