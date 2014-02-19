@@ -19,7 +19,7 @@
     TXHSupplier *suplier = self.availability.product.supplier;
     NSNumberFormatter *formatter = [TXHNUMBERFORMATTERCACHE formatterForSuplier:suplier];
     
-    return [formatter stringFromNumber:self.price];
+    return [formatter stringFromNumber:@(self.priceValue / 100)];
 }
 
 @end
