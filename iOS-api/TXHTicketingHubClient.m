@@ -200,9 +200,9 @@ static NSString * const kVenuesEndpoint = @"venues";
 
     if (!fromDate && !toDate) {
         params = nil;
-    } else if (fromDate) {
+    } else if (fromDate && !toDate) {
         params = @{@"date": [fromDate isoDateString]};
-    } else if (toDate) {
+    } else if (toDate && !fromDate) {
         params = @{@"to": [toDate isoDateString]};
     } else {
         params = @{@"from": [fromDate isoDateString],
