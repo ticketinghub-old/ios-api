@@ -628,7 +628,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mogenerator -m iOS-api-Model/CoreDataModel.xcdatamodeld -M iOS-api/Machine -H iOS-api/Human --template-var arc=true";
+			shellScript = "/usr/local/bin/mogenerator -m iOS-api-Model/CoreDataModel.xcdatamodeld -M iOS-api/Machine -H iOS-api/Human --template-var arc=true";
 		};
 		458ED211C5464649BF5F1DC1 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
