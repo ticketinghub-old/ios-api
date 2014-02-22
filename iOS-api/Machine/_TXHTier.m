@@ -14,7 +14,7 @@ const struct TXHTierAttributes TXHTierAttributes = {
 };
 
 const struct TXHTierRelationships TXHTierRelationships = {
-	.availability = @"availability",
+	.availabilities = @"availabilities",
 	.upgrades = @"upgrades",
 };
 
@@ -199,8 +199,17 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 
 
 
-@dynamic availability;
+@dynamic availabilities;
 
+	
+- (NSMutableSet*)availabilitiesSet {
+	[self willAccessValueForKey:@"availabilities"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"availabilities"];
+  
+	[self didAccessValueForKey:@"availabilities"];
+	return result;
+}
 	
 
 @dynamic upgrades;
@@ -220,26 +229,5 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 
 
 
-
-#if TARGET_OS_IPHONE
-
-
-
-
-- (NSFetchedResultsController*)newUpgradesFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors {
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
-	
-	fetchRequest.entity = [NSEntityDescription entityForName:@"Upgrade" inManagedObjectContext:self.managedObjectContext];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"tier == %@", self];
-	fetchRequest.sortDescriptors = sortDescriptors;
-	
-	return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-											   managedObjectContext:self.managedObjectContext
-												 sectionNameKeyPath:nil
-														  cacheName:nil];
-}
-
-
-#endif
 
 @end

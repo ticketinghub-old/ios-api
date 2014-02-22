@@ -15,7 +15,7 @@ extern const struct TXHTierAttributes {
 } TXHTierAttributes;
 
 extern const struct TXHTierRelationships {
-	__unsafe_unretained NSString *availability;
+	__unsafe_unretained NSString *availabilities;
 	__unsafe_unretained NSString *upgrades;
 } TXHTierRelationships;
 
@@ -132,9 +132,9 @@ extern const struct TXHTierFetchedProperties {
 
 
 
-@property (nonatomic, strong) TXHAvailability *availability;
+@property (nonatomic, strong) NSSet *availabilities;
 
-//- (BOOL)validateAvailability:(id*)value_ error:(NSError**)error_;
+- (NSMutableSet*)availabilitiesSet;
 
 
 
@@ -147,19 +147,14 @@ extern const struct TXHTierFetchedProperties {
 
 
 
-#if TARGET_OS_IPHONE
-
-
-
-
-- (NSFetchedResultsController*)newUpgradesFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
-
-
-#endif
-
 @end
 
 @interface _TXHTier (CoreDataGeneratedAccessors)
+
+- (void)addAvailabilities:(NSSet*)value_;
+- (void)removeAvailabilities:(NSSet*)value_;
+- (void)addAvailabilitiesObject:(TXHAvailability*)value_;
+- (void)removeAvailabilitiesObject:(TXHAvailability*)value_;
 
 - (void)addUpgrades:(NSSet*)value_;
 - (void)removeUpgrades:(NSSet*)value_;
@@ -226,8 +221,8 @@ extern const struct TXHTierFetchedProperties {
 
 
 
-- (TXHAvailability*)primitiveAvailability;
-- (void)setPrimitiveAvailability:(TXHAvailability*)value;
+- (NSMutableSet*)primitiveAvailabilities;
+- (void)setPrimitiveAvailabilities:(NSMutableSet*)value;
 
 
 
