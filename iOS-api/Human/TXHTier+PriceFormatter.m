@@ -14,9 +14,9 @@
 
 @implementation TXHTier (PriceFormatter)
 
-- (NSString *)priceString
+- (NSString *)priceStringForProduct:(TXHProduct *)product
 {
-    TXHSupplier *suplier = self.availability.product.supplier;
+    TXHSupplier *suplier = product.supplier;
     NSNumberFormatter *formatter = [TXHNUMBERFORMATTERCACHE formatterForSuplier:suplier];
     
     return [formatter stringFromNumber:@(self.priceValue / 100)];

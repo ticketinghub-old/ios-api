@@ -8,8 +8,10 @@
 
 #import "TXHTier.h"
 
+@class TXHProduct;
+
 @interface TXHTier (PriceFormatter)
 
-@property (nonatomic, readonly) NSString *priceString;
+- (NSString *)priceStringForProduct:(TXHProduct *)product;
 
 @end

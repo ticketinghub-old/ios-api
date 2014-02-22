@@ -133,7 +133,7 @@
     if (dictionary[@"tiers"]) {
         for (NSDictionary *tiersDict in dictionary[@"tiers"]) {
             TXHTier *tier = [TXHTier updateWithDictionaryCreateIfNeeded:tiersDict inManagedObjectContext:self.managedObjectContext];
-            tier.availability = self;
+            [tier addAvailabilitiesObject:self];
         }
     }
 
