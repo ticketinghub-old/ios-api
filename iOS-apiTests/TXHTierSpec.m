@@ -54,6 +54,7 @@ describe(@"creating a new object", ^{
             expect(_tier.price).to.equal(_dict[@"price"]);
             expect(_tier.size).to.equal(_dict[@"size"]);
             expect(_tier.upgrades).to.haveCountOf(1);
+            expect(_tier.internalTierId).to.equal([TXHTier generateInternalIdFromDictionary:_dict]);
         });
     });
 
@@ -102,6 +103,92 @@ describe(@"creating a new object", ^{
     });
 });
 
+describe(@"generating internal id", ^{
+    
+    __block NSDictionary *_dict;
+    __block NSString *originalHash;
+    __block NSMutableDictionary *_dictToChange;
+    
+    before(^{
+        _dict = [TestsHelper objectFromJSONFile:@"TierWithUpgrades"];
+        originalHash = [TXHTier generateInternalIdFromDictionary:_dict];
+    });
+    
+    beforeEach(^{
+        _dictToChange = [[TestsHelper objectFromJSONFile:@"TierWithUpgrades"] mutableCopy];
 
+    });
+    
+    context(@"for the same dictionary", ^{
+        it(@"generates the same hashes", ^{
+            NSString *hash_2 = [TXHTier generateInternalIdFromDictionary:_dict];
+            expect(originalHash).to.equal(hash_2);
+        });
+    });
+    
+    context(@"for equal but differne dictionaries", ^{
+        it(@"generates the same hashes", ^{
+            NSString *hash_2 = [TXHTier generateInternalIdFromDictionary:[_dict copy]];
+            expect(originalHash).to.equal(hash_2);
+        });
+    });
+    
+    context(@"for not equal dictionaries - differnet price", ^{
+        it(@"generates differnet hashes", ^{
+            
+            expect(_dict[@"price"]).to.equal(@1000);
+            _dictToChange[@"price"] = @1001;
+            
+            NSString *hash_2 = [TXHTier generateInternalIdFromDictionary:_dictToChange];
+            expect(originalHash).notTo.equal(hash_2);
+        });
+    });
+    
+    context(@"for not equal dictionaries - differnet seq_id", ^{
+        it(@"generates differnet hashes", ^{
+            
+            _dictToChange[@"seq_id"] = @2;
+            expect(_dict[@"seq_id"]).to.equal(@1);
+            
+            NSString *hash_2 = [TXHTier generateInternalIdFromDictionary:_dictToChange];
+            expect(originalHash).notTo.equal(hash_2);
+        });
+    });
+
+    context(@"for not equal dictionaries - differnet dicsount", ^{
+        it(@"generates differnet hashes", ^{
+            
+            expect(_dict[@"discount"]).to.equal(@0);
+            _dictToChange[@"discount"] = @1;
+
+            NSString *hash_2 = [TXHTier generateInternalIdFromDictionary:_dictToChange];
+            expect(originalHash).notTo.equal(hash_2);
+        });
+    });
+    
+    context(@"for not equal dictionaries - differnet limit", ^{
+        it(@"generates differnet hashes", ^{
+            
+            _dictToChange[@"limit"] = @11;
+            expect(_dict[@"limit"]).to.equal(@10);
+            
+            NSString *hash_2 = [TXHTier generateInternalIdFromDictionary:_dictToChange];
+            expect(originalHash).notTo.equal(hash_2);
+        });
+    });
+    
+    context(@"for not equal dictionaries - differnet upgrades", ^{
+        it(@"generates differnet hashes", ^{
+            
+            NSDictionary *tierDictWithUpgrades = [TestsHelper objectFromJSONFile:@"TierWithUpgrades"];
+            NSDictionary *tierDictWithoutUpgrades = [TestsHelper objectFromJSONFile:@"TierWithoutUpgrades"];
+            
+            NSString *hash_1 = [TXHTier generateInternalIdFromDictionary:tierDictWithUpgrades];
+            NSString *hash_2 = [TXHTier generateInternalIdFromDictionary:tierDictWithoutUpgrades];
+            expect(hash_1).notTo.equal(hash_2);
+        });
+    });
+
+});
 
 SpecEnd

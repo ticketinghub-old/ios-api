@@ -20,7 +20,9 @@
         return nil; // Nothing to do here
     }
 
-    TXHUpgrade *upgrade = [self upgradeWithID:dict[@"id"] inManagedObjectContext:moc];
+    NSString *internalID = [self generateInternalIdFromDictionary:dict];
+    
+    TXHUpgrade *upgrade = [self upgradeWithInternalID:internalID inManagedObjectContext:moc];
 
     if (!upgrade) {
         upgrade = [TXHUpgrade createWithDictionary:dict inManagedObjectContext:moc];;
@@ -52,7 +54,30 @@
     }
 
     return [upgrades firstObject];
+}
 
++ (instancetype)upgradeWithInternalID:(NSString *)internalUpgradeID inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    NSParameterAssert(internalUpgradeID);
+    NSParameterAssert(moc);
+    
+    static NSPredicate *formattedPredicate = nil;
+    if (!formattedPredicate) {
+        formattedPredicate = [NSPredicate predicateWithFormat:@"internalUpgradeId == $INTERNAL_UPGRADE_ID"];
+    }
+    
+    NSDictionary *variables = @{@"INTERNAL_UPGRADE_ID": internalUpgradeID};
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+    [request setPredicate:[formattedPredicate predicateWithSubstitutionVariables:variables]];
+    
+    NSArray *upgrades = [moc executeFetchRequest:request error:NULL];
+    
+    if (!upgrades) {
+        return nil;
+    }
+    
+    return [upgrades firstObject];
 }
 
 + (instancetype)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
@@ -64,6 +89,9 @@
     }
 
     TXHUpgrade *upgrade = [TXHUpgrade insertInManagedObjectContext:moc];
+    NSString *internalID = [self generateInternalIdFromDictionary:dict];
+
+    upgrade.internalUpgradeId = internalID;
     [upgrade updateWithDictionary:dict];
 
     return upgrade;
@@ -77,7 +105,15 @@
     self.upgradeId = dict[@"id"];
     self.name = dict[@"name"];
     self.price = dict[@"price"];
-
 }
+
++ (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict
+{
+    NSString *tierId = dict[@"id"];
+    NSNumber *price = dict[@"price"];
+    
+    return [NSString stringWithFormat:@"%@%@",tierId,price];
+}
+
 
 @end

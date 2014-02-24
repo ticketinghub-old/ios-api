@@ -6,8 +6,6 @@
 
 @interface TXHTier ()
 
-// Private interface goes here.
-
 @end
 
 
@@ -23,7 +21,9 @@
         return nil;
     }
 
-    TXHTier *tier = [self tierWithID:dict[@"id"] inManagedObjectContext:moc];
+    NSString *internalID = [self generateInternalIdFromDictionary:dict];
+    
+    TXHTier *tier = [self tierWithInternalID:internalID inManagedObjectContext:moc];
 
     if (!tier) {
         tier = [self createWithDictionary:dict inManagedObjectContext:moc];
@@ -55,6 +55,30 @@
         return nil;
     }
 
+    return [tiers firstObject];
+}
+
++ (instancetype)tierWithInternalID:(NSString *)tierInternalID inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    NSParameterAssert(tierInternalID);
+    NSParameterAssert(moc);
+    
+    static NSPredicate *formattedPredicate = nil;
+    if (!formattedPredicate) {
+        formattedPredicate = [NSPredicate predicateWithFormat:@"internalTierId == $INTERNAL_TIER_ID"];
+    }
+    
+    NSDictionary *variables = @{@"INTERNAL_TIER_ID": tierInternalID};
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+    [request setPredicate:[formattedPredicate predicateWithSubstitutionVariables:variables]];
+    
+    NSArray *tiers = [moc executeFetchRequest:request error:NULL];
+    
+    if (!tiers) {
+        return nil;
+    }
+    
     return [tiers firstObject];
 }
 
@@ -93,7 +117,10 @@
         return nil;
     }
 
+    NSString *internalID = [self generateInternalIdFromDictionary:dict];
     TXHTier *tier = [TXHTier insertInManagedObjectContext:moc];
+    tier.internalTierId = internalID;
+
     [tier updateWithDictionary:dict];
 
     return tier;
@@ -101,6 +128,7 @@
 
 // Updates the reciever with values from the dictionary
 - (void)updateWithDictionary:(NSDictionary *)dict {
+    
     self.tierDescription = dict[@"description"];
     self.discount = dict[@"discount"];
     self.tierId = dict[@"id"];
@@ -112,7 +140,7 @@
     // If there are any current upgrades, remove them and recreate them from the dictionary
     // This is brute force for now, not sure if it will need to be optimised. Profiling will tell.
     for (TXHUpgrade *upgrade in self.upgrades) {
-        upgrade.tier = nil;
+        [upgrade removeTiersObject:self];
         [self.managedObjectContext deleteObject:upgrade];
     }
 
@@ -120,10 +148,23 @@
         NSArray *upgradeDicts = dict[@"upgrades"];
         for (NSDictionary *dict in upgradeDicts) {
             TXHUpgrade *upgrade = [TXHUpgrade createWithDictionary:dict inManagedObjectContext:self.managedObjectContext];
-            upgrade.tier = self;
+            [upgrade addTiersObject:self];
         }
     }
+}
+
++ (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict
+{
+    NSString *tierId = dict[@"id"];
+    NSString *seqID = dict[@"seq_id"];
+    NSNumber *price = dict[@"price"];
+    NSNumber *dicsount = dict[@"discount"];
+    NSNumber *limit = dict[@"limit"];
+    NSArray *upgrades = dict[@"upgrades"];
     
+    NSString *hash = [NSString stringWithFormat:@"%@%@%@%@%@%@",tierId,seqID,price,dicsount,limit,[[NSNumber numberWithInteger:upgrades.hash] stringValue]];
+    
+    return hash;
 }
 
 

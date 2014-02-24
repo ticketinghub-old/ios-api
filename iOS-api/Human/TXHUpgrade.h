@@ -22,6 +22,15 @@
  */
 + (instancetype)upgradeWithID:(NSString *)upgradeID inManagedObjectContext:(NSManagedObjectContext *)moc;
 
+/** Gets an upgrade object from it's internal ID if it exists
+ 
+ @param internalUpgradeID An NSString for internal upgrade ID
+ @param moc The managed object context in which to search for the object.
+ 
+ @return the TXHUpgrade object with the given internal ID if it exists or nil.
+ */
++ (instancetype)upgradeWithInternalID:(NSString *)internalUpgradeID inManagedObjectContext:(NSManagedObjectContext *)moc;
+
 /** Create a TXHUpgrade object from a dictionary
  
  @param dict A dictionary of key values. The keys are the raw keys from the API.
@@ -36,4 +45,6 @@
  @param dict A dictionary of key values. The keys are the raw keys from the API.
  */
 - (void)updateWithDictionary:(NSDictionary *)dict;
+
++ (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict;
 @end

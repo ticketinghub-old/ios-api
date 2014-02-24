@@ -26,22 +26,26 @@
     </entity>
     <entity name="Tier" representedClassName="TXHTier" syncable="YES">
         <attribute name="discount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="internalTierId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="limit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="seqId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="tierDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tierId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="availabilities" toMany="YES" deletionRule="Nullify" destinationEntity="Availability" inverseName="tiers" inverseEntity="Availability" syncable="YES"/>
-        <relationship name="upgrades" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Upgrade" inverseName="tier" inverseEntity="Upgrade" syncable="YES"/>
+        <relationship name="upgrades" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Upgrade" inverseName="tiers" inverseEntity="Upgrade" syncable="YES"/>
     </entity>
     <entity name="Upgrade" representedClassName="TXHUpgrade" syncable="YES">
         <attribute name="bit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalUpgradeId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="seqId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="upgradeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="upgradeId" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tier" maxCount="1" deletionRule="Nullify" destinationEntity="Tier" inverseName="upgrades" inverseEntity="Tier" syncable="YES"/>
+        <relationship name="tiers" toMany="YES" deletionRule="Nullify" destinationEntity="Tier" inverseName="upgrades" inverseEntity="Tier" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="TXHUser" syncable="YES">
         <attribute name="email" attributeType="String" syncable="YES"/>

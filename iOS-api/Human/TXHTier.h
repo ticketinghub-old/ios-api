@@ -22,7 +22,20 @@
  */
 + (instancetype)tierWithID:(NSString *)tierID inManagedObjectContext:(NSManagedObjectContext *)moc;
 
+
+/** Gets a Tier object from its internal_ID if it exists
+ 
+ @param internalTierID An NSString for the Tier ID (created from XORing hashes of: id, discount, limit, upgrades objects)
+ @param moc the managed object in which to search for the Tier object
+ 
+ @return the TXHTier object with the given ID if it exists or nil.
+ */
++ (instancetype)tierWithInternalID:(NSString *)internalTierID inManagedObjectContext:(NSManagedObjectContext *)moc;
+
+
 // TODO: documentation and test
 + (void)deleteTiersForProductId:(NSManagedObjectID *)productId fromManagedObjectContext:(NSManagedObjectContext *)moc;
+
++ (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict;
 
 @end

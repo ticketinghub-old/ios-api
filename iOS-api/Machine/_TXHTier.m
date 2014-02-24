@@ -5,9 +5,11 @@
 
 const struct TXHTierAttributes TXHTierAttributes = {
 	.discount = @"discount",
+	.internalTierId = @"internalTierId",
 	.limit = @"limit",
 	.name = @"name",
 	.price = @"price",
+	.seqId = @"seqId",
 	.size = @"size",
 	.tierDescription = @"tierDescription",
 	.tierId = @"tierId",
@@ -62,6 +64,11 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
+	if ([key isEqualToString:@"seqIdValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"seqId"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"sizeValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"size"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -95,6 +102,13 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 - (void)setPrimitiveDiscountValue:(int32_t)value_ {
 	[self setPrimitiveDiscount:[NSNumber numberWithInt:value_]];
 }
+
+
+
+
+
+@dynamic internalTierId;
+
 
 
 
@@ -153,6 +167,32 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 
 - (void)setPrimitivePriceValue:(int32_t)value_ {
 	[self setPrimitivePrice:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic seqId;
+
+
+
+- (int32_t)seqIdValue {
+	NSNumber *result = [self seqId];
+	return [result intValue];
+}
+
+- (void)setSeqIdValue:(int32_t)value_ {
+	[self setSeqId:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveSeqIdValue {
+	NSNumber *result = [self primitiveSeqId];
+	return [result intValue];
+}
+
+- (void)setPrimitiveSeqIdValue:(int32_t)value_ {
+	[self setPrimitiveSeqId:[NSNumber numberWithInt:value_]];
 }
 
 

@@ -6,9 +6,11 @@
 
 extern const struct TXHTierAttributes {
 	__unsafe_unretained NSString *discount;
+	__unsafe_unretained NSString *internalTierId;
 	__unsafe_unretained NSString *limit;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *price;
+	__unsafe_unretained NSString *seqId;
 	__unsafe_unretained NSString *size;
 	__unsafe_unretained NSString *tierDescription;
 	__unsafe_unretained NSString *tierId;
@@ -24,6 +26,8 @@ extern const struct TXHTierFetchedProperties {
 
 @class TXHAvailability;
 @class TXHUpgrade;
+
+
 
 
 
@@ -55,6 +59,16 @@ extern const struct TXHTierFetchedProperties {
 - (void)setDiscountValue:(int32_t)value_;
 
 //- (BOOL)validateDiscount:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* internalTierId;
+
+
+
+//- (BOOL)validateInternalTierId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -93,6 +107,20 @@ extern const struct TXHTierFetchedProperties {
 - (void)setPriceValue:(int32_t)value_;
 
 //- (BOOL)validatePrice:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* seqId;
+
+
+
+@property int32_t seqIdValue;
+- (int32_t)seqIdValue;
+- (void)setSeqIdValue:(int32_t)value_;
+
+//- (BOOL)validateSeqId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -175,6 +203,12 @@ extern const struct TXHTierFetchedProperties {
 
 
 
+- (NSString*)primitiveInternalTierId;
+- (void)setPrimitiveInternalTierId:(NSString*)value;
+
+
+
+
 - (NSNumber*)primitiveLimit;
 - (void)setPrimitiveLimit:(NSNumber*)value;
 
@@ -195,6 +229,15 @@ extern const struct TXHTierFetchedProperties {
 
 - (int32_t)primitivePriceValue;
 - (void)setPrimitivePriceValue:(int32_t)value_;
+
+
+
+
+- (NSNumber*)primitiveSeqId;
+- (void)setPrimitiveSeqId:(NSNumber*)value;
+
+- (int32_t)primitiveSeqIdValue;
+- (void)setPrimitiveSeqIdValue:(int32_t)value_;
 
 
 

@@ -6,20 +6,24 @@
 
 extern const struct TXHUpgradeAttributes {
 	__unsafe_unretained NSString *bit;
+	__unsafe_unretained NSString *internalUpgradeId;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *price;
+	__unsafe_unretained NSString *seqId;
 	__unsafe_unretained NSString *upgradeDescription;
 	__unsafe_unretained NSString *upgradeId;
 } TXHUpgradeAttributes;
 
 extern const struct TXHUpgradeRelationships {
-	__unsafe_unretained NSString *tier;
+	__unsafe_unretained NSString *tiers;
 } TXHUpgradeRelationships;
 
 extern const struct TXHUpgradeFetchedProperties {
 } TXHUpgradeFetchedProperties;
 
 @class TXHTier;
+
+
 
 
 
@@ -50,6 +54,16 @@ extern const struct TXHUpgradeFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* internalUpgradeId;
+
+
+
+//- (BOOL)validateInternalUpgradeId:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSString* name;
 
 
@@ -69,6 +83,20 @@ extern const struct TXHUpgradeFetchedProperties {
 - (void)setPriceValue:(int32_t)value_;
 
 //- (BOOL)validatePrice:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* seqId;
+
+
+
+@property int32_t seqIdValue;
+- (int32_t)seqIdValue;
+- (void)setSeqIdValue:(int32_t)value_;
+
+//- (BOOL)validateSeqId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -94,23 +122,22 @@ extern const struct TXHUpgradeFetchedProperties {
 
 
 
-@property (nonatomic, strong) TXHTier *tier;
+@property (nonatomic, strong) NSSet *tiers;
 
-//- (BOOL)validateTier:(id*)value_ error:(NSError**)error_;
-
-
+- (NSMutableSet*)tiersSet;
 
 
 
-#if TARGET_OS_IPHONE
 
-
-
-#endif
 
 @end
 
 @interface _TXHUpgrade (CoreDataGeneratedAccessors)
+
+- (void)addTiers:(NSSet*)value_;
+- (void)removeTiers:(NSSet*)value_;
+- (void)addTiersObject:(TXHTier*)value_;
+- (void)removeTiersObject:(TXHTier*)value_;
 
 @end
 
@@ -119,6 +146,12 @@ extern const struct TXHUpgradeFetchedProperties {
 
 - (NSString*)primitiveBit;
 - (void)setPrimitiveBit:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveInternalUpgradeId;
+- (void)setPrimitiveInternalUpgradeId:(NSString*)value;
 
 
 
@@ -138,6 +171,15 @@ extern const struct TXHUpgradeFetchedProperties {
 
 
 
+- (NSNumber*)primitiveSeqId;
+- (void)setPrimitiveSeqId:(NSNumber*)value;
+
+- (int32_t)primitiveSeqIdValue;
+- (void)setPrimitiveSeqIdValue:(int32_t)value_;
+
+
+
+
 - (NSString*)primitiveUpgradeDescription;
 - (void)setPrimitiveUpgradeDescription:(NSString*)value;
 
@@ -151,8 +193,8 @@ extern const struct TXHUpgradeFetchedProperties {
 
 
 
-- (TXHTier*)primitiveTier;
-- (void)setPrimitiveTier:(TXHTier*)value;
+- (NSMutableSet*)primitiveTiers;
+- (void)setPrimitiveTiers:(NSMutableSet*)value;
 
 
 @end
