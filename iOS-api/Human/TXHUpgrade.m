@@ -100,11 +100,11 @@
 - (void)updateWithDictionary:(NSDictionary *)dict {
     NSParameterAssert(dict);
 
-    self.bit = dict[@"bit"];
+    self.bit                = dict[@"bit"];
     self.upgradeDescription = dict[@"description"];
-    self.upgradeId = dict[@"id"];
-    self.name = dict[@"name"];
-    self.price = dict[@"price"];
+    self.upgradeId          = dict[@"id"];
+    self.name               = dict[@"name"];
+    self.price              = dict[@"price"];
 }
 
 + (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict

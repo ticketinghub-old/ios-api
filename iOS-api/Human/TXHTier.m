@@ -130,12 +130,12 @@
 - (void)updateWithDictionary:(NSDictionary *)dict {
     
     self.tierDescription = dict[@"description"];
-    self.discount = dict[@"discount"];
-    self.tierId = dict[@"id"];
-    self.limit = dict[@"limit"];
-    self.name = dict[@"name"];
-    self.price = dict[@"price"];
-    self.size = dict[@"size"];
+    self.discount        = dict[@"discount"];
+    self.tierId          = dict[@"id"];
+    self.limit           = dict[@"limit"];
+    self.name            = dict[@"name"];
+    self.price           = dict[@"price"];
+    self.size            = dict[@"size"];
 
     // If there are any current upgrades, remove them and recreate them from the dictionary
     // This is brute force for now, not sure if it will need to be optimised. Profiling will tell.
@@ -155,12 +155,12 @@
 
 + (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict
 {
-    NSString *tierId = dict[@"id"];
-    NSString *seqID = dict[@"seq_id"];
-    NSNumber *price = dict[@"price"];
+    NSString *tierId   = dict[@"id"];
+    NSString *seqID    = dict[@"seq_id"];
+    NSNumber *price    = dict[@"price"];
     NSNumber *dicsount = dict[@"discount"];
-    NSNumber *limit = dict[@"limit"];
-    NSArray *upgrades = dict[@"upgrades"];
+    NSNumber *limit    = dict[@"limit"];
+    NSArray *upgrades  = dict[@"upgrades"];
     
     NSString *hash = [NSString stringWithFormat:@"%@%@%@%@%@%@",tierId,seqID,price,dicsount,limit,[[NSNumber numberWithInteger:upgrades.hash] stringValue]];
     

@@ -1,15 +1,41 @@
 #import "TXHAddress.h"
 
+#define nilIfNSNull(x) x != [NSNull null] ? x : nil
+
+static NSString * const kBuildingKey   = @"building";
+static NSString * const kCityKey       = @"city";
+static NSString * const kCountryKey    = @"country";
+static NSString * const kFormattedKey  = @"formatted";
+static NSString * const kPostalCodeKey = @"postal_code";
+static NSString * const kRegionKey     = @"region";
+static NSString * const kStreetKey     = @"street";
+
+
 
 @interface TXHAddress ()
-
-// Private interface goes here.
 
 @end
 
 
 @implementation TXHAddress
 
-// Custom logic goes here.
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    if (![dictionary count]) {
+        return nil;
+    }
+    
+    TXHAddress *address = [TXHAddress insertInManagedObjectContext:moc];
+
+    address.building    = nilIfNSNull(dictionary[kBuildingKey]);
+    address.city        = nilIfNSNull(dictionary[kCityKey]);
+    address.country     = nilIfNSNull(dictionary[kCountryKey]);
+    address.formatted   = nilIfNSNull(dictionary[kFormattedKey]);
+    address.postal_code = nilIfNSNull(dictionary[kPostalCodeKey]);
+    address.region      = nilIfNSNull(dictionary[kRegionKey]);
+    address.street      = nilIfNSNull(dictionary[kStreetKey]);
+    
+    return address;
+}
 
 @end

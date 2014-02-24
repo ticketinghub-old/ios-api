@@ -27,10 +27,10 @@ static NSString * const kProductsKey = @"products";
     TXHSupplier *supplier = [[self class] insertInManagedObjectContext:moc];
 
     // These values are all required, so they should be provided by the API
-    supplier.accessToken = dictionary[kTokenKey][kAccessTokenKey];
+    supplier.accessToken  = dictionary[kTokenKey][kAccessTokenKey];
     supplier.refreshToken = dictionary[kTokenKey][kRefreshTokenKey];
-    supplier.country = dictionary[kCountryKey];
-    supplier.currency = dictionary[kCurrencyKey];
+    supplier.country      = dictionary[kCountryKey];
+    supplier.currency     = dictionary[kCurrencyKey];
     supplier.timeZoneName = dictionary[kTimeZoneKey];
 
     NSArray *products = dictionary[kProductsKey];

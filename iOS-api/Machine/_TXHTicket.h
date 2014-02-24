@@ -76,7 +76,7 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* expiresAt;
+@property (nonatomic, strong) NSString* expiresAt;
 
 
 
@@ -110,7 +110,7 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSDate* validFrom;
+@property (nonatomic, strong) NSString* validFrom;
 
 
 
@@ -165,8 +165,8 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
-- (NSDate*)primitiveExpiresAt;
-- (void)setPrimitiveExpiresAt:(NSDate*)value;
+- (NSString*)primitiveExpiresAt;
+- (void)setPrimitiveExpiresAt:(NSString*)value;
 
 
 
@@ -186,8 +186,8 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
-- (NSDate*)primitiveValidFrom;
-- (void)setPrimitiveValidFrom:(NSDate*)value;
+- (NSString*)primitiveValidFrom;
+- (void)setPrimitiveValidFrom:(NSString*)value;
 
 
 

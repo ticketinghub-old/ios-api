@@ -126,8 +126,8 @@
         return nil;
     }
 
-    self.duration = dictionary[@"duration"] != [NSNull null] ? dictionary[@"duration"] : nil;
-    self.limit = dictionary[@"limit"] != [NSNull null] ? dictionary [@"limit"] : nil;
+    self.duration   = dictionary[@"duration"] != [NSNull null] ? dictionary[@"duration"] : nil;
+    self.limit      = dictionary[@"limit"] != [NSNull null] ? dictionary [@"limit"] : nil;
     self.timeString = dictionary[@"time"] != [NSNull null] ? dictionary[@"time"] : nil;
 
     if (dictionary[@"tiers"]) {
