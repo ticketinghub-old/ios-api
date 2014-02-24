@@ -11,6 +11,7 @@ extern const struct TXHProductAttributes {
 } TXHProductAttributes;
 
 extern const struct TXHProductRelationships {
+	__unsafe_unretained NSString *address;
 	__unsafe_unretained NSString *availabilities;
 	__unsafe_unretained NSString *supplier;
 } TXHProductRelationships;
@@ -18,6 +19,7 @@ extern const struct TXHProductRelationships {
 extern const struct TXHProductFetchedProperties {
 } TXHProductFetchedProperties;
 
+@class TXHAddress;
 @class TXHAvailability;
 @class TXHSupplier;
 
@@ -68,6 +70,13 @@ extern const struct TXHProductFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHAddress *address;
+
+//- (BOOL)validateAddress:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) NSSet *availabilities;
 
 - (NSMutableSet*)availabilitiesSet;
@@ -82,16 +91,6 @@ extern const struct TXHProductFetchedProperties {
 
 
 
-
-#if TARGET_OS_IPHONE
-
-
-- (NSFetchedResultsController*)newAvailabilitiesFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
-
-
-
-
-#endif
 
 @end
 
@@ -123,6 +122,11 @@ extern const struct TXHProductFetchedProperties {
 - (void)setPrimitiveProductId:(NSString*)value;
 
 
+
+
+
+- (TXHAddress*)primitiveAddress;
+- (void)setPrimitiveAddress:(TXHAddress*)value;
 
 
 

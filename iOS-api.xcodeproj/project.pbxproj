@@ -979,6 +979,7 @@
 				3ECE132018B4AE8700E7148F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EE67B3A2183D175D0021B76A /* Build configuration list for PBXNativeTarget "iOS-api-Model" */ = {
 			isa = XCConfigurationList;

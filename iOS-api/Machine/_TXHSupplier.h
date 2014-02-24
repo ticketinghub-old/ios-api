@@ -107,16 +107,6 @@ extern const struct TXHSupplierFetchedProperties {
 
 
 
-#if TARGET_OS_IPHONE
-
-
-- (NSFetchedResultsController*)newProductsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
-
-
-
-
-#endif
-
 @end
 
 @interface _TXHSupplier (CoreDataGeneratedAccessors)

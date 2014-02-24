@@ -99,16 +99,6 @@ extern const struct TXHAvailabilityFetchedProperties {
 
 
 
-#if TARGET_OS_IPHONE
-
-
-
-
-- (NSFetchedResultsController*)newTiersFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
-
-
-#endif
-
 @end
 
 @interface _TXHAvailability (CoreDataGeneratedAccessors)

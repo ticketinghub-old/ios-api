@@ -55,17 +55,6 @@ describe(@"when creating a client", ^{
         expect(_client.sessionManager.responseSerializer).to.beKindOf([AFJSONResponseSerializer class]);
     });
 
-    it(@"has a managed object context with the required entities in the model", ^{
-        expect(_client.managedObjectContext).to.beKindOf([NSManagedObjectContext class]);
-
-        NSManagedObjectModel *model = [[_client.managedObjectContext persistentStoreCoordinator] managedObjectModel];
-        NSArray *entityNames = [[model entitiesByName] allKeys];
-
-        expect(entityNames).toNot.beNil();
-        expect(entityNames).to.haveCountOf(6);
-
-    });
-
 });
 
 describe(@"setDefaultAcceptLanguage", ^{

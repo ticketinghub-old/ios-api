@@ -109,25 +109,4 @@ const struct TXHSupplierFetchedProperties TXHSupplierFetchedProperties = {
 
 
 
-#if TARGET_OS_IPHONE
-
-
-- (NSFetchedResultsController*)newProductsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors {
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
-	
-	fetchRequest.entity = [NSEntityDescription entityForName:@"Product" inManagedObjectContext:self.managedObjectContext];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"supplier == %@", self];
-	fetchRequest.sortDescriptors = sortDescriptors;
-	
-	return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-											   managedObjectContext:self.managedObjectContext
-												 sectionNameKeyPath:nil
-														  cacheName:nil];
-}
-
-
-
-
-#endif
-
 @end
