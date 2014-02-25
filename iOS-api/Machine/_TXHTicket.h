@@ -7,7 +7,6 @@
 extern const struct TXHTicketAttributes {
 	__unsafe_unretained NSString *bitmask;
 	__unsafe_unretained NSString *code;
-	__unsafe_unretained NSString *customer;
 	__unsafe_unretained NSString *expiresAt;
 	__unsafe_unretained NSString *price;
 	__unsafe_unretained NSString *ticketId;
@@ -16,14 +15,17 @@ extern const struct TXHTicketAttributes {
 } TXHTicketAttributes;
 
 extern const struct TXHTicketRelationships {
+	__unsafe_unretained NSString *customer;
 	__unsafe_unretained NSString *order;
+	__unsafe_unretained NSString *product;
 } TXHTicketRelationships;
 
 extern const struct TXHTicketFetchedProperties {
 } TXHTicketFetchedProperties;
 
+@class TXHCustomer;
 @class TXHOrder;
-
+@class TXHProduct;
 
 
 
@@ -61,16 +63,6 @@ extern const struct TXHTicketFetchedProperties {
 
 
 //- (BOOL)validateCode:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* customer;
-
-
-
-//- (BOOL)validateCustomer:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -130,9 +122,23 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHCustomer *customer;
+
+//- (BOOL)validateCustomer:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) TXHOrder *order;
 
 //- (BOOL)validateOrder:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) TXHProduct *product;
+
+//- (BOOL)validateProduct:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -155,12 +161,6 @@ extern const struct TXHTicketFetchedProperties {
 
 - (NSString*)primitiveCode;
 - (void)setPrimitiveCode:(NSString*)value;
-
-
-
-
-- (NSString*)primitiveCustomer;
-- (void)setPrimitiveCustomer:(NSString*)value;
 
 
 
@@ -199,8 +199,18 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
+- (TXHCustomer*)primitiveCustomer;
+- (void)setPrimitiveCustomer:(TXHCustomer*)value;
+
+
+
 - (TXHOrder*)primitiveOrder;
 - (void)setPrimitiveOrder:(TXHOrder*)value;
+
+
+
+- (TXHProduct*)primitiveProduct;
+- (void)setPrimitiveProduct:(TXHProduct*)value;
 
 
 @end

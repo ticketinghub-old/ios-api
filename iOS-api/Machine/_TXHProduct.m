@@ -13,6 +13,7 @@ const struct TXHProductRelationships TXHProductRelationships = {
 	.address = @"address",
 	.availabilities = @"availabilities",
 	.supplier = @"supplier",
+	.ticket = @"ticket",
 };
 
 const struct TXHProductFetchedProperties TXHProductFetchedProperties = {
@@ -90,6 +91,10 @@ const struct TXHProductFetchedProperties TXHProductFetchedProperties = {
 	
 
 @dynamic supplier;
+
+	
+
+@dynamic ticket;
 
 	
 

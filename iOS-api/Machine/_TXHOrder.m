@@ -9,7 +9,6 @@ const struct TXHOrderAttributes TXHOrderAttributes = {
 	.coupon = @"coupon",
 	.createdAt = @"createdAt",
 	.currency = @"currency",
-	.customer = @"customer",
 	.delivery = @"delivery",
 	.expiresAt = @"expiresAt",
 	.orderId = @"orderId",
@@ -24,6 +23,7 @@ const struct TXHOrderAttributes TXHOrderAttributes = {
 
 const struct TXHOrderRelationships TXHOrderRelationships = {
 	.address = @"address",
+	.customer = @"customer",
 	.tickets = @"tickets",
 };
 
@@ -107,13 +107,6 @@ const struct TXHOrderFetchedProperties TXHOrderFetchedProperties = {
 
 
 @dynamic currency;
-
-
-
-
-
-
-@dynamic customer;
 
 
 
@@ -248,6 +241,10 @@ const struct TXHOrderFetchedProperties TXHOrderFetchedProperties = {
 
 
 @dynamic address;
+
+	
+
+@dynamic customer;
 
 	
 

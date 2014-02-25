@@ -10,7 +10,6 @@ extern const struct TXHOrderAttributes {
 	__unsafe_unretained NSString *coupon;
 	__unsafe_unretained NSString *createdAt;
 	__unsafe_unretained NSString *currency;
-	__unsafe_unretained NSString *customer;
 	__unsafe_unretained NSString *delivery;
 	__unsafe_unretained NSString *expiresAt;
 	__unsafe_unretained NSString *orderId;
@@ -25,6 +24,7 @@ extern const struct TXHOrderAttributes {
 
 extern const struct TXHOrderRelationships {
 	__unsafe_unretained NSString *address;
+	__unsafe_unretained NSString *customer;
 	__unsafe_unretained NSString *tickets;
 } TXHOrderRelationships;
 
@@ -32,8 +32,8 @@ extern const struct TXHOrderFetchedProperties {
 } TXHOrderFetchedProperties;
 
 @class TXHAddress;
+@class TXHCustomer;
 @class TXHTicket;
-
 
 
 
@@ -109,16 +109,6 @@ extern const struct TXHOrderFetchedProperties {
 
 
 //- (BOOL)validateCurrency:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* customer;
-
-
-
-//- (BOOL)validateCustomer:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -243,6 +233,13 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHCustomer *customer;
+
+//- (BOOL)validateCustomer:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) NSSet *tickets;
 
 - (NSMutableSet*)ticketsSet;
@@ -291,12 +288,6 @@ extern const struct TXHOrderFetchedProperties {
 
 - (NSString*)primitiveCurrency;
 - (void)setPrimitiveCurrency:(NSString*)value;
-
-
-
-
-- (NSString*)primitiveCustomer;
-- (void)setPrimitiveCustomer:(NSString*)value;
 
 
 
@@ -373,6 +364,11 @@ extern const struct TXHOrderFetchedProperties {
 
 - (TXHAddress*)primitiveAddress;
 - (void)setPrimitiveAddress:(TXHAddress*)value;
+
+
+
+- (TXHCustomer*)primitiveCustomer;
+- (void)setPrimitiveCustomer:(TXHCustomer*)value;
 
 
 

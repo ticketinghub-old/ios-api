@@ -6,7 +6,6 @@
 const struct TXHTicketAttributes TXHTicketAttributes = {
 	.bitmask = @"bitmask",
 	.code = @"code",
-	.customer = @"customer",
 	.expiresAt = @"expiresAt",
 	.price = @"price",
 	.ticketId = @"ticketId",
@@ -15,7 +14,9 @@ const struct TXHTicketAttributes TXHTicketAttributes = {
 };
 
 const struct TXHTicketRelationships TXHTicketRelationships = {
+	.customer = @"customer",
 	.order = @"order",
+	.product = @"product",
 };
 
 const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
@@ -67,13 +68,6 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 
 
 @dynamic code;
-
-
-
-
-
-
-@dynamic customer;
 
 
 
@@ -134,7 +128,15 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 
 
 
+@dynamic customer;
+
+	
+
 @dynamic order;
+
+	
+
+@dynamic product;
 
 	
 

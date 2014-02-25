@@ -15,9 +15,8 @@ static NSString * const kNameKey = @"name";
 #pragma mark - Set up and tear down
 
 + (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc {
-    if (![dictionary count]) {
+    if (![dictionary isKindOfClass:[NSDictionary class]] || ![dictionary count])
         return nil;
-    }
 
     TXHProduct *product = [TXHProduct insertInManagedObjectContext:moc];
 

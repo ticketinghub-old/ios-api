@@ -16,10 +16,9 @@
     NSParameterAssert(dict);
     NSParameterAssert(moc);
 
-    if (![dict count]) {
+    if (![dict isKindOfClass:[NSDictionary class]] || ![dict count])
         return nil; // Nothing to do here
-    }
-
+ 
     NSString *internalID = [self generateInternalIdFromDictionary:dict];
     
     TXHUpgrade *upgrade = [self upgradeWithInternalID:internalID inManagedObjectContext:moc];

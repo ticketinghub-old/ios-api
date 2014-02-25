@@ -19,13 +19,22 @@
         <relationship name="product" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="availabilities" inverseEntity="Product" syncable="YES"/>
         <relationship name="tiers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tier" inverseName="availabilities" inverseEntity="Tier" syncable="YES"/>
     </entity>
+    <entity name="Customer" representedClassName="TXHCustomer" syncable="YES">
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="customer" inverseEntity="Order" syncable="YES"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ticket" inverseName="customer" inverseEntity="Ticket" syncable="YES"/>
+    </entity>
     <entity name="Order" representedClassName="TXHOrder" syncable="YES">
         <attribute name="cancelledAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="confirmedAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="coupon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="customer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="delivery" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="expiresAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="orderId" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,6 +46,7 @@
         <attribute name="total" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="order" inverseEntity="Address" syncable="YES"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="order" inverseEntity="Customer" syncable="YES"/>
         <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="order" inverseEntity="Ticket" syncable="YES"/>
     </entity>
     <entity name="Product" representedClassName="TXHProduct" syncable="YES">
@@ -46,6 +56,7 @@
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="product" inverseEntity="Address" syncable="YES"/>
         <relationship name="availabilities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Availability" inverseName="product" inverseEntity="Availability" syncable="YES"/>
         <relationship name="supplier" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="products" inverseEntity="Supplier" syncable="YES"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ticket" inverseName="product" inverseEntity="Ticket" syncable="YES"/>
     </entity>
     <entity name="Supplier" representedClassName="TXHSupplier" syncable="YES">
         <attribute name="accessToken" attributeType="String" syncable="YES"/>
@@ -59,13 +70,14 @@
     <entity name="Ticket" representedClassName="TXHTicket" syncable="YES">
         <attribute name="bitmask" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="customer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="expiresAt" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ticketId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="validFrom" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="voucher" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="ticket" inverseEntity="Customer" syncable="YES"/>
         <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="tickets" inverseEntity="Order" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="ticket" inverseEntity="Product" syncable="YES"/>
     </entity>
     <entity name="Tier" representedClassName="TXHTier" syncable="YES">
         <attribute name="discount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -101,11 +113,12 @@
         <element name="Address" positionX="187" positionY="272" width="128" height="178"/>
         <element name="Availability" positionX="-83" positionY="-117" width="128" height="133"/>
         <element name="Order" positionX="394" positionY="144" width="128" height="313"/>
-        <element name="Product" positionX="-27" positionY="344" width="128" height="133"/>
+        <element name="Product" positionX="-27" positionY="344" width="128" height="148"/>
         <element name="Supplier" positionX="-288" positionY="27" width="128" height="150"/>
-        <element name="Ticket" positionX="574" positionY="281" width="128" height="178"/>
+        <element name="Ticket" positionX="601" positionY="333" width="128" height="193"/>
         <element name="Tier" positionX="333" positionY="-151" width="128" height="208"/>
         <element name="Upgrade" positionX="558" positionY="-135" width="128" height="163"/>
         <element name="User" positionX="-522" positionY="54" width="128" height="120"/>
+        <element name="Customer" positionX="594" positionY="62" width="128" height="163"/>
     </elements>
 </model>

@@ -1,7 +1,5 @@
 #import "TXHAddress.h"
 
-#define nilIfNSNull(x) x != [NSNull null] ? x : nil
-
 static NSString * const kBuildingKey   = @"building";
 static NSString * const kCityKey       = @"city";
 static NSString * const kCountryKey    = @"country";
@@ -21,9 +19,8 @@ static NSString * const kStreetKey     = @"street";
 
 + (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
 {
-    if (![dictionary count]) {
+    if (![dictionary isKindOfClass:[NSDictionary class]] || ![dictionary count])
         return nil;
-    }
     
     TXHAddress *address = [TXHAddress insertInManagedObjectContext:moc];
 

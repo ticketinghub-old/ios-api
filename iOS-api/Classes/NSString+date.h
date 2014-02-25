@@ -10,6 +10,6 @@
 
 @interface NSString (date)
 
-
+- (NSDate *)dateRepresentation;
 
 @end

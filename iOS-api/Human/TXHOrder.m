@@ -2,22 +2,26 @@
 
 #import "TXHAddress.h"
 #import "TXHTicket.h"
+#import "TXHCustomer.h"
 
-NSString * const kIdKey        = @"id";
-NSString * const kReferenceKey = @"reference";
-NSString * const kCurrencyKey  = @"currency";
-NSString * const kTotalKey     = @"total";
-NSString * const kPostageKey   = @"postage";
-NSString * const kTaxKey       = @"tax";
-NSString * const kTaxNameKey   = @"tax_name";
-NSString * const kDeliveryKey  = @"delivery";
-NSString * const kAddressKey   = @"address";
-NSString * const kCustomerKey  = @"customer";
-NSString * const kCouponKey    = @"coupon";
-NSString * const kPaymentKey   = @"payment";
-NSString * const kTicketsKey   = @"tickets";
-
-#define nilIfNSNull(x) x != [NSNull null] ? x : nil
+static NSString * const kIdKey          = @"id";
+static NSString * const kReferenceKey   = @"reference";
+static NSString * const kCurrencyKey    = @"currency";
+static NSString * const kTotalKey       = @"total";
+static NSString * const kPostageKey     = @"postage";
+static NSString * const kTaxKey         = @"tax";
+static NSString * const kTaxNameKey     = @"tax_name";
+static NSString * const kDeliveryKey    = @"delivery";
+static NSString * const kAddressKey     = @"address";
+static NSString * const kCustomerKey    = @"customer";
+static NSString * const kCouponKey      = @"coupon";
+static NSString * const kPaymentKey     = @"payment";
+static NSString * const kTicketsKey     = @"tickets";
+static NSString * const kUpdatedAtKey   = @"updated_at";
+static NSString * const kCreatedAtKey   = @"created_at";
+static NSString * const kCanceledAtKey  = @"cancelled_at";
+static NSString * const kExpiresAtKey   = @"expires_at";
+static NSString * const kConfirmedAtKey = @"confirmed_at";
 
 
 @interface TXHOrder ()
@@ -29,36 +33,82 @@ NSString * const kTicketsKey   = @"tickets";
 
 @implementation TXHOrder
 
-+ (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
++ (instancetype)updateWithDictionaryOrCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
 {
-    if (![dictionary count])
-        return nil;
+    NSString *orderId = dictionary[kIdKey];
     
-    TXHOrder *order = [TXHOrder insertInManagedObjectContext:moc];
+    TXHOrder *order = [self orderWithID:orderId inManagedObjectContext:moc];
+    if (!order) {
+        order = [TXHOrder insertInManagedObjectContext:moc];
+    }
     
-    order.orderId   = nilIfNSNull(dictionary[kIdKey]);
-    order.reference = nilIfNSNull(dictionary[kReferenceKey]);
-    order.currency  = nilIfNSNull(dictionary[kCurrencyKey]);
-    order.total     = nilIfNSNull(dictionary[kTotalKey]);
-    order.postage   = nilIfNSNull(dictionary[kPostageKey]);
-    order.tax       = nilIfNSNull(dictionary[kTaxKey]);
-    order.taxName   = nilIfNSNull(dictionary[kTaxNameKey]);
-    order.delivery  = nilIfNSNull(dictionary[kDeliveryKey]);
-//    order.coupon    = dictionary[kCouponKey];
-//    order.payment   = dictionary[kPaymentKey];
-    
-//    order.address = [TXHAddress createWithDictionary:dictionary[kAddressKey] inManagedObjectContext:moc];
-//    
-//    NSArray *tickets = dictionary[kTicketsKey];
-//    for (NSDictionary *ticketDictionary in tickets)
-//    {
-//        TXHTicket *ticket = [TXHTicket createWithDictionary:ticketDictionary inManagedObjectContext:moc];
-//        ticket.order = order;
-//    }
-    
-    // TODO: customer creation
+    [order updateWithDictionary:dictionary inManagedObjectContext:moc];
     
     return order;
+}
+
++ (instancetype)orderWithID:(NSString *)orderID inManagedObjectContext:(NSManagedObjectContext *)moc {
+    NSParameterAssert(orderID);
+    NSParameterAssert(moc);
+    
+    static NSPredicate *formattedPredicate = nil;
+    if (!formattedPredicate) {
+        formattedPredicate = [NSPredicate predicateWithFormat:@"orderId == $ORDER_ID"];
+    }
+    
+    NSDictionary *variables = @{@"ORDER_ID" : orderID};
+    
+    NSPredicate *predicate = [formattedPredicate predicateWithSubstitutionVariables:variables];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+    [request setPredicate:predicate];
+    
+    NSArray *orders = [moc executeFetchRequest:request error:NULL];
+    
+    if (!orderID) {
+        return nil;
+    }
+    
+    return [orders firstObject];
+}
+
+- (id)updateWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    if (![dictionary isKindOfClass:[NSDictionary class]] || ![dictionary count])
+        return nil;
+    
+    self.orderId     = nilIfNSNull(dictionary[kIdKey]);
+    self.reference   = nilIfNSNull(dictionary[kReferenceKey]);
+    self.currency    = nilIfNSNull(dictionary[kCurrencyKey]);
+    self.total       = nilIfNSNull(dictionary[kTotalKey]);
+    self.postage     = nilIfNSNull(dictionary[kPostageKey]);
+    self.tax         = nilIfNSNull(dictionary[kTaxKey]);
+    self.taxName     = nilIfNSNull(dictionary[kTaxNameKey]);
+    self.delivery    = nilIfNSNull(dictionary[kDeliveryKey]);
+    self.coupon      = nilIfNSNull(dictionary[kCouponKey]);
+    self.expiresAt   = nilIfNSNull(dictionary[kExpiresAtKey]);
+    self.updatedAt   = nilIfNSNull(dictionary[kUpdatedAtKey]);
+    self.createdAt   = nilIfNSNull(dictionary[kCreatedAtKey]);
+    self.cancelledAt = nilIfNSNull(dictionary[kCanceledAtKey]);
+    self.confirmedAt = nilIfNSNull(dictionary[kConfirmedAtKey]);
+    
+    NSDictionary *ticketDictionary  = nilIfNSNull(dictionary[kCustomerKey]);
+    self.customer = [TXHCustomer createWithDictionary:ticketDictionary inManagedObjectContext:moc];
+
+    NSDictionary *addressDictionary  = nilIfNSNull(dictionary[kAddressKey]);
+    self.address = [TXHAddress createWithDictionary:addressDictionary inManagedObjectContext:moc];
+
+    NSArray *tickets = nilIfNSNull(dictionary[kTicketsKey]);
+    for (NSDictionary *ticketDictionary in tickets)
+    {
+        TXHTicket *ticket = [TXHTicket createWithDictionary:ticketDictionary inManagedObjectContext:moc];
+        if (ticket)
+        {
+            ticket.order = self;
+            [self addTicketsObject:ticket];
+        }
+    }
+    
+    return self;
 }
 
 @end

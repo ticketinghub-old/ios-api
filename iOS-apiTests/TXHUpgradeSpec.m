@@ -40,23 +40,23 @@ describe(@"creating an upgrade", ^{
         it(@"can be created after checking if it exists", ^{
             TXHUpgrade *upgrade = [TXHUpgrade updateWithDictionaryCreateIfNeeded:_upgradeDict inManagedObjectContext:_moc];
             expect(upgrade).toNot.beNil();
-            expect(upgrade.bit).to.equal(_upgradeDict[@"bit"]);
-            expect(upgrade.upgradeDescription).to.equal(_upgradeDict[@"description"]);
-            expect(upgrade.upgradeId).to.equal(_upgradeDict[@"id"]);
-            expect(upgrade.name).to.equal(_upgradeDict[@"name"]);
-            expect(upgrade.price).to.equal(_upgradeDict[@"price"]);
-            expect(upgrade.internalUpgradeId).to.equal([TXHUpgrade generateInternalIdFromDictionary:_upgradeDict]);
+            expect(upgrade.bit).to.equal(@"0x1");
+            expect(upgrade.upgradeDescription).to.equal(@"test");
+            expect(upgrade.upgradeId).to.equal(@"2ae6571b-f803-48c3-9ece-2bb5614dc3f9");
+            expect(upgrade.name).to.equal(@"VIP Access");
+            expect(upgrade.price).to.equal(@1000);
+            expect(upgrade.internalUpgradeId).to.equal(@"2ae6571b-f803-48c3-9ece-2bb5614dc3f91000");
         });
 
         it(@"can be created directly", ^{
             TXHUpgrade *upgrade = [TXHUpgrade createWithDictionary:_upgradeDict inManagedObjectContext:_moc];
             expect(upgrade).toNot.beNil();
-            expect(upgrade.bit).to.equal(_upgradeDict[@"bit"]);
-            expect(upgrade.upgradeDescription).to.equal(_upgradeDict[@"description"]);
-            expect(upgrade.upgradeId).to.equal(_upgradeDict[@"id"]);
-            expect(upgrade.name).to.equal(_upgradeDict[@"name"]);
-            expect(upgrade.price).to.equal(_upgradeDict[@"price"]);
-            expect(upgrade.internalUpgradeId).to.equal([TXHUpgrade generateInternalIdFromDictionary:_upgradeDict]);
+            expect(upgrade.bit).to.equal(@"0x1");
+            expect(upgrade.upgradeDescription).to.equal(@"test");
+            expect(upgrade.upgradeId).to.equal(@"2ae6571b-f803-48c3-9ece-2bb5614dc3f9");
+            expect(upgrade.name).to.equal(@"VIP Access");
+            expect(upgrade.price).to.equal(@1000);
+            expect(upgrade.internalUpgradeId).to.equal(@"2ae6571b-f803-48c3-9ece-2bb5614dc3f91000");
         });
     });
 
@@ -110,6 +110,15 @@ describe(@"creating an upgrade", ^{
 
 describe(@"generating internal id", ^{
    
+    context(@"for source dictionary", ^{
+        it(@"generates the same hashes", ^{
+            NSString *hash_1 = @"2ae6571b-f803-48c3-9ece-2bb5614dc3f91000";
+            NSString *hash_2 = [TXHUpgrade generateInternalIdFromDictionary:_upgradeDict];
+            expect(hash_1).to.equal(hash_2);
+        });
+    });
+    
+    
     context(@"for the same dictionary", ^{
         it(@"generates the same hashes", ^{
             NSString *hash_1 = [TXHUpgrade generateInternalIdFromDictionary:_upgradeDict];

@@ -113,9 +113,8 @@
     NSParameterAssert(dict);
     NSParameterAssert(moc);
 
-    if (![dict count]) {
+    if (![dict isKindOfClass:[NSDictionary class]] || ![dict count])
         return nil;
-    }
 
     NSString *internalID = [self generateInternalIdFromDictionary:dict];
     TXHTier *tier = [TXHTier insertInManagedObjectContext:moc];

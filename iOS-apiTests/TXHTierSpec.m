@@ -46,15 +46,18 @@ describe(@"creating a new object", ^{
 
         it(@"creates the object", ^{
             expect(_tier).toNot.beFalsy();
-            expect(_tier.tierDescription).to.equal(_dict[@"description"]);
-            expect(_tier.tierId).to.equal(_dict[@"id"]);
-            expect(_tier.discount).to.equal(_dict[@"discount"]);
-            expect(_tier.limit).to.equal(_dict[@"limit"]);
-            expect(_tier.name).to.equal(_dict[@"name"]);
-            expect(_tier.price).to.equal(_dict[@"price"]);
-            expect(_tier.size).to.equal(_dict[@"size"]);
+            expect(_tier.tierDescription).to.equal(@"18 or over");
+            expect(_tier.tierId).to.equal(@"d4d9efc1-a6d7-4b3f-8023-5bd36d96a3bb");
+            expect(_tier.discount).to.equal(@0);
+            expect(_tier.limit).to.equal(@10);
+            expect(_tier.name).to.equal(@"Adult");
+            expect(_tier.price).to.equal(@1000);
+            expect(_tier.size).to.equal(@1);
+            expect(_tier.seqId).to.equal(@0);
             expect(_tier.upgrades).to.haveCountOf(1);
-            expect(_tier.internalTierId).to.equal([TXHTier generateInternalIdFromDictionary:_dict]);
+            
+            expect(_tier.internalTierId).to.equal(@"d4d9efc1-a6d7-4b3f-8023-5bd36d96a3bb110000101");
+            
         });
     });
 

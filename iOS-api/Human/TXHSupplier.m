@@ -24,6 +24,10 @@ static NSString * const kProductsKey = @"products";
 #pragma mark - Set up and tear down
 
 + (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc {
+
+    if (![dictionary isKindOfClass:[NSDictionary class]] || ![dictionary count])
+        return nil;
+    
     TXHSupplier *supplier = [[self class] insertInManagedObjectContext:moc];
 
     // These values are all required, so they should be provided by the API

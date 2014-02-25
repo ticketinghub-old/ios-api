@@ -13,6 +13,7 @@
 #import "OHHTTPStubs.h"
 
 #import "TXHOrder.h"
+#import "NSString+date.h"
 
 #import "TestsHelper.h"
 
@@ -43,17 +44,26 @@ describe(@"creating an order", ^{
     context(@"when it doesn't exist already", ^{
 
         it(@"can be created directly", ^{
-            TXHOrder *order = [TXHOrder createWithDictionary:_orderDict inManagedObjectContext:_moc];
+            TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:_orderDict inManagedObjectContext:_moc];
             expect(order).toNot.beNil();
-            expect(order.orderId).to.equal(_orderDict[kIdKey]);
-            expect(order.reference).to.equal(_orderDict[kReferenceKey]);
-            expect(order.currency).to.equal(_orderDict[kCurrencyKey]);
-            expect(order.total).to.equal(_orderDict[kTotalKey]);
-            expect(order.postage).to.equal(_orderDict[kPostageKey]);
-            expect(order.tax).to.equal(_orderDict[kTaxKey]);
-            expect(order.taxName).to.equal(_orderDict[kTaxNameKey]);
-            expect(order.delivery).to.equal(_orderDict[kDeliveryKey]);
-
+            expect(order.orderId).to.equal(@"7a79468b-490c-48d5-9553-4459fac6415f");
+            expect(order.reference).to.equal(@"XXXXX");
+            expect(order.currency).to.equal(@"GBP");
+            expect(order.total).to.equal(@5300);
+            expect(order.postage).to.equal(@0);
+            expect(order.tax).to.equal(@1060);
+            expect(order.taxName).to.equal(@"VAT");
+            expect(order.delivery).to.equal(@"electronic");
+            expect(order.address).to.beNil();
+            expect(order.customer).to.beNil();
+            expect(order.coupon).to.beNil();
+            expect(order.payment).to.beNil();
+            expect(order.expiresAt).to.equal(@"2011-11-06T18:36:37+00:00");
+            expect(order.createdAt).to.equal(@"2011-11-06T18:26:37+00:00");
+            expect(order.updatedAt).to.beNil();
+            expect(order.confirmedAt).to.beNil();
+            expect(order.cancelledAt).to.beNil();
+            
         });
         
     });

@@ -14,6 +14,7 @@ extern const struct TXHProductRelationships {
 	__unsafe_unretained NSString *address;
 	__unsafe_unretained NSString *availabilities;
 	__unsafe_unretained NSString *supplier;
+	__unsafe_unretained NSString *ticket;
 } TXHProductRelationships;
 
 extern const struct TXHProductFetchedProperties {
@@ -22,6 +23,7 @@ extern const struct TXHProductFetchedProperties {
 @class TXHAddress;
 @class TXHAvailability;
 @class TXHSupplier;
+@class TXHTicket;
 
 
 
@@ -91,6 +93,13 @@ extern const struct TXHProductFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHTicket *ticket;
+
+//- (BOOL)validateTicket:(id*)value_ error:(NSError**)error_;
+
+
+
+
 
 @end
 
@@ -137,6 +146,11 @@ extern const struct TXHProductFetchedProperties {
 
 - (TXHSupplier*)primitiveSupplier;
 - (void)setPrimitiveSupplier:(TXHSupplier*)value;
+
+
+
+- (TXHTicket*)primitiveTicket;
+- (void)setPrimitiveTicket:(TXHTicket*)value;
 
 
 @end
