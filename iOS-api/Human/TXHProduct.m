@@ -1,7 +1,10 @@
 #import "TXHProduct.h"
 
-static NSString * const kIdKey = @"id";
-static NSString * const kNameKey = @"name";
+#import "NSDateFormatter+TicketingHubFormat.h"
+
+static NSString * const kIdKey                    = @"id";
+static NSString * const kNameKey                  = @"name";
+static NSString * const kAvailabilitiesUpdatedKey = @"availabilities_updated";
 
 @interface TXHProduct ()
 
@@ -21,9 +24,9 @@ static NSString * const kNameKey = @"name";
     TXHProduct *product = [TXHProduct insertInManagedObjectContext:moc];
 
     // These are required properties, so we can expect them from the API
-    product.productId = dictionary[kIdKey];
-    product.name = dictionary[kNameKey];
-
+    product.productId             = nilIfNSNull(dictionary[kIdKey]);
+    product.name                  = nilIfNSNull(dictionary[kNameKey]);
+    product.availabilitiesUpdated = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kAvailabilitiesUpdatedKey])];
     return product;
 }
 

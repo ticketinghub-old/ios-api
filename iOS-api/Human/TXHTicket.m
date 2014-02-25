@@ -2,6 +2,7 @@
 
 #import "TXHCustomer.h"
 #import "TXHProduct.h"
+#import "NSDateFormatter+TicketingHubFormat.h"
 
 static NSString * const kIdKey        = @"id";
 static NSString * const kBitmaskKey   = @"bitmask";
@@ -33,10 +34,10 @@ static NSString * const kProductKey   = @"product";
     ticket.ticketId  = nilIfNSNull(dictionary[kIdKey]);
     ticket.bitmask   = nilIfNSNull(dictionary[kBitmaskKey]);
     ticket.code      = nilIfNSNull(dictionary[kCodeKey]);
-    ticket.expiresAt = nilIfNSNull(dictionary[kExpiresAtKey]);
     ticket.price     = nilIfNSNull(dictionary[kPriceKey]);
-    ticket.validFrom = nilIfNSNull(dictionary[kValidFromKey]);
     ticket.voucher   = nilIfNSNull(dictionary[kVoucherKey]);
+    ticket.expiresAt = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kExpiresAtKey])];
+    ticket.validFrom = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kValidFromKey])];
 
     NSDictionary *ticketDictionary  = nilIfNSNull(dictionary[kCustomerKey]);
     ticket.customer = [TXHCustomer createWithDictionary:ticketDictionary inManagedObjectContext:moc];

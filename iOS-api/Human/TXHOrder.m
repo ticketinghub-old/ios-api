@@ -3,6 +3,7 @@
 #import "TXHAddress.h"
 #import "TXHTicket.h"
 #import "TXHCustomer.h"
+#import "NSDateFormatter+TicketingHubFormat.h"
 
 static NSString * const kIdKey          = @"id";
 static NSString * const kReferenceKey   = @"reference";
@@ -85,11 +86,11 @@ static NSString * const kConfirmedAtKey = @"confirmed_at";
     self.taxName     = nilIfNSNull(dictionary[kTaxNameKey]);
     self.delivery    = nilIfNSNull(dictionary[kDeliveryKey]);
     self.coupon      = nilIfNSNull(dictionary[kCouponKey]);
-    self.expiresAt   = nilIfNSNull(dictionary[kExpiresAtKey]);
-    self.updatedAt   = nilIfNSNull(dictionary[kUpdatedAtKey]);
-    self.createdAt   = nilIfNSNull(dictionary[kCreatedAtKey]);
-    self.cancelledAt = nilIfNSNull(dictionary[kCanceledAtKey]);
-    self.confirmedAt = nilIfNSNull(dictionary[kConfirmedAtKey]);
+    self.expiresAt   = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kExpiresAtKey])];
+    self.updatedAt   = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kUpdatedAtKey])];
+    self.createdAt   = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kCreatedAtKey])];
+    self.cancelledAt = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kCanceledAtKey])];
+    self.confirmedAt = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kConfirmedAtKey])];
     
     NSDictionary *ticketDictionary  = nilIfNSNull(dictionary[kCustomerKey]);
     self.customer = [TXHCustomer createWithDictionary:ticketDictionary inManagedObjectContext:moc];

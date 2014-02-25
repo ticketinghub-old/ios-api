@@ -13,7 +13,7 @@
 #import "OHHTTPStubs.h"
 
 #import "TXHOrder.h"
-#import "NSString+date.h"
+#import "NSDateFormatter+TicketingHubFormat.h"
 
 #import "TestsHelper.h"
 
@@ -58,8 +58,8 @@ describe(@"creating an order", ^{
             expect(order.customer).to.beNil();
             expect(order.coupon).to.beNil();
             expect(order.payment).to.beNil();
-            expect(order.expiresAt).to.equal(@"2011-11-06T18:36:37+00:00");
-            expect(order.createdAt).to.equal(@"2011-11-06T18:26:37+00:00");
+            expect(order.expiresAt).to.equal([NSDateFormatter txh_dateFromString:@"2011-11-06T18:36:37+00:00"]);
+            expect(order.createdAt).to.equal([NSDateFormatter txh_dateFromString:@"2011-11-06T18:26:37+00:00"]);
             expect(order.updatedAt).to.beNil();
             expect(order.confirmedAt).to.beNil();
             expect(order.cancelledAt).to.beNil();

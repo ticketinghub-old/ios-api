@@ -64,7 +64,7 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* cancelledAt;
+@property (nonatomic, strong) NSDate* cancelledAt;
 
 
 
@@ -74,7 +74,7 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* confirmedAt;
+@property (nonatomic, strong) NSDate* confirmedAt;
 
 
 
@@ -94,7 +94,7 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* createdAt;
+@property (nonatomic, strong) NSDate* createdAt;
 
 
 
@@ -124,7 +124,7 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* expiresAt;
+@property (nonatomic, strong) NSDate* expiresAt;
 
 
 
@@ -216,7 +216,7 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* updatedAt;
+@property (nonatomic, strong) NSDate* updatedAt;
 
 
 
@@ -262,14 +262,14 @@ extern const struct TXHOrderFetchedProperties {
 @interface _TXHOrder (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveCancelledAt;
-- (void)setPrimitiveCancelledAt:(NSString*)value;
+- (NSDate*)primitiveCancelledAt;
+- (void)setPrimitiveCancelledAt:(NSDate*)value;
 
 
 
 
-- (NSString*)primitiveConfirmedAt;
-- (void)setPrimitiveConfirmedAt:(NSString*)value;
+- (NSDate*)primitiveConfirmedAt;
+- (void)setPrimitiveConfirmedAt:(NSDate*)value;
 
 
 
@@ -280,8 +280,8 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
-- (NSString*)primitiveCreatedAt;
-- (void)setPrimitiveCreatedAt:(NSString*)value;
+- (NSDate*)primitiveCreatedAt;
+- (void)setPrimitiveCreatedAt:(NSDate*)value;
 
 
 
@@ -298,8 +298,8 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
-- (NSString*)primitiveExpiresAt;
-- (void)setPrimitiveExpiresAt:(NSString*)value;
+- (NSDate*)primitiveExpiresAt;
+- (void)setPrimitiveExpiresAt:(NSDate*)value;
 
 
 
@@ -355,8 +355,8 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
-- (NSString*)primitiveUpdatedAt;
-- (void)setPrimitiveUpdatedAt:(NSString*)value;
+- (NSDate*)primitiveUpdatedAt;
+- (void)setPrimitiveUpdatedAt:(NSDate*)value;
 
 
 
