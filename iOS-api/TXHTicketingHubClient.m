@@ -23,6 +23,7 @@ static NSString * const kVenuesEndpoint = @"venues";
 #import "TXHSupplier.h"
 #import "TXHUser.h"
 #import "TXHTier.h"
+#import "TXHOrder.h"
 
 #import "NSDate+ISO.h"
 
@@ -416,6 +417,73 @@ static NSString * const kVenuesEndpoint = @"venues";
     }
     
     return [users firstObject];
+}
+
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion;
+{
+    NSParameterAssert(tierQuantities);
+    NSParameterAssert(completion);
+    
+    if (![tierQuantities count]) {
+        // TODO: make beter errors
+        completion(nil, [NSError errorWithDomain:@"" code:1 userInfo:nil]);
+        return;
+    }
+    
+    NSMutableArray *tickets = [NSMutableArray array];
+    
+    for (NSString *internalTierId in tierQuantities)
+    {
+        TXHTier *tier = [TXHTier tierWithInternalID:internalTierId inManagedObjectContext:self.importContext];
+
+        if (!tier)
+            continue;
+        
+        NSMutableDictionary *ticketInfo = [NSMutableDictionary new];
+        
+        ticketInfo[@"tier"]     = tier.tierId;
+        ticketInfo[@"date"]     = availability.dateString;
+        ticketInfo[@"time"]     = availability.timeString;
+        ticketInfo[@"product"]  = availability.product.productId;
+        ticketInfo[@"quantity"] = tierQuantities[internalTierId];
+
+        [tickets addObject:ticketInfo];
+    }
+    
+    NSDictionary *requestPayload = @{@"tickets" : tickets};
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    TXHProduct *localProduct = (TXHProduct *)[moc existingObjectWithID:availability.product.objectID error:NULL];
+    
+    NSString *tokenString = [NSString stringWithFormat:@"Bearer %@", localProduct.supplier.accessToken];
+    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:tokenString];
+    
+    NSString *endpoint = @"orders";
+    
+    [self.sessionManager POST:endpoint
+                   parameters:requestPayload
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                      
+                          TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:self.managedObjectContext];
+                          
+                          NSError *error;
+                          BOOL success = [moc save:&error];
+                          
+                          if (!success) {
+                              completion(nil, error);
+                              return;
+                          }
+                          
+                          completion(order, nil);
+                          
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                      
+                          NSLog(@"Unable to reserve tickets because: %@", error);
+                          completion(nil, error);
+                      }];
+    
 }
 
 @end

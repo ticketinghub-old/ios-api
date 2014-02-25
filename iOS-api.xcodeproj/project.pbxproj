@@ -38,6 +38,7 @@
 		3E4EE8B018AD0C66000BF0C8 /* TXHTier+PriceFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EE8AF18AD0C66000BF0C8 /* TXHTier+PriceFormatter.m */; };
 		3E4EE8B418AD1018000BF0C8 /* TXHNumberFormatterCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EE8B318AD1018000BF0C8 /* TXHNumberFormatterCache.m */; };
 		3ED7560B18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */; };
+		3ED7560E18BD0AB500D8F60B /* ClientOrderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7560D18BD0AB500D8F60B /* ClientOrderSpec.m */; };
 		3EF722D718ACC8C000E86FBE /* NSDate+ISO.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */; };
 		B876DDB016274378A1A77EF5 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104872410D26403FA500E626 /* libPods-test.a */; };
 		EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DB3181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m */; };
@@ -181,6 +182,7 @@
 		3E4EE8B318AD1018000BF0C8 /* TXHNumberFormatterCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHNumberFormatterCache.m; path = Classes/TXHNumberFormatterCache.m; sourceTree = "<group>"; };
 		3ED7560918BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+TicketingHubFormat.h"; path = "iOS-api/Classes/NSDateFormatter+TicketingHubFormat.h"; sourceTree = SOURCE_ROOT; };
 		3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+TicketingHubFormat.m"; path = "iOS-api/Classes/NSDateFormatter+TicketingHubFormat.m"; sourceTree = SOURCE_ROOT; };
+		3ED7560D18BD0AB500D8F60B /* ClientOrderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientOrderSpec.m; sourceTree = "<group>"; };
 		3EF722D518ACC8C000E86FBE /* NSDate+ISO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+ISO.h"; path = "Classes/NSDate+ISO.h"; sourceTree = "<group>"; };
 		3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+ISO.m"; path = "Classes/NSDate+ISO.m"; sourceTree = "<group>"; };
 		6D08F867AC524A9BBF9B4173 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				EEAD47611899736F005CBC67 /* ClientAvailabilitySpec.m */,
+				3ED7560D18BD0AB500D8F60B /* ClientOrderSpec.m */,
 				EE74D467182ADF34000266C3 /* ClientCreationSpec.m */,
 				EE3B6BA4183F8A2700BC7B92 /* ClientLoginSpec.m */,
 				EECAE8BA1850E11D00AC9959 /* TXHAvailabilitySpec.m */,
@@ -774,6 +777,7 @@
 				EED7E861183E3C7200853E73 /* TestsHelper.m in Sources */,
 				EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */,
 				3E2C6AB518BBCA4C005BEE6C /* TXHOrderSpec.m in Sources */,
+				3ED7560E18BD0AB500D8F60B /* ClientOrderSpec.m in Sources */,
 				EE689EB2183E6484000952F7 /* CoreDataModel.xcdatamodeld in Sources */,
 				EECAE8BD1850E81900AC9959 /* TXHUpgradeSpec.m in Sources */,
 				EEAD47621899736F005CBC67 /* ClientAvailabilitySpec.m in Sources */,

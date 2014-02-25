@@ -11,6 +11,8 @@
 @class NSManagedObjectContext;
 @class TXHUser;
 @class TXHProduct;
+@class TXHOrder;
+@class TXHAvailability;
 
 @interface TXHTicketingHubClient : NSObject
 
@@ -92,5 +94,16 @@
  @return currently logged in user or nil
  */
 - (TXHUser *)currentUser;
+
+/** Reserves ticket for selected tiers with quantities
+ 
+ @param tierQuantities dictionary with internaTierIds as keys and selectd quantities as values
+ @param availability availability for selected tickets
+
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an order object in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
+ 
+ @warning `tierQuantities` or `completion` must not be `nil`.
+ */
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
 @end

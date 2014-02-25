@@ -57,17 +57,6 @@ describe(@"when creating a client", ^{
 
 });
 
-describe(@"setDefaultAcceptLanguage", ^{
-    before(^{
-        [_client setDefaultAcceptLanguage:@"el_GR"];
-    });
-
-    it(@"passes the language setting to the session managers", ^{
-        NSString *sessionManagerAcceptLanguage = _client.sessionManager.requestSerializer.HTTPRequestHeaders[@"Accept-Language"];
-
-        expect(sessionManagerAcceptLanguage).to.equal(@"el_GR");
-    });
-});
 
 
 SpecEnd
