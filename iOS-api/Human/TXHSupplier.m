@@ -1,4 +1,5 @@
 #import "TXHSupplier.h"
+#import "TXHDefines.h"
 
 #import "TXHProduct.h"
 

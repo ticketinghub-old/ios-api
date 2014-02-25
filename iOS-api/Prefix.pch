@@ -7,5 +7,3 @@
 @import Foundation;
 @import SystemConfiguration;
 @import MobileCoreServices;
-
-#define nilIfNSNull(x) x != [NSNull null] ? x : nil

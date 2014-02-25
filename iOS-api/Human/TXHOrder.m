@@ -1,4 +1,5 @@
 #import "TXHOrder.h"
+#import "TXHDefines.h"
 
 #import "TXHAddress.h"
 #import "TXHTicket.h"

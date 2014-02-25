@@ -1,4 +1,5 @@
 #import "TXHAddress.h"
+#import "TXHDefines.h"
 
 static NSString * const kBuildingKey   = @"building";
 static NSString * const kCityKey       = @"city";

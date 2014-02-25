@@ -183,6 +183,7 @@
 		3ED7560918BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+TicketingHubFormat.h"; path = "iOS-api/Classes/NSDateFormatter+TicketingHubFormat.h"; sourceTree = SOURCE_ROOT; };
 		3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+TicketingHubFormat.m"; path = "iOS-api/Classes/NSDateFormatter+TicketingHubFormat.m"; sourceTree = SOURCE_ROOT; };
 		3ED7560D18BD0AB500D8F60B /* ClientOrderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientOrderSpec.m; sourceTree = "<group>"; };
+		3ED7561118BD159800D8F60B /* TXHDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHDefines.h; sourceTree = "<group>"; };
 		3EF722D518ACC8C000E86FBE /* NSDate+ISO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+ISO.h"; path = "Classes/NSDate+ISO.h"; sourceTree = "<group>"; };
 		3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+ISO.m"; path = "Classes/NSDate+ISO.m"; sourceTree = "<group>"; };
 		6D08F867AC524A9BBF9B4173 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -445,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				EEB32C8E1847C90E006045AF /* iOS-api.h */,
+				3ED7561118BD159800D8F60B /* TXHDefines.h */,
 				EE5B98DA1827F26D00591875 /* TXHAPIError.h */,
 				EEF85C8C181840A100658409 /* TXHTicketingHubClient.h */,
 				EEF85C8D181840A100658409 /* TXHTicketingHubClient.m */,

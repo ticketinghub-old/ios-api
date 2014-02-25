@@ -1,4 +1,5 @@
 #import "TXHUpgrade.h"
+#import "TXHDefines.h"
 
 
 @interface TXHUpgrade ()

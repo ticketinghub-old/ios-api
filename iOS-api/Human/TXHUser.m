@@ -1,5 +1,6 @@
 #import "TXHUser.h"
 #import "NSDictionary+JCSKeyMapping.h"
+#import "TXHDefines.h"
 
 
 @interface TXHUser ()

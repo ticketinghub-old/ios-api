@@ -1,4 +1,5 @@
 #import "TXHProduct.h"
+#import "TXHDefines.h"
 
 #import "NSDateFormatter+TicketingHubFormat.h"
 

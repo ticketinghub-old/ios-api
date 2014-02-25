@@ -1,4 +1,5 @@
 #import "TXHTier.h"
+#import "TXHDefines.h"
 
 #import "TXHUpgrade.h"
 #import "TXHProduct.h"

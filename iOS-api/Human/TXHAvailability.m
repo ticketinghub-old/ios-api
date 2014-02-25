@@ -1,4 +1,5 @@
 #import "TXHAvailability.h"
+#import "TXHDefines.h"
 
 #import "TXHProduct.h"
 #import "TXHTier.h"
