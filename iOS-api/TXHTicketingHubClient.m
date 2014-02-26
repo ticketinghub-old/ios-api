@@ -481,8 +481,6 @@ static NSString * const kVenuesEndpoint = @"venues";
                               return;
                           }
                           
-                          order = (TXHOrder *)[self.managedObjectContext objectWithID:order.objectID];
-                          
                           completion(order, nil);
                           
                       }
@@ -660,8 +658,6 @@ static NSString * const kVenuesEndpoint = @"venues";
                                completion(nil, error);
                                return;
                            }
-                           
-                           order = (TXHOrder *)[self.managedObjectContext objectWithID:order.objectID];
                            
                            completion(order, nil);
                        }
