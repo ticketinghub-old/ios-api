@@ -100,12 +100,13 @@ static NSString * const kConfirmedAtKey = @"confirmed_at";
     self.address = [TXHAddress createWithDictionary:addressDictionary inManagedObjectContext:moc];
 
     NSArray *tickets = nilIfNSNull(dictionary[kTicketsKey]);
+    [self removeTickets:self.tickets];
+    
     for (NSDictionary *ticketDictionary in tickets)
     {
         TXHTicket *ticket = [TXHTicket createWithDictionary:ticketDictionary inManagedObjectContext:moc];
         if (ticket)
         {
-            ticket.order = self;
             [self addTicketsObject:ticket];
         }
     }
