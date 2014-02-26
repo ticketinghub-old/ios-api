@@ -39,6 +39,7 @@
 		3E4EE8B418AD1018000BF0C8 /* TXHNumberFormatterCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EE8B318AD1018000BF0C8 /* TXHNumberFormatterCache.m */; };
 		3ED7560B18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */; };
 		3ED7560E18BD0AB500D8F60B /* ClientOrderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7560D18BD0AB500D8F60B /* ClientOrderSpec.m */; };
+		3ED7561418BD500E00D8F60B /* TXHField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7561318BD500E00D8F60B /* TXHField.m */; };
 		3EF722D718ACC8C000E86FBE /* NSDate+ISO.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */; };
 		B876DDB016274378A1A77EF5 /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 104872410D26403FA500E626 /* libPods-test.a */; };
 		EE1C019E182147DE005D754A /* NSDictionary+JCSKeyMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = EE8C3DB3181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m */; };
@@ -184,6 +185,8 @@
 		3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+TicketingHubFormat.m"; path = "iOS-api/Classes/NSDateFormatter+TicketingHubFormat.m"; sourceTree = SOURCE_ROOT; };
 		3ED7560D18BD0AB500D8F60B /* ClientOrderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientOrderSpec.m; sourceTree = "<group>"; };
 		3ED7561118BD159800D8F60B /* TXHDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXHDefines.h; sourceTree = "<group>"; };
+		3ED7561218BD500E00D8F60B /* TXHField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHField.h; path = Classes/TXHField.h; sourceTree = "<group>"; };
+		3ED7561318BD500E00D8F60B /* TXHField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHField.m; path = Classes/TXHField.m; sourceTree = "<group>"; };
 		3EF722D518ACC8C000E86FBE /* NSDate+ISO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+ISO.h"; path = "Classes/NSDate+ISO.h"; sourceTree = "<group>"; };
 		3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+ISO.m"; path = "Classes/NSDate+ISO.m"; sourceTree = "<group>"; };
 		6D08F867AC524A9BBF9B4173 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -297,6 +300,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		3ED7561518BD510F00D8F60B /* Not core data */ = {
+			isa = PBXGroup;
+			children = (
+				3ED7561218BD500E00D8F60B /* TXHField.h */,
+				3ED7561318BD500E00D8F60B /* TXHField.m */,
+			);
+			name = "Not core data";
+			sourceTree = "<group>";
+		};
 		EE67B39B183D175D0021B76A /* iOS-api-Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +349,7 @@
 		EE8C3DAD181AE0D10036AE92 /* Model Files */ = {
 			isa = PBXGroup;
 			children = (
+				3ED7561518BD510F00D8F60B /* Not core data */,
 				EED7E84F183E2CA000853E73 /* Human */,
 				EED7E854183E2CA000853E73 /* Machine */,
 			);
@@ -762,6 +775,7 @@
 				EE8C3DB4181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m in Sources */,
 				3E4EE8B418AD1018000BF0C8 /* TXHNumberFormatterCache.m in Sources */,
 				3E2C6AC718BBCA91005BEE6C /* TXHTicket.m in Sources */,
+				3ED7561418BD500E00D8F60B /* TXHField.m in Sources */,
 				EE4B18C318439A7D00CE6D5E /* _TXHUser.m in Sources */,
 				EE4B18C018439A7200CE6D5E /* TXHUser.m in Sources */,
 				3ED7560B18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m in Sources */,
