@@ -24,6 +24,9 @@ static NSString * const kVenuesEndpoint = @"venues";
 #import "TXHUser.h"
 #import "TXHTier.h"
 #import "TXHOrder.h"
+#import "TXHTicket.h"
+#import "TXHUpgrade.h"
+#import "TXHField.h"
 
 #import "NSDate+ISO.h"
 
@@ -124,6 +127,7 @@ static NSString * const kVenuesEndpoint = @"venues";
 
     NSString *tokenString = [NSString stringWithFormat:@"Bearer %@", anySupplier.accessToken];
     [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:tokenString];
+    
     [self.sessionManager GET:kUserEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [updatedUser updateWithDictionary:responseObject];
 
@@ -454,10 +458,10 @@ static NSString * const kVenuesEndpoint = @"venues";
     
     NSManagedObjectContext *moc = self.importContext;
     
-    TXHProduct *localProduct = (TXHProduct *)[moc existingObjectWithID:availability.product.objectID error:NULL];
-    
-    NSString *tokenString = [NSString stringWithFormat:@"Bearer %@", localProduct.supplier.accessToken];
-    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:tokenString];
+//    TXHProduct *localProduct = (TXHProduct *)[moc existingObjectWithID:availability.product.objectID error:NULL];
+//    
+//    NSString *tokenString = [NSString stringWithFormat:@"Bearer %@", localProduct.supplier.accessToken];
+//    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:tokenString];
     
     NSString *endpoint = @"orders";
     
@@ -465,7 +469,7 @@ static NSString * const kVenuesEndpoint = @"venues";
                    parameters:requestPayload
                       success:^(NSURLSessionDataTask *task, id responseObject) {
                       
-                          TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:self.managedObjectContext];
+                          TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
                           
                           NSError *error;
                           BOOL success = [moc save:&error];
@@ -475,6 +479,8 @@ static NSString * const kVenuesEndpoint = @"venues";
                               return;
                           }
                           
+                          order = (TXHOrder *)[self.managedObjectContext objectWithID:order.objectID];
+                          
                           completion(order, nil);
                           
                       }
@@ -483,7 +489,183 @@ static NSString * const kVenuesEndpoint = @"venues";
                           NSLog(@"Unable to reserve tickets because: %@", error);
                           completion(nil, error);
                       }];
+}
+
+- (void)removeTickets:(NSArray *)ticketIDs fromOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion
+{
+    NSParameterAssert(ticketIDs);
+    NSParameterAssert(order);
+    NSParameterAssert(completion);
     
+    if (![ticketIDs count]) {
+        // TODO: make beter errors
+        completion(order, [NSError errorWithDomain:@"" code:1 userInfo:nil]);
+        return;
+    }
+    
+    NSMutableArray *tickets = [NSMutableArray array];
+    
+    for (NSString *ticketID in ticketIDs)
+    {
+        [tickets addObject:@{@"id" : ticketID,
+                             @"_destory" : @(YES)}];
+    }
+    
+    NSDictionary *requestPayload = @{@"tickets" : tickets};
+    
+    [self PATHOrder:order withInfor:requestPayload completion:completion];
+}
+
+- (void)upgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion
+{
+    NSParameterAssert(ticket);
+    NSParameterAssert(completion);
+
+    NSString *endpoint = [NSString stringWithFormat:@"tickets/%@/upgrades", ticket.ticketId];
+    NSManagedObjectContext *moc = self.importContext;
+
+    [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSMutableArray *upgrades = [NSMutableArray array];
+        
+        if (![responseObject isKindOfClass:[NSArray class]])
+        {
+            completion(nil, [NSError errorWithDomain:@"" code:1 userInfo:nil]);
+            return;
+        }
+            
+        for (NSDictionary *dic in responseObject) {
+            TXHUpgrade *upgrade = [TXHUpgrade createWithDictionary:dic inManagedObjectContext:moc];
+            [upgrades addObject:upgrade];
+        }
+        
+        NSError *error;
+        BOOL success = [moc save:&error];
+        
+        if (!success) {
+            completion(nil, error);
+            return;
+        }
+        
+        NSArray *upgradeArray = [self objectsInMainManagedObjectContext:upgrades];
+        completion(upgradeArray,nil);
+        
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Unable to get the user because: %@", error);
+        completion(nil, error);
+    }];
+}
+
+- (void)fieldsForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *fields, NSError *error))completion
+{
+    NSParameterAssert(ticket);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [NSString stringWithFormat:@"tickets/%@/fields", ticket.ticketId];
+    
+    [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if (![responseObject isKindOfClass:[NSArray class]])
+        {
+            completion(nil, [NSError errorWithDomain:@"" code:1 userInfo:nil]);
+            return;
+        }
+        
+        NSMutableArray *fields = [NSMutableArray array];
+        
+        for (NSDictionary *fieldDic in responseObject)
+        {
+            TXHField *field = [[TXHField alloc] initWithDictionary:fieldDic];
+            if (field)
+                [fields addObject:field];
+        }
+        
+        completion(fields,nil);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"Unable to get the user because: %@", error);
+        completion(nil, error);
+    }];
+}
+
+- (void)updateOrder:(TXHOrder *)order withUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void(^)(TXHOrder *order, NSError *error))completion
+{
+    NSParameterAssert(order);
+    NSParameterAssert(upgradesInfo);
+    NSParameterAssert(completion);
+
+    if (![upgradesInfo count])
+    {
+        completion(order, nil);
+        return;
+    }
+    
+    NSMutableArray *tickets = [NSMutableArray array];
+    
+    for (NSString *ticketId in upgradesInfo) {
+        NSDictionary *dic = @{ @"id"       : ticketId,
+                               @"upgrades" : upgradesInfo[ticketId]};
+        [tickets addObject:dic];
+    }
+    
+    NSDictionary *requestPayload = @{@"tickets" : tickets};
+    
+    [self PATHOrder:order withInfor:requestPayload completion:completion];
+
+}
+
+- (void)updateOrder:(TXHOrder *)order withCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion
+{
+    NSParameterAssert(order);
+    NSParameterAssert(customersInfo);
+    NSParameterAssert(completion);
+    
+    if (![customersInfo count])
+    {
+        completion(order, [NSError errorWithDomain:@"" code:1 userInfo:nil]);
+        return;
+    }
+    
+    NSMutableArray *tickets = [NSMutableArray array];
+    
+    for (NSString *ticketId in customersInfo) {
+        NSDictionary *dic = @{ @"id"       : ticketId,
+                               @"customer" : customersInfo[ticketId]};
+        [tickets addObject:dic];
+    }
+    
+    NSDictionary *requestPayload = @{@"tickets" : tickets};
+    
+    [self PATHOrder:order withInfor:requestPayload completion:completion];
+}
+
+- (void)PATHOrder:(TXHOrder *)order withInfor:(NSDictionary *)payload completion:(void (^)(TXHOrder *, NSError *))completion
+{
+    NSString *endpoint = [NSString stringWithFormat:@"orders/%@", order.orderId];
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager PATCH:endpoint
+                    parameters:payload
+                       success:^(NSURLSessionDataTask *task, id responseObject) {
+                           TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+                           
+                           NSError *error;
+                           BOOL success = [moc save:&error];
+                           
+                           if (!success) {
+                               completion(nil, error);
+                               return;
+                           }
+                           
+                           order = (TXHOrder *)[self.managedObjectContext objectWithID:order.objectID];
+                           
+                           completion(order, nil);
+                       }
+                       failure:^(NSURLSessionDataTask *task, NSError *error) {
+                           
+                       }];
 }
 
 @end

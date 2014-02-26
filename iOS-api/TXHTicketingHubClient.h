@@ -13,6 +13,7 @@
 @class TXHProduct;
 @class TXHOrder;
 @class TXHAvailability;
+@class TXHTicket;
 
 @interface TXHTicketingHubClient : NSObject
 
@@ -105,5 +106,18 @@
  @warning `tierQuantities` or `completion` must not be `nil`.
  */
 - (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion;
+
+- (void)removeTickets:(NSArray *)tickets fromOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion;
+
+
+- (void)upgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion;
+// upgradesInfo - dictionary with ticketinfo keys and array of upgrade ids values 
+- (void)updateOrder:(TXHOrder *)order withUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void(^)(TXHOrder *order, NSError *error))completion;
+
+
+- (void)fieldsForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *fields, NSError *error))completion;
+
+//customersInfo - dictionary with ticket ids as keys and customer detail dictionary as values
+- (void)updateOrder:(TXHOrder *)order withCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion;
 
 @end
