@@ -17,6 +17,8 @@ static NSString * const kVenuesEndpoint = @"venues";
 
 #import "AFNetworkActivityIndicatorManager.h"
 #import "AFNetworking.h"
+#import "JSONResponseSerializerWithData.h"
+
 #import "TXHAPIError.h"
 #import "TXHAvailability.h"
 #import "TXHProduct.h"
@@ -280,7 +282,7 @@ static NSString * const kVenuesEndpoint = @"venues";
 + (AFHTTPSessionManager *)configuredSessionManager {
     NSURL *baseURL = [NSURL URLWithString:kAPIBaseURL];
     AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
-    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    sessionManager.responseSerializer = [JSONResponseSerializerWithData serializer];
     [sessionManager.requestSerializer setValue:[[NSLocale preferredLanguages] firstObject] forHTTPHeaderField:@"Accept-Language"];
 
     return sessionManager;
