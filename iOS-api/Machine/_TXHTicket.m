@@ -17,6 +17,7 @@ const struct TXHTicketRelationships TXHTicketRelationships = {
 	.customer = @"customer",
 	.order = @"order",
 	.product = @"product",
+	.tier = @"tier",
 };
 
 const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
@@ -137,6 +138,10 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 	
 
 @dynamic product;
+
+	
+
+@dynamic tier;
 
 	
 

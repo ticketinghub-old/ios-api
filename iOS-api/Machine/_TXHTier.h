@@ -18,6 +18,7 @@ extern const struct TXHTierAttributes {
 
 extern const struct TXHTierRelationships {
 	__unsafe_unretained NSString *availabilities;
+	__unsafe_unretained NSString *tickets;
 	__unsafe_unretained NSString *upgrades;
 } TXHTierRelationships;
 
@@ -25,6 +26,7 @@ extern const struct TXHTierFetchedProperties {
 } TXHTierFetchedProperties;
 
 @class TXHAvailability;
+@class TXHTicket;
 @class TXHUpgrade;
 
 
@@ -167,6 +169,13 @@ extern const struct TXHTierFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *tickets;
+
+- (NSMutableSet*)ticketsSet;
+
+
+
+
 @property (nonatomic, strong) NSSet *upgrades;
 
 - (NSMutableSet*)upgradesSet;
@@ -183,6 +192,11 @@ extern const struct TXHTierFetchedProperties {
 - (void)removeAvailabilities:(NSSet*)value_;
 - (void)addAvailabilitiesObject:(TXHAvailability*)value_;
 - (void)removeAvailabilitiesObject:(TXHAvailability*)value_;
+
+- (void)addTickets:(NSSet*)value_;
+- (void)removeTickets:(NSSet*)value_;
+- (void)addTicketsObject:(TXHTicket*)value_;
+- (void)removeTicketsObject:(TXHTicket*)value_;
 
 - (void)addUpgrades:(NSSet*)value_;
 - (void)removeUpgrades:(NSSet*)value_;
@@ -266,6 +280,11 @@ extern const struct TXHTierFetchedProperties {
 
 - (NSMutableSet*)primitiveAvailabilities;
 - (void)setPrimitiveAvailabilities:(NSMutableSet*)value;
+
+
+
+- (NSMutableSet*)primitiveTickets;
+- (void)setPrimitiveTickets:(NSMutableSet*)value;
 
 
 

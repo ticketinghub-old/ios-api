@@ -20,6 +20,8 @@
 #import "TXHOrder.h"
 #import "TXHProduct.h"
 #import "TXHAvailability.h"
+#import "TXHTicket.h"
+#import "TXHTier.h"
 
 // Expose internal properties of TXHTicketingHubClient
 
@@ -83,11 +85,12 @@ describe(@"initial login", ^{
             NSDictionary *quantities = @{@"t" : @1};
             
             [_client reserveTicketsWithTierQuantities:quantities availability:_availability completion:^(TXHOrder *order, NSError *error) {
+                
                 expect(order).to.notTo.beNil();
                 expect(order).to.beKindOf([TXHOrder class]);
                 expect(order.orderId).to.equal(@"7a79468b-490c-48d5-9553-4459fac6415f");
                 expect(order.tickets).to.haveCountOf(1);
-
+                expect([[(TXHTicket *)[order.tickets anyObject] tier] tierId]).to.equal(@"5913b1d7-7127-4bfe-bae5-7fbaa9cd65dc");
                 
                 done();
 

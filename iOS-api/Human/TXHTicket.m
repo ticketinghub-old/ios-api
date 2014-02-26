@@ -3,6 +3,8 @@
 
 #import "TXHCustomer.h"
 #import "TXHProduct.h"
+#import "TXHTier.h"
+
 #import "NSDateFormatter+TicketingHubFormat.h"
 
 static NSString * const kIdKey        = @"id";
@@ -14,6 +16,7 @@ static NSString * const kPriceKey     = @"price";
 static NSString * const kValidFromKey = @"valid_from";
 static NSString * const kVoucherKey   = @"voucher";
 static NSString * const kProductKey   = @"product";
+static NSString * const kTierKey      = @"tier";
 
 
 @interface TXHTicket ()
@@ -45,6 +48,9 @@ static NSString * const kProductKey   = @"product";
 
     NSDictionary *productDictionary  = nilIfNSNull(dictionary[kProductKey]);
     ticket.product = [TXHProduct createWithDictionary:productDictionary inManagedObjectContext:moc];
+    
+    NSDictionary *tierDictionary  = nilIfNSNull(dictionary[kTierKey]);
+    ticket.tier = [TXHTier updateWithDictionaryCreateIfNeeded:tierDictionary inManagedObjectContext:moc];
     
     return ticket;
 }

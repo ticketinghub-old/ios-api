@@ -78,6 +78,7 @@
         <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="ticket" inverseEntity="Customer" syncable="YES"/>
         <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="tickets" inverseEntity="Order" syncable="YES"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="ticket" inverseEntity="Product" syncable="YES"/>
+        <relationship name="tier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tier" inverseName="tickets" inverseEntity="Tier" syncable="YES"/>
     </entity>
     <entity name="Tier" representedClassName="TXHTier" syncable="YES">
         <attribute name="discount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -90,6 +91,7 @@
         <attribute name="tierDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tierId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="availabilities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Availability" inverseName="tiers" inverseEntity="Availability" syncable="YES"/>
+        <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="tier" inverseEntity="Ticket" syncable="YES"/>
         <relationship name="upgrades" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Upgrade" inverseName="tiers" inverseEntity="Upgrade" syncable="YES"/>
     </entity>
     <entity name="Upgrade" representedClassName="TXHUpgrade" syncable="YES">
@@ -110,14 +112,14 @@
         <relationship name="suppliers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Supplier" inverseName="user" inverseEntity="Supplier" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Address" positionX="187" positionY="272" width="128" height="178"/>
+        <element name="Address" positionX="162" positionY="297" width="128" height="178"/>
         <element name="Availability" positionX="-83" positionY="-117" width="128" height="133"/>
-        <element name="Customer" positionX="594" positionY="62" width="128" height="163"/>
-        <element name="Order" positionX="394" positionY="144" width="128" height="313"/>
+        <element name="Customer" positionX="828" positionY="414" width="128" height="163"/>
+        <element name="Order" positionX="367" positionY="263" width="128" height="313"/>
         <element name="Product" positionX="-27" positionY="344" width="128" height="148"/>
         <element name="Supplier" positionX="-288" positionY="27" width="128" height="148"/>
-        <element name="Ticket" positionX="601" positionY="333" width="128" height="193"/>
-        <element name="Tier" positionX="333" positionY="-151" width="128" height="208"/>
+        <element name="Ticket" positionX="592" positionY="63" width="128" height="208"/>
+        <element name="Tier" positionX="315" positionY="-133" width="128" height="223"/>
         <element name="Upgrade" positionX="558" positionY="-135" width="128" height="163"/>
         <element name="User" positionX="-522" positionY="54" width="128" height="118"/>
     </elements>

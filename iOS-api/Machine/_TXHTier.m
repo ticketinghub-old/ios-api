@@ -17,6 +17,7 @@ const struct TXHTierAttributes TXHTierAttributes = {
 
 const struct TXHTierRelationships TXHTierRelationships = {
 	.availabilities = @"availabilities",
+	.tickets = @"tickets",
 	.upgrades = @"upgrades",
 };
 
@@ -248,6 +249,19 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"availabilities"];
   
 	[self didAccessValueForKey:@"availabilities"];
+	return result;
+}
+	
+
+@dynamic tickets;
+
+	
+- (NSMutableSet*)ticketsSet {
+	[self willAccessValueForKey:@"tickets"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"tickets"];
+  
+	[self didAccessValueForKey:@"tickets"];
 	return result;
 }
 	
