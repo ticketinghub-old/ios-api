@@ -667,7 +667,9 @@ static NSString * const kVenuesEndpoint = @"venues";
                        }
                        failure:^(NSURLSessionDataTask *task, NSError *error) {
                            NSDictionary *dic =  error.userInfo[JSONResponseSerializerWithDataKey];
-                           TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:dic inManagedObjectContext:moc];
+                           TXHOrder *order;
+                           if (dic)
+                               order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:dic inManagedObjectContext:moc];
                            completion(order, error);
                        }];
 }

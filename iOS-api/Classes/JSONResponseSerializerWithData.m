@@ -18,14 +18,11 @@ NSString * const JSONResponseSerializerWithDataKey = @"JSONResponseSerializerWit
 {
 	id JSONObject = [super responseObjectForResponse:response data:data error:error];
 	if (*error != nil) {
-		NSMutableDictionary *userInfo = [(*error).userInfo mutableCopy];
-        if (data == nil) {
-            id json = [NSJSONSerialization JSONObjectWithData:[NSData data] options:0 error:nil];
+        NSMutableDictionary *userInfo = [(*error).userInfo mutableCopy];
+        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        if (json)
             userInfo[JSONResponseSerializerWithDataKey] = json;
-		} else {
-            id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            userInfo[JSONResponseSerializerWithDataKey] = json;
-		}
+		
 		NSError *newError = [NSError errorWithDomain:(*error).domain code:(*error).code userInfo:userInfo];
 		(*error) = newError;
 	}
