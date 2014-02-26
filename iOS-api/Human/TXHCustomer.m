@@ -10,6 +10,7 @@ static NSString * const kFirstNameKey = @"first_name";
 static NSString * const kFullNameKey  = @"full_name";
 static NSString * const kLastNameKey  = @"last_name";
 static NSString * const kTelephoneKey = @"telephone";
+static NSString * const kErrorsKey    = @"errors";
 
 @interface TXHCustomer ()
 
@@ -30,6 +31,7 @@ static NSString * const kTelephoneKey = @"telephone";
     customer.firstName = nilIfNSNull(dictionary[kFirstNameKey]);
     customer.lastName  = nilIfNSNull(dictionary[kLastNameKey]);
     customer.fullName  = nilIfNSNull(dictionary[kFullNameKey]);
+    customer.errors    = nilIfNSNull(dictionary[kErrorsKey]);
     
     return customer;
 }

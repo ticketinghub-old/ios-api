@@ -11,6 +11,7 @@ extern const struct TXHOrderAttributes {
 	__unsafe_unretained NSString *createdAt;
 	__unsafe_unretained NSString *currency;
 	__unsafe_unretained NSString *delivery;
+	__unsafe_unretained NSString *errors;
 	__unsafe_unretained NSString *expiresAt;
 	__unsafe_unretained NSString *orderId;
 	__unsafe_unretained NSString *payment;
@@ -41,6 +42,7 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
+@class NSObject;
 
 
 
@@ -119,6 +121,16 @@ extern const struct TXHOrderFetchedProperties {
 
 
 //- (BOOL)validateDelivery:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) id errors;
+
+
+
+//- (BOOL)validateErrors:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -294,6 +306,12 @@ extern const struct TXHOrderFetchedProperties {
 
 - (NSString*)primitiveDelivery;
 - (void)setPrimitiveDelivery:(NSString*)value;
+
+
+
+
+- (id)primitiveErrors;
+- (void)setPrimitiveErrors:(id)value;
 
 
 

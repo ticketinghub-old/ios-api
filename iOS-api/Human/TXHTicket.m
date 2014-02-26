@@ -17,6 +17,7 @@ static NSString * const kValidFromKey = @"valid_from";
 static NSString * const kVoucherKey   = @"voucher";
 static NSString * const kProductKey   = @"product";
 static NSString * const kTierKey      = @"tier";
+static NSString * const kErrorsKey    = @"errors";
 
 
 @interface TXHTicket ()

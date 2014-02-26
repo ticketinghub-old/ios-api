@@ -24,6 +24,7 @@ static NSString * const kCreatedAtKey   = @"created_at";
 static NSString * const kCanceledAtKey  = @"cancelled_at";
 static NSString * const kExpiresAtKey   = @"expires_at";
 static NSString * const kConfirmedAtKey = @"confirmed_at";
+static NSString * const kErrorsKey      = @"errors";
 
 
 @interface TXHOrder ()
@@ -87,6 +88,7 @@ static NSString * const kConfirmedAtKey = @"confirmed_at";
     self.taxName     = nilIfNSNull(dictionary[kTaxNameKey]);
     self.delivery    = nilIfNSNull(dictionary[kDeliveryKey]);
     self.coupon      = nilIfNSNull(dictionary[kCouponKey]);
+    self.errors      = nilIfNSNull(dictionary[kErrorsKey]);
     self.expiresAt   = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kExpiresAtKey])];
     self.updatedAt   = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kUpdatedAtKey])];
     self.createdAt   = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kCreatedAtKey])];
@@ -101,7 +103,7 @@ static NSString * const kConfirmedAtKey = @"confirmed_at";
 
     NSArray *tickets = nilIfNSNull(dictionary[kTicketsKey]);
     [self removeTickets:self.tickets];
-    
+
     for (NSDictionary *ticketDictionary in tickets)
     {
         TXHTicket *ticket = [TXHTicket createWithDictionary:ticketDictionary inManagedObjectContext:moc];

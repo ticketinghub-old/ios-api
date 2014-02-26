@@ -6,6 +6,7 @@
 const struct TXHCustomerAttributes TXHCustomerAttributes = {
 	.country = @"country",
 	.email = @"email",
+	.errors = @"errors",
 	.firstName = @"firstName",
 	.fullName = @"fullName",
 	.lastName = @"lastName",
@@ -61,6 +62,13 @@ const struct TXHCustomerFetchedProperties TXHCustomerFetchedProperties = {
 
 
 @dynamic email;
+
+
+
+
+
+
+@dynamic errors;
 
 
 

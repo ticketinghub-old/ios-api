@@ -7,6 +7,7 @@
 extern const struct TXHTicketAttributes {
 	__unsafe_unretained NSString *bitmask;
 	__unsafe_unretained NSString *code;
+	__unsafe_unretained NSString *errors;
 	__unsafe_unretained NSString *expiresAt;
 	__unsafe_unretained NSString *price;
 	__unsafe_unretained NSString *ticketId;
@@ -31,6 +32,7 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
+@class NSObject;
 
 
 
@@ -65,6 +67,16 @@ extern const struct TXHTicketFetchedProperties {
 
 
 //- (BOOL)validateCode:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) id errors;
+
+
+
+//- (BOOL)validateErrors:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -170,6 +182,12 @@ extern const struct TXHTicketFetchedProperties {
 
 - (NSString*)primitiveCode;
 - (void)setPrimitiveCode:(NSString*)value;
+
+
+
+
+- (id)primitiveErrors;
+- (void)setPrimitiveErrors:(id)value;
 
 
 

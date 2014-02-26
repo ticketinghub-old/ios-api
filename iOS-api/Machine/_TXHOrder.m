@@ -10,6 +10,7 @@ const struct TXHOrderAttributes TXHOrderAttributes = {
 	.createdAt = @"createdAt",
 	.currency = @"currency",
 	.delivery = @"delivery",
+	.errors = @"errors",
 	.expiresAt = @"expiresAt",
 	.orderId = @"orderId",
 	.payment = @"payment",
@@ -114,6 +115,13 @@ const struct TXHOrderFetchedProperties TXHOrderFetchedProperties = {
 
 
 @dynamic delivery;
+
+
+
+
+
+
+@dynamic errors;
 
 
 

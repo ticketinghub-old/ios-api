@@ -129,13 +129,13 @@
 // Updates the reciever with values from the dictionary
 - (void)updateWithDictionary:(NSDictionary *)dict {
     
-    self.tierDescription = dict[@"description"];
-    self.discount        = dict[@"discount"];
-    self.tierId          = dict[@"id"];
-    self.limit           = dict[@"limit"];
-    self.name            = dict[@"name"];
-    self.price           = dict[@"price"];
-    self.size            = dict[@"size"];
+    self.tierDescription = nilIfNSNull(dict[@"description"]);
+    self.discount        = nilIfNSNull(dict[@"discount"]);
+    self.tierId          = nilIfNSNull(dict[@"id"]);
+    self.limit           = nilIfNSNull(dict[@"limit"]);
+    self.name            = nilIfNSNull(dict[@"name"]);
+    self.price           = nilIfNSNull(dict[@"price"]);
+    self.size            = nilIfNSNull(dict[@"size"]);
 
     // If there are any current upgrades, remove them and recreate them from the dictionary
     // This is brute force for now, not sure if it will need to be optimised. Profiling will tell.

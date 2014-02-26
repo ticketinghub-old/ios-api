@@ -6,6 +6,7 @@
 const struct TXHTicketAttributes TXHTicketAttributes = {
 	.bitmask = @"bitmask",
 	.code = @"code",
+	.errors = @"errors",
 	.expiresAt = @"expiresAt",
 	.price = @"price",
 	.ticketId = @"ticketId",
@@ -69,6 +70,13 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 
 
 @dynamic code;
+
+
+
+
+
+
+@dynamic errors;
 
 
 

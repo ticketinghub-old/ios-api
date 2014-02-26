@@ -7,6 +7,7 @@
 extern const struct TXHCustomerAttributes {
 	__unsafe_unretained NSString *country;
 	__unsafe_unretained NSString *email;
+	__unsafe_unretained NSString *errors;
 	__unsafe_unretained NSString *firstName;
 	__unsafe_unretained NSString *fullName;
 	__unsafe_unretained NSString *lastName;
@@ -26,6 +27,7 @@ extern const struct TXHCustomerFetchedProperties {
 
 
 
+@class NSObject;
 
 
 
@@ -59,6 +61,16 @@ extern const struct TXHCustomerFetchedProperties {
 
 
 //- (BOOL)validateEmail:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) id errors;
+
+
+
+//- (BOOL)validateErrors:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -136,6 +148,12 @@ extern const struct TXHCustomerFetchedProperties {
 
 - (NSString*)primitiveEmail;
 - (void)setPrimitiveEmail:(NSString*)value;
+
+
+
+
+- (id)primitiveErrors;
+- (void)setPrimitiveErrors:(id)value;
 
 
 
