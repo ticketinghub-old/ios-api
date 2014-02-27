@@ -83,6 +83,7 @@
         <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="tickets" inverseEntity="Order" syncable="YES"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="ticket" inverseEntity="Product" syncable="YES"/>
         <relationship name="tier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tier" inverseName="tickets" inverseEntity="Tier" syncable="YES"/>
+        <relationship name="upgrades" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Upgrade" inverseName="tickets" inverseEntity="Upgrade" syncable="YES"/>
     </entity>
     <entity name="Tier" representedClassName="TXHTier" syncable="YES">
         <attribute name="discount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -106,6 +107,7 @@
         <attribute name="seqId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="upgradeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="upgradeId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="upgrades" inverseEntity="Ticket" syncable="YES"/>
         <relationship name="tiers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tier" inverseName="upgrades" inverseEntity="Tier" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="TXHUser" syncable="YES">
@@ -122,9 +124,9 @@
         <element name="Order" positionX="367" positionY="263" width="128" height="328"/>
         <element name="Product" positionX="-27" positionY="344" width="128" height="148"/>
         <element name="Supplier" positionX="-288" positionY="27" width="128" height="148"/>
-        <element name="Ticket" positionX="592" positionY="63" width="128" height="223"/>
+        <element name="Ticket" positionX="628" positionY="92" width="128" height="238"/>
         <element name="Tier" positionX="315" positionY="-133" width="128" height="223"/>
-        <element name="Upgrade" positionX="558" positionY="-135" width="128" height="163"/>
+        <element name="Upgrade" positionX="549" positionY="-126" width="128" height="178"/>
         <element name="User" positionX="-522" positionY="54" width="128" height="118"/>
     </elements>
 </model>

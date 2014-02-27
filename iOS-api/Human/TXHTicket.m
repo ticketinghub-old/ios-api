@@ -4,6 +4,7 @@
 #import "TXHCustomer.h"
 #import "TXHProduct.h"
 #import "TXHTier.h"
+#import "TXHUpgrade.h"
 
 #import "NSDateFormatter+TicketingHubFormat.h"
 
@@ -17,6 +18,7 @@ static NSString * const kValidFromKey = @"valid_from";
 static NSString * const kVoucherKey   = @"voucher";
 static NSString * const kProductKey   = @"product";
 static NSString * const kTierKey      = @"tier";
+static NSString * const kUpgradesKey  = @"upgrades";
 static NSString * const kErrorsKey    = @"errors";
 
 
@@ -52,6 +54,12 @@ static NSString * const kErrorsKey    = @"errors";
     
     NSDictionary *tierDictionary  = nilIfNSNull(dictionary[kTierKey]);
     ticket.tier = [TXHTier updateWithDictionaryCreateIfNeeded:tierDictionary inManagedObjectContext:moc];
+    
+    for (NSDictionary *upgradeDictionary in nilIfNSNull(dictionary[kUpgradesKey]))
+    {
+        TXHUpgrade *upgrade = [TXHUpgrade createWithDictionary:upgradeDictionary inManagedObjectContext:moc];
+        [ticket addUpgradesObject:upgrade];
+    }
     
     return ticket;
 }

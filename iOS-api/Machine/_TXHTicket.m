@@ -19,6 +19,7 @@ const struct TXHTicketRelationships TXHTicketRelationships = {
 	.order = @"order",
 	.product = @"product",
 	.tier = @"tier",
+	.upgrades = @"upgrades",
 };
 
 const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
@@ -151,6 +152,19 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 
 @dynamic tier;
 
+	
+
+@dynamic upgrades;
+
+	
+- (NSMutableSet*)upgradesSet {
+	[self willAccessValueForKey:@"upgrades"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"upgrades"];
+  
+	[self didAccessValueForKey:@"upgrades"];
+	return result;
+}
 	
 
 

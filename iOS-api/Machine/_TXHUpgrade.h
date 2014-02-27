@@ -15,12 +15,14 @@ extern const struct TXHUpgradeAttributes {
 } TXHUpgradeAttributes;
 
 extern const struct TXHUpgradeRelationships {
+	__unsafe_unretained NSString *tickets;
 	__unsafe_unretained NSString *tiers;
 } TXHUpgradeRelationships;
 
 extern const struct TXHUpgradeFetchedProperties {
 } TXHUpgradeFetchedProperties;
 
+@class TXHTicket;
 @class TXHTier;
 
 
@@ -122,6 +124,13 @@ extern const struct TXHUpgradeFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSSet *tickets;
+
+- (NSMutableSet*)ticketsSet;
+
+
+
+
 @property (nonatomic, strong) NSSet *tiers;
 
 - (NSMutableSet*)tiersSet;
@@ -133,6 +142,11 @@ extern const struct TXHUpgradeFetchedProperties {
 @end
 
 @interface _TXHUpgrade (CoreDataGeneratedAccessors)
+
+- (void)addTickets:(NSSet*)value_;
+- (void)removeTickets:(NSSet*)value_;
+- (void)addTicketsObject:(TXHTicket*)value_;
+- (void)removeTicketsObject:(TXHTicket*)value_;
 
 - (void)addTiers:(NSSet*)value_;
 - (void)removeTiers:(NSSet*)value_;
@@ -190,6 +204,11 @@ extern const struct TXHUpgradeFetchedProperties {
 - (void)setPrimitiveUpgradeId:(NSString*)value;
 
 
+
+
+
+- (NSMutableSet*)primitiveTickets;
+- (void)setPrimitiveTickets:(NSMutableSet*)value;
 
 
 
