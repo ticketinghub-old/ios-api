@@ -5,6 +5,7 @@
 
 
 extern const struct TXHAvailabilityAttributes {
+	__unsafe_unretained NSString *coupon;
 	__unsafe_unretained NSString *dateString;
 	__unsafe_unretained NSString *duration;
 	__unsafe_unretained NSString *limit;
@@ -27,6 +28,7 @@ extern const struct TXHAvailabilityFetchedProperties {
 
 
 
+
 @interface TXHAvailabilityID : NSManagedObjectID {}
 @end
 
@@ -35,6 +37,16 @@ extern const struct TXHAvailabilityFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (TXHAvailabilityID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSString* coupon;
+
+
+
+//- (BOOL)validateCoupon:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -111,6 +123,12 @@ extern const struct TXHAvailabilityFetchedProperties {
 @end
 
 @interface _TXHAvailability (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveCoupon;
+- (void)setPrimitiveCoupon:(NSString*)value;
+
+
 
 
 - (NSString*)primitiveDateString;

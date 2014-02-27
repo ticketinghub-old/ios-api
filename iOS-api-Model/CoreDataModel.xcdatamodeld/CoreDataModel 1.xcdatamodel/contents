@@ -12,6 +12,7 @@
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="address" inverseEntity="Product" syncable="YES"/>
     </entity>
     <entity name="Availability" representedClassName="TXHAvailability" syncable="YES">
+        <attribute name="coupon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="limit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -116,7 +117,7 @@
     </entity>
     <elements>
         <element name="Address" positionX="162" positionY="297" width="128" height="178"/>
-        <element name="Availability" positionX="-83" positionY="-117" width="128" height="133"/>
+        <element name="Availability" positionX="-83" positionY="-117" width="128" height="148"/>
         <element name="Customer" positionX="828" positionY="414" width="128" height="178"/>
         <element name="Order" positionX="367" positionY="263" width="128" height="328"/>
         <element name="Product" positionX="-27" positionY="344" width="128" height="148"/>

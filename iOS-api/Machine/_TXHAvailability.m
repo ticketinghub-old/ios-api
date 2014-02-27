@@ -4,6 +4,7 @@
 #import "_TXHAvailability.h"
 
 const struct TXHAvailabilityAttributes TXHAvailabilityAttributes = {
+	.coupon = @"coupon",
 	.dateString = @"dateString",
 	.duration = @"duration",
 	.limit = @"limit",
@@ -52,6 +53,13 @@ const struct TXHAvailabilityFetchedProperties TXHAvailabilityFetchedProperties =
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic coupon;
+
+
 
 
 
