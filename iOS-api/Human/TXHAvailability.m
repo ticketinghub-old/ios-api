@@ -131,6 +131,7 @@
     self.limit      = dictionary[@"limit"] != [NSNull null] ? dictionary [@"limit"] : nil;
     self.timeString = dictionary[@"time"] != [NSNull null] ? dictionary[@"time"] : nil;
 
+    [self removeTiers:self.tiers];
     if (dictionary[@"tiers"]) {
         for (NSDictionary *tiersDict in dictionary[@"tiers"]) {
             TXHTier *tier = [TXHTier updateWithDictionaryCreateIfNeeded:tiersDict inManagedObjectContext:self.managedObjectContext];
