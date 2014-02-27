@@ -35,7 +35,6 @@
 		3E2C6AD418BCB8B8005BEE6C /* _TXHCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C6AD318BCB8B8005BEE6C /* _TXHCustomer.m */; };
 		3E2C6AD618BCBB36005BEE6C /* Customer.json in Resources */ = {isa = PBXBuildFile; fileRef = 3E2C6AD518BCBB36005BEE6C /* Customer.json */; };
 		3E4DB46518A93D3A00F8793C /* TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18BE18439A7200CE6D5E /* TXHUser.h */; };
-		3E4EE8B018AD0C66000BF0C8 /* TXHTier+PriceFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EE8AF18AD0C66000BF0C8 /* TXHTier+PriceFormatter.m */; };
 		3E4EE8B418AD1018000BF0C8 /* TXHNumberFormatterCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EE8B318AD1018000BF0C8 /* TXHNumberFormatterCache.m */; };
 		3EBF42CC18BE34A30065E7A7 /* JSONResponseSerializerWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EBF42CB18BE34A30065E7A7 /* JSONResponseSerializerWithData.m */; };
 		3ED7560B18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */; };
@@ -178,8 +177,6 @@
 		3E2C6AD218BCB8B8005BEE6C /* _TXHCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHCustomer.h; sourceTree = "<group>"; };
 		3E2C6AD318BCB8B8005BEE6C /* _TXHCustomer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHCustomer.m; sourceTree = "<group>"; };
 		3E2C6AD518BCBB36005BEE6C /* Customer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Customer.json; sourceTree = "<group>"; };
-		3E4EE8AE18AD0C66000BF0C8 /* TXHTier+PriceFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TXHTier+PriceFormatter.h"; sourceTree = "<group>"; };
-		3E4EE8AF18AD0C66000BF0C8 /* TXHTier+PriceFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TXHTier+PriceFormatter.m"; sourceTree = "<group>"; };
 		3E4EE8B218AD1018000BF0C8 /* TXHNumberFormatterCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHNumberFormatterCache.h; path = Classes/TXHNumberFormatterCache.h; sourceTree = "<group>"; };
 		3E4EE8B318AD1018000BF0C8 /* TXHNumberFormatterCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHNumberFormatterCache.m; path = Classes/TXHNumberFormatterCache.m; sourceTree = "<group>"; };
 		3EBF42CA18BE34A30065E7A7 /* JSONResponseSerializerWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONResponseSerializerWithData.h; path = Classes/JSONResponseSerializerWithData.h; sourceTree = "<group>"; };
@@ -295,8 +292,6 @@
 		3E4EE8B118AD0DF9000BF0C8 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				3E4EE8AE18AD0C66000BF0C8 /* TXHTier+PriceFormatter.h */,
-				3E4EE8AF18AD0C66000BF0C8 /* TXHTier+PriceFormatter.m */,
 				3ED7560918BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.h */,
 				3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */,
 			);
@@ -792,7 +787,6 @@
 				EE4B18C318439A7D00CE6D5E /* _TXHUser.m in Sources */,
 				EE4B18C018439A7200CE6D5E /* TXHUser.m in Sources */,
 				3ED7560B18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m in Sources */,
-				3E4EE8B018AD0C66000BF0C8 /* TXHTier+PriceFormatter.m in Sources */,
 				3EBF42CC18BE34A30065E7A7 /* JSONResponseSerializerWithData.m in Sources */,
 				EE4926BD1850C28C00336A2D /* _TXHAvailability.m in Sources */,
 				3E2C6ABB18BBCA74005BEE6C /* _TXHOrder.m in Sources */,

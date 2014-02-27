@@ -17,5 +17,3 @@
 #import "TXHUpgrade.h"
 #import "TXHUser.h"
 
-//categories
-#import "TXHTier+PriceFormatter.h"
