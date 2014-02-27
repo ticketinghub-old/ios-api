@@ -84,11 +84,14 @@
  @param product The product for which the availibilities are to be updated - can be on any managed object context. Cannot be nil
  @param fromDate the start date of a range query.
  @param toDate the end date of a range query.
+ @param coupon string .
+
  @param completion the completion block to run with the request is completed. The block takes two parameters, an array of TXHAvailabilities in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the availabilities array is not nil (it can be empty)
+ 
  
  @warning `product` or `completion` must not be `nil`.
  */
-- (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate completion:(void(^)(NSArray *availabilities, NSError *error))completion;
+- (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate coupon:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
 /** Returns currently logged in user. Returns nil if no user looged in.
 

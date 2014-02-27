@@ -191,7 +191,7 @@ static NSString * const kVenuesEndpoint = @"venues";
 
 }
 
-- (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate completion:(void(^)(NSArray *availabilities, NSError *error))completion
+- (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate coupon:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 {
     NSParameterAssert(product);
     NSParameterAssert(completion);
@@ -209,6 +209,12 @@ static NSString * const kVenuesEndpoint = @"venues";
         params = nil;
     } else if (fromDate && !toDate) {
         params = @{@"date": [fromDate isoDateString]};
+        if ([coupon length])
+        {
+            NSMutableDictionary *edit = [params mutableCopy];
+            edit[@"coupon"] = coupon;
+            params = [edit copy];
+        }
     } else if (toDate && !fromDate) {
         params = @{@"to": [toDate isoDateString]};
     } else {
