@@ -63,4 +63,18 @@ static NSString * const kErrorsKey    = @"errors";
     
     return ticket;
 }
+
+
+- (NSNumber *)totalPrice
+{
+    NSInteger total = [self.price integerValue];
+    
+    for (TXHUpgrade *upgrade in self.upgrades)
+    {
+        total += [upgrade.price integerValue];
+    }
+    
+    return @(total);
+}
+
 @end
