@@ -289,6 +289,7 @@ static NSString * const kVenuesEndpoint = @"venues";
     NSURL *baseURL = [NSURL URLWithString:kAPIBaseURL];
     AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     sessionManager.responseSerializer = [JSONResponseSerializerWithData serializer];
+    sessionManager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
     [sessionManager.requestSerializer setValue:[[NSLocale preferredLanguages] firstObject] forHTTPHeaderField:@"Accept-Language"];
 
     return sessionManager;
