@@ -434,7 +434,7 @@ static NSString * const kVenuesEndpoint = @"venues";
     return [users firstObject];
 }
 
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion;
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability coupon:(NSString *)coupon completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
     NSParameterAssert(tierQuantities);
     NSParameterAssert(completion);
@@ -466,6 +466,12 @@ static NSString * const kVenuesEndpoint = @"venues";
     }
     
     NSDictionary *requestPayload = @{@"tickets" : tickets};
+    if ([coupon length])
+    {
+        NSMutableDictionary *temp = requestPayload.mutableCopy;
+        temp[@"coupon"]           = coupon;
+        requestPayload            = [temp copy];
+    }
     
     NSManagedObjectContext *moc = self.importContext;
     

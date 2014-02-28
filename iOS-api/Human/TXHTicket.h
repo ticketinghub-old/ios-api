@@ -3,7 +3,7 @@
 
 @interface TXHTicket : _TXHTicket {}
 
-@property (readwrite, nonatomic) NSNumber *totalPrice;
+@property (readonly, nonatomic) NSNumber *totalPrice;
 
 /** Convenience constructor
  @param dictionary A dictionary of key values for the object. These are the raw values from the API.
