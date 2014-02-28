@@ -103,12 +103,11 @@
  
  @param tierQuantities dictionary with internaTierIds as keys and selectd quantities as values
  @param availability availability for selected tickets
- @param coupon string .
  @param completion the completion block to run with the request is completed. The block takes two parameters, an order object in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
  
  @warning `tierQuantities` or `completion` must not be `nil`.
  */
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability coupon:(NSString *)coupon completion:(void(^)(TXHOrder *order, NSError *error))completion;
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
 - (void)removeTickets:(NSArray *)tickets fromOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
