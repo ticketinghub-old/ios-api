@@ -73,9 +73,9 @@
     static NSDictionary *dict = nil;
 
     if (!dict) {
-        dict = @{@"first_name": @"firstName",
-                 @"last_name": @"lastName",
-                 @"id": @"userId"};
+        dict = @{@"first_name" : @"firstName",
+                 @"last_name"  : @"lastName",
+                 @"id"         : @"userId"};
     }
 
     return dict;
@@ -89,12 +89,12 @@
     NSError *error;
     NSArray *users = [moc executeFetchRequest:request error:&error];
     if (!users) {
-        NSLog(@"Unable to fetch users because: %@", error);
+        DLog(@"Unable to fetch users because: %@", error);
         return nil;
     }
 
     if ([users count] > 1) {
-        NSLog(@"Too many users");
+        DLog(@"Too many users");
         return nil;
     }
 
