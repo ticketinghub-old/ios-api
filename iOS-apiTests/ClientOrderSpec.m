@@ -84,7 +84,7 @@ describe(@"initial login", ^{
             
             NSDictionary *quantities = @{@"t" : @1};
             
-            [_client reserveTicketsWithTierQuantities:quantities availability:_availability coupon:nil completion:^(TXHOrder *order, NSError *error) {
+            [_client reserveTicketsWithTierQuantities:quantities availability:_availability completion:^(TXHOrder *order, NSError *error) {
                 
                 expect(order).to.notTo.beNil();
                 expect(order).to.beKindOf([TXHOrder class]);
