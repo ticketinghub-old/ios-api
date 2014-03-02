@@ -31,6 +31,7 @@ static NSString * const kVenuesEndpoint = @"venues";
 #import "TXHField.h"
 
 #import "NSDate+ISO.h"
+#import "TXHDefines.h"
 
 @interface TXHTicketingHubClient ()
 
