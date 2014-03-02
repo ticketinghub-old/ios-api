@@ -31,37 +31,74 @@ static NSString * const kErrorsKey    = @"errors";
 
 @implementation TXHTicket
 
-+ (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
+
++ (instancetype)updateWithDictionaryOrCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    NSString *ticketId = dictionary[kIdKey];
+    
+    TXHTicket *ticket = [self ticketWithID:ticketId inManagedObjectContext:moc];
+    if (!ticket) {
+        ticket = [TXHTicket insertInManagedObjectContext:moc];
+    }
+    
+    [ticket updateWithDictionary:dictionary inManagedObjectContext:moc];
+    
+    return ticket;
+}
+
++ (instancetype)ticketWithID:(NSString *)ticketID inManagedObjectContext:(NSManagedObjectContext *)moc {
+    NSParameterAssert(ticketID);
+    NSParameterAssert(moc);
+    
+    static NSPredicate *formattedPredicate = nil;
+    if (!formattedPredicate) {
+        formattedPredicate = [NSPredicate predicateWithFormat:@"ticketId == $TICKET_ID"];
+    }
+    
+    NSDictionary *variables = @{@"TICKET_ID" : ticketID};
+    
+    NSPredicate *predicate = [formattedPredicate predicateWithSubstitutionVariables:variables];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
+    [request setPredicate:predicate];
+    
+    NSArray *tickets = [moc executeFetchRequest:request error:NULL];
+    
+    if (!tickets) {
+        return nil;
+    }
+    
+    return [tickets firstObject];
+}
+
+- (instancetype)updateWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
 {
     if (![dictionary isKindOfClass:[NSDictionary class]] || ![dictionary count])
         return nil;
     
-    TXHTicket *ticket= [TXHTicket insertInManagedObjectContext:moc];
-    
-    ticket.ticketId  = nilIfNSNull(dictionary[kIdKey]);
-    ticket.bitmask   = nilIfNSNull(dictionary[kBitmaskKey]);
-    ticket.code      = nilIfNSNull(dictionary[kCodeKey]);
-    ticket.price     = nilIfNSNull(dictionary[kPriceKey]);
-    ticket.voucher   = nilIfNSNull(dictionary[kVoucherKey]);
-    ticket.expiresAt = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kExpiresAtKey])];
-    ticket.validFrom = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kValidFromKey])];
+    self.ticketId  = nilIfNSNull(dictionary[kIdKey]);
+    self.bitmask   = nilIfNSNull(dictionary[kBitmaskKey]);
+    self.code      = nilIfNSNull(dictionary[kCodeKey]);
+    self.price     = nilIfNSNull(dictionary[kPriceKey]);
+    self.voucher   = nilIfNSNull(dictionary[kVoucherKey]);
+    self.expiresAt = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kExpiresAtKey])];
+    self.validFrom = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kValidFromKey])];
 
     NSDictionary *ticketDictionary  = nilIfNSNull(dictionary[kCustomerKey]);
-    ticket.customer = [TXHCustomer createWithDictionary:ticketDictionary inManagedObjectContext:moc];
+    self.customer = [TXHCustomer createWithDictionary:ticketDictionary inManagedObjectContext:moc];
 
     NSDictionary *productDictionary  = nilIfNSNull(dictionary[kProductKey]);
-    ticket.product = [TXHProduct createWithDictionary:productDictionary inManagedObjectContext:moc];
+    self.product = [TXHProduct createWithDictionary:productDictionary inManagedObjectContext:moc];
     
     NSDictionary *tierDictionary  = nilIfNSNull(dictionary[kTierKey]);
-    ticket.tier = [TXHTier updateWithDictionaryCreateIfNeeded:tierDictionary inManagedObjectContext:moc];
+    self.tier = [TXHTier updateWithDictionaryCreateIfNeeded:tierDictionary inManagedObjectContext:moc];
     
     for (NSDictionary *upgradeDictionary in nilIfNSNull(dictionary[kUpgradesKey]))
     {
         TXHUpgrade *upgrade = [TXHUpgrade createWithDictionary:upgradeDictionary inManagedObjectContext:moc];
-        [ticket addUpgradesObject:upgrade];
+        [self addUpgradesObject:upgrade];
     }
     
-    return ticket;
+    return self;
 }
 
 

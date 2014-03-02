@@ -67,7 +67,7 @@ static NSString * const kErrorsKey      = @"errors";
     
     NSArray *orders = [moc executeFetchRequest:request error:NULL];
     
-    if (!orderID) {
+    if (!orders) {
         return nil;
     }
     
@@ -106,7 +106,7 @@ static NSString * const kErrorsKey      = @"errors";
 
     for (NSDictionary *ticketDictionary in tickets)
     {
-        TXHTicket *ticket = [TXHTicket createWithDictionary:ticketDictionary inManagedObjectContext:moc];
+        TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:ticketDictionary inManagedObjectContext:moc];
         if (ticket)
         {
             [self addTicketsObject:ticket];

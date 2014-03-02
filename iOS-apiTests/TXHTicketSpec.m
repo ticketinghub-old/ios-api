@@ -45,7 +45,7 @@ describe(@"creating an order", ^{
     context(@"when it doesn't exist already", ^{
         
         it(@"can be created directly", ^{
-            TXHTicket *ticket = [TXHTicket createWithDictionary:_ticketDict inManagedObjectContext:_moc];
+            TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:_ticketDict inManagedObjectContext:_moc];
             expect(ticket).toNot.beNil();
             expect(ticket.ticketId).to.equal(@"bfec2ad1-0e05-4846-a044-e6bbf769bb75");
             expect(ticket.validFrom).to.equal([NSDateFormatter txh_dateFromString:@"2012-01-01T09:00:00+00:00"]);
