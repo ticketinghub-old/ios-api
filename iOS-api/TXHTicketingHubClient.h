@@ -75,7 +75,7 @@
  
  @warning `product` or `completion` must not be `nil`.
  */
-- (void)tiersForProduct:(TXHProduct *)product completion:(void(^)(NSArray *availabilities, NSError *error))completion; // TODO: documentation and test
+- (void)tiersForProduct:(TXHProduct *)product completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
 /** Update the availabilities for a product for a day or a range of days.
  
@@ -99,7 +99,6 @@
  */
 - (TXHUser *)currentUser;
 
-
 /** Reserves ticket for selected tiers with quantities
  
  @param tierQuantities dictionary with internaTierIds as keys and selectd quantities as values
@@ -110,17 +109,53 @@
  */
 - (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
+/** Marks provided tickets as deleted and sends the request to delete tickets from given order
+ 
+ @param tickets array of tickets to be deleted
+ @param order form which tickets should be deleted
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an order object in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
+ 
+ @warning `tickets` and `order` and completion  must not be `nil`.
+ */
 - (void)removeTickets:(NSArray *)tickets fromOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
-
+/** Provides an array of available upgrades for given ticket
+ 
+ @param ticket object for which available upgrades will be fetched
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an upgrades array in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
+ 
+ @warning `ticket` or `completion` must not be `nil`.
+ */
 - (void)upgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion;
 
-// upgradesInfo - dictionary with ticketinfo keys and array of upgrade ids values
+
+/** PATHes order with selected upgrades
+ 
+ @param order object to be updated with selected upgrades
+ @param upgradesInfo dictionary with ticketinfo keys and array of upgrade ids values - if in the array won appear selected before update will be deleted from its ticket
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an order object in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
+ 
+ @warning `ticket` or `completion` must not be `nil`.
+ */
 - (void)updateOrder:(TXHOrder *)order withUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
-
+/** Provides an array of fields to fill for a given ticket
+ 
+ @param ticket object for which available upgrades will be fetched
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an fields array in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the firlds object is not nil (it can be empty)
+ 
+ @warning `ticket` or `completion` must not be `nil`.
+ */
 - (void)fieldsForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *fields, NSError *error))completion;
 
+/** PATHes order with provided customers info
+ 
+ @param order object to be updated with provided info
+ @param customersInfo dictionary with ticket ids as keys and customer detail dictionary as values
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an order object in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
+ 
+ @warning `order` or `order` or `completion` must not be `nil`.
+ */
 //customersInfo - dictionary with ticket ids as keys and customer detail dictionary as values
 - (void)updateOrder:(TXHOrder *)order withCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion;
 
