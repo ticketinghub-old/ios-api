@@ -46,5 +46,12 @@
  */
 - (void)updateWithDictionary:(NSDictionary *)dict;
 
+/** generets unique internal id for an upgrade from providede dictionary representation
+ As it turned out server id of n update doesnt quareantie uniqness of an audate so we store internally a unique id based on id and properties that might be differnet for the same upgradeID
+ 
+ @param dict dictionary representation of a tier
+ 
+ @return Generated unig internal upgrade id constructed as <upgradeID><price>
+ */
 + (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict;
 @end

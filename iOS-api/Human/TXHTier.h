@@ -32,10 +32,21 @@
  */
 + (instancetype)tierWithInternalID:(NSString *)internalTierID inManagedObjectContext:(NSManagedObjectContext *)moc;
 
-
-// TODO: documentation and test
+/** Delete all tiers for privided product
+ 
+ @param productId NSManagedObjectID of product for which tiers should be deleted
+ @param moc the managed object in which to search for the Tier object
+ */
 + (void)deleteTiersForProductId:(NSManagedObjectID *)productId fromManagedObjectContext:(NSManagedObjectContext *)moc;
 
+
+/** generets unique internal id for a Tier from providede dictionary representation
+ As it turned ouu server id of a tier doesnt quareantie uniqness of a tier so we stoer internally a unique id based on id and properties that might be differnet for the same tierID
+ 
+ @param dict dictionary representation of a tier
+ 
+ @return Generated unig internal tier id constructed as <tierId><seqID><price><dicsount><limit><upgrades set hash>
+ */
 + (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict;
 
 @end

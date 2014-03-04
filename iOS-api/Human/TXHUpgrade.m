@@ -109,10 +109,10 @@
 
 + (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict
 {
-    NSString *tierId = dict[@"id"];
+    NSString *upgradeId = dict[@"id"];
     NSNumber *price = dict[@"price"];
     
-    return [NSString stringWithFormat:@"%@%@",tierId,price];
+    return [NSString stringWithFormat:@"%@%@",upgradeId,price];
 }
 
 

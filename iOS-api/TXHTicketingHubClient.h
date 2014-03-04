@@ -99,6 +99,7 @@
  */
 - (TXHUser *)currentUser;
 
+
 /** Reserves ticket for selected tiers with quantities
  
  @param tierQuantities dictionary with internaTierIds as keys and selectd quantities as values
@@ -113,7 +114,8 @@
 
 
 - (void)upgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion;
-// upgradesInfo - dictionary with ticketinfo keys and array of upgrade ids values 
+
+// upgradesInfo - dictionary with ticketinfo keys and array of upgrade ids values
 - (void)updateOrder:(TXHOrder *)order withUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
 
