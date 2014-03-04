@@ -185,8 +185,6 @@ static NSString * const kVenuesEndpoint    = @"venues";
         return @[];
     }
     
-    //    return managedObjects; // TODO: chack why after merge not corect data
-    
     NSMutableArray *mainContextObjects = [NSMutableArray arrayWithCapacity:[managedObjects count]];
     NSArray *objectIDs = [managedObjects valueForKey:@"objectID"];
     
