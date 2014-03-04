@@ -92,6 +92,7 @@ static NSString * const kErrorsKey    = @"errors";
     NSDictionary *tierDictionary  = nilIfNSNull(dictionary[kTierKey]);
     self.tier = [TXHTier updateWithDictionaryCreateIfNeeded:tierDictionary inManagedObjectContext:moc];
     
+    [self removeUpgrades:self.upgrades];
     for (NSDictionary *upgradeDictionary in nilIfNSNull(dictionary[kUpgradesKey]))
     {
         TXHUpgrade *upgrade = [TXHUpgrade createWithDictionary:upgradeDictionary inManagedObjectContext:moc];

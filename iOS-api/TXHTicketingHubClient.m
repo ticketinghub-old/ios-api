@@ -7,10 +7,10 @@
 //
 
 // Base URLs and endpoints.
-static NSString * const kAPIBaseURL = @"https://api.ticketinghub.com/";
+static NSString * const kAPIBaseURL        = @"https: //api.ticketinghub.com/";
 static NSString * const kSuppliersEndPoint = @"suppliers";
-static NSString * const kUserEndPoint = @"user";
-static NSString * const kVenuesEndpoint = @"venues";
+static NSString * const kUserEndPoint      = @"user";
+static NSString * const kVenuesEndpoint    = @"venues";
 
 #import "TXHTicketingHubClient.h"
 #import <DCTCoreDataStack/DCTCoreDataStack.h>
