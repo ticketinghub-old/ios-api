@@ -159,4 +159,7 @@
 //customersInfo - dictionary with ticket ids as keys and customer detail dictionary as values
 - (void)updateOrder:(TXHOrder *)order withCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion;
 
+
+- (void)ticketRecordsForDate:(NSDate *)date withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
+
 @end

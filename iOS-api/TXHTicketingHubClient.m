@@ -722,4 +722,43 @@ static NSString * const kVenuesEndpoint    = @"venues";
                        }];
 }
 
+- (void)ticketRecordsForDate:(NSDate *)date withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion
+{
+    NSString *endpoint   = @"tickets";
+    NSString *dateString = [date isoDateString];
+    NSString *timeString = [date isoTimeString];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"date"] = dateString;
+    params[@"time"] = timeString;
+    if (query)
+        params[@"search"] = query;
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager GET:endpoint
+                  parameters:params
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         NSMutableArray *tickets = [NSMutableArray array];
+                         
+                         for (NSDictionary *ticketdDic in responseObject)
+                         {
+                             TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:ticketdDic inManagedObjectContext:moc];
+                             if (ticket)
+                                 [tickets addObject:tickets];
+                         }
+                         
+                         NSError *error;
+                         if (![moc save:&error]) {
+                             completion(tickets, error);
+                             return;
+                         };
+                         
+                         completion([self objectsInMainManagedObjectContext:tickets],nil);
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         completion(nil,error);
+                     }];
+}
+
 @end

@@ -11,5 +11,6 @@
 @interface NSDate (ISO)
 
 - (NSString *)isoDateString;
+- (NSString *)isoTimeString;
 
 @end

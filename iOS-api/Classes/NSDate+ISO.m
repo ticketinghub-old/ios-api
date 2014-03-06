@@ -28,4 +28,25 @@
     return [[[self class] isoDateFormatter] stringFromDate:self];
 }
 
+
++ (NSDateFormatter *)isoTimeFormatter {
+    
+    static NSDateFormatter *_isoTimeFormatter;
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _isoTimeFormatter = [NSDateFormatter new];
+        [_isoTimeFormatter setDateFormat:@"HHmm"];
+    });
+    
+    return _isoTimeFormatter;
+}
+
+- (NSString *)isoTimeString
+{
+    return [[[self class] isoTimeFormatter] stringFromDate:self];
+}
+
+
+
 @end
