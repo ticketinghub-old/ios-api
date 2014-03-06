@@ -722,15 +722,20 @@ static NSString * const kVenuesEndpoint    = @"venues";
                        }];
 }
 
-- (void)ticketRecordsForDate:(NSDate *)date withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion
+- (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion
 {
-    NSString *endpoint   = @"tickets";
-    NSString *dateString = [date isoDateString];
-    NSString *timeString = [date isoTimeString];
+    NSParameterAssert(product);
+    NSParameterAssert(availability);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint   = [NSString stringWithFormat:@"products/%@/tickets",product.productId];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"date"] = dateString;
-    params[@"time"] = timeString;
+    
+    if (availability.dateString)
+        params[@"date"] = availability.dateString;
+    if (availability.timeString)
+        params[@"time"] = availability.timeString;
     if (query)
         params[@"search"] = query;
     
@@ -760,5 +765,6 @@ static NSString * const kVenuesEndpoint    = @"venues";
                          completion(nil,error);
                      }];
 }
+
 
 @end

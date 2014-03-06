@@ -160,6 +160,15 @@
 - (void)updateOrder:(TXHOrder *)order withCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion;
 
 
-- (void)ticketRecordsForDate:(NSDate *)date withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
+/** Provides an array of reserved tickets for provided product and its availability
+ 
+ @param product product for which tickes should be fetch
+ @param availability selected availability for which tickes should be fetch
+ @param query query string to search tickets  for
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an tickets array in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the firlds object is not nil (it can be empty)
+ 
+ @warning `product` or `availability` or `completion` must not be `nil`.
+ */
+- (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 
 @end
