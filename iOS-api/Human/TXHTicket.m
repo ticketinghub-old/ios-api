@@ -8,18 +8,21 @@
 
 #import "NSDateFormatter+TicketingHubFormat.h"
 
-static NSString * const kIdKey        = @"id";
-static NSString * const kBitmaskKey   = @"bitmask";
-static NSString * const kCodeKey      = @"code";
-static NSString * const kCustomerKey  = @"customer";
-static NSString * const kExpiresAtKey = @"expires_at";
-static NSString * const kPriceKey     = @"price";
-static NSString * const kValidFromKey = @"valid_from";
-static NSString * const kVoucherKey   = @"voucher";
-static NSString * const kProductKey   = @"product";
-static NSString * const kTierKey      = @"tier";
-static NSString * const kUpgradesKey  = @"upgrades";
-static NSString * const kErrorsKey    = @"errors";
+static NSString * const kIdKey         = @"id";
+static NSString * const kBitmaskKey    = @"bitmask";
+static NSString * const kCodeKey       = @"code";
+static NSString * const kCustomerKey   = @"customer";
+static NSString * const kExpiresAtKey  = @"expires_at";
+static NSString * const kAttendedAtKey = @"attended_at";
+static NSString * const kPriceKey      = @"price";
+static NSString * const kValidFromKey  = @"valid_from";
+static NSString * const kVoucherKey    = @"voucher";
+static NSString * const kProductKey    = @"product";
+static NSString * const kTierKey       = @"tier";
+static NSString * const kUpgradesKey   = @"upgrades";
+static NSString * const kErrorsKey     = @"errors";
+static NSString * const kSeqIDKey      = @"seq_id";
+
 
 
 @interface TXHTicket ()
@@ -75,13 +78,15 @@ static NSString * const kErrorsKey    = @"errors";
     if (![dictionary isKindOfClass:[NSDictionary class]] || ![dictionary count])
         return nil;
     
-    self.ticketId  = nilIfNSNull(dictionary[kIdKey]);
-    self.bitmask   = nilIfNSNull(dictionary[kBitmaskKey]);
-    self.code      = nilIfNSNull(dictionary[kCodeKey]);
-    self.price     = nilIfNSNull(dictionary[kPriceKey]);
-    self.voucher   = nilIfNSNull(dictionary[kVoucherKey]);
-    self.expiresAt = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kExpiresAtKey])];
-    self.validFrom = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kValidFromKey])];
+    self.ticketId   = nilIfNSNull(dictionary[kIdKey]);
+    self.bitmask    = nilIfNSNull(dictionary[kBitmaskKey]);
+    self.code       = nilIfNSNull(dictionary[kCodeKey]);
+    self.price      = nilIfNSNull(dictionary[kPriceKey]);
+    self.voucher    = nilIfNSNull(dictionary[kVoucherKey]);
+    self.seqId      = nilIfNSNull(dictionary[kSeqIDKey]);
+    self.expiresAt  = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kExpiresAtKey])];
+    self.validFrom  = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kValidFromKey])];
+    self.attendedAt = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kAttendedAtKey])];
 
     NSDictionary *ticketDictionary  = nilIfNSNull(dictionary[kCustomerKey]);
     self.customer = [TXHCustomer createWithDictionary:ticketDictionary inManagedObjectContext:moc];

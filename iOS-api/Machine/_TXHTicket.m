@@ -4,11 +4,14 @@
 #import "_TXHTicket.h"
 
 const struct TXHTicketAttributes TXHTicketAttributes = {
+	.attendedAt = @"attendedAt",
 	.bitmask = @"bitmask",
 	.code = @"code",
 	.errors = @"errors",
 	.expiresAt = @"expiresAt",
 	.price = @"price",
+	.reference = @"reference",
+	.seqId = @"seqId",
 	.ticketId = @"ticketId",
 	.validFrom = @"validFrom",
 	.voucher = @"voucher",
@@ -56,9 +59,21 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
+	if ([key isEqualToString:@"seqIdValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"seqId"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic attendedAt;
+
+
 
 
 
@@ -111,6 +126,39 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 
 - (void)setPrimitivePriceValue:(int32_t)value_ {
 	[self setPrimitivePrice:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic reference;
+
+
+
+
+
+
+@dynamic seqId;
+
+
+
+- (int32_t)seqIdValue {
+	NSNumber *result = [self seqId];
+	return [result intValue];
+}
+
+- (void)setSeqIdValue:(int32_t)value_ {
+	[self setSeqId:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveSeqIdValue {
+	NSNumber *result = [self primitiveSeqId];
+	return [result intValue];
+}
+
+- (void)setPrimitiveSeqIdValue:(int32_t)value_ {
+	[self setPrimitiveSeqId:[NSNumber numberWithInt:value_]];
 }
 
 

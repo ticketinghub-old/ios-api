@@ -5,11 +5,14 @@
 
 
 extern const struct TXHTicketAttributes {
+	__unsafe_unretained NSString *attendedAt;
 	__unsafe_unretained NSString *bitmask;
 	__unsafe_unretained NSString *code;
 	__unsafe_unretained NSString *errors;
 	__unsafe_unretained NSString *expiresAt;
 	__unsafe_unretained NSString *price;
+	__unsafe_unretained NSString *reference;
+	__unsafe_unretained NSString *seqId;
 	__unsafe_unretained NSString *ticketId;
 	__unsafe_unretained NSString *validFrom;
 	__unsafe_unretained NSString *voucher;
@@ -34,7 +37,10 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
+
 @class NSObject;
+
+
 
 
 
@@ -49,6 +55,16 @@ extern const struct TXHTicketFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (TXHTicketID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSDate* attendedAt;
+
+
+
+//- (BOOL)validateAttendedAt:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -103,6 +119,30 @@ extern const struct TXHTicketFetchedProperties {
 - (void)setPriceValue:(int32_t)value_;
 
 //- (BOOL)validatePrice:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* reference;
+
+
+
+//- (BOOL)validateReference:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* seqId;
+
+
+
+@property int32_t seqIdValue;
+- (int32_t)seqIdValue;
+- (void)setSeqIdValue:(int32_t)value_;
+
+//- (BOOL)validateSeqId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -188,6 +228,12 @@ extern const struct TXHTicketFetchedProperties {
 @interface _TXHTicket (CoreDataGeneratedPrimitiveAccessors)
 
 
+- (NSDate*)primitiveAttendedAt;
+- (void)setPrimitiveAttendedAt:(NSDate*)value;
+
+
+
+
 - (NSString*)primitiveBitmask;
 - (void)setPrimitiveBitmask:(NSString*)value;
 
@@ -217,6 +263,21 @@ extern const struct TXHTicketFetchedProperties {
 
 - (int32_t)primitivePriceValue;
 - (void)setPrimitivePriceValue:(int32_t)value_;
+
+
+
+
+- (NSString*)primitiveReference;
+- (void)setPrimitiveReference:(NSString*)value;
+
+
+
+
+- (NSNumber*)primitiveSeqId;
+- (void)setPrimitiveSeqId:(NSNumber*)value;
+
+- (int32_t)primitiveSeqIdValue;
+- (void)setPrimitiveSeqIdValue:(int32_t)value_;
 
 
 

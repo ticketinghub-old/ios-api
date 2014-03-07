@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13C64" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Address" representedClassName="TXHAddress" syncable="YES">
         <attribute name="building" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -71,11 +71,14 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="suppliers" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Ticket" representedClassName="TXHTicket" syncable="YES">
+        <attribute name="attendedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="bitmask" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="errors" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="expiresAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seqId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="ticketId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="validFrom" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="voucher" optional="YES" attributeType="String" syncable="YES"/>
@@ -124,7 +127,7 @@
         <element name="Order" positionX="367" positionY="263" width="128" height="328"/>
         <element name="Product" positionX="-27" positionY="344" width="128" height="148"/>
         <element name="Supplier" positionX="-288" positionY="27" width="128" height="148"/>
-        <element name="Ticket" positionX="628" positionY="92" width="128" height="238"/>
+        <element name="Ticket" positionX="628" positionY="92" width="128" height="283"/>
         <element name="Tier" positionX="315" positionY="-133" width="128" height="223"/>
         <element name="Upgrade" positionX="549" positionY="-126" width="128" height="178"/>
         <element name="User" positionX="-522" positionY="54" width="128" height="118"/>
