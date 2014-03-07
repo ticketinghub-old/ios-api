@@ -45,6 +45,12 @@
  */
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
 
+/** Returns currently logged in user. Returns nil if no user looged in.
+ 
+ @return currently logged in user or nil
+ */
+- (TXHUser *)currentUser;
+
 /** Fetches the suppliers and the associated user from the login parameters.
 
  On a successful login the `updateUser:completion:` method is called in the background.
@@ -92,12 +98,6 @@
  @warning `product` or `completion` must not be `nil`.
  */
 - (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate coupon:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
-
-/** Returns currently logged in user. Returns nil if no user looged in.
-
- @return currently logged in user or nil
- */
-- (TXHUser *)currentUser;
 
 /** Reserves ticket for selected tiers with quantities
  
