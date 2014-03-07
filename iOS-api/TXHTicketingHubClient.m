@@ -776,6 +776,42 @@ static NSString * const kVenuesEndpoint    = @"venues";
                      }];
 }
 
+- (void)confirmOrder:(TXHOrder *)order completion:(void (^)(TXHOrder *, NSError *))completion
+{
+    NSParameterAssert(order);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [NSString  stringWithFormat:@"orders/%@/confirm",order.orderId];
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager POST:endpoint
+                   parameters:nil
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+                          
+                          NSError *error;
+                          BOOL success = [moc save:&error];
+                          
+                          if (!success) {
+                              completion(nil, error);
+                              return;
+                          }
+                          
+                          order = (TXHOrder *)[self.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                          
+                          completion(order, nil);
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          NSDictionary *dic =  error.userInfo[JSONResponseSerializerWithDataKey];
+                          TXHOrder *order;
+                          if (dic)
+                              order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:dic inManagedObjectContext:moc];
+                          completion(order, error);
+                      }];
+}
+
+
 #pragma mark - Universal Order Helper
 
 - (void)PATHOrder:(TXHOrder *)order withInfo:(NSDictionary *)payload completion:(void (^)(TXHOrder *, NSError *))completion
@@ -809,6 +845,8 @@ static NSString * const kVenuesEndpoint    = @"venues";
                            completion(order, error);
                        }];
 }
+
+#pragma mark - ticket records
 
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion
 {
