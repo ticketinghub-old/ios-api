@@ -154,7 +154,7 @@
  @param customersInfo dictionary with ticket ids as keys and customer detail dictionary as values
  @param completion the completion block to run with the request is completed. The block takes two parameters, an order object in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
  
- @warning `order` or `order` or `completion` must not be `nil`.
+ @warning `order` and `customersInfo` and `completion` must not be `nil`.
  */
 //customersInfo - dictionary with ticket ids as keys and customer detail dictionary as values
 - (void)updateOrder:(TXHOrder *)order withCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion;
@@ -167,7 +167,7 @@
  @param query query string to search tickets  for
  @param completion the completion block to run with the request is completed. The block takes two parameters, an tickets array in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the firlds object is not nil (it can be empty)
  
- @warning `product` or `availability` or `completion` must not be `nil`.
+ @warning `product` and `availability` and `completion` must not be `nil`.
  */
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 
