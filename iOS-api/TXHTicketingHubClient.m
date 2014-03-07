@@ -876,7 +876,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
                          {
                              TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:ticketdDic inManagedObjectContext:moc];
                              if (ticket)
-                                 [tickets addObject:tickets];
+                                 [tickets addObject:ticket];
                          }
                          
                          NSError *error;
