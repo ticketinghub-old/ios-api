@@ -687,6 +687,17 @@ static NSString * const kVenuesEndpoint    = @"venues";
 }
 
 
+- (void)updateOrder:(TXHOrder *)order withPaymentMethod:(NSString *)paymentMethod completion:(void (^)(TXHOrder *order, NSError *error))completion
+{       
+    NSParameterAssert(order);
+    NSParameterAssert(paymentMethod);
+    NSParameterAssert(completion);
+    
+    NSDictionary *requestPayload = @{@"payment" : @{@"type" : paymentMethod}};
+    
+    [self PATHOrder:order withInfo:requestPayload completion:completion];
+}
+
 
 #pragma mark - Universal Order Helper
 

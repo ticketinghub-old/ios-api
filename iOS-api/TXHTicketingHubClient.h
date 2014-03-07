@@ -160,6 +160,16 @@
 - (void)updateOrder:(TXHOrder *)order withCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion;
 
 
+/** PATHes order with provided payment method
+ 
+ @param order object to be updated with provided info
+ @param paymentMethod payment mthod string i.e. credit
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an order object in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
+ 
+ @warning `order` and `completion` must not be `nil`.
+ */
+- (void)updateOrder:(TXHOrder *)order withPaymentMethod:(NSString *)paymentMethod completion:(void (^)(TXHOrder *order, NSError *error))completion;
+
 /** Provides an array of reserved tickets for provided product and its availability
  
  @param product product for which tickes should be fetch
