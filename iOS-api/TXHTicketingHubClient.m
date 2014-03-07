@@ -728,6 +728,19 @@ static NSString * const kVenuesEndpoint    = @"venues";
                      }];
 }
 
+- (void)updateOrder:(TXHOrder *)order withOwnerInfo:(NSDictionary *)ownerInfo completion:(void (^)(TXHOrder *order, NSError *error))completion
+{
+    NSParameterAssert(order);
+    NSParameterAssert(ownerInfo);
+    NSParameterAssert(completion);
+    
+    NSDictionary *requestPayload = @{@"customer" : ownerInfo};
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self PATHOrder:order withInfo:requestPayload completion:completion];
+}
+
 #pragma mark - Universal Order Helper
 
 - (void)PATHOrder:(TXHOrder *)order withInfo:(NSDictionary *)payload completion:(void (^)(TXHOrder *, NSError *))completion
