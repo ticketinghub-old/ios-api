@@ -170,6 +170,15 @@
  */
 - (void)updateOrder:(TXHOrder *)order withPaymentMethod:(NSString *)paymentMethod completion:(void (^)(TXHOrder *order, NSError *error))completion;
 
+/** Provides an array of customer info fields to fill for a given order
+ 
+ @param order object for which required customer fields will be fetched
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an fields array and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the fields object is not nil (it can be empty)
+ 
+ @warning `order` and `completion` must not be `nil`.
+ */
+- (void)fieldsForOrderOwner:(TXHOrder *)order completion:(void(^)(NSArray *fields, NSError *error))completion;
+
 /** Provides an array of reserved tickets for provided product and its availability
  
  @param product product for which tickes should be fetch

@@ -699,6 +699,35 @@ static NSString * const kVenuesEndpoint    = @"venues";
 }
 
 
+- (void)fieldsForOrderOwner:(TXHOrder *)order completion:(void(^)(NSArray *fields, NSError *error))completion
+{
+    NSParameterAssert(order);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [NSString  stringWithFormat:@"orders/%@/fields",order.orderId];
+    
+    [self.sessionManager GET:endpoint
+                  parameters:nil
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         
+                         NSMutableArray *fields = [NSMutableArray array];
+                         
+                         for (NSDictionary *fieldDic in responseObject)
+                         {
+                             TXHField *field = [[TXHField alloc] initWithDictionary:fieldDic];
+                             if (field)
+                                 [fields addObject:field];
+                         }
+                         
+                         completion(fields,nil);
+                         
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         DLog(@"Unable to get the user because: %@", error);
+                         completion(nil, error);
+                     }];
+}
+
 #pragma mark - Universal Order Helper
 
 - (void)PATHOrder:(TXHOrder *)order withInfo:(NSDictionary *)payload completion:(void (^)(TXHOrder *, NSError *))completion
