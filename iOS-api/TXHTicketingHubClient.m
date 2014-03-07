@@ -741,6 +741,41 @@ static NSString * const kVenuesEndpoint    = @"venues";
     [self PATHOrder:order withInfo:requestPayload completion:completion];
 }
 
+- (void)getOrderUpdated:(TXHOrder *)order completion:(void (^)(TXHOrder *order, NSError *error))completion
+{
+    NSParameterAssert(order);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [NSString  stringWithFormat:@"orders/%@",order.orderId];
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager GET:endpoint
+                  parameters:nil
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+                         
+                         NSError *error;
+                         BOOL success = [moc save:&error];
+                         
+                         if (!success) {
+                             completion(nil, error);
+                             return;
+                         }
+                         
+                         order = (TXHOrder *)[self.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                         
+                         completion(order, nil);
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         NSDictionary *dic =  error.userInfo[JSONResponseSerializerWithDataKey];
+                         TXHOrder *order;
+                         if (dic)
+                             order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:dic inManagedObjectContext:moc];
+                         completion(order, error);
+                     }];
+}
+
 #pragma mark - Universal Order Helper
 
 - (void)PATHOrder:(TXHOrder *)order withInfo:(NSDictionary *)payload completion:(void (^)(TXHOrder *, NSError *))completion

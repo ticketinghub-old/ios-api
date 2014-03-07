@@ -190,6 +190,15 @@
 //customersInfo - dictionary with ticket ids as keys and customer detail dictionary as values
 - (void)updateOrder:(TXHOrder *)order withOwnerInfo:(NSDictionary *)customerInfo completion:(void (^)(TXHOrder *order, NSError *error))completion;
 
+/** GETs a full order object to veryfi before confirmation
+ 
+ @param order object to be updated with server data (only the orderID value is neccesary)
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an order object in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
+ 
+ @warning `order` and `completion` must not be `nil`.
+ */
+- (void)getOrderUpdated:(TXHOrder *)order completion:(void (^)(TXHOrder *order, NSError *error))completion;
+
 /** Provides an array of reserved tickets for provided product and its availability
  
  @param product product for which tickes should be fetch
