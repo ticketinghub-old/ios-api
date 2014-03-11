@@ -1,6 +1,6 @@
 platform :ios, '7.0'
 
-pod 'AFNetworking', '~> 2.1.0'
+pod 'AFNetworking', '~> 2.2.0'
 pod 'DCTCoreDataStack', '~> 1.1'
 
 target :test, :exclusive => true do

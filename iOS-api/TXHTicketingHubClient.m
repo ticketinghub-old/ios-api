@@ -736,8 +736,6 @@ static NSString * const kVenuesEndpoint    = @"venues";
     
     NSDictionary *requestPayload = @{@"customer" : ownerInfo};
     
-    NSManagedObjectContext *moc = self.importContext;
-    
     [self PATHOrder:order withInfo:requestPayload completion:completion];
 }
 

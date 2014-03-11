@@ -1,38 +1,39 @@
 PODS:
-  - AFNetworking (2.1.0):
+  - AFNetworking (2.2.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.1.0):
+  - AFNetworking/NSURLConnection (2.2.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.1.0):
+  - AFNetworking/NSURLSession (2.2.0):
     - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.1.0)
-  - AFNetworking/Security (2.1.0)
-  - AFNetworking/Serialization (2.1.0)
-  - AFNetworking/UIKit (2.1.0):
+  - AFNetworking/Reachability (2.2.0)
+  - AFNetworking/Security (2.2.0)
+  - AFNetworking/Serialization (2.2.0)
+  - AFNetworking/UIKit (2.2.0):
     - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - DCTCoreDataStack (1.1)
-  - Expecta (0.2.3)
+  - Expecta (0.2.4)
   - OHHTTPStubs (3.1.0)
   - Specta (0.2.1)
 
 DEPENDENCIES:
-  - AFNetworking (~> 2.1.0)
+  - AFNetworking (~> 2.2.0)
   - DCTCoreDataStack (~> 1.1)
   - Expecta (~> 0.2.3)
   - OHHTTPStubs (~> 3.1.0)
   - Specta (~> 0.2.1)
 
 SPEC CHECKSUMS:
-  AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
+  AFNetworking: e8cfd8f3fe3bfe19124a0cc63f4d45752d892a56
   DCTCoreDataStack: 4090bc1d6819fda813c7cc45119d1fa8fd8b8b3c
-  Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
+  Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
   OHHTTPStubs: d67c42c0212f0883ddb8592375aa0dc00dc50a36
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
 
