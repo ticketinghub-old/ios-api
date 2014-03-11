@@ -1,5 +1,13 @@
 #import "_TXHTicket.h"
 
+extern NSString * const kTXHBarcodeTypeKey;
+extern NSString * const kTXHBarcodeTicketSeqIdKey;
+extern NSString * const kTXHBarcodeProductSeqIdKey;
+extern NSString * const kTXHBarcodeTierSeqIdKey;
+extern NSString * const kTXHBarcodeBitmaskKey;
+extern NSString * const kTXHBarcodeValidFromTimestampKey;
+extern NSString * const kTXHBarcodeExpiresAtTimestampKey;
+extern NSString * const kTXHBarcodeSignatureKey;
 
 @interface TXHTicket : _TXHTicket {}
 
@@ -15,5 +23,7 @@
  */
 + (instancetype)updateWithDictionaryOrCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc;
 
+
++ (NSDictionary *)decodeBarcode:(NSString *)barcode;
 
 @end

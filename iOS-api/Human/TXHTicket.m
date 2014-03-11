@@ -23,7 +23,16 @@ static NSString * const kUpgradesKey   = @"upgrades";
 static NSString * const kErrorsKey     = @"errors";
 static NSString * const kSeqIDKey      = @"seq_id";
 
+// barcode dictionary keys
 
+NSString * const kTXHBarcodeTypeKey                 = @"kTXHBarcodeTypeKey";
+NSString * const kTXHBarcodeTicketSeqIdKey          = @"kTXHBarcodeTicketSeqIdKey";
+NSString * const kTXHBarcodeProductSeqIdKey         = @"kTXHBarcodeProductSeqIdKey";
+NSString * const kTXHBarcodeTierSeqIdKey            = @"kTXHBarcodeTierSeqIdKey";
+NSString * const kTXHBarcodeBitmaskKey              = @"kTXHBarcodeBitmaskKey";
+NSString * const kTXHBarcodeValidFromTimestampKey   = @"kTXHBarcodeValidFromTimestampKey";
+NSString * const kTXHBarcodeExpiresAtTimestampKey   = @"kTXHBarcodeExpiresAtTimestampKey";
+NSString * const kTXHBarcodeSignatureKey            = @"kTXHBarcodeSignatureKey";
 
 @interface TXHTicket ()
 
@@ -34,6 +43,49 @@ static NSString * const kSeqIDKey      = @"seq_id";
 
 @implementation TXHTicket
 
++ (NSDictionary *)decodeBarcode:(NSString *)barcode
+{
+    size_t totalBytes = 0;
+    
+    NSData *jsonData       = [[NSData alloc] initWithBase64EncodedString:barcode options:0];
+    
+    if (!jsonData)
+        return nil;
+    
+    NSData *typeData       = [jsonData subdataWithRange:NSMakeRange(totalBytes, sizeof(uint8_t))]; totalBytes += sizeof(uint8_t);
+    NSData *ticketSeqData  = [jsonData subdataWithRange:NSMakeRange(totalBytes, sizeof(uint32_t))]; totalBytes += sizeof(uint32_t);
+    NSData *productSeqData = [jsonData subdataWithRange:NSMakeRange(totalBytes, sizeof(uint8_t))]; totalBytes += sizeof(uint8_t);
+    NSData *tierSeqData    = [jsonData subdataWithRange:NSMakeRange(totalBytes, sizeof(uint8_t))]; totalBytes += sizeof(uint8_t);
+    NSData *bitmaskData    = [jsonData subdataWithRange:NSMakeRange(totalBytes, sizeof(uint32_t))]; totalBytes += sizeof(uint32_t);
+    NSData *validFromData  = [jsonData subdataWithRange:NSMakeRange(totalBytes, sizeof(uint32_t))]; totalBytes += sizeof(uint32_t);
+    NSData *expiresAtData  = [jsonData subdataWithRange:NSMakeRange(totalBytes, sizeof(uint32_t))]; totalBytes += sizeof(uint32_t);
+    NSData *signatureData  = [jsonData subdataWithRange:NSMakeRange(totalBytes, [jsonData length] - totalBytes)];
+    
+    NSNumber *type               = @(*(uint8_t *)[typeData bytes]);
+    NSNumber *ticketSeq          = @(*(uint32_t *)[ticketSeqData bytes]);
+    NSNumber *productSeq         = @(*(uint8_t *)[productSeqData bytes]);
+    NSNumber *tierSeq            = @(*(uint8_t *)[tierSeqData bytes]);
+    NSNumber *bitmask            = @(*(uint32_t *)[bitmaskData bytes]);
+    NSNumber *validFromTimestamp = @(*(uint32_t *)[validFromData bytes]);
+    NSNumber *expiresAtTimestamp = @(*(uint32_t *)[expiresAtData bytes]);
+    NSString* signature = [[NSString alloc] initWithData:signatureData
+                                                encoding:NSASCIIStringEncoding];
+    
+    if (!type || !ticketSeq || !productSeq ||
+        !tierSeq || !bitmask ||
+        !validFromData || !expiresAtData ||
+        !expiresAtData || !signature)
+        return nil;
+    
+    return @{kTXHBarcodeTypeKey : type,
+             kTXHBarcodeTicketSeqIdKey : ticketSeq,
+             kTXHBarcodeProductSeqIdKey : productSeq,
+             kTXHBarcodeTierSeqIdKey : tierSeq,
+             kTXHBarcodeBitmaskKey : bitmask,
+             kTXHBarcodeValidFromTimestampKey : validFromTimestamp,
+             kTXHBarcodeExpiresAtTimestampKey : expiresAtTimestamp,
+             kTXHBarcodeSignatureKey : signature};
+}
 
 + (instancetype)updateWithDictionaryOrCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
 {
