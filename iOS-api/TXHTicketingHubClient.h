@@ -219,4 +219,7 @@
  */
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 
+
+- (void)updateTicketsForProduct:(TXHProduct*)productLeszek withAttendedInfo:(NSArray *)ticketsInfo completion:(void(^)(NSError *error))completion;
+
 @end

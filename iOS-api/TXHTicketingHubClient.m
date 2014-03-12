@@ -890,5 +890,43 @@ static NSString * const kVenuesEndpoint    = @"venues";
                      }];
 }
 
+- (void)updateTicketsForProduct:(TXHProduct*)productLeszek withAttendedInfo:(NSArray *)ticketsInfo completion:(void(^)(NSError *error))completion
+{
+    NSParameterAssert(ticketsInfo);
+    NSParameterAssert(completion);
+    
+    TXHSupplier *anySupplier = [[self currentUser].suppliers anyObject];
+    NSString *tokenString    = [NSString stringWithFormat:@"Bearer %@", anySupplier.accessToken];
+    
+    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets",productLeszek.productId];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ticketsInfo
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    NSString *body = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSURL *endpointURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:endpointURL
+                                                           cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                       timeoutInterval:10];
+    
+    [request setHTTPMethod:@"PATCH"];
+    [request setValue: @"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody: [body dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setValue:[NSString stringWithFormat:@"Token token=\"%@\"", tokenString] forHTTPHeaderField:@"Authorization"];
+    
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    op.responseSerializer = self.sessionManager.responseSerializer;
+    
+    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"JSON responseObject: %@ ",responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", [error localizedDescription]);
+    }];
+    [op start];
+}
+
 
 @end
