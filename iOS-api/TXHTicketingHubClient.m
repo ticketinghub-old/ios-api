@@ -898,7 +898,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     TXHSupplier *anySupplier = [[self currentUser].suppliers anyObject];
     NSString *tokenString    = [NSString stringWithFormat:@"Bearer %@", anySupplier.accessToken];
     
-    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets",productLeszek.productId];
+    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets",product.productId];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ticketsInfo
                                                        options:NSJSONWritingPrettyPrinted
