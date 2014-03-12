@@ -36,7 +36,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _isoTimeFormatter = [NSDateFormatter new];
-        [_isoTimeFormatter setDateFormat:@"HHmm"];
+        [_isoTimeFormatter setDateFormat:@"HH:mm"];
     });
     
     return _isoTimeFormatter;
