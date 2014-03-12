@@ -890,7 +890,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
                      }];
 }
 
-- (void)updateTicketsForProduct:(TXHProduct*)productLeszek withAttendedInfo:(NSArray *)ticketsInfo completion:(void(^)(NSError *error))completion
+- (void)updateTicketsForProduct:(TXHProduct*)product withAttendedInfo:(NSArray *)ticketsInfo completion:(void(^)(NSError *error))completion
 {
     NSParameterAssert(ticketsInfo);
     NSParameterAssert(completion);
