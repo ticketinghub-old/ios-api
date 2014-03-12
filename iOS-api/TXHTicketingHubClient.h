@@ -222,4 +222,15 @@
 
 - (void)updateTicketsForProduct:(TXHProduct*)product withAttendedInfo:(NSArray *)ticketsInfo completion:(void(^)(NSError *error))completion;
 
+/** Marks givent ticket as attended
+ 
+ @param ticket that should be marked as atteneded
+ @param attended value saying if ticket should be market as atteneded or unmarked
+ @param product on whichc the ticket should be updated
+ @param completion the completion block to run with the request is completed. The block takes two parameters, a ticket in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the ticket object is nil
+ 
+ @warning `ticket` and `product` and `completion` must not be `nil`.
+ */
+- (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
+
 @end

@@ -928,5 +928,41 @@ static NSString * const kVenuesEndpoint    = @"venues";
     [op start];
 }
 
+- (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
+{
+    NSParameterAssert(ticket);
+    NSParameterAssert(product);
+    NSParameterAssert(completion);
+    
+    NSString *actionString = attended ? @"attend" : @"unattend";
+    
+    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets/%@/%@",product.productId, ticket.ticketId, actionString];
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager POST:endpoint
+                   parameters:nil
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          
+                          TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+                          
+                          NSError *error;
+                          BOOL success = [moc save:&error];
+                          
+                          if (!success) {
+                              completion(nil, error);
+                              return;
+                          }
+                          
+                          ticket = (TXHTicket *)[self.managedObjectContext existingObjectWithID:ticket.objectID error:&error];
+                          
+                          completion(ticket, nil);
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          completion(nil, error);
+                      }];
+}
+
+
 
 @end
