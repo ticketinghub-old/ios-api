@@ -14,6 +14,7 @@ const struct TXHCustomerAttributes TXHCustomerAttributes = {
 };
 
 const struct TXHCustomerRelationships TXHCustomerRelationships = {
+	.address = @"address",
 	.order = @"order",
 	.ticket = @"ticket",
 };
@@ -102,6 +103,10 @@ const struct TXHCustomerFetchedProperties TXHCustomerFetchedProperties = {
 
 
 
+
+@dynamic address;
+
+	
 
 @dynamic order;
 

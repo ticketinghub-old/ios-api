@@ -15,6 +15,7 @@ extern const struct TXHAddressAttributes {
 } TXHAddressAttributes;
 
 extern const struct TXHAddressRelationships {
+	__unsafe_unretained NSString *customer;
 	__unsafe_unretained NSString *order;
 	__unsafe_unretained NSString *product;
 } TXHAddressRelationships;
@@ -22,6 +23,7 @@ extern const struct TXHAddressRelationships {
 extern const struct TXHAddressFetchedProperties {
 } TXHAddressFetchedProperties;
 
+@class TXHCustomer;
 @class TXHOrder;
 @class TXHProduct;
 
@@ -116,6 +118,13 @@ extern const struct TXHAddressFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHCustomer *customer;
+
+//- (BOOL)validateCustomer:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) TXHOrder *order;
 
 //- (BOOL)validateOrder:(id*)value_ error:(NSError**)error_;
@@ -180,6 +189,11 @@ extern const struct TXHAddressFetchedProperties {
 - (void)setPrimitiveStreet:(NSString*)value;
 
 
+
+
+
+- (TXHCustomer*)primitiveCustomer;
+- (void)setPrimitiveCustomer:(TXHCustomer*)value;
 
 
 

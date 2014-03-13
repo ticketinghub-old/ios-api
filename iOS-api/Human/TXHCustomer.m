@@ -3,6 +3,7 @@
 
 #import "TXHOrder.h"
 #import "TXHTicket.h"
+#import "TXHAddress.h"
 
 static NSString * const kCountryKey   = @"country";
 static NSString * const kEmailKey     = @"email";
@@ -11,6 +12,7 @@ static NSString * const kFullNameKey  = @"full_name";
 static NSString * const kLastNameKey  = @"last_name";
 static NSString * const kTelephoneKey = @"telephone";
 static NSString * const kErrorsKey    = @"errors";
+static NSString * const kAddressKey   = @"address";
 
 @interface TXHCustomer ()
 
@@ -34,6 +36,9 @@ static NSString * const kErrorsKey    = @"errors";
     customer.telephone = nilIfNSNull(dictionary[kTelephoneKey]);
     customer.errors    = nilIfNSNull(dictionary[kErrorsKey]);
     
+    NSDictionary *addressDictionary  = nilIfNSNull(dictionary[kAddressKey]);
+    customer.address = [TXHAddress createWithDictionary:addressDictionary inManagedObjectContext:moc];    
+
     return customer;
 }
 

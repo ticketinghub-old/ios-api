@@ -15,6 +15,7 @@ extern const struct TXHCustomerAttributes {
 } TXHCustomerAttributes;
 
 extern const struct TXHCustomerRelationships {
+	__unsafe_unretained NSString *address;
 	__unsafe_unretained NSString *order;
 	__unsafe_unretained NSString *ticket;
 } TXHCustomerRelationships;
@@ -22,6 +23,7 @@ extern const struct TXHCustomerRelationships {
 extern const struct TXHCustomerFetchedProperties {
 } TXHCustomerFetchedProperties;
 
+@class TXHAddress;
 @class TXHOrder;
 @class TXHTicket;
 
@@ -116,6 +118,13 @@ extern const struct TXHCustomerFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHAddress *address;
+
+//- (BOOL)validateAddress:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) TXHOrder *order;
 
 //- (BOOL)validateOrder:(id*)value_ error:(NSError**)error_;
@@ -180,6 +189,11 @@ extern const struct TXHCustomerFetchedProperties {
 - (void)setPrimitiveTelephone:(NSString*)value;
 
 
+
+
+
+- (TXHAddress*)primitiveAddress;
+- (void)setPrimitiveAddress:(TXHAddress*)value;
 
 
 
