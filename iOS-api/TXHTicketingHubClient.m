@@ -998,4 +998,35 @@ static NSString * const kVenuesEndpoint    = @"venues";
 }
 
 
+- (void)getOrderForTicekt:(TXHTicket *)ticket withProduct:(TXHProduct *)product completion:(void(^)(TXHOrder *order, NSError *error))completion
+{
+    NSParameterAssert(ticket);
+    NSParameterAssert(product);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets/%@/order",product.productId, ticket.ticketId];
+    NSManagedObjectContext *moc = self.importContext;
+
+    [self.sessionManager GET:endpoint
+                  parameters:nil
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+                         
+                         NSError *error;
+                         BOOL success = [moc save:&error];
+                         
+                         if (!success) {
+                             completion(nil, error);
+                             return;
+                         }
+                         
+                         order = (TXHOrder *)[self.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                         
+                         completion(order, nil);
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         completion(nil, error);
+                     }];
+}
+
 @end
