@@ -31,6 +31,7 @@ static NSString * const kErrorsKey    = @"errors";
     customer.firstName = nilIfNSNull(dictionary[kFirstNameKey]);
     customer.lastName  = nilIfNSNull(dictionary[kLastNameKey]);
     customer.fullName  = nilIfNSNull(dictionary[kFullNameKey]);
+    customer.telephone = nilIfNSNull(dictionary[kTelephoneKey]);
     customer.errors    = nilIfNSNull(dictionary[kErrorsKey]);
     
     return customer;
