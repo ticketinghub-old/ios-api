@@ -219,7 +219,12 @@
  */
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 
-
+/** Endpoint for reserving (marking ticket as attended) tickets wit infirmations from barcode 
+ @param product porduct of a ticket
+ @param ticketsInfo is an array of dictioanry object with ticket properties (seq_id, attended_at, signature)
+ 
+ warning `product` and `ticketsInfo` and `completion` must not be `nil`. currently not used - its rather for offline mode, not sure if works correctly
+ */
 - (void)updateTicketsForProduct:(TXHProduct*)product withAttendedInfo:(NSArray *)ticketsInfo completion:(void(^)(NSError *error))completion;
 
 /** Marks givent ticket as attended
@@ -232,5 +237,16 @@
  @warning `ticket` and `product` and `completion` must not be `nil`.
  */
 - (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
+
+
+/** Searching server db with provided ticket seq_id and product
+ 
+ @param seqID ticket seq_id (interchange between the seq_id and the uuid)
+ @param product on whichc the ticket should be updated
+ @param completion the completion block to run with the request is completed. The block takes two parameters, a ticket in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the ticket object is nil
+ 
+ @warning `seqID` and `product` and `completion` must not be `nil`.
+ */
+- (void)searchForTicketWithSeqId:(NSNumber *)seqID withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
 
 @end

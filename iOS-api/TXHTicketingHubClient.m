@@ -892,6 +892,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
 
 - (void)updateTicketsForProduct:(TXHProduct*)product withAttendedInfo:(NSArray *)ticketsInfo completion:(void(^)(NSError *error))completion
 {
+    NSParameterAssert(product);
     NSParameterAssert(ticketsInfo);
     NSParameterAssert(completion);
     
@@ -963,6 +964,38 @@ static NSString * const kVenuesEndpoint    = @"venues";
                       }];
 }
 
+
+- (void)searchForTicketWithSeqId:(NSNumber *)seqID withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion
+{
+    NSParameterAssert(seqID);
+    NSParameterAssert(product);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets/%@",product.productId, seqID];
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager GET:endpoint
+                  parameters:nil
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+                         
+                         NSError *error;
+                         BOOL success = [moc save:&error];
+                         
+                         if (!success) {
+                             completion(nil, error);
+                             return;
+                         }
+                         
+                         ticket = (TXHTicket *)[self.managedObjectContext existingObjectWithID:ticket.objectID error:&error];
+                         
+                         completion(ticket, nil);
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         completion(nil, error);
+                     }];
+}
 
 
 @end
