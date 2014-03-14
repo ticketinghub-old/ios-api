@@ -13,4 +13,6 @@
  */
 + (instancetype)updateWithDictionaryOrCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc;
 
+@property (readonly, nonatomic) NSInteger attendedTickets;
+
 @end

@@ -36,6 +36,16 @@ static NSString * const kErrorsKey      = @"errors";
 
 @implementation TXHOrder
 
+- (NSInteger)attendedTickets
+{
+    NSInteger attended = 0;
+    for (TXHTicket *ticket in self.tickets) {
+        if (ticket.attendedAt)
+            attended++;
+    }
+    return attended;
+}
+
 + (instancetype)updateWithDictionaryOrCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
 {
     NSString *orderId = dictionary[kIdKey];
