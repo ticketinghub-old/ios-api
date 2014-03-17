@@ -493,7 +493,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
 
 #pragma mark - Tickets
 
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability completion:(void(^)(TXHOrder *order, NSError *error))completion
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion;
 {
     NSParameterAssert(tierQuantities);
     NSParameterAssert(completion);
@@ -518,7 +518,12 @@ static NSString * const kVenuesEndpoint    = @"venues";
         [tickets addObject:ticketInfo];
     }
     
-    NSDictionary *requestPayload = @{@"tickets" : tickets};
+    NSNumber *groupValue  = group ? [NSNumber numberWithBool:YES] : [NSNumber numberWithBool:NO];
+    NSNumber *notifyValue = notify ? [NSNumber numberWithBool:YES] : [NSNumber numberWithBool:NO];
+    
+    NSDictionary *requestPayload = @{@"tickets" : tickets,
+                                     @"group"   : groupValue,
+                                     @"notify"  : notifyValue};
 
     if ([availability.coupon length])
     {
