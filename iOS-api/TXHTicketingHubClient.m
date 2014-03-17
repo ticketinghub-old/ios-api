@@ -522,7 +522,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSNumber *notifyValue = notify ? [NSNumber numberWithBool:YES] : [NSNumber numberWithBool:NO];
     
     NSDictionary *requestPayload = @{@"tickets" : tickets,
-                                     @"group"   : groupValue,
+                                     @"direct"  : groupValue,
                                      @"notify"  : notifyValue};
 
     if ([availability.coupon length])
