@@ -22,6 +22,8 @@ static NSString * const kTierKey       = @"tier";
 static NSString * const kUpgradesKey   = @"upgrades";
 static NSString * const kErrorsKey     = @"errors";
 static NSString * const kSeqIDKey      = @"seq_id";
+static NSString * const kReferenceKey  = @"reference";
+
 
 // barcode dictionary keys
 
@@ -132,6 +134,7 @@ NSString * const kTXHBarcodeSignatureKey            = @"kTXHBarcodeSignatureKey"
     
     self.ticketId   = nilIfNSNull(dictionary[kIdKey]);
     self.bitmask    = nilIfNSNull(dictionary[kBitmaskKey]);
+    self.reference  = nilIfNSNull(dictionary[kReferenceKey]);
     self.code       = nilIfNSNull(dictionary[kCodeKey]);
     self.price      = nilIfNSNull(dictionary[kPriceKey]);
     self.voucher    = nilIfNSNull(dictionary[kVoucherKey]);
