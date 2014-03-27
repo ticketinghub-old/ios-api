@@ -1034,4 +1034,44 @@ static NSString * const kVenuesEndpoint    = @"venues";
                      }];
 }
 
+- (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion
+{
+    NSString *extension = [self extendionForFormat:format];
+    NSString *endpoint  = [NSString stringWithFormat:@"orders/%@/receipt.%@",order.orderId,extension];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint];
+    
+    if (width > 0 && dpi > 0)
+        urlString = [urlString stringByAppendingFormat:@"?width=%d&dpi=%d",width,dpi];
+    
+    NSURL *URL = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    NSString *authHeader = self.sessionManager.requestSerializer.HTTPRequestHeaders[@"Authorization"];
+    [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+    
+    NSURLSessionDownloadTask *downloadTask = [self.sessionManager downloadTaskWithRequest:request
+                                                                                 progress:nil
+                                                                              destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+                                                                                  NSURL *documentsDirectoryPath = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]];
+                                                                                  return [documentsDirectoryPath URLByAppendingPathComponent:[targetPath lastPathComponent]];
+                                                                                  
+                                                                              } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+                                                                                  completion(filePath, error);
+                                                                              }];
+    
+    [downloadTask resume];
+}
+
+- (NSString *)extendionForFormat:(TXHDocumentFormat)format
+{
+    switch (format) {
+        case TXHDocumentFormatPDF: return @"pdf";
+        case TXHDocumentFormatPS:  return @"ps";
+        case TXHDocumentFormatPNG: return @"png";
+        default:
+            break;
+    }
+    
+    return @"png";
+}
+
 @end

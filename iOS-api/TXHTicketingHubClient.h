@@ -15,6 +15,12 @@
 @class TXHAvailability;
 @class TXHTicket;
 
+typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
+    TXHDocumentFormatPDF,
+    TXHDocumentFormatPS,
+    TXHDocumentFormatPNG
+};
+
 @interface TXHTicketingHubClient : NSObject
 
 /** The main managed object context.
@@ -261,5 +267,18 @@
  @warning `ticket` and `product` and `completion` must not be `nil`.
  */
 - (void)getOrderForTicekt:(TXHTicket *)ticket withProduct:(TXHProduct *)product completion:(void(^)(TXHOrder *order, NSError *error))completion;
+
+
+- (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format completion:(void(^)(NSURL *))completion;
+
+/** Gets a receipt for given order
+ 
+ @param order for which the receipt wil be fetched
+ @param format for the receipt (pdf, png, ps)
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an loacl disk url to the receipt file and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the url object is nil
+ 
+ @warning `order` and `completion` must not be `nil`.
+ */
+- (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion;
 
 @end
