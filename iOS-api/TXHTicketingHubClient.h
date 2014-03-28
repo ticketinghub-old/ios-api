@@ -281,4 +281,6 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion;
 
+- (void)getTicketTemplatesCompletion:(void(^)(NSArray *templates,NSError *error))completion;
+
 @end

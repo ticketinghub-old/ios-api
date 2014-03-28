@@ -27,8 +27,10 @@ static NSString * const kVenuesEndpoint    = @"venues";
 #import "TXHTier.h"
 #import "TXHOrder.h"
 #import "TXHTicket.h"
+#import "TXHTicketTemplate.h"
 #import "TXHUpgrade.h"
 #import "TXHField.h"
+
 
 #import "NSDate+ISO.h"
 #import "TXHDefines.h"
@@ -1072,6 +1074,33 @@ static NSString * const kVenuesEndpoint    = @"venues";
     }
     
     return @"png";
+}
+
+
+- (void)getTicketTemplatesCompletion:(void(^)(NSArray *templates,NSError *error))completion
+{
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = @"templates";
+    
+    [self.sessionManager GET:endpoint
+                  parameters:nil
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         
+                         NSMutableArray *templates = [NSMutableArray array];
+                         
+                         for (NSDictionary *templateDic in responseObject)
+                         {
+                             TXHTicketTemplate *template = [[TXHTicketTemplate alloc] initWithDictionary:templateDic];
+                             if (template)
+                                 [templates addObject:template];
+                         }
+                         
+                         completion(templates,nil);
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         completion(nil, error);
+                     }];
 }
 
 @end

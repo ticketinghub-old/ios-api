@@ -18,7 +18,9 @@
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
 #import "TXHTicket.h"
+#import "TXHTicketTemplate.h"
 #import "TXHTier.h"
 #import "TXHUpgrade.h"
 #import "TXHUser.h"
+
 
