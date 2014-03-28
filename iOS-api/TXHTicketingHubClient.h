@@ -14,6 +14,7 @@
 @class TXHOrder;
 @class TXHAvailability;
 @class TXHTicket;
+@class TXHTicketTemplate;
 
 typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
     TXHDocumentFormatPDF,
@@ -268,9 +269,6 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)getOrderForTicekt:(TXHTicket *)ticket withProduct:(TXHProduct *)product completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
-
-- (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format completion:(void(^)(NSURL *))completion;
-
 /** Gets a receipt for given order
  
  @param order for which the receipt wil be fetched
@@ -281,6 +279,22 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion;
 
+/** Gets list of available ticket templates to download
+ 
+ @warning `completion` must not be `nil`.
+ */
 - (void)getTicketTemplatesCompletion:(void(^)(NSArray *templates,NSError *error))completion;
+
+
+/** Gets ticket to print for given order, templet and format
+ 
+ @param order for which the ticket wil be fetched
+ @param template in wich the ticket will be returned
+ @param format for the ticket (pdf, png, ps)
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an loacl disk url to the tivket file and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the url object is nil
+
+ @warning `order`, `template` and `completion` must not be `nil`.
+ */
+- (void)getTicketToPrintForOrder:(TXHOrder *)order withTemplet:(TXHTicketTemplate *)template format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion;
 
 @end

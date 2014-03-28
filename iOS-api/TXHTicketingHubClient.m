@@ -1038,6 +1038,9 @@ static NSString * const kVenuesEndpoint    = @"venues";
 
 - (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion
 {
+    NSParameterAssert(order);
+    NSParameterAssert(completion);
+    
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [NSString stringWithFormat:@"orders/%@/receipt.%@",order.orderId,extension];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint];
@@ -1101,6 +1104,34 @@ static NSString * const kVenuesEndpoint    = @"venues";
                      failure:^(NSURLSessionDataTask *task, NSError *error) {
                          completion(nil, error);
                      }];
+}
+
+- (void)getTicketToPrintForOrder:(TXHOrder *)order withTemplet:(TXHTicketTemplate *)templet format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion;
+{
+    NSParameterAssert(order);
+    NSParameterAssert(templet);
+    NSParameterAssert(completion);
+    
+    NSString *extension = [self extendionForFormat:format];
+    NSString *endpoint  = [NSString stringWithFormat:@"orders/%@/templates/%@.%@",order.orderId,templet.templateId,extension];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint];
+    
+    NSURL *URL = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    NSString *authHeader = self.sessionManager.requestSerializer.HTTPRequestHeaders[@"Authorization"];
+    [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+    
+    NSURLSessionDownloadTask *downloadTask = [self.sessionManager downloadTaskWithRequest:request
+                                                                                 progress:nil
+                                                                              destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+                                                                                  NSURL *documentsDirectoryPath = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]];
+                                                                                  return [documentsDirectoryPath URLByAppendingPathComponent:[targetPath lastPathComponent]];
+                                                                                  
+                                                                              } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+                                                                                  completion(filePath, error);
+                                                                              }];
+    
+    [downloadTask resume];
 }
 
 @end
