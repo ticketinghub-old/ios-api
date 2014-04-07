@@ -10,7 +10,6 @@
 static NSString * const kAPIBaseURL        = @"https://api.ticketinghub.com/";
 static NSString * const kSuppliersEndPoint = @"suppliers";
 static NSString * const kUserEndPoint      = @"user";
-static NSString * const kVenuesEndpoint    = @"venues";
 
 #import "TXHTicketingHubClient.h"
 #import <DCTCoreDataStack/DCTCoreDataStack.h>
@@ -93,15 +92,6 @@ static NSString * const kVenuesEndpoint    = @"venues";
 {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = showNetworkActivityIndicatorAutomatically;
 }
-
-- (void)setDefaultAcceptLanguage:(NSString *)identifier
-{
-    [self.sessionManager.requestSerializer setValue:identifier forHTTPHeaderField:@"Accept-Language"];
-}
-
-
-
-
 
 #pragma mark - Notifications
 #pragma mark   Import context
@@ -1084,7 +1074,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
 {
     NSParameterAssert(completion);
     
-    NSString *endpoint = @"templates";
+    NSString *endpoint = @"supplier/templates";
     
     [self.sessionManager GET:endpoint
                   parameters:nil
