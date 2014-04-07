@@ -297,7 +297,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(product);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tiers", product.productId];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/products/%@/tiers", product.productId];
     
     [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -406,7 +406,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
                    @"to"   : [toDate isoDateString]};
     
 
-    NSString *endpoint = [NSString stringWithFormat:@"products/%@/availability", product.productId];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/products/%@/availability", product.productId];
 
     [self.sessionManager GET:endpoint parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
 
@@ -592,7 +592,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(ticket);
     NSParameterAssert(completion);
 
-    NSString *endpoint = [NSString stringWithFormat:@"tickets/%@/upgrades", ticket.ticketId];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/tickets/%@/upgrades", ticket.ticketId];
     NSManagedObjectContext *moc = self.importContext;
 
     [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -652,7 +652,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(ticket);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [NSString stringWithFormat:@"tickets/%@/fields", ticket.ticketId];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/tickets/%@/fields", ticket.ticketId];
     
     [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -711,7 +711,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(order);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [NSString  stringWithFormat:@"orders/%@/fields",order.orderId];
+    NSString *endpoint = [NSString  stringWithFormat:@"supplier/orders/%@/fields",order.orderId];
     
     [self.sessionManager GET:endpoint
                   parameters:nil
@@ -751,7 +751,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(order);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [NSString  stringWithFormat:@"orders/%@",order.orderId];
+    NSString *endpoint = [NSString  stringWithFormat:@"supplier/orders/%@",order.orderId];
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -786,7 +786,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(order);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [NSString  stringWithFormat:@"orders/%@/confirm",order.orderId];
+    NSString *endpoint = [NSString  stringWithFormat:@"supplier/orders/%@/confirm",order.orderId];
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -821,7 +821,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
 
 - (void)PATHOrder:(TXHOrder *)order withInfo:(NSDictionary *)payload completion:(void (^)(TXHOrder *, NSError *))completion
 {
-    NSString *endpoint = [NSString stringWithFormat:@"orders/%@", order.orderId];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/orders/%@", order.orderId];
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -859,7 +859,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(availability);
     NSParameterAssert(completion);
     
-    NSString *endpoint   = [NSString stringWithFormat:@"products/%@/tickets",product.productId];
+    NSString *endpoint   = [NSString stringWithFormat:@"supplier/products/%@/tickets",product.productId];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
@@ -906,7 +906,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     TXHSupplier *anySupplier = [[self currentUser].suppliers anyObject];
     NSString *tokenString    = [NSString stringWithFormat:@"Bearer %@", anySupplier.accessToken];
     
-    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets",product.productId];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/products/%@/tickets",product.productId];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ticketsInfo
                                                        options:NSJSONWritingPrettyPrinted
@@ -944,7 +944,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     
     NSString *actionString = attended ? @"attend" : @"unattend";
     
-    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets/%@/%@",product.productId, ticket.ticketId, actionString];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/products/%@/tickets/%@/%@",product.productId, ticket.ticketId, actionString];
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -978,7 +978,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(product);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets/%@",product.productId, seqID];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/products/%@/tickets/%@",product.productId, seqID];
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -1011,7 +1011,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(product);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [NSString stringWithFormat:@"products/%@/tickets/%@/order",product.productId, ticket.ticketId];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/products/%@/tickets/%@/order",product.productId, ticket.ticketId];
     NSManagedObjectContext *moc = self.importContext;
 
     [self.sessionManager GET:endpoint
@@ -1042,7 +1042,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(completion);
     
     NSString *extension = [self extendionForFormat:format];
-    NSString *endpoint  = [NSString stringWithFormat:@"orders/%@/receipt.%@",order.orderId,extension];
+    NSString *endpoint  = [NSString stringWithFormat:@"supplier/orders/%@/receipt.%@",order.orderId,extension];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint];
     
     if (width > 0 && dpi > 0)
@@ -1113,7 +1113,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSParameterAssert(completion);
     
     NSString *extension = [self extendionForFormat:format];
-    NSString *endpoint  = [NSString stringWithFormat:@"orders/%@/templates/%@.%@",order.orderId,templet.templateId,extension];
+    NSString *endpoint  = [NSString stringWithFormat:@"supplier/orders/%@/templates/%@.%@",order.orderId,templet.templateId,extension];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint];
     
     NSURL *URL = [NSURL URLWithString:urlString];
