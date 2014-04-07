@@ -536,7 +536,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     
     NSManagedObjectContext *moc = self.importContext;
     
-    NSString *endpoint = @"orders";
+    NSString *endpoint = @"supplier/orders";
     
     [self.sessionManager POST:endpoint
                    parameters:requestPayload
