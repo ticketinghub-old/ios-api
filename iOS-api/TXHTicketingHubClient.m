@@ -1046,7 +1046,7 @@ static NSString * const kVenuesEndpoint    = @"venues";
     NSString *urlString = [NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint];
     
     if (width > 0 && dpi > 0)
-        urlString = [urlString stringByAppendingFormat:@"?width=%d&dpi=%d",width,dpi];
+        urlString = [urlString stringByAppendingFormat:@"?width=%dmm&dpi=%d",width,dpi];
     
     NSURL *URL = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
