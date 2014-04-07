@@ -18,6 +18,9 @@
 
 #import "TestsHelper.h"
 
+static NSString * const kValidBarcode = @"AUYAAAADBQAAAADQK7FSQI6xUjAtAhUAlBDjIswsYD36AWC5flPG0GcRY3sCFDQXcmr8ehIa8aBLUY9lUJmpN6bh";
+static NSString * const kInvalidBarcode = @"AUYAADQK7FSQI6xUjAtAhUAlBDjIswsYD36AWC5flPG0GcRY3sCFDQXcmr8ehIa8aBLUY9lUJmpN6bh";
+
 SpecBegin(TXHTicket)
 
 __block NSManagedObjectContext *_moc;
@@ -60,32 +63,29 @@ describe(@"creating an order", ^{
     });
 });
 
-
 describe(@"decoding barcode", ^{
     
     context(@"when barcode is valid", ^{
-        NSString *validBarcode = @"AUYAAAADBQAAAADQK7FSQI6xUjAtAhUAlBDjIswsYD36AWC5flPG0GcRY3sCFDQXcmr8ehIa8aBLUY9lUJmpN6bh";
-        
-        NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:validBarcode];
-        
-        expect(decodedBarcode[kTXHBarcodeTypeKey]).to.equal(@(1));
-        expect(decodedBarcode[kTXHBarcodeTicketSeqIdKey]).to.equal(@(70));
-        expect(decodedBarcode[kTXHBarcodeProductSeqIdKey]).to.equal(@(3));
-        expect(decodedBarcode[kTXHBarcodeTierSeqIdKey]).to.equal(@(5));
-        expect(decodedBarcode[kTXHBarcodeBitmaskKey]).to.equal(@(0));
-        expect(decodedBarcode[kTXHBarcodeValidFromTimestampKey]).to.equal(@(1387342800));
-        expect(decodedBarcode[kTXHBarcodeExpiresAtTimestampKey]).to.equal(@(1387368000));
-        expect(decodedBarcode[kTXHBarcodeSignatureKey]).notTo.beNil();
-        
+        it(@"should decode it correctly", ^{
+            NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:kValidBarcode];
+            
+            expect(decodedBarcode[kTXHBarcodeTypeKey]).to.equal(@(1));
+            expect(decodedBarcode[kTXHBarcodeTicketSeqIdKey]).to.equal(@(70));
+            expect(decodedBarcode[kTXHBarcodeProductSeqIdKey]).to.equal(@(3));
+            expect(decodedBarcode[kTXHBarcodeTierSeqIdKey]).to.equal(@(5));
+            expect(decodedBarcode[kTXHBarcodeBitmaskKey]).to.equal(@(0));
+            expect(decodedBarcode[kTXHBarcodeValidFromTimestampKey]).to.equal(@(1387342800));
+            expect(decodedBarcode[kTXHBarcodeExpiresAtTimestampKey]).to.equal(@(1387368000));
+            expect(decodedBarcode[kTXHBarcodeSignatureKey]).notTo.beNil();
+        });
     });
     
     context(@"when barcode is invalid", ^{
-        NSString *validBarcode = @"AUYAADQK7FSQI6xUjAtAhUAlBDjIswsYD36AWC5flPG0GcRY3sCFDQXcmr8ehIa8aBLUY9lUJmpN6bh";
-        
-        NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:validBarcode];
-        
-        expect(decodedBarcode).to.beNil();
-        
+        it(@"should return nil", ^{
+            NSDictionary *decodedBarcode = [TXHTicket decodeBarcode:kInvalidBarcode];
+            
+            expect(decodedBarcode).to.beNil();
+        });
     });
 });
 
