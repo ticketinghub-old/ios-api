@@ -15,6 +15,7 @@
 @class TXHAvailability;
 @class TXHTicket;
 @class TXHTicketTemplate;
+@class TXHSupplier;
 
 typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
     TXHDocumentFormatPDF,
@@ -47,10 +48,20 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
 - (id)initWithStoreURL:(NSURL *)storeURL;
 
 /** Set the "Accept-Language" header for subsequent network call
-
+    
+ By default set to [[NSLocale preferredLanguages] firstObject]
+ 
  @param identifier the string identifier of the language, e.g "en-GB"
  */
 - (void)setDefaultAcceptLanguage:(NSString *)identifier;
+
+/** Set the Authorization token for all subsequent network calls
+ 
+ If the given ssupplier is nil it clearAuthorizationHeader
+ 
+ @param supplier for whis set the authorization token
+ */
+- (void)setAuthorizationTokenForSupplier:(TXHSupplier *)supplier;
 
 /** Returns currently logged in user. Returns nil if no user looged in.
  

@@ -129,6 +129,12 @@ static NSString * const kUserEndPoint      = @"user";
     return sessionManager;
 }
 
+- (void)setDefaultAcceptLanguage:(NSString *)identifier
+{
+    
+}
+
+
 + (NSURL *)coreDataModelURL
 {
     NSBundle *bundle;
@@ -189,7 +195,20 @@ static NSString * const kUserEndPoint      = @"user";
 };
 
 
+
 #pragma mark - Public
+
+- (void)setAuthorizationTokenForSupplier:(TXHSupplier *)supplier
+{
+    if (supplier)
+    {
+        NSString *tokenString = [NSString stringWithFormat:@"Bearer %@", supplier.accessToken];
+        
+        [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:tokenString];
+    }
+    else
+        [self.sessionManager.requestSerializer clearAuthorizationHeader];
+}
 
 #pragma mark - Suppliers, User, Products
 
@@ -204,6 +223,8 @@ static NSString * const kUserEndPoint      = @"user";
     [self.sessionManager GET:kSuppliersEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSArray *suppliers = [self suppliersFromResponseArray:responseObject inManagedObjectContext:self.importContext];
+        
+        [self setAuthorizationTokenForSupplier:[suppliers firstObject]];
         
         TXHUser *user = [TXHUser updateWithDictionaryCreateIfNeeded:@{@"email" : username}
                                              inManagedObjectContext:self.importContext];
@@ -252,10 +273,6 @@ static NSString * const kUserEndPoint      = @"user";
 {
     NSParameterAssert(user);
     NSParameterAssert(completion);
-    
-    TXHSupplier *anySupplier = [user.suppliers anyObject];
-    NSString *tokenString    = [NSString stringWithFormat:@"Bearer %@", anySupplier.accessToken];
-    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithToken:tokenString];
     
     [self.sessionManager GET:kUserEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         TXHUser *updatedUser = (TXHUser *)[self.importContext existingObjectWithID:user.objectID error:NULL];
