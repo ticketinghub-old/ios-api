@@ -1043,6 +1043,41 @@ static NSString * const kUserEndPoint      = @"user";
                      }];
 }
 
+- (void)getOrdersForCardMSRString:(NSString *)msrInfo completion:(void(^)(NSArray *orders, NSError *error))completion
+{
+    NSParameterAssert(msrInfo);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/orders"];
+    NSDictionary *parameters = @{ @"card[track_data]" : msrInfo };
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager GET:endpoint
+                  parameters:parameters
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         NSMutableArray *orders = [NSMutableArray array];
+                         
+                         for (NSDictionary *orderDic in responseObject)
+                         {
+                             TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:orderDic inManagedObjectContext:moc];
+                             if (orderDic)
+                                 [orders addObject:order];
+                         }
+                         
+                         NSError *error;
+                         if (![moc save:&error]) {
+                             completion(orders, error);
+                             return;
+                         };
+                         
+                         completion([self objectsInMainManagedObjectContext:orders],nil);
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         completion(nil,error);
+                     }];
+}
+
 - (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion
 {
     NSParameterAssert(order);

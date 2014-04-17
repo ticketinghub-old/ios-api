@@ -280,6 +280,16 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)getOrderForTicekt:(TXHTicket *)ticket withProduct:(TXHProduct *)product completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
+
+/** Gets list of orders connected to given credit card info (msr trac from the card)
+ 
+ @param msrInfo card msr track data string
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an orders array in the main managed object context and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the orders object is nil
+ 
+ @warning `msrInfo` and `completion` must not be `nil`.
+ */
+- (void)getOrdersForCardMSRString:(NSString *)msrInfo completion:(void(^)(NSArray *orders, NSError *error))completion;
+
 /** Gets a receipt for given order
  
  @param order for which the receipt wil be fetched
