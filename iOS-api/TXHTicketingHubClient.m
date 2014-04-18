@@ -949,33 +949,46 @@ static NSString * const kUserEndPoint      = @"user";
     NSParameterAssert(product);
     NSParameterAssert(completion);
     
-    NSString *actionString = attended ? @"attend" : @"unattend";
-    
-    NSString *endpoint = [NSString stringWithFormat:@"supplier/products/%@/tickets/%@/%@",product.productId, ticket.ticketId, actionString];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/products/%@/tickets/%@/attend",product.productId, ticket.ticketId];
     
     NSManagedObjectContext *moc = self.importContext;
     
-    [self.sessionManager POST:endpoint
-                   parameters:nil
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
-                          
-                          TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
-                          
-                          NSError *error;
-                          BOOL success = [moc save:&error];
-                          
-                          if (!success) {
-                              completion(nil, error);
-                              return;
-                          }
-                          
-                          ticket = (TXHTicket *)[self.managedObjectContext existingObjectWithID:ticket.objectID error:&error];
-                          
-                          completion(ticket, nil);
-                      }
-                      failure:^(NSURLSessionDataTask *task, NSError *error) {
-                          completion(nil, error);
-                      }];
+    void(^successBlock)(NSURLSessionDataTask *task, id responseObject) = ^(NSURLSessionDataTask *task, id responseObject) {
+        
+        TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+        
+        NSError *error;
+        BOOL success = [moc save:&error];
+        
+        if (!success) {
+            completion(nil, error);
+            return;
+        }
+        
+        ticket = (TXHTicket *)[self.managedObjectContext existingObjectWithID:ticket.objectID error:&error];
+        
+        completion(ticket, nil);
+    };
+    
+    void (^failureBlock)(NSURLSessionDataTask *task, NSError *error) = ^(NSURLSessionDataTask *task, NSError *error) {
+        completion(nil, error);
+    };
+    
+    if (attended)
+    {
+        [self.sessionManager POST:endpoint
+                       parameters:nil
+                          success:successBlock
+                          failure:failureBlock];
+    }
+    else
+    {
+        [self.sessionManager DELETE:endpoint
+                         parameters:nil
+                            success:successBlock
+                            failure:failureBlock];
+        
+    }
 }
 
 
