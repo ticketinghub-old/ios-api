@@ -18,7 +18,6 @@ static NSString * const kUserEndPoint      = @"user";
 #import "AFNetworking.h"
 #import "JSONResponseSerializerWithData.h"
 
-#import "TXHAPIError.h"
 #import "TXHAvailability.h"
 #import "TXHProduct.h"
 #import "TXHPayment.h"
@@ -1192,7 +1191,7 @@ static NSString * const kUserEndPoint      = @"user";
 
 - (void)getPaymentGatewaysWithCompletion:(void(^)(NSArray *gateways,NSError *error))completion;
 {
-    NSString *endpoint = "supplier/gateways.json";
+    NSString *endpoint = @"supplier/gateways.json";
     
     NSManagedObjectContext *moc = self.importContext;
     

@@ -1,4 +1,5 @@
 #import "TXHPayment.h"
+#import "TXHDefines.h"
 
 #import "TXHAddress.h"
 #import "TXHCard.h"
@@ -38,10 +39,10 @@ static NSString * const kCardKey               = @"card";
     payment.type               = dictionary[kTypeKey];
 
     NSDictionary *addresDictionary = dictionary[kAddressKey];
-    payment.address = addresDictionary;
+    payment.address = [TXHAddress createWithDictionary:addresDictionary inManagedObjectContext:moc];
     
     NSDictionary *cardDictionary = dictionary[kCardKey];
-    payment.card = cardDictionary;
+    payment.card = [TXHCard createWithDictionary:cardDictionary inManagedObjectContext:moc];
     
     return payment;
 }

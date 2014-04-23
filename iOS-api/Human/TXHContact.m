@@ -1,4 +1,5 @@
 #import "TXHContact.h"
+#import "TXHDefines.h"
 
 static NSString * const kEmailKey     = @"email";
 static NSString * const kTelephoneKey = @"telephone";

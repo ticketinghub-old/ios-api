@@ -1,4 +1,5 @@
 #import "TXHCard.h"
+#import "TXHDefines.h"
 
 static NSString * const kBrandKey        = @"brand";
 static NSString * const kFingerprintKey  = @"fingerprint";
