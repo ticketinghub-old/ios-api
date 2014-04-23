@@ -68,7 +68,6 @@
 		EE44712918A0057D00E5F95B /* _TXHUpgrade.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4926BF1850C2A000336A2D /* _TXHUpgrade.h */; };
 		EE44712A18A0057D00E5F95B /* _TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18C118439A7D00CE6D5E /* _TXHUser.h */; };
 		EE44712B18A0059000E5F95B /* TXHTicketingHubClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEF85C8C181840A100658409 /* TXHTicketingHubClient.h */; };
-		EE44712C18A0059800E5F95B /* TXHAPIError.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE5B98DA1827F26D00591875 /* TXHAPIError.h */; };
 		EE4926B51850C27800336A2D /* TXHAvailability.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926B01850C27800336A2D /* TXHAvailability.m */; };
 		EE4926B61850C27800336A2D /* TXHTier.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926B21850C27800336A2D /* TXHTier.m */; };
 		EE4926B71850C27800336A2D /* TXHUpgrade.m in Sources */ = {isa = PBXBuildFile; fileRef = EE4926B41850C27800336A2D /* TXHUpgrade.m */; };
@@ -141,7 +140,6 @@
 			dstSubfolderSpec = 16;
 			files = (
 				3E4DB46518A93D3A00F8793C /* TXHUser.h in CopyFiles */,
-				EE44712C18A0059800E5F95B /* TXHAPIError.h in CopyFiles */,
 				EE44712B18A0059000E5F95B /* TXHTicketingHubClient.h in CopyFiles */,
 				EE44711F18A0057D00E5F95B /* TXHAvailability.h in CopyFiles */,
 				EE44712018A0057D00E5F95B /* TXHProduct.h in CopyFiles */,
@@ -236,7 +234,6 @@
 		EE4B18BF18439A7200CE6D5E /* TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TXHUser.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		EE4B18C118439A7D00CE6D5E /* _TXHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHUser.h; sourceTree = "<group>"; };
 		EE4B18C218439A7D00CE6D5E /* _TXHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHUser.m; sourceTree = "<group>"; };
-		EE5B98DA1827F26D00591875 /* TXHAPIError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHAPIError.h; sourceTree = "<group>"; };
 		EE67B398183D175D0021B76A /* iOS-api-Model.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-api-Model.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE67B399183D175D0021B76A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		EE67B39D183D175D0021B76A /* iOS-api-Model-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS-api-Model-Info.plist"; sourceTree = "<group>"; };
@@ -501,7 +498,6 @@
 			children = (
 				EEB32C8E1847C90E006045AF /* iOS-api.h */,
 				3ED7561118BD159800D8F60B /* TXHDefines.h */,
-				EE5B98DA1827F26D00591875 /* TXHAPIError.h */,
 				EEF85C8C181840A100658409 /* TXHTicketingHubClient.h */,
 				EEF85C8D181840A100658409 /* TXHTicketingHubClient.m */,
 				EE8C3DAD181AE0D10036AE92 /* Model Files */,
