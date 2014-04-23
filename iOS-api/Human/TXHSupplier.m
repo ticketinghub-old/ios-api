@@ -2,15 +2,17 @@
 #import "TXHDefines.h"
 
 #import "TXHProduct.h"
+#import "TXHContact.h"
 
 // StaticStrings for keys
-static NSString * const kTokenKey = @"token";
-static NSString * const kAccessTokenKey = @"access_token";
+static NSString * const kTokenKey        = @"token";
+static NSString * const kAccessTokenKey  = @"access_token";
 static NSString * const kRefreshTokenKey = @"refresh_token";
-static NSString * const kCountryKey = @"country";
-static NSString * const kCurrencyKey = @"currency";
-static NSString * const kTimeZoneKey = @"time_zone";
-static NSString * const kProductsKey = @"products";
+static NSString * const kCountryKey      = @"country";
+static NSString * const kCurrencyKey     = @"currency";
+static NSString * const kTimeZoneKey     = @"time_zone";
+static NSString * const kProductsKey     = @"products";
+static NSString * const kContactKey      = @"contact";
 
 
 @interface TXHSupplier ()
@@ -43,6 +45,9 @@ static NSString * const kProductsKey = @"products";
         TXHProduct *product = [TXHProduct createWithDictionary:productDictionary inManagedObjectContext:moc];
         product.supplier = supplier;
     }
+    
+    NSDictionary *contact = dictionary[kContactKey];
+    supplier.contact = [TXHContact createWithDictionary:contact inManagedObjectContext:moc];
 
     return supplier;
 }

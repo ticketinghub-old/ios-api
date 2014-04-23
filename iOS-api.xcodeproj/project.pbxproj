@@ -43,6 +43,7 @@
 		3EB1AB5C1907E7C700233A26 /* _TXHContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB5A1907E7C700233A26 /* _TXHContact.m */; };
 		3EB1AB611907E87600233A26 /* _TXHProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB601907E87600233A26 /* _TXHProduct.m */; };
 		3EB1AB641907E88500233A26 /* TXHContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB621907E88500233A26 /* TXHContact.m */; };
+		3EB1AB671907F80A00233A26 /* _TXHCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB661907F80A00233A26 /* _TXHCard.m */; };
 		3EBF42CC18BE34A30065E7A7 /* JSONResponseSerializerWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EBF42CB18BE34A30065E7A7 /* JSONResponseSerializerWithData.m */; };
 		3ED7560B18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */; };
 		3ED7560E18BD0AB500D8F60B /* ClientOrderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7560D18BD0AB500D8F60B /* ClientOrderSpec.m */; };
@@ -198,6 +199,8 @@
 		3EB1AB601907E87600233A26 /* _TXHProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHProduct.m; sourceTree = "<group>"; };
 		3EB1AB621907E88500233A26 /* TXHContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHContact.m; sourceTree = "<group>"; };
 		3EB1AB631907E88500233A26 /* TXHContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHContact.h; sourceTree = "<group>"; };
+		3EB1AB651907F80A00233A26 /* _TXHCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHCard.h; sourceTree = "<group>"; };
+		3EB1AB661907F80A00233A26 /* _TXHCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHCard.m; sourceTree = "<group>"; };
 		3EBF42CA18BE34A30065E7A7 /* JSONResponseSerializerWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONResponseSerializerWithData.h; path = Classes/JSONResponseSerializerWithData.h; sourceTree = "<group>"; };
 		3EBF42CB18BE34A30065E7A7 /* JSONResponseSerializerWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONResponseSerializerWithData.m; path = Classes/JSONResponseSerializerWithData.m; sourceTree = "<group>"; };
 		3ED7560918BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+TicketingHubFormat.h"; path = "iOS-api/Classes/NSDateFormatter+TicketingHubFormat.h"; sourceTree = SOURCE_ROOT; };
@@ -429,9 +432,11 @@
 			isa = PBXGroup;
 			children = (
 				3E2C6AB618BBCA6D005BEE6C /* _TXHAddress.h */,
-				EE4926BA1850C28C00336A2D /* _TXHAvailability.h */,
 				3E2C6AB718BBCA6D005BEE6C /* _TXHAddress.m */,
+				EE4926BA1850C28C00336A2D /* _TXHAvailability.h */,
 				EE4926BB1850C28C00336A2D /* _TXHAvailability.m */,
+				3EB1AB651907F80A00233A26 /* _TXHCard.h */,
+				3EB1AB661907F80A00233A26 /* _TXHCard.m */,
 				3E2C6AD218BCB8B8005BEE6C /* _TXHCustomer.h */,
 				3E2C6AD318BCB8B8005BEE6C /* _TXHCustomer.m */,
 				3EB1AB5A1907E7C700233A26 /* _TXHContact.m */,
@@ -802,6 +807,7 @@
 				3E2C6AD118BCB8AE005BEE6C /* TXHCustomer.m in Sources */,
 				EE4926C21850C2A000336A2D /* _TXHUpgrade.m in Sources */,
 				3EB1AB5C1907E7C700233A26 /* _TXHContact.m in Sources */,
+				3EB1AB671907F80A00233A26 /* _TXHCard.m in Sources */,
 				EEF85C8E181840A100658409 /* TXHTicketingHubClient.m in Sources */,
 				3E2C6ABE18BBCA7A005BEE6C /* _TXHTicket.m in Sources */,
 				EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */,

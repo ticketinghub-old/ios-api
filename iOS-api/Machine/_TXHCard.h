@@ -9,8 +9,11 @@ extern const struct TXHCardAttributes {
 	__unsafe_unretained NSString *fingerprint;
 	__unsafe_unretained NSString *firstName;
 	__unsafe_unretained NSString *last4;
+	__unsafe_unretained NSString *lastName;
 	__unsafe_unretained NSString *mask;
 	__unsafe_unretained NSString *month;
+	__unsafe_unretained NSString *number;
+	__unsafe_unretained NSString *securityCode;
 	__unsafe_unretained NSString *year;
 } TXHCardAttributes;
 
@@ -22,6 +25,9 @@ extern const struct TXHCardFetchedProperties {
 } TXHCardFetchedProperties;
 
 @class TXHPayment;
+
+
+
 
 
 
@@ -84,6 +90,16 @@ extern const struct TXHCardFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* lastName;
+
+
+
+//- (BOOL)validateLastName:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSString* mask;
 
 
@@ -103,6 +119,26 @@ extern const struct TXHCardFetchedProperties {
 - (void)setMonthValue:(int16_t)value_;
 
 //- (BOOL)validateMonth:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* number;
+
+
+
+//- (BOOL)validateNumber:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* securityCode;
+
+
+
+//- (BOOL)validateSecurityCode:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -163,6 +199,12 @@ extern const struct TXHCardFetchedProperties {
 
 
 
+- (NSString*)primitiveLastName;
+- (void)setPrimitiveLastName:(NSString*)value;
+
+
+
+
 - (NSString*)primitiveMask;
 - (void)setPrimitiveMask:(NSString*)value;
 
@@ -174,6 +216,18 @@ extern const struct TXHCardFetchedProperties {
 
 - (int16_t)primitiveMonthValue;
 - (void)setPrimitiveMonthValue:(int16_t)value_;
+
+
+
+
+- (NSString*)primitiveNumber;
+- (void)setPrimitiveNumber:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveSecurityCode;
+- (void)setPrimitiveSecurityCode:(NSString*)value;
 
 
 

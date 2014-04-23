@@ -1,5 +1,7 @@
 #import "_TXHCard.h"
 
 @interface TXHCard : _TXHCard {}
-// Custom logic goes here.
+
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc;
+
 @end

@@ -1,5 +1,7 @@
 #import "_TXHPayment.h"
 
 @interface TXHPayment : _TXHPayment {}
-// Custom logic goes here.
+
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc;
+
 @end

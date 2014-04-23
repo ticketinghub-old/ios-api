@@ -12,6 +12,7 @@ const struct TXHSupplierAttributes TXHSupplierAttributes = {
 };
 
 const struct TXHSupplierRelationships TXHSupplierRelationships = {
+	.contact = @"contact",
 	.products = @"products",
 	.user = @"user",
 };
@@ -86,6 +87,10 @@ const struct TXHSupplierFetchedProperties TXHSupplierFetchedProperties = {
 
 
 
+
+@dynamic contact;
+
+	
 
 @dynamic products;
 

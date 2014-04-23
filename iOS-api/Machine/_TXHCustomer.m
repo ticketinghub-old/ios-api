@@ -4,11 +4,6 @@
 #import "_TXHCustomer.h"
 
 const struct TXHCustomerAttributes TXHCustomerAttributes = {
-	.attribute = @"attribute",
-	.attribute1 = @"attribute1",
-	.attribute2 = @"attribute2",
-	.attribute3 = @"attribute3",
-	.attribute4 = @"attribute4",
 	.country = @"country",
 	.email = @"email",
 	.errors = @"errors",
@@ -56,16 +51,6 @@ const struct TXHCustomerFetchedProperties TXHCustomerFetchedProperties = {
 
 	return keyPaths;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

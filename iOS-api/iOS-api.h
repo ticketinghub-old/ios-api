@@ -12,9 +12,12 @@
 
 #import "TXHAddress.h"
 #import "TXHAvailability.h"
+#import "TXHCard.h"
+#import "TXHContact.h"
 #import "TXHCustomer.h"
 #import "TXHField.h"
 #import "TXHOrder.h"
+#import "TXHPayment.h"
 #import "TXHProduct.h"
 #import "TXHSupplier.h"
 #import "TXHTicket.h"

@@ -12,12 +12,14 @@ extern const struct TXHContactAttributes {
 
 extern const struct TXHContactRelationships {
 	__unsafe_unretained NSString *product;
+	__unsafe_unretained NSString *supplier;
 } TXHContactRelationships;
 
 extern const struct TXHContactFetchedProperties {
 } TXHContactFetchedProperties;
 
 @class TXHProduct;
+@class TXHSupplier;
 
 
 
@@ -73,6 +75,13 @@ extern const struct TXHContactFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHSupplier *supplier;
+
+//- (BOOL)validateSupplier:(id*)value_ error:(NSError**)error_;
+
+
+
+
 
 @end
 
@@ -104,6 +113,11 @@ extern const struct TXHContactFetchedProperties {
 
 - (TXHProduct*)primitiveProduct;
 - (void)setPrimitiveProduct:(TXHProduct*)value;
+
+
+
+- (TXHSupplier*)primitiveSupplier;
+- (void)setPrimitiveSupplier:(TXHSupplier*)value;
 
 
 @end

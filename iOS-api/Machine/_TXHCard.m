@@ -8,8 +8,11 @@ const struct TXHCardAttributes TXHCardAttributes = {
 	.fingerprint = @"fingerprint",
 	.firstName = @"firstName",
 	.last4 = @"last4",
+	.lastName = @"lastName",
 	.mask = @"mask",
 	.month = @"month",
+	.number = @"number",
+	.securityCode = @"securityCode",
 	.year = @"year",
 };
 
@@ -91,6 +94,13 @@ const struct TXHCardFetchedProperties TXHCardFetchedProperties = {
 
 
 
+@dynamic lastName;
+
+
+
+
+
+
 @dynamic mask;
 
 
@@ -119,6 +129,20 @@ const struct TXHCardFetchedProperties TXHCardFetchedProperties = {
 - (void)setPrimitiveMonthValue:(int16_t)value_ {
 	[self setPrimitiveMonth:[NSNumber numberWithShort:value_]];
 }
+
+
+
+
+
+@dynamic number;
+
+
+
+
+
+
+@dynamic securityCode;
+
 
 
 

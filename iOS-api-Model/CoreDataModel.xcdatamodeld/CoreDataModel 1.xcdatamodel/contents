@@ -27,8 +27,11 @@
         <attribute name="fingerprint" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mask" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="month" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="securityCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="card" inverseEntity="Payment" syncable="YES"/>
     </entity>
@@ -37,6 +40,7 @@
         <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="contact" inverseEntity="Product" syncable="YES"/>
+        <relationship name="supplier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="contact" inverseEntity="Supplier" syncable="YES"/>
     </entity>
     <entity name="Customer" representedClassName="TXHCustomer" syncable="YES">
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
@@ -99,6 +103,7 @@
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="refreshToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeZoneName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="supplier" inverseEntity="Contact" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="supplier" inverseEntity="Product" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="suppliers" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -158,13 +163,13 @@
         <element name="Customer" positionX="718" positionY="414" width="128" height="193"/>
         <element name="Order" positionX="376" positionY="176" width="128" height="328"/>
         <element name="Product" positionX="-27" positionY="344" width="128" height="163"/>
-        <element name="Supplier" positionX="-288" positionY="27" width="128" height="148"/>
+        <element name="Supplier" positionX="-281" positionY="18" width="128" height="163"/>
         <element name="Ticket" positionX="628" positionY="92" width="128" height="283"/>
         <element name="Tier" positionX="315" positionY="-133" width="128" height="223"/>
         <element name="Upgrade" positionX="549" positionY="-126" width="128" height="178"/>
         <element name="User" positionX="-522" positionY="54" width="128" height="118"/>
-        <element name="Payment" positionX="97" positionY="662" width="128" height="193"/>
-        <element name="Card" positionX="304" positionY="701" width="128" height="163"/>
-        <element name="Contact" positionX="-279" positionY="513" width="128" height="28"/>
+        <element name="Payment" positionX="61" positionY="680" width="128" height="193"/>
+        <element name="Card" positionX="304" positionY="701" width="128" height="28"/>
+        <element name="Contact" positionX="-450" positionY="495" width="128" height="118"/>
     </elements>
 </model>

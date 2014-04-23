@@ -1,11 +1,14 @@
 #import "TXHProduct.h"
 #import "TXHDefines.h"
+#import "TXHContact.h"
 
 #import "NSDateFormatter+TicketingHubFormat.h"
 
 static NSString * const kIdKey                    = @"id";
 static NSString * const kNameKey                  = @"name";
 static NSString * const kAvailabilitiesUpdatedKey = @"availabilities_updated";
+static NSString * const kContactKey               = @"contact";
+
 
 @interface TXHProduct ()
 
@@ -28,6 +31,10 @@ static NSString * const kAvailabilitiesUpdatedKey = @"availabilities_updated";
     product.productId             = nilIfNSNull(dictionary[kIdKey]);
     product.name                  = nilIfNSNull(dictionary[kNameKey]);
     product.availabilitiesUpdated = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kAvailabilitiesUpdatedKey])];
+    
+    NSDictionary *contact = dictionary[kContactKey];
+    product.contact = [TXHContact createWithDictionary:contact inManagedObjectContext:moc];
+    
     return product;
 }
 

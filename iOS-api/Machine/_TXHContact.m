@@ -11,6 +11,7 @@ const struct TXHContactAttributes TXHContactAttributes = {
 
 const struct TXHContactRelationships TXHContactRelationships = {
 	.product = @"product",
+	.supplier = @"supplier",
 };
 
 const struct TXHContactFetchedProperties TXHContactFetchedProperties = {
@@ -71,6 +72,10 @@ const struct TXHContactFetchedProperties TXHContactFetchedProperties = {
 
 
 @dynamic product;
+
+	
+
+@dynamic supplier;
 
 	
 

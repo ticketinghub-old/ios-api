@@ -5,11 +5,6 @@
 
 
 extern const struct TXHCustomerAttributes {
-	__unsafe_unretained NSString *attribute;
-	__unsafe_unretained NSString *attribute1;
-	__unsafe_unretained NSString *attribute2;
-	__unsafe_unretained NSString *attribute3;
-	__unsafe_unretained NSString *attribute4;
 	__unsafe_unretained NSString *country;
 	__unsafe_unretained NSString *email;
 	__unsafe_unretained NSString *errors;
@@ -34,11 +29,6 @@ extern const struct TXHCustomerFetchedProperties {
 
 
 
-
-
-
-
-
 @class NSObject;
 
 
@@ -53,16 +43,6 @@ extern const struct TXHCustomerFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (TXHCustomerID*)objectID;
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -167,16 +147,6 @@ extern const struct TXHCustomerFetchedProperties {
 @end
 
 @interface _TXHCustomer (CoreDataGeneratedPrimitiveAccessors)
-
-
-
-
-
-
-
-
-
-
 
 
 - (NSString*)primitiveCountry;
