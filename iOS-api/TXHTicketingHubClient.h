@@ -318,4 +318,12 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)getTicketToPrintForOrder:(TXHOrder *)order withTemplet:(TXHTicketTemplate *)template format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion;
 
+/** Gets available payment gaytways
+ 
+ @param completion the completion block to run with the request is completed. The block takes two parameters, gateways array and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the gateways object is nil
+ 
+ @warning `completion` must not be `nil`.
+ */
+- (void)getPaymentGatewaysWithCompletion:(void(^)(NSArray *gateways,NSError *error))completion;
+
 @end

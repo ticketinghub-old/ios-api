@@ -21,6 +21,7 @@ static NSString * const kUserEndPoint      = @"user";
 #import "TXHAPIError.h"
 #import "TXHAvailability.h"
 #import "TXHProduct.h"
+#import "TXHPayment.h"
 #import "TXHSupplier.h"
 #import "TXHUser.h"
 #import "TXHTier.h"
@@ -1188,5 +1189,37 @@ static NSString * const kUserEndPoint      = @"user";
     
     [downloadTask resume];
 }
+
+- (void)getPaymentGatewaysWithCompletion:(void(^)(NSArray *gateways,NSError *error))completion;
+{
+    NSString *endpoint = "supplier/gateways.json";
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager GET:endpoint
+                  parameters:nil
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         NSMutableArray *gateways = [NSMutableArray array];
+                         
+                         for (NSDictionary *gatewayDic in responseObject)
+                         {
+                             TXHPayment *payment = [TXHPayment createWithDictionary:gatewayDic inManagedObjectContext:moc];
+                             if (payment)
+                                 [gateways addObject:payment];
+                         }
+                         
+                         NSError *error;
+                         if (![moc save:&error]) {
+                             completion(gateways, error);
+                             return;
+                         };
+                         
+                         completion([self objectsInMainManagedObjectContext:gateways],nil);
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         completion(nil, error);
+                     }];
+}
+
 
 @end
