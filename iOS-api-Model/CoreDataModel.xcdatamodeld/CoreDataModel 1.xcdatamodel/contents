@@ -32,6 +32,12 @@
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="card" inverseEntity="Payment" syncable="YES"/>
     </entity>
+    <entity name="Contact" representedClassName="TXHContact" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="contact" inverseEntity="Product" syncable="YES"/>
+    </entity>
     <entity name="Customer" representedClassName="TXHCustomer" syncable="YES">
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
@@ -83,6 +89,7 @@
         <attribute name="productId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="product" inverseEntity="Address" syncable="YES"/>
         <relationship name="availabilities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Availability" inverseName="product" inverseEntity="Availability" syncable="YES"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="product" inverseEntity="Contact" syncable="YES"/>
         <relationship name="supplier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="products" inverseEntity="Supplier" syncable="YES"/>
         <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ticket" inverseName="product" inverseEntity="Ticket" syncable="YES"/>
     </entity>
@@ -150,7 +157,7 @@
         <element name="Availability" positionX="-83" positionY="-117" width="128" height="148"/>
         <element name="Customer" positionX="718" positionY="414" width="128" height="193"/>
         <element name="Order" positionX="376" positionY="176" width="128" height="328"/>
-        <element name="Product" positionX="-27" positionY="344" width="128" height="148"/>
+        <element name="Product" positionX="-27" positionY="344" width="128" height="163"/>
         <element name="Supplier" positionX="-288" positionY="27" width="128" height="148"/>
         <element name="Ticket" positionX="628" positionY="92" width="128" height="283"/>
         <element name="Tier" positionX="315" positionY="-133" width="128" height="223"/>
@@ -158,5 +165,6 @@
         <element name="User" positionX="-522" positionY="54" width="128" height="118"/>
         <element name="Payment" positionX="97" positionY="662" width="128" height="193"/>
         <element name="Card" positionX="304" positionY="701" width="128" height="163"/>
+        <element name="Contact" positionX="-279" positionY="513" width="128" height="28"/>
     </elements>
 </model>

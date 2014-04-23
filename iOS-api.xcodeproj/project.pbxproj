@@ -40,6 +40,9 @@
 		3EB1AB4F1907CBDA00233A26 /* TXHCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB4C1907CBDA00233A26 /* TXHCard.m */; };
 		3EB1AB521907CC7E00233A26 /* TXHPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB501907CC7E00233A26 /* TXHPayment.m */; };
 		3EB1AB551907CC9B00233A26 /* _TXHPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB531907CC9B00233A26 /* _TXHPayment.m */; };
+		3EB1AB5C1907E7C700233A26 /* _TXHContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB5A1907E7C700233A26 /* _TXHContact.m */; };
+		3EB1AB611907E87600233A26 /* _TXHProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB601907E87600233A26 /* _TXHProduct.m */; };
+		3EB1AB641907E88500233A26 /* TXHContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB621907E88500233A26 /* TXHContact.m */; };
 		3EBF42CC18BE34A30065E7A7 /* JSONResponseSerializerWithData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EBF42CB18BE34A30065E7A7 /* JSONResponseSerializerWithData.m */; };
 		3ED7560B18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */; };
 		3ED7560E18BD0AB500D8F60B /* ClientOrderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ED7560D18BD0AB500D8F60B /* ClientOrderSpec.m */; };
@@ -191,6 +194,12 @@
 		3EB1AB531907CC9B00233A26 /* _TXHPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHPayment.m; sourceTree = "<group>"; };
 		3EB1AB541907CC9B00233A26 /* _TXHPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHPayment.h; sourceTree = "<group>"; };
 		3EB1AB561907CCB000233A26 /* _TXHSupplier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _TXHSupplier.h; sourceTree = "<group>"; };
+		3EB1AB5A1907E7C700233A26 /* _TXHContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHContact.m; sourceTree = "<group>"; };
+		3EB1AB5B1907E7C700233A26 /* _TXHContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHContact.h; sourceTree = "<group>"; };
+		3EB1AB5F1907E80100233A26 /* _TXHPayment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _TXHPayment.h; sourceTree = "<group>"; };
+		3EB1AB601907E87600233A26 /* _TXHProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHProduct.m; sourceTree = "<group>"; };
+		3EB1AB621907E88500233A26 /* TXHContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHContact.m; sourceTree = "<group>"; };
+		3EB1AB631907E88500233A26 /* TXHContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHContact.h; sourceTree = "<group>"; };
 		3EBF42CA18BE34A30065E7A7 /* JSONResponseSerializerWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONResponseSerializerWithData.h; path = Classes/JSONResponseSerializerWithData.h; sourceTree = "<group>"; };
 		3EBF42CB18BE34A30065E7A7 /* JSONResponseSerializerWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONResponseSerializerWithData.m; path = Classes/JSONResponseSerializerWithData.m; sourceTree = "<group>"; };
 		3ED7560918BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+TicketingHubFormat.h"; path = "iOS-api/Classes/NSDateFormatter+TicketingHubFormat.h"; sourceTree = SOURCE_ROOT; };
@@ -395,6 +404,8 @@
 				EE4926B01850C27800336A2D /* TXHAvailability.m */,
 				3EB1AB4C1907CBDA00233A26 /* TXHCard.m */,
 				3EB1AB4D1907CBDA00233A26 /* TXHCard.h */,
+				3EB1AB621907E88500233A26 /* TXHContact.m */,
+				3EB1AB631907E88500233A26 /* TXHContact.h */,
 				3E2C6ACF18BCB8AE005BEE6C /* TXHCustomer.h */,
 				3E2C6AD018BCB8AE005BEE6C /* TXHCustomer.m */,
 				3E2C6AC218BBCA89005BEE6C /* TXHOrder.h */,
@@ -426,9 +437,13 @@
 				EE4926BB1850C28C00336A2D /* _TXHAvailability.m */,
 				3E2C6AD218BCB8B8005BEE6C /* _TXHCustomer.h */,
 				3E2C6AD318BCB8B8005BEE6C /* _TXHCustomer.m */,
+				3EB1AB5A1907E7C700233A26 /* _TXHContact.m */,
+				3EB1AB5B1907E7C700233A26 /* _TXHContact.h */,
 				3E2C6AB918BBCA74005BEE6C /* _TXHOrder.h */,
+				3EB1AB5F1907E80100233A26 /* _TXHPayment.h */,
 				3E2C6ABA18BBCA74005BEE6C /* _TXHOrder.m */,
 				EED7E855183E2CA000853E73 /* _TXHProduct.h */,
+				3EB1AB601907E87600233A26 /* _TXHProduct.m */,
 				3EB1AB561907CCB000233A26 /* _TXHSupplier.h */,
 				3EB1AB531907CC9B00233A26 /* _TXHPayment.m */,
 				3EB1AB541907CC9B00233A26 /* _TXHPayment.h */,
@@ -790,6 +805,7 @@
 				3E2C6AD418BCB8B8005BEE6C /* _TXHCustomer.m in Sources */,
 				3E2C6AD118BCB8AE005BEE6C /* TXHCustomer.m in Sources */,
 				EE4926C21850C2A000336A2D /* _TXHUpgrade.m in Sources */,
+				3EB1AB5C1907E7C700233A26 /* _TXHContact.m in Sources */,
 				EEF85C8E181840A100658409 /* TXHTicketingHubClient.m in Sources */,
 				3E2C6ABE18BBCA7A005BEE6C /* _TXHTicket.m in Sources */,
 				EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */,
@@ -801,6 +817,7 @@
 				3EB1AB521907CC7E00233A26 /* TXHPayment.m in Sources */,
 				3EB1AB4F1907CBDA00233A26 /* TXHCard.m in Sources */,
 				3E2C6AC418BBCA89005BEE6C /* TXHOrder.m in Sources */,
+				3EB1AB611907E87600233A26 /* _TXHProduct.m in Sources */,
 				EE8C3DB4181AE1840036AE92 /* NSDictionary+JCSKeyMapping.m in Sources */,
 				3E4EE8B418AD1018000BF0C8 /* TXHNumberFormatterCache.m in Sources */,
 				3E2C6AC718BBCA91005BEE6C /* TXHTicket.m in Sources */,
@@ -809,6 +826,7 @@
 				EE4B18C018439A7200CE6D5E /* TXHUser.m in Sources */,
 				3E53C54818E5824100FF6F9B /* TXHTicketTemplate.m in Sources */,
 				3ED7560B18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m in Sources */,
+				3EB1AB641907E88500233A26 /* TXHContact.m in Sources */,
 				3EBF42CC18BE34A30065E7A7 /* JSONResponseSerializerWithData.m in Sources */,
 				EE4926BD1850C28C00336A2D /* _TXHAvailability.m in Sources */,
 				3E2C6ABB18BBCA74005BEE6C /* _TXHOrder.m in Sources */,

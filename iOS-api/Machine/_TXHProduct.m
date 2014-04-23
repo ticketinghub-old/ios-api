@@ -12,6 +12,7 @@ const struct TXHProductAttributes TXHProductAttributes = {
 const struct TXHProductRelationships TXHProductRelationships = {
 	.address = @"address",
 	.availabilities = @"availabilities",
+	.contact = @"contact",
 	.supplier = @"supplier",
 	.ticket = @"ticket",
 };
@@ -88,6 +89,10 @@ const struct TXHProductFetchedProperties TXHProductFetchedProperties = {
 	[self didAccessValueForKey:@"availabilities"];
 	return result;
 }
+	
+
+@dynamic contact;
+
 	
 
 @dynamic supplier;
