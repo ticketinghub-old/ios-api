@@ -16,6 +16,7 @@ const struct TXHAddressAttributes TXHAddressAttributes = {
 const struct TXHAddressRelationships TXHAddressRelationships = {
 	.customer = @"customer",
 	.order = @"order",
+	.payment = @"payment",
 	.product = @"product",
 };
 
@@ -109,6 +110,10 @@ const struct TXHAddressFetchedProperties TXHAddressFetchedProperties = {
 	
 
 @dynamic order;
+
+	
+
+@dynamic payment;
 
 	
 
