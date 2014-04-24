@@ -30,7 +30,7 @@ static NSString * const kTypeKey          = @"type";
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-    if (![dictionary count] || (self = [super init]))
+    if (![dictionary count] || !(self = [super init]))
         return nil;
     
     self.gatewayId      = dictionary[kGatewayIDKey];
