@@ -1062,7 +1062,7 @@ static NSString * const kUserEndPoint      = @"user";
     NSParameterAssert(msrInfo);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [NSString stringWithFormat:@"supplier/orders.json"];
+    NSString *endpoint = [NSString stringWithFormat:@"supplier/orders/search.json"];
     NSDictionary *parameters = @{ @"card" : @{ @"track_data" : msrInfo } };
     
     NSManagedObjectContext *moc = self.importContext;
