@@ -8,7 +8,6 @@
 //  The main include header for the library
 
 #import "TXHTicketingHubClient.h"
-#import "TXHAPIError.h"
 
 #import "TXHAddress.h"
 #import "TXHAvailability.h"
