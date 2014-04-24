@@ -15,6 +15,7 @@
 #import "TXHContact.h"
 #import "TXHCustomer.h"
 #import "TXHField.h"
+#import "TXHGateway.h"
 #import "TXHOrder.h"
 #import "TXHPayment.h"
 #import "TXHProduct.h"

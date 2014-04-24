@@ -21,6 +21,7 @@ static NSString * const kUserEndPoint      = @"user";
 #import "TXHAvailability.h"
 #import "TXHProduct.h"
 #import "TXHPayment.h"
+#import "TXHGateway.h"
 #import "TXHSupplier.h"
 #import "TXHUser.h"
 #import "TXHTier.h"
@@ -1193,8 +1194,6 @@ static NSString * const kUserEndPoint      = @"user";
 {
     NSString *endpoint = @"supplier/gateways.json";
     
-    NSManagedObjectContext *moc = self.importContext;
-    
     [self.sessionManager GET:endpoint
                   parameters:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -1202,18 +1201,13 @@ static NSString * const kUserEndPoint      = @"user";
                          
                          for (NSDictionary *gatewayDic in responseObject)
                          {
-                             TXHPayment *payment = [TXHPayment createWithDictionary:gatewayDic inManagedObjectContext:moc];
-                             if (payment)
-                                 [gateways addObject:payment];
+                             TXHGateway *gateway = [[TXHGateway alloc] initWithDictionary:gatewayDic];
+                             if (gateway)
+                                 [gateways addObject:gateway];
                          }
                          
-                         NSError *error;
-                         if (![moc save:&error]) {
-                             completion(gateways, error);
-                             return;
-                         };
                          
-                         completion([self objectsInMainManagedObjectContext:gateways],nil);
+                         completion(gateways,nil);
                      }
                      failure:^(NSURLSessionDataTask *task, NSError *error) {
                          completion(nil, error);
