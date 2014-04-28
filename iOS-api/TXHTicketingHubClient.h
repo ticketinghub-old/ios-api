@@ -42,10 +42,11 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  Creates a client that uses the managed object model from the iOS-api-Model bundle.
 
  @param storeURL The URL to use for the persistent store. Will be created if it does not exist. Pass `nil` to use an in-memory-store.
-
+ @param serverURL base server url to which all endpoints will be concatenated. should be ended with '/' i.e. https://api.ticketinghub.com/
+ 
  @return An initialised TXHTicketingHubClient.
  */
-- (id)initWithStoreURL:(NSURL *)storeURL;
+- (id)initWithStoreURL:(NSURL *)storeURL andBaseServerURL:(NSURL *)serverURL;
 
 /** Set the "Accept-Language" header for subsequent network call
     

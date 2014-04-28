@@ -6,11 +6,6 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-// Base URLs and endpoints.
-static NSString * const kAPIBaseURL        = @"https://api.ticketinghub.com/";
-static NSString * const kSuppliersEndPoint = @"suppliers";
-static NSString * const kUserEndPoint      = @"user";
-
 #import "TXHTicketingHubClient.h"
 #import <DCTCoreDataStack/DCTCoreDataStack.h>
 
@@ -37,6 +32,7 @@ static NSString * const kUserEndPoint      = @"user";
 
 @interface TXHTicketingHubClient ()
 
+@property (readonly, nonatomic) NSString *baseURL;
 @property (strong, nonatomic) DCTCoreDataStack *coreDataStack;
 @property (strong, nonatomic) AFHTTPSessionManager *sessionManager;
 @property (strong, nonatomic) NSManagedObjectContext *importContext;
@@ -47,21 +43,21 @@ static NSString * const kUserEndPoint      = @"user";
 
 #pragma mark - Set up and tear down
 
-- (id)initWithStoreURL:(NSURL *)storeURL
+- (id)initWithStoreURL:(NSURL *)storeURL andBaseServerURL:(NSURL *)serverURL;
 {
-    if (!(self = [super init]))
+    if (!(self = [super init]) || !serverURL)
         return nil; // Bail!
 
     [self setupCoreDataStackWithStoreURL:storeURL];
 
-    _sessionManager = [[self class] configuredSessionManager];
+    _sessionManager = [[self class] configuredSessionManagerWithServerURL:serverURL];
 
     return self;
 }
 
 - (id)init
 {
-    return [self initWithStoreURL:nil];
+    return [self initWithStoreURL:nil andBaseServerURL:nil];
 }
 
 - (void)dealloc
@@ -94,6 +90,11 @@ static NSString * const kUserEndPoint      = @"user";
     [AFNetworkActivityIndicatorManager sharedManager].enabled = showNetworkActivityIndicatorAutomatically;
 }
 
+- (NSString *)baseURL
+{
+    return [self.sessionManager.baseURL absoluteString];
+}
+
 #pragma mark - Notifications
 #pragma mark   Import context
 
@@ -117,10 +118,8 @@ static NSString * const kUserEndPoint      = @"user";
 
 #pragma mark - Private methods
 
-+ (AFHTTPSessionManager *)configuredSessionManager
++ (AFHTTPSessionManager *)configuredSessionManagerWithServerURL:(NSURL *)baseURL
 {
-    NSURL *baseURL = [NSURL URLWithString:kAPIBaseURL];
-
     AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     sessionManager.responseSerializer = [JSONResponseSerializerWithData serializer];
     sessionManager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
@@ -221,7 +220,7 @@ static NSString * const kUserEndPoint      = @"user";
 
     [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
     
-    [self.sessionManager GET:kSuppliersEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.sessionManager GET:@"suppliers" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSArray *suppliers = [self suppliersFromResponseArray:responseObject inManagedObjectContext:self.importContext];
         
@@ -275,7 +274,7 @@ static NSString * const kUserEndPoint      = @"user";
     NSParameterAssert(user);
     NSParameterAssert(completion);
     
-    [self.sessionManager GET:kUserEndPoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.sessionManager GET:@"user" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         TXHUser *updatedUser = (TXHUser *)[self.importContext existingObjectWithID:user.objectID error:NULL];
         [updatedUser updateWithDictionary:responseObject];
 
@@ -922,7 +921,7 @@ static NSString * const kUserEndPoint      = @"user";
     
     NSString *body = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
-    NSURL *endpointURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint]];
+    NSURL *endpointURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",self.baseURL,endpoint]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:endpointURL
                                                            cachePolicy:NSURLRequestReloadIgnoringCacheData
@@ -1099,7 +1098,7 @@ static NSString * const kUserEndPoint      = @"user";
     
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [NSString stringWithFormat:@"supplier/orders/%@/receipt.%@",order.orderId,extension];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL,endpoint];
     
     if (width > 0 && dpi > 0)
         urlString = [urlString stringByAppendingFormat:@"?width=%dmm&dpi=%d",width,dpi];
@@ -1170,7 +1169,7 @@ static NSString * const kUserEndPoint      = @"user";
     
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [NSString stringWithFormat:@"supplier/orders/%@/templates/%@.%@",order.orderId,templet.templateId,extension];
-    NSString *urlString = [NSString stringWithFormat:@"%@%@",kAPIBaseURL,endpoint];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
     
     NSURL *URL = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
