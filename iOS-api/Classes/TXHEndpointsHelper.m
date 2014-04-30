@@ -33,7 +33,7 @@
 {
     switch (endpoint)
     {
-        case SuppliersEndpoint:                     return @"supplier";
+        case SuppliersEndpoint:                     return @"suppliers";
         case UserEndpoint:                          return @"user";
         case ProductTiersEndpointFormat:            return @"supplier/products/%@/tiers";
         case ProductAvailabilitiesEndpointForamt:   return @"supplier/products/%@/availability";

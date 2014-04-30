@@ -47,6 +47,6 @@ typedef NS_ENUM(NSInteger, TXHEndpointHTTPMethod)
 @interface TXHEndpointsHelper : NSObject
 
 + (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint;
-+ (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint parameters:(NSString *)firstParameter, ...;
++ (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint parameters:(NSString *)firstParameter, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end

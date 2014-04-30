@@ -315,7 +315,7 @@
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTiersEndpointFormat
-                                                               parameters:product.productId];
+                                                               parameters:product.productId, nil];
     
     [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -423,7 +423,7 @@
     
 
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductAvailabilitiesEndpointForamt
-                                                               parameters:product.productId];
+                                                               parameters:product.productId, nil];
 
     [self.sessionManager GET:endpoint parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
 
@@ -610,7 +610,7 @@
     NSParameterAssert(completion);
 
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketUpgradesEndpointFormat
-                                                               parameters:ticket.ticketId];
+                                                               parameters:ticket.ticketId, nil];
     NSManagedObjectContext *moc = self.importContext;
 
     [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -671,7 +671,7 @@
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper  endpointStringForTXHEndpoint:TicketFieldsEndpointFormat
-                                                                parameters:ticket.ticketId];
+                                                                parameters:ticket.ticketId, nil];
     
     [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -731,7 +731,7 @@
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketOwnerFieldsEndpointFormat
-                                                               parameters:order.orderId];
+                                                               parameters:order.orderId, nil];
     
     [self.sessionManager GET:endpoint
                   parameters:nil
@@ -771,7 +771,8 @@
     NSParameterAssert(order);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderEndpointFormat parameters:order.orderId];
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderEndpointFormat
+                                                               parameters:order.orderId, nil];
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -807,7 +808,7 @@
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ConfirmOrderEndpointFormat
-                                                               parameters:order.orderId];
+                                                               parameters:order.orderId, nil];
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -843,7 +844,7 @@
 - (void)PATHOrder:(TXHOrder *)order withInfo:(NSDictionary *)payload completion:(void (^)(TXHOrder *, NSError *))completion
 {
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:UpdateOrderEndpointFormat
-                                                               parameters:order.orderId];
+                                                               parameters:order.orderId, nil];
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -882,7 +883,7 @@
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketsWithParamsEndpointFormat
-                                                               parameters:product.productId];
+                                                               parameters:product.productId, nil];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
@@ -953,7 +954,7 @@
     if (attended)
     {
         NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:AttendProductTicketEndpointFormat
-                                                                   parameters:product.productId, ticket.ticketId];
+                                                                   parameters:product.productId, ticket.ticketId, nil];
         
         [self.sessionManager POST:endpoint
                        parameters:nil
@@ -963,7 +964,7 @@
     else
     {
         NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:UnattendProductTicketEndpointFormat
-                                                                   parameters:product.productId, ticket.ticketId];
+                                                                   parameters:product.productId, ticket.ticketId, nil];
         
         [self.sessionManager DELETE:endpoint
                          parameters:nil
@@ -981,7 +982,7 @@
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketForSeqIdEndpointFormat
-                                                               parameters:product.productId, seqID];
+                                                               parameters:product.productId, seqID, nil];
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -1015,7 +1016,7 @@
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderForTicketProductEndpointFormat
-                                                               parameters:product.productId, ticket.ticketId];
+                                                               parameters:product.productId, ticket.ticketId, nil];
     
     NSManagedObjectContext *moc = self.importContext;
 
@@ -1083,7 +1084,7 @@
     
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderReceiptEndpointFormat
-                                                                parameters:order.orderId,extension];
+                                                                parameters:order.orderId,extension, nil];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL,endpoint];
     
     if (width > 0 && dpi > 0)
@@ -1155,7 +1156,7 @@
     
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderTicketsForTemplateEndpoint
-                                                                parameters:order.orderId,templet.templateId,extension];
+                                                                parameters:order.orderId,templet.templateId,extension, nil];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
     
     NSURL *URL = [NSURL URLWithString:urlString];
