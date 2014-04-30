@@ -37,6 +37,7 @@
 		3E4DB46518A93D3A00F8793C /* TXHUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = EE4B18BE18439A7200CE6D5E /* TXHUser.h */; };
 		3E4EE8B418AD1018000BF0C8 /* TXHNumberFormatterCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EE8B318AD1018000BF0C8 /* TXHNumberFormatterCache.m */; };
 		3E53C54818E5824100FF6F9B /* TXHTicketTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53C54718E5824100FF6F9B /* TXHTicketTemplate.m */; };
+		3E938DC019111ACC00FC29E9 /* TXHEndpointsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DBF19111ACC00FC29E9 /* TXHEndpointsHelper.m */; };
 		3EA83247190944EA0003A1F5 /* TXHGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA83246190944EA0003A1F5 /* TXHGateway.m */; };
 		3EB1AB4F1907CBDA00233A26 /* TXHCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB4C1907CBDA00233A26 /* TXHCard.m */; };
 		3EB1AB521907CC7E00233A26 /* TXHPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB501907CC7E00233A26 /* TXHPayment.m */; };
@@ -187,6 +188,8 @@
 		3E4EE8B318AD1018000BF0C8 /* TXHNumberFormatterCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHNumberFormatterCache.m; path = Classes/TXHNumberFormatterCache.m; sourceTree = "<group>"; };
 		3E53C54618E5824100FF6F9B /* TXHTicketTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHTicketTemplate.h; path = Classes/TXHTicketTemplate.h; sourceTree = "<group>"; };
 		3E53C54718E5824100FF6F9B /* TXHTicketTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHTicketTemplate.m; path = Classes/TXHTicketTemplate.m; sourceTree = "<group>"; };
+		3E938DBE19111ACC00FC29E9 /* TXHEndpointsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHEndpointsHelper.h; path = Classes/TXHEndpointsHelper.h; sourceTree = "<group>"; };
+		3E938DBF19111ACC00FC29E9 /* TXHEndpointsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHEndpointsHelper.m; path = Classes/TXHEndpointsHelper.m; sourceTree = "<group>"; };
 		3EA83245190944EA0003A1F5 /* TXHGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHGateway.h; sourceTree = "<group>"; };
 		3EA83246190944EA0003A1F5 /* TXHGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHGateway.m; sourceTree = "<group>"; };
 		3EB1AB4C1907CBDA00233A26 /* TXHCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCard.m; sourceTree = "<group>"; };
@@ -566,6 +569,8 @@
 				3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */,
 				3E4EE8B218AD1018000BF0C8 /* TXHNumberFormatterCache.h */,
 				3E4EE8B318AD1018000BF0C8 /* TXHNumberFormatterCache.m */,
+				3E938DBE19111ACC00FC29E9 /* TXHEndpointsHelper.h */,
+				3E938DBF19111ACC00FC29E9 /* TXHEndpointsHelper.m */,
 			);
 			name = "Private Classes";
 			sourceTree = "<group>";
@@ -815,6 +820,7 @@
 				3EB1AB671907F80A00233A26 /* _TXHCard.m in Sources */,
 				EEF85C8E181840A100658409 /* TXHTicketingHubClient.m in Sources */,
 				3E2C6ABE18BBCA7A005BEE6C /* _TXHTicket.m in Sources */,
+				3E938DC019111ACC00FC29E9 /* TXHEndpointsHelper.m in Sources */,
 				EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */,
 				3EA83247190944EA0003A1F5 /* TXHGateway.m in Sources */,
 				3EB1AB551907CC9B00233A26 /* _TXHPayment.m in Sources */,
