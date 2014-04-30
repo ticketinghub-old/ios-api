@@ -904,45 +904,6 @@
                      }];
 }
 
-- (void)updateTicketsForProduct:(TXHProduct*)product withAttendedInfo:(NSArray *)ticketsInfo completion:(void(^)(NSError *error))completion
-{
-    NSParameterAssert(product);
-    NSParameterAssert(ticketsInfo);
-    NSParameterAssert(completion);
-    
-    TXHSupplier *anySupplier = [[self currentUser].suppliers anyObject];
-    NSString *tokenString    = [NSString stringWithFormat:@"Bearer %@", anySupplier.accessToken];
-    
-    NSString *endpoint = [NSString stringWithFormat:@"supplier/products/%@/tickets",product.productId];
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ticketsInfo
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:&error];
-    
-    NSString *body = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    NSURL *endpointURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",self.baseURL,endpoint]];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:endpointURL
-                                                           cachePolicy:NSURLRequestReloadIgnoringCacheData
-                                                       timeoutInterval:10];
-    
-    [request setHTTPMethod:@"PATCH"];
-    [request setValue: @"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody: [body dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setValue:[NSString stringWithFormat:@"Token token=\"%@\"", tokenString] forHTTPHeaderField:@"Authorization"];
-    
-    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    op.responseSerializer = self.sessionManager.responseSerializer;
-    
-    [op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON responseObject: %@ ",responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", [error localizedDescription]);
-    }];
-    [op start];
-}
-
 - (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
 {
     NSParameterAssert(ticket);

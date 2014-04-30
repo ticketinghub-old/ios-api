@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  Creates a client that uses the managed object model from the iOS-api-Model bundle.
 
  @param storeURL The URL to use for the persistent store. Will be created if it does not exist. Pass `nil` to use an in-memory-store.
- @param serverURL base server url to which all endpoints will be concatenated. should be ended with '/' i.e. https://api.ticketinghub.com/
+ @param serverURL base server url to which all endpoints will be concatenated. should be ended with '/' i.e.    
  
  @return An initialised TXHTicketingHubClient.
  */
@@ -239,14 +239,6 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  @warning `product` and `availability` and `completion` must not be `nil`.
  */
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
-
-/** Endpoint for reserving (marking ticket as attended) tickets wit infirmations from barcode 
- @param product porduct of a ticket
- @param ticketsInfo is an array of dictioanry object with ticket properties (seq_id, attended_at, signature)
- 
- warning `product` and `ticketsInfo` and `completion` must not be `nil`. currently not used - its rather for offline mode, not sure if works correctly
- */
-- (void)updateTicketsForProduct:(TXHProduct*)product withAttendedInfo:(NSArray *)ticketsInfo completion:(void(^)(NSError *error))completion;
 
 /** Marks givent ticket as attended
  
