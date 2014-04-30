@@ -37,7 +37,7 @@ __block TXHTicketingHubClient *_client;
 __block NSManagedObjectContext *_moc;
 
 beforeEach(^{
-    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil];
+    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil andBaseServerURL:nil];
     _moc = [TestsHelper managedObjectContextForTests];
 
 });

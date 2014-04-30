@@ -30,7 +30,7 @@ SpecBegin(ClientCreation)
 __block TXHTicketingHubClient *_client;
 
 beforeEach(^{
-    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil];
+    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil andBaseServerURL:nil];
 });
 
 afterEach(^{

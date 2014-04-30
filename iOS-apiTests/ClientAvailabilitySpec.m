@@ -25,7 +25,7 @@ __block TXHProduct *_product;
 __block NSDictionary *_standardHTTPHeaders;
 
 before(^{
-    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil];
+    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil andBaseServerURL:nil];
 
     NSDictionary *dictionary = @{@"id": @"123",
                                  @"name": @"Product Name"};

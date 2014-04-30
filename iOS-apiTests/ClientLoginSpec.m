@@ -24,7 +24,7 @@ SpecBegin(TXHTicketingHubClient)
 __block TXHTicketingHubClient *_client;
 
 before(^{
-    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil];
+    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil andBaseServerURL:nil];
 });
 
 after(^{

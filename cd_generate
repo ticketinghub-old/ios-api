@@ -1,7 +1,0 @@
-#! /usr/bin/env sh
-
-# Runs the mogenerator tool over the Core Data model.
-
-cd "$( dirname $0 )"
-cd iOS-api-Model
-mogenerator -m CoreDataModel.xcdatamodeld/ -H ../iOS-api/Human -M ../iOS-api/Machine --template-var arc=true --template-var frc=true

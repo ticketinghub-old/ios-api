@@ -26,9 +26,10 @@
 #import "TXHUpgrade.h"
 #import "TXHField.h"
 
-
 #import "NSDate+ISO.h"
 #import "TXHDefines.h"
+
+
 
 @interface TXHTicketingHubClient ()
 
@@ -45,11 +46,11 @@
 
 - (id)initWithStoreURL:(NSURL *)storeURL andBaseServerURL:(NSURL *)serverURL;
 {
-    if (!(self = [super init]) || !serverURL)
+    if (!(self = [super init]))
         return nil; // Bail!
-
+    
     [self setupCoreDataStackWithStoreURL:storeURL];
-
+    
     _sessionManager = [[self class] configuredSessionManagerWithServerURL:serverURL];
 
     return self;
@@ -118,8 +119,13 @@
 
 #pragma mark - Private methods
 
+
+// default base url is @"https://api.ticketinghub.com/"
 + (AFHTTPSessionManager *)configuredSessionManagerWithServerURL:(NSURL *)baseURL
 {
+    if (!baseURL)
+        baseURL = [NSURL URLWithString:@"https://api.ticketinghub.com/"];
+    
     AFHTTPSessionManager *sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:baseURL];
     sessionManager.responseSerializer = [JSONResponseSerializerWithData serializer];
     sessionManager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
