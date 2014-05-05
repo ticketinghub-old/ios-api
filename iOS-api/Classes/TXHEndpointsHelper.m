@@ -11,15 +11,19 @@
 
 @implementation TXHEndpointsHelper
 
-
-// TODO: add args count check
 + (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint parameters:(NSString *)firstParameter, ...
 {
-    va_list args;
-    va_start(args, firstParameter);
-    
     NSString *endpointFormat = [self endpointFormatForTXHEndpoint:endpoint];
-    NSString *endpointString = [[NSString alloc] initWithFormat:endpointFormat arguments:args];
+    
+    return [self endpointWithFormat:endpointFormat, firstParameter, nil];
+}
+
++ (NSString *)endpointWithFormat:(NSString *)format, ...
+{
+    va_list args;
+    va_start(args, format);
+    
+    NSString *endpointString = [[NSString alloc] initWithFormat:format arguments:args];
     
     return endpointString;
 }
