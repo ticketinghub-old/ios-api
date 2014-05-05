@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, TXHEndpoint)
     TicketUpgradesEndpointFormat,               // requires 1 parameter: ticketID
     TicketFieldsEndpointFormat,                 // requires 1 parameter: ticketID
     UpdateOrderEndpointFormat,                  // requires 1 parameter: orderID
-    TicketOwnerFieldsEndpointFormat,            // requires 1 parameter: orderID
+    TicketOwnerFieldsEndpointFormat,            / requires 1 parameter: orderID
     OrderEndpointFormat,                        // requires 1 parameter: orderID
     ConfirmOrderEndpointFormat,                 // requires 1 parameter: orderID
     TicketsWithParamsEndpointFormat,            // requires 1 parameter: productID
@@ -47,6 +47,6 @@ typedef NS_ENUM(NSInteger, TXHEndpointHTTPMethod)
 @interface TXHEndpointsHelper : NSObject
 
 + (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint;
-+ (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint parameters:(NSString *)firstParameter, ... NS_REQUIRES_NIL_TERMINATION;
++ (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint parameters:(NSArray *)params;
 
 @end

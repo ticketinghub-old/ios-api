@@ -11,21 +11,17 @@
 
 @implementation TXHEndpointsHelper
 
-+ (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint parameters:(NSString *)firstParameter, ...
++ (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint parameters:(NSArray *)params
 {
-    NSString *endpointFormat = [self endpointFormatForTXHEndpoint:endpoint];
+    NSString *format = [self endpointFormatForTXHEndpoint:endpoint];
     
-    return [self endpointWithFormat:endpointFormat, firstParameter, nil];
-}
-
-+ (NSString *)endpointWithFormat:(NSString *)format, ...
-{
-    va_list args;
-    va_start(args, format);
+    NSRange range = NSMakeRange(0, [params count]);
+    NSMutableData* data = [NSMutableData data];
     
-    NSString *endpointString = [[NSString alloc] initWithFormat:format arguments:args];
+    [params getObjects:(__unsafe_unretained id *)data.mutableBytes range:range];
     
-    return endpointString;
+    NSString* result = [[NSString alloc] initWithFormat:format arguments:data.mutableBytes];
+    return result;
 }
 
 + (NSString *)endpointStringForTXHEndpoint:(TXHEndpoint)endpoint
