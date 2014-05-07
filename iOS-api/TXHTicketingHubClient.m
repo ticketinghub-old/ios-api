@@ -1198,7 +1198,7 @@
                          
                          NSError *error;
                          if (![moc save:&error]) {
-                             completion(orders, error);
+                             completion(nil, error);
                              return;
                          };
                          
