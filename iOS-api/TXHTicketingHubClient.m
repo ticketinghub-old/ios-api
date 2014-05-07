@@ -14,19 +14,18 @@
 #import "JSONResponseSerializerWithData.h"
 
 #import "TXHAvailability.h"
-#import "TXHProduct.h"
-#import "TXHPayment.h"
+#import "TXHField.h"
 #import "TXHGateway.h"
-#import "TXHSupplier.h"
-#import "TXHUser.h"
-#import "TXHTier.h"
 #import "TXHOrder.h"
+#import "TXHPayment.h"
+#import "TXHProduct.h"
+#import "TXHSupplier.h"
 #import "TXHTicket.h"
 #import "TXHTicketTemplate.h"
+#import "TXHTier.h"
 #import "TXHUpgrade.h"
-#import "TXHField.h"
+#import "TXHUser.h"
     
-
 #import "NSDate+ISO.h"
 #import "TXHDefines.h"
 

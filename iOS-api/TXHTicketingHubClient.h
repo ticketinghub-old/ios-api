@@ -9,13 +9,14 @@
 @import Foundation;
 
 @class NSManagedObjectContext;
-@class TXHUser;
-@class TXHProduct;
-@class TXHOrder;
 @class TXHAvailability;
+@class TXHOrder;
+@class TXHPayment;
+@class TXHProduct;
+@class TXHSupplier;
 @class TXHTicket;
 @class TXHTicketTemplate;
-@class TXHSupplier;
+@class TXHUser;
 
 typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
     TXHDocumentFormatPDF,
