@@ -31,6 +31,7 @@
         <attribute name="mask" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="month" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scheme" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="securityCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="card" inverseEntity="Payment" syncable="YES"/>
@@ -167,7 +168,7 @@
     <elements>
         <element name="Address" positionX="162" positionY="297" width="128" height="208"/>
         <element name="Availability" positionX="-83" positionY="-117" width="128" height="148"/>
-        <element name="Card" positionX="-153" positionY="621" width="128" height="28"/>
+        <element name="Card" positionX="-108" positionY="657" width="128" height="223"/>
         <element name="Contact" positionX="-450" positionY="495" width="128" height="118"/>
         <element name="Customer" positionX="718" positionY="414" width="128" height="193"/>
         <element name="Gateway" positionX="295" positionY="612" width="128" height="103"/>

@@ -12,6 +12,7 @@ const struct TXHCardAttributes TXHCardAttributes = {
 	.mask = @"mask",
 	.month = @"month",
 	.number = @"number",
+	.scheme = @"scheme",
 	.securityCode = @"securityCode",
 	.year = @"year",
 };
@@ -135,6 +136,13 @@ const struct TXHCardFetchedProperties TXHCardFetchedProperties = {
 
 
 @dynamic number;
+
+
+
+
+
+
+@dynamic scheme;
 
 
 

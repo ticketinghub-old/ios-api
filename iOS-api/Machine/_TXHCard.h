@@ -13,6 +13,7 @@ extern const struct TXHCardAttributes {
 	__unsafe_unretained NSString *mask;
 	__unsafe_unretained NSString *month;
 	__unsafe_unretained NSString *number;
+	__unsafe_unretained NSString *scheme;
 	__unsafe_unretained NSString *securityCode;
 	__unsafe_unretained NSString *year;
 } TXHCardAttributes;
@@ -25,6 +26,7 @@ extern const struct TXHCardFetchedProperties {
 } TXHCardFetchedProperties;
 
 @class TXHPayment;
+
 
 
 
@@ -134,6 +136,16 @@ extern const struct TXHCardFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* scheme;
+
+
+
+//- (BOOL)validateScheme:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSString* securityCode;
 
 
@@ -222,6 +234,12 @@ extern const struct TXHCardFetchedProperties {
 
 - (NSString*)primitiveNumber;
 - (void)setPrimitiveNumber:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveScheme;
+- (void)setPrimitiveScheme:(NSString*)value;
 
 
 
