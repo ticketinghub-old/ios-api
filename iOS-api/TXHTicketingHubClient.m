@@ -24,6 +24,7 @@
 #import "TXHTicket.h"
 #import "TXHTicketTemplate.h"
 #import "TXHUpgrade.h"
+#import "TXHField.h"
     
 
 #import "NSDate+ISO.h"
