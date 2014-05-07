@@ -4,4 +4,6 @@
 
 + (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc;
 
+- (NSDictionary *)dictionaryRepresentation;
+
 @end

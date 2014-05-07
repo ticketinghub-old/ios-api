@@ -24,7 +24,7 @@
 #import "TXHTicket.h"
 #import "TXHTicketTemplate.h"
 #import "TXHUpgrade.h"
-#import "TXHField.h"
+    
 
 #import "NSDate+ISO.h"
 #import "TXHDefines.h"
@@ -713,17 +713,18 @@
 }
 
 
-- (void)updateOrder:(TXHOrder *)order withPaymentMethod:(NSString *)paymentMethod completion:(void (^)(TXHOrder *order, NSError *error))completion
-{       
+- (void)updateOrder:(TXHOrder *)order withPayment:(TXHPayment *)payment completion:(void (^)(TXHOrder *order, NSError *error))completion;
+{
     NSParameterAssert(order);
-    NSParameterAssert(paymentMethod);
+    NSParameterAssert(payment);
     NSParameterAssert(completion);
     
-    NSDictionary *requestPayload = @{@"payment" : @{@"type" : paymentMethod}};
+    NSDictionary *paymentDictionary = [payment dictionaryRepresentation];
+    
+    NSDictionary *requestPayload = @{@"payment" : paymentDictionary};
     
     [self PATHOrder:order withInfo:requestPayload completion:completion];
 }
-
 
 - (void)fieldsForOrderOwner:(TXHOrder *)order completion:(void(^)(NSArray *fields, NSError *error))completion
 {

@@ -3,17 +3,25 @@
 
 #import "TXHAddress.h"
 #import "TXHCard.h"
+#import "TXHGateway.h"
 
-static NSString * const kAmountKey             = @"amount";
-static NSString * const kAuthorizationKey      = @"authorization";
-static NSString * const kAVSResultKey          = @"avs_result";
-static NSString * const kCurrencyKey           = @"currency";
-static NSString * const kPostalMatchKey        = @"postal_match";
-static NSString * const kSecurityCodeResultKey = @"security_code_result";
-static NSString * const kStreetMatchKey        = @"street_match";
-static NSString * const kTypeKey               = @"type";
-static NSString * const kAddressKey            = @"address";
-static NSString * const kCardKey               = @"card";
+static NSString * const kAmountKey               = @"amount";
+static NSString * const kAuthorizationKey        = @"authorization";
+static NSString * const kAVSResultKey            = @"avs_result";
+static NSString * const kCurrencyKey             = @"currency";
+static NSString * const kPostalMatchKey          = @"postal_match";
+static NSString * const kSecurityCodeResultKey   = @"security_code_result";
+static NSString * const kStreetMatchKey          = @"street_match";
+static NSString * const kTypeKey                 = @"type";
+static NSString * const kAddressKey              = @"address";
+static NSString * const kCardKey                 = @"card";
+static NSString * const kGatewayKey              = @"gateway";
+static NSString * const kVerificationMethodKey   = @"verification_method";
+static NSString * const kInputTypeKey            = @"input_type";
+static NSString * const kGatewayAuthorizationKey = @"authorization";
+static NSString * const kReferenceKey            = @"reference";
+static NSString * const kCardSchemeKey           = @"scheme";
+
 
 @interface TXHPayment ()
 
@@ -46,5 +54,21 @@ static NSString * const kCardKey               = @"card";
     
     return payment;
 }
+
+- (NSDictionary *)dictionaryRepresentation
+{
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
+    dictionary[kTypeKey]               = self.type;
+    dictionary[kGatewayKey]            = self.gateway.gatewayId;
+    dictionary[kVerificationMethodKey] = self.verificationMethod;
+    dictionary[kInputTypeKey]          = self.inputType;
+    dictionary[kAuthorizationKey]      = self.authorization;
+    dictionary[kReferenceKey]          = self.reference;
+    dictionary[kCardKey]               = @{kCardSchemeKey : self.card.scheme};
+    
+    return dictionary;
+}
+
 
 @end
