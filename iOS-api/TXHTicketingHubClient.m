@@ -1088,7 +1088,7 @@
     NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL,endpoint];
     
     if (width > 0 && dpi > 0)
-        urlString = [urlString stringByAppendingFormat:@"?width=%dmm&dpi=%d",width,dpi];
+        urlString = [urlString stringByAppendingFormat:@"?size=%dmm&dpi=%d",width,dpi];
     
     NSURL *URL = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
@@ -1156,7 +1156,7 @@
     
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderTicketsForTemplateEndpoint
-                                                                parameters:@[order.orderId,templet.templateId,extension]];
+                                                                parameters:@[order.orderId,extension,templet.templateId]];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
     
     NSURL *URL = [NSURL URLWithString:urlString];

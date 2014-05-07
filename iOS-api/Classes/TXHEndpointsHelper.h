@@ -10,6 +10,8 @@
 
 typedef NS_ENUM(NSInteger, TXHEndpoint)
 {
+    // IMPORTANT: order of parameters in the array is very crucial
+    
     SuppliersEndpoint,                          //
     UserEndpoint,                               //
     ProductTiersEndpointFormat,                 // requires 1 parameter: productID
@@ -30,7 +32,7 @@ typedef NS_ENUM(NSInteger, TXHEndpoint)
     OrdersForMSRCardTrackDataEndpoint,          //
     OrderReceiptEndpointFormat,                 // requires 2 parameters: orderID, receiptType (pdf, ps, png)
     TicketTemplatesEndpoint,                    //
-    OrderTicketsForTemplateEndpoint,            // requires 2 parameters: orderID, templeatID, ticketFormat (pdf, ps, png)
+    OrderTicketsForTemplateEndpoint,            // requires 2 parameters: orderID, ticketFormat (pdf, ps, png), templeatID
     PaymentGatewaysEndpoint,                    //
 };
 

@@ -53,10 +53,9 @@
         case OrdersForMSRCardTrackDataEndpoint:     return @"supplier/orders/search.json";
         case OrderReceiptEndpointFormat:            return @"supplier/orders/%@/receipt.%@";
         case TicketTemplatesEndpoint:               return @"supplier/templates";
-        case OrderTicketsForTemplateEndpoint:       return @"supplier/orders/%@/templates/%@.%@";
+        case OrderTicketsForTemplateEndpoint:       return @"supplier/orders/%@/tickets.%@?template=%@";
         case PaymentGatewaysEndpoint:               return @"supplier/gateways.json";
     }
-    
     return nil;
 }
 
