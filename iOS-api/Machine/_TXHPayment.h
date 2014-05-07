@@ -9,10 +9,13 @@ extern const struct TXHPaymentAttributes {
 	__unsafe_unretained NSString *authorization;
 	__unsafe_unretained NSString *avsResult;
 	__unsafe_unretained NSString *currency;
+	__unsafe_unretained NSString *inputType;
 	__unsafe_unretained NSString *postalMatch;
+	__unsafe_unretained NSString *reference;
 	__unsafe_unretained NSString *securityCodeResult;
 	__unsafe_unretained NSString *streetMatch;
 	__unsafe_unretained NSString *type;
+	__unsafe_unretained NSString *verificationMethod;
 } TXHPaymentAttributes;
 
 extern const struct TXHPaymentRelationships {
@@ -27,6 +30,9 @@ extern const struct TXHPaymentFetchedProperties {
 @class TXHAddress;
 @class TXHCard;
 @class TXHGateway;
+
+
+
 
 
 
@@ -94,6 +100,16 @@ extern const struct TXHPaymentFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSString* inputType;
+
+
+
+//- (BOOL)validateInputType:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSNumber* postalMatch;
 
 
@@ -103,6 +119,16 @@ extern const struct TXHPaymentFetchedProperties {
 - (void)setPostalMatchValue:(BOOL)value_;
 
 //- (BOOL)validatePostalMatch:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* reference;
+
+
+
+//- (BOOL)validateReference:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -137,6 +163,16 @@ extern const struct TXHPaymentFetchedProperties {
 
 
 //- (BOOL)validateType:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* verificationMethod;
+
+
+
+//- (BOOL)validateVerificationMethod:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -200,11 +236,23 @@ extern const struct TXHPaymentFetchedProperties {
 
 
 
+- (NSString*)primitiveInputType;
+- (void)setPrimitiveInputType:(NSString*)value;
+
+
+
+
 - (NSNumber*)primitivePostalMatch;
 - (void)setPrimitivePostalMatch:(NSNumber*)value;
 
 - (BOOL)primitivePostalMatchValue;
 - (void)setPrimitivePostalMatchValue:(BOOL)value_;
+
+
+
+
+- (NSString*)primitiveReference;
+- (void)setPrimitiveReference:(NSString*)value;
 
 
 
@@ -226,6 +274,12 @@ extern const struct TXHPaymentFetchedProperties {
 
 - (NSString*)primitiveType;
 - (void)setPrimitiveType:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveVerificationMethod;
+- (void)setPrimitiveVerificationMethod:(NSString*)value;
 
 
 

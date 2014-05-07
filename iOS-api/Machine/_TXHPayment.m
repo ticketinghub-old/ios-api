@@ -8,10 +8,13 @@ const struct TXHPaymentAttributes TXHPaymentAttributes = {
 	.authorization = @"authorization",
 	.avsResult = @"avsResult",
 	.currency = @"currency",
+	.inputType = @"inputType",
 	.postalMatch = @"postalMatch",
+	.reference = @"reference",
 	.securityCodeResult = @"securityCodeResult",
 	.streetMatch = @"streetMatch",
 	.type = @"type",
+	.verificationMethod = @"verificationMethod",
 };
 
 const struct TXHPaymentRelationships TXHPaymentRelationships = {
@@ -118,6 +121,13 @@ const struct TXHPaymentFetchedProperties TXHPaymentFetchedProperties = {
 
 
 
+@dynamic inputType;
+
+
+
+
+
+
 @dynamic postalMatch;
 
 
@@ -139,6 +149,13 @@ const struct TXHPaymentFetchedProperties TXHPaymentFetchedProperties = {
 - (void)setPrimitivePostalMatchValue:(BOOL)value_ {
 	[self setPrimitivePostalMatch:[NSNumber numberWithBool:value_]];
 }
+
+
+
+
+
+@dynamic reference;
+
 
 
 
@@ -178,6 +195,13 @@ const struct TXHPaymentFetchedProperties TXHPaymentFetchedProperties = {
 
 
 @dynamic type;
+
+
+
+
+
+
+@dynamic verificationMethod;
 
 
 
