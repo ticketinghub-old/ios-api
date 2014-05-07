@@ -1,4 +1,5 @@
 #import "TXHGateway.h"
+#import "TXHDefines.h"
 
 static NSString * const kGatewayIDKey     = @"id";
 static NSString * const kPublishableIDKey = @"publishable_key";
