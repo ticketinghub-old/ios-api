@@ -4,16 +4,16 @@
 #import "TXHAddress.h"
 #import "TXHCard.h"
 
-static NSString * const kAmountKey             = @"amount";
-static NSString * const kAuthorizationKey      = @"authorization";
-static NSString * const kAVSResultKey          = @"avs_result";
-static NSString * const kCurrencyKey           = @"currency";
-static NSString * const kPostalMatchKey        = @"postal_match";
-static NSString * const kSecurityCodeResultKey = @"security_code_result";
-static NSString * const kStreetMatchKey        = @"street_match";
-static NSString * const kTypeKey               = @"type";
-static NSString * const kAddressKey            = @"address";
-static NSString * const kCardKey               = @"card";
+NSString * const kAmountKey             = @"amount";
+NSString * const kAuthorizationKey      = @"authorization";
+NSString * const kAVSResultKey          = @"avs_result";
+NSString * const kCurrencyKey           = @"currency";
+NSString * const kPostalMatchKey        = @"postal_match";
+NSString * const kSecurityCodeResultKey = @"security_code_result";
+NSString * const kStreetMatchKey        = @"street_match";
+NSString * const kTypeKey               = @"type";
+NSString * const kAddressKey            = @"address";
+NSString * const kCardKey               = @"card";
 
 @interface TXHPayment ()
 

@@ -38,7 +38,8 @@
 		3E4EE8B418AD1018000BF0C8 /* TXHNumberFormatterCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4EE8B318AD1018000BF0C8 /* TXHNumberFormatterCache.m */; };
 		3E53C54818E5824100FF6F9B /* TXHTicketTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E53C54718E5824100FF6F9B /* TXHTicketTemplate.m */; };
 		3E938DC019111ACC00FC29E9 /* TXHEndpointsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E938DBF19111ACC00FC29E9 /* TXHEndpointsHelper.m */; };
-		3EA83247190944EA0003A1F5 /* TXHGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA83246190944EA0003A1F5 /* TXHGateway.m */; };
+		3EA5839B191A3AA00023C94F /* TXHGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA5839A191A3AA00023C94F /* TXHGateway.m */; };
+		3EA5839E191A3AB20023C94F /* _TXHGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA5839D191A3AB20023C94F /* _TXHGateway.m */; };
 		3EB1AB4F1907CBDA00233A26 /* TXHCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB4C1907CBDA00233A26 /* TXHCard.m */; };
 		3EB1AB521907CC7E00233A26 /* TXHPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB501907CC7E00233A26 /* TXHPayment.m */; };
 		3EB1AB551907CC9B00233A26 /* _TXHPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB1AB531907CC9B00233A26 /* _TXHPayment.m */; };
@@ -190,14 +191,15 @@
 		3E53C54718E5824100FF6F9B /* TXHTicketTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHTicketTemplate.m; path = Classes/TXHTicketTemplate.m; sourceTree = "<group>"; };
 		3E938DBE19111ACC00FC29E9 /* TXHEndpointsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TXHEndpointsHelper.h; path = Classes/TXHEndpointsHelper.h; sourceTree = "<group>"; };
 		3E938DBF19111ACC00FC29E9 /* TXHEndpointsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHEndpointsHelper.m; path = Classes/TXHEndpointsHelper.m; sourceTree = "<group>"; };
-		3EA83245190944EA0003A1F5 /* TXHGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHGateway.h; sourceTree = "<group>"; };
-		3EA83246190944EA0003A1F5 /* TXHGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHGateway.m; sourceTree = "<group>"; };
+		3EA58399191A3AA00023C94F /* TXHGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHGateway.h; sourceTree = "<group>"; };
+		3EA5839A191A3AA00023C94F /* TXHGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHGateway.m; sourceTree = "<group>"; };
+		3EA5839C191A3AB20023C94F /* _TXHGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHGateway.h; sourceTree = "<group>"; };
+		3EA5839D191A3AB20023C94F /* _TXHGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHGateway.m; sourceTree = "<group>"; };
 		3EB1AB4C1907CBDA00233A26 /* TXHCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCard.m; sourceTree = "<group>"; };
 		3EB1AB4D1907CBDA00233A26 /* TXHCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCard.h; sourceTree = "<group>"; };
 		3EB1AB501907CC7E00233A26 /* TXHPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHPayment.m; sourceTree = "<group>"; };
 		3EB1AB511907CC7E00233A26 /* TXHPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHPayment.h; sourceTree = "<group>"; };
 		3EB1AB531907CC9B00233A26 /* _TXHPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHPayment.m; sourceTree = "<group>"; };
-		3EB1AB541907CC9B00233A26 /* _TXHPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHPayment.h; sourceTree = "<group>"; };
 		3EB1AB561907CCB000233A26 /* _TXHSupplier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _TXHSupplier.h; sourceTree = "<group>"; };
 		3EB1AB5A1907E7C700233A26 /* _TXHContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHContact.m; sourceTree = "<group>"; };
 		3EB1AB5B1907E7C700233A26 /* _TXHContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHContact.h; sourceTree = "<group>"; };
@@ -340,8 +342,6 @@
 				3ED7561318BD500E00D8F60B /* TXHField.m */,
 				3E53C54618E5824100FF6F9B /* TXHTicketTemplate.h */,
 				3E53C54718E5824100FF6F9B /* TXHTicketTemplate.m */,
-				3EA83245190944EA0003A1F5 /* TXHGateway.h */,
-				3EA83246190944EA0003A1F5 /* TXHGateway.m */,
 			);
 			name = "Not core data";
 			sourceTree = "<group>";
@@ -416,6 +416,8 @@
 				3EB1AB631907E88500233A26 /* TXHContact.h */,
 				3E2C6ACF18BCB8AE005BEE6C /* TXHCustomer.h */,
 				3E2C6AD018BCB8AE005BEE6C /* TXHCustomer.m */,
+				3EA58399191A3AA00023C94F /* TXHGateway.h */,
+				3EA5839A191A3AA00023C94F /* TXHGateway.m */,
 				3E2C6AC218BBCA89005BEE6C /* TXHOrder.h */,
 				3E2C6AC318BBCA89005BEE6C /* TXHOrder.m */,
 				EED7E850183E2CA000853E73 /* TXHProduct.h */,
@@ -445,18 +447,19 @@
 				EE4926BB1850C28C00336A2D /* _TXHAvailability.m */,
 				3EB1AB651907F80A00233A26 /* _TXHCard.h */,
 				3EB1AB661907F80A00233A26 /* _TXHCard.m */,
-				3E2C6AD218BCB8B8005BEE6C /* _TXHCustomer.h */,
-				3E2C6AD318BCB8B8005BEE6C /* _TXHCustomer.m */,
 				3EB1AB5A1907E7C700233A26 /* _TXHContact.m */,
 				3EB1AB5B1907E7C700233A26 /* _TXHContact.h */,
+				3E2C6AD218BCB8B8005BEE6C /* _TXHCustomer.h */,
+				3E2C6AD318BCB8B8005BEE6C /* _TXHCustomer.m */,
+				3EA5839C191A3AB20023C94F /* _TXHGateway.h */,
+				3EA5839D191A3AB20023C94F /* _TXHGateway.m */,
 				3E2C6AB918BBCA74005BEE6C /* _TXHOrder.h */,
-				3EB1AB5F1907E80100233A26 /* _TXHPayment.h */,
 				3E2C6ABA18BBCA74005BEE6C /* _TXHOrder.m */,
 				EED7E855183E2CA000853E73 /* _TXHProduct.h */,
 				3EB1AB601907E87600233A26 /* _TXHProduct.m */,
 				3EB1AB561907CCB000233A26 /* _TXHSupplier.h */,
+				3EB1AB5F1907E80100233A26 /* _TXHPayment.h */,
 				3EB1AB531907CC9B00233A26 /* _TXHPayment.m */,
-				3EB1AB541907CC9B00233A26 /* _TXHPayment.h */,
 				EED7E857183E2CA000853E73 /* _TXHSupplier.h */,
 				EED7E858183E2CA000853E73 /* _TXHSupplier.m */,
 				3E2C6ABC18BBCA7A005BEE6C /* _TXHTicket.h */,
@@ -810,9 +813,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EED7E85A183E2CA000853E73 /* TXHSupplier.m in Sources */,
+				3EA5839B191A3AA00023C94F /* TXHGateway.m in Sources */,
 				EED7E85C183E2CA000853E73 /* _TXHSupplier.m in Sources */,
 				3EF722D718ACC8C000E86FBE /* NSDate+ISO.m in Sources */,
 				3E2C6AB818BBCA6D005BEE6C /* _TXHAddress.m in Sources */,
+				3EA5839E191A3AB20023C94F /* _TXHGateway.m in Sources */,
 				3E2C6AD418BCB8B8005BEE6C /* _TXHCustomer.m in Sources */,
 				3E2C6AD118BCB8AE005BEE6C /* TXHCustomer.m in Sources */,
 				EE4926C21850C2A000336A2D /* _TXHUpgrade.m in Sources */,
@@ -822,7 +827,6 @@
 				3E2C6ABE18BBCA7A005BEE6C /* _TXHTicket.m in Sources */,
 				3E938DC019111ACC00FC29E9 /* TXHEndpointsHelper.m in Sources */,
 				EED7E859183E2CA000853E73 /* TXHProduct.m in Sources */,
-				3EA83247190944EA0003A1F5 /* TXHGateway.m in Sources */,
 				3EB1AB551907CC9B00233A26 /* _TXHPayment.m in Sources */,
 				EE4926B51850C27800336A2D /* TXHAvailability.m in Sources */,
 				EE4926C11850C2A000336A2D /* _TXHTier.m in Sources */,

@@ -1181,20 +1181,28 @@
 {
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:PaymentGatewaysEndpoint];
     
+    NSManagedObjectContext *moc = self.importContext;
+    
     [self.sessionManager GET:endpoint
                   parameters:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                         
                          NSMutableArray *gateways = [NSMutableArray array];
                          
                          for (NSDictionary *gatewayDic in responseObject)
                          {
-                             TXHGateway *gateway = [[TXHGateway alloc] initWithDictionary:gatewayDic];
+                             TXHGateway *gateway = [TXHGateway createWithDictionary:gatewayDic inManagedObjectContext:moc];
                              if (gateway)
                                  [gateways addObject:gateway];
                          }
                          
+                         NSError *error;
+                         if (![moc save:&error]) {
+                             completion(orders, error);
+                             return;
+                         };
                          
-                         completion(gateways,nil);
+                         completion([self objectsInMainManagedObjectContext:gateways],nil);
                      }
                      failure:^(NSURLSessionDataTask *task, NSError *error) {
                          completion(nil, error);

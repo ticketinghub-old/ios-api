@@ -17,6 +17,7 @@ const struct TXHPaymentAttributes TXHPaymentAttributes = {
 const struct TXHPaymentRelationships TXHPaymentRelationships = {
 	.address = @"address",
 	.card = @"card",
+	.gateway = @"gateway",
 };
 
 const struct TXHPaymentFetchedProperties TXHPaymentFetchedProperties = {
@@ -188,6 +189,10 @@ const struct TXHPaymentFetchedProperties TXHPaymentFetchedProperties = {
 	
 
 @dynamic card;
+
+	
+
+@dynamic gateway;
 
 	
 

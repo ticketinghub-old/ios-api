@@ -14,6 +14,7 @@
 #import "TXHCard.h"
 #import "TXHContact.h"
 #import "TXHCustomer.h"
+#import "TXHGateway.h"
 #import "TXHField.h"
 #import "TXHGateway.h"
 #import "TXHOrder.h"
@@ -25,5 +26,3 @@
 #import "TXHTier.h"
 #import "TXHUpgrade.h"
 #import "TXHUser.h"
-
-

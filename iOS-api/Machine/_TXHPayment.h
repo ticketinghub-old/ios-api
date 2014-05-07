@@ -18,6 +18,7 @@ extern const struct TXHPaymentAttributes {
 extern const struct TXHPaymentRelationships {
 	__unsafe_unretained NSString *address;
 	__unsafe_unretained NSString *card;
+	__unsafe_unretained NSString *gateway;
 } TXHPaymentRelationships;
 
 extern const struct TXHPaymentFetchedProperties {
@@ -25,6 +26,7 @@ extern const struct TXHPaymentFetchedProperties {
 
 @class TXHAddress;
 @class TXHCard;
+@class TXHGateway;
 
 
 
@@ -154,6 +156,13 @@ extern const struct TXHPaymentFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHGateway *gateway;
+
+//- (BOOL)validateGateway:(id*)value_ error:(NSError**)error_;
+
+
+
+
 
 @end
 
@@ -229,6 +238,11 @@ extern const struct TXHPaymentFetchedProperties {
 
 - (TXHCard*)primitiveCard;
 - (void)setPrimitiveCard:(TXHCard*)value;
+
+
+
+- (TXHGateway*)primitiveGateway;
+- (void)setPrimitiveGateway:(TXHGateway*)value;
 
 
 @end

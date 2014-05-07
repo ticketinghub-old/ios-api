@@ -313,7 +313,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
 
 /** Gets available payment gaytways
  
- @param completion the completion block to run with the request is completed. The block takes two parameters, gateways array and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the gateways object is nil
+ @param completion the completion block to run with the request is completed. The block takes two parameters, gateways array in main managed object context and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the gateways object is nil
  
  @warning `completion` must not be `nil`.
  */
