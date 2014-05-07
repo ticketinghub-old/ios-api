@@ -59,13 +59,20 @@ static NSString * const kCardSchemeKey           = @"scheme";
 {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     
-    dictionary[kTypeKey]               = self.type;
-    dictionary[kGatewayKey]            = self.gateway.gatewayId;
-    dictionary[kVerificationMethodKey] = self.verificationMethod;
-    dictionary[kInputTypeKey]          = self.inputType;
-    dictionary[kAuthorizationKey]      = self.authorization;
-    dictionary[kReferenceKey]          = self.reference;
-    dictionary[kCardKey]               = @{kCardSchemeKey : self.card.scheme};
+    if (self.gateway)
+        dictionary[kGatewayKey]            = self.gateway.gatewayId;
+    if (self.type)
+        dictionary[kTypeKey]               = self.type;
+    if (self.verificationMethod)
+        dictionary[kVerificationMethodKey] = self.verificationMethod;
+    if (self.inputType)
+        dictionary[kInputTypeKey]          = self.inputType;
+    if (self.authorization)
+        dictionary[kAuthorizationKey]      = self.authorization;
+    if (self.reference)
+        dictionary[kReferenceKey]          = self.reference;
+    if (self.self.card.scheme)
+        dictionary[kCardKey]               = @{kCardSchemeKey : self.card.scheme};
     
     return dictionary;
 }
