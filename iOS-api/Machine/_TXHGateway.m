@@ -6,6 +6,7 @@
 const struct TXHGatewayAttributes TXHGatewayAttributes = {
 	.gatewayId = @"gatewayId",
 	.publishableKey = @"publishableKey",
+	.sharedSecret = @"sharedSecret",
 	.type = @"type",
 };
 
@@ -57,6 +58,13 @@ const struct TXHGatewayFetchedProperties TXHGatewayFetchedProperties = {
 
 
 @dynamic publishableKey;
+
+
+
+
+
+
+@dynamic sharedSecret;
 
 
 

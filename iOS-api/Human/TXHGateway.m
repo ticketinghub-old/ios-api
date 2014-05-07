@@ -3,6 +3,7 @@
 
 static NSString * const kGatewayIDKey     = @"id";
 static NSString * const kPublishableIDKey = @"publishable_key";
+static NSString * const kSharedSecretKey  = @"shared_secret";
 static NSString * const kTypeKey          = @"type";
 
 @interface TXHGateway ()
@@ -23,6 +24,7 @@ static NSString * const kTypeKey          = @"type";
     gateway.gatewayId      = nilIfNSNull(dictionary[kGatewayIDKey]);
     gateway.type           = nilIfNSNull(dictionary[kPublishableIDKey]);
     gateway.publishableKey = nilIfNSNull(dictionary[kTypeKey]);
+    gateway.sharedSecret   = nilIfNSNull(dictionary[kSharedSecretKey]);
 
     return gateway;
 }
