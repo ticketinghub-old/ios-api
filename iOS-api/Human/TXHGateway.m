@@ -22,8 +22,8 @@ static NSString * const kTypeKey          = @"type";
     TXHGateway *gateway = [TXHGateway insertInManagedObjectContext:moc];
     
     gateway.gatewayId      = nilIfNSNull(dictionary[kGatewayIDKey]);
-    gateway.type           = nilIfNSNull(dictionary[kPublishableIDKey]);
-    gateway.publishableKey = nilIfNSNull(dictionary[kTypeKey]);
+    gateway.publishableKey = nilIfNSNull(dictionary[kPublishableIDKey]);
+    gateway.type           = nilIfNSNull(dictionary[kTypeKey]);
     gateway.sharedSecret   = nilIfNSNull(dictionary[kSharedSecretKey]);
 
     return gateway;
