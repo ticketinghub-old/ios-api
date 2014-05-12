@@ -5,6 +5,7 @@
 
 const struct TXHGatewayAttributes TXHGatewayAttributes = {
 	.gatewayId = @"gatewayId",
+	.inputTypesString = @"inputTypesString",
 	.publishableKey = @"publishableKey",
 	.sharedSecret = @"sharedSecret",
 	.type = @"type",
@@ -51,6 +52,13 @@ const struct TXHGatewayFetchedProperties TXHGatewayFetchedProperties = {
 
 
 @dynamic gatewayId;
+
+
+
+
+
+
+@dynamic inputTypesString;
 
 
 

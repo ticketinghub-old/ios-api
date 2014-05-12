@@ -57,6 +57,7 @@
     </entity>
     <entity name="Gateway" representedClassName="TXHGateway" syncable="YES">
         <attribute name="gatewayId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inputTypesString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="publishableKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sharedSecret" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
@@ -175,7 +176,7 @@
         <element name="Card" positionX="-108" positionY="657" width="128" height="223"/>
         <element name="Contact" positionX="-450" positionY="495" width="128" height="118"/>
         <element name="Customer" positionX="718" positionY="414" width="128" height="193"/>
-        <element name="Gateway" positionX="295" positionY="612" width="128" height="120"/>
+        <element name="Gateway" positionX="295" positionY="612" width="128" height="135"/>
         <element name="Order" positionX="376" positionY="176" width="128" height="328"/>
         <element name="Payment" positionX="72" positionY="599" width="128" height="255"/>
         <element name="Product" positionX="-27" positionY="344" width="128" height="163"/>

@@ -6,6 +6,7 @@
 
 extern const struct TXHGatewayAttributes {
 	__unsafe_unretained NSString *gatewayId;
+	__unsafe_unretained NSString *inputTypesString;
 	__unsafe_unretained NSString *publishableKey;
 	__unsafe_unretained NSString *sharedSecret;
 	__unsafe_unretained NSString *type;
@@ -19,6 +20,7 @@ extern const struct TXHGatewayFetchedProperties {
 } TXHGatewayFetchedProperties;
 
 @class TXHPayment;
+
 
 
 
@@ -43,6 +45,16 @@ extern const struct TXHGatewayFetchedProperties {
 
 
 //- (BOOL)validateGatewayId:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* inputTypesString;
+
+
+
+//- (BOOL)validateInputTypesString:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -97,6 +109,12 @@ extern const struct TXHGatewayFetchedProperties {
 
 - (NSString*)primitiveGatewayId;
 - (void)setPrimitiveGatewayId:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveInputTypesString;
+- (void)setPrimitiveInputTypesString:(NSString*)value;
 
 
 

@@ -5,9 +5,12 @@ static NSString * const kGatewayIDKey     = @"id";
 static NSString * const kPublishableIDKey = @"publishable_key";
 static NSString * const kSharedSecretKey  = @"shared_secret";
 static NSString * const kTypeKey          = @"type";
+static NSString * const kInputTypesKey    = @"input_types";
+
+
+static NSString * const kInputTypesSeparator = @"|";
 
 @interface TXHGateway ()
-
 
 @end
 
@@ -25,8 +28,20 @@ static NSString * const kTypeKey          = @"type";
     gateway.publishableKey = nilIfNSNull(dictionary[kPublishableIDKey]);
     gateway.type           = nilIfNSNull(dictionary[kTypeKey]);
     gateway.sharedSecret   = nilIfNSNull(dictionary[kSharedSecretKey]);
-
+    gateway.inputTypes     = nilIfNSNull(dictionary[kInputTypesKey]);
+    
     return gateway;
+}
+
+- (void)setInputTypes:(NSArray *)inputTypes
+{
+    self.inputTypesString = [inputTypes componentsJoinedByString:kInputTypesSeparator];
+}
+
+
+- (NSArray *)inputTypes
+{
+    return [self.inputTypesString componentsSeparatedByString:kInputTypesSeparator];
 }
 
 
