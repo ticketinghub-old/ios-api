@@ -12,6 +12,7 @@ const struct TXHPaymentAttributes TXHPaymentAttributes = {
 	.postalMatch = @"postalMatch",
 	.reference = @"reference",
 	.securityCodeResult = @"securityCodeResult",
+	.signature = @"signature",
 	.streetMatch = @"streetMatch",
 	.type = @"type",
 	.verificationMethod = @"verificationMethod",
@@ -162,6 +163,13 @@ const struct TXHPaymentFetchedProperties TXHPaymentFetchedProperties = {
 
 
 @dynamic securityCodeResult;
+
+
+
+
+
+
+@dynamic signature;
 
 
 

@@ -21,6 +21,7 @@ static NSString * const kInputTypeKey            = @"input_type";
 static NSString * const kGatewayAuthorizationKey = @"authorization";
 static NSString * const kReferenceKey            = @"reference";
 static NSString * const kCardSchemeKey           = @"scheme";
+static NSString * const kSignatureKey            = @"signature";
 
 
 @interface TXHPayment ()
@@ -73,6 +74,8 @@ static NSString * const kCardSchemeKey           = @"scheme";
         dictionary[kReferenceKey]          = self.reference;
     if (self.self.card.scheme)
         dictionary[kCardKey]               = @{kCardSchemeKey : self.card.scheme};
+    if (self.signature)
+        dictionary[kSignatureKey]          = self.signature;
     
     return dictionary;
 }

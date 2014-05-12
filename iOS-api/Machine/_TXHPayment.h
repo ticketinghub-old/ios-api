@@ -13,6 +13,7 @@ extern const struct TXHPaymentAttributes {
 	__unsafe_unretained NSString *postalMatch;
 	__unsafe_unretained NSString *reference;
 	__unsafe_unretained NSString *securityCodeResult;
+	__unsafe_unretained NSString *signature;
 	__unsafe_unretained NSString *streetMatch;
 	__unsafe_unretained NSString *type;
 	__unsafe_unretained NSString *verificationMethod;
@@ -30,6 +31,7 @@ extern const struct TXHPaymentFetchedProperties {
 @class TXHAddress;
 @class TXHCard;
 @class TXHGateway;
+
 
 
 
@@ -139,6 +141,16 @@ extern const struct TXHPaymentFetchedProperties {
 
 
 //- (BOOL)validateSecurityCodeResult:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* signature;
+
+
+
+//- (BOOL)validateSignature:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -259,6 +271,12 @@ extern const struct TXHPaymentFetchedProperties {
 
 - (NSString*)primitiveSecurityCodeResult;
 - (void)setPrimitiveSecurityCodeResult:(NSString*)value;
+
+
+
+
+- (NSString*)primitiveSignature;
+- (void)setPrimitiveSignature:(NSString*)value;
 
 
 
