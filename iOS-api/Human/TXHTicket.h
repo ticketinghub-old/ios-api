@@ -11,8 +11,6 @@ extern NSString * const kTXHBarcodeSignatureKey;
 
 @interface TXHTicket : _TXHTicket {}
 
-@property (readonly, nonatomic) NSNumber *totalPrice;
-
 /** Creates or updates a ticket object with the provided dictionary
  
  @param dictionary A dictionary of key values for the object properties.

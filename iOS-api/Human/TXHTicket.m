@@ -162,17 +162,4 @@ NSString * const kTXHBarcodeSignatureKey            = @"kTXHBarcodeSignatureKey"
     return self;
 }
 
-
-- (NSNumber *)totalPrice
-{
-    NSInteger total = [self.price integerValue];
-    
-    for (TXHUpgrade *upgrade in self.upgrades)
-    {
-        total += [upgrade.price integerValue];
-    }
-    
-    return @(total);
-}
-
 @end
