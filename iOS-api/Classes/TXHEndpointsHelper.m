@@ -16,7 +16,7 @@
     NSString *format = [self endpointFormatForTXHEndpoint:endpoint];
     
     NSRange range = NSMakeRange(0, [params count]);
-    NSMutableData* data = [NSMutableData data];
+    NSMutableData* data = [NSMutableData dataWithLength: sizeof(id) * [params count]];
     
     [params getObjects:(__unsafe_unretained id *)data.mutableBytes range:range];
     
