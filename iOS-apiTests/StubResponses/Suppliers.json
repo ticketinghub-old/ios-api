@@ -54,7 +54,7 @@
                 }, 
                 "name": "London Eye", 
                 "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBtzCCASsGByqGSM44BAEwggEeAoGBAP1yjDrHcc/XpZgFskGnz1MmevKgvim6\nihhMp/FNx+4sgJJB0KcgQT2hTSFl3JdPgpmn37YUzaqLbN971/9E1ZsLCAOPpgFG\nzvVQpl1S7dFqLLsmgQCT9/zUyXLVv+scQHTUmcIdcuWB8vDsBpszhCBRQeQZD9Fo\nIgWfBFo5DvVrAhUA8PuNKpdVEk1AcC9UQWSyHsaTh7cCgYADPgHhF6YOQsAuks7V\nikUj23fh49JLJybjjbXnfmuYn7kH1G49g+DZ27q+XmG7hc/tN1KmeeA85x1Kzt2s\nQJp2mDpJwfPR2FmtKByOwD0M093PuWbZom/7CBJquW5lJ9s+VAi/dDN37LqaGUis\n2UfYBl7F+OHQazGVHqXr+iE9pwOBhQACgYEA4KpDraql1MlYRWht7SvCUZwe7Pcq\nDj/TCA7IoYqlmqjVvxPEM7TPRgT6d9KVqWdDU3eDIOxwazQVEZ641RSvnF2HydsY\nxYCSLQ7+qqKkF0oAJ51hnHdspukKQ9Yo1YoJ6Fc+CtdoarUhnrEKsURNWH+1IXjr\nB6qMLd4uQ0lvpVI=\n-----END PUBLIC KEY-----\n", 
-                "seq_id": 1
+                "serial": 1
             }, 
             {
                 "address": {
@@ -79,7 +79,7 @@
                 }, 
                 "name": "Thorpe Park", 
                 "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBtzCCASwGByqGSM44BAEwggEfAoGBAMUgiSTOBtZpwDzzfFfRN+U6VAfd9Del\nVaq53blg/wHjLs/rv/WkyeG+g2S5v3Gs4XRAg3X8QfVogXTahbfpyIFgqLCR4UL/\nISIS1+zGVuMs3rmDZiLF8ymFuDMi3Z0GI6rIJhpN0J9BUAuTsU7l5eOAzlZfKoHN\nQAHXV3/Lw2e/AhUAuegx7jgrN1GrqCIj/ibigxfu2J8CgYEAnsrU7ATPGUd9PiDh\nPi2qdyE3B8jV+a0s+Ts0lfnz16gHH4N+2CU1QCUztgpJCdBdY9HpZ3mK6x5Bs2um\njsuukbGuckEjvNO2P4wAlLNezR2FVZanTvGHEOxYBDM2FSboYu+yBurH1ilOOSKW\n4H1IzCMDbd1MaHqi4sz7aewvBdoDgYQAAoGAfi9rSaKkEH+8Y6mlpIzP1RPu/7r+\nmrGG3+iFMu0qW+V2Ma++5nuAhBASDnPuaq86EqN1z1gFyLh3/8wIO+/EDLb9lmTd\nvQtLA3qPGX9rW6FcKyC/VrP6oyawvxmyBkLXiJQkNVCW5IzcOi2Qsr4xMqMgjnNw\nL+vpmtxbohyb9Fs=\n-----END PUBLIC KEY-----\n", 
-                "seq_id": 2
+                "serial": 2
             }
         ], 
         "time_zone": "Europe/London", 
@@ -166,7 +166,7 @@
                 }, 
                 "name": "Amsterdam Dungeons", 
                 "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBtjCCASsGByqGSM44BAEwggEeAoGBAOfNVuP0Tf7UlhMTQxr/pSYUVLtrRub/\nWhV97yCMVkszdQlQU5bWohgcn5jYVJGVvBXv1Ug21A6+QdD5nEvajsoS59izzDe1\nY8vL6cKffC4gkEFCHcRMkZ/H7DJIJj5hbq46y7J561GvEGqTWa8W2jvH/Nj4DH6M\nGOxKG7d4LdF5AhUAsem/oKZLKip9iQmPnCkut432ouMCgYB9VYlu0E6YYqdm70gK\nzA5R9boi0d1qcz/KBoNHdVwJwHkxBPNA3IdcKcz9SNSHvYcP3KUgrKyNtL5dEGcH\nrDwsIIhSA+aboYqwqqtBomDrW1zHdCNcAsaSsQKsiB1dD6sxv6VLXgKT60xRGApS\n548ELohuzbtrar5554auJYlAfgOBhAACgYBbSksPzBytr24g2wq8ev/RqG147NSB\n/3+MMHaKIM7ph7Rn0Wwl7Iwirkeqi9of+3F6FSguw3dbbj/lNewPK+k6s20M3dii\n9Auc7cNyA4a6zNf35vw7+xWVUUSTLfv/sdmAM+Xs8U1or8HVu1L1ilsaj+dcU9ol\nvbj+OMR41A6MWA==\n-----END PUBLIC KEY-----\n", 
-                "seq_id": 1
+                "serial": 1
             }
         ], 
         "time_zone": "Europe/Amsterdam", 

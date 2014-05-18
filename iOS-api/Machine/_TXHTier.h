@@ -10,7 +10,7 @@ extern const struct TXHTierAttributes {
 	__unsafe_unretained NSString *limit;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *price;
-	__unsafe_unretained NSString *seqId;
+	__unsafe_unretained NSString *serial;
 	__unsafe_unretained NSString *size;
 	__unsafe_unretained NSString *tierDescription;
 	__unsafe_unretained NSString *tierId;
@@ -114,15 +114,15 @@ extern const struct TXHTierFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* seqId;
+@property (nonatomic, strong) NSNumber* serial;
 
 
 
-@property int32_t seqIdValue;
-- (int32_t)seqIdValue;
-- (void)setSeqIdValue:(int32_t)value_;
+@property int32_t serialValue;
+- (int32_t)serialValue;
+- (void)setSerialValue:(int32_t)value_;
 
-//- (BOOL)validateSeqId:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateSerial:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -247,11 +247,11 @@ extern const struct TXHTierFetchedProperties {
 
 
 
-- (NSNumber*)primitiveSeqId;
-- (void)setPrimitiveSeqId:(NSNumber*)value;
+- (NSNumber*)primitiveSerial;
+- (void)setPrimitiveSerial:(NSNumber*)value;
 
-- (int32_t)primitiveSeqIdValue;
-- (void)setPrimitiveSeqIdValue:(int32_t)value_;
+- (int32_t)primitiveSerialValue;
+- (void)setPrimitiveSerialValue:(int32_t)value_;
 
 
 

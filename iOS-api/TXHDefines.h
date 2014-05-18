@@ -7,8 +7,6 @@
 //
 
 #define nilIfNSNull(x) x != [NSNull null] ? x : nil
-#define castToString(x) [x isKindOfClass:[NSNumber class]] ? [x stringValue] : x
-
 
 #ifdef DEBUG
 #define DLog(...) NSLog(@"%s %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])

@@ -12,7 +12,7 @@ extern const struct TXHTicketAttributes {
 	__unsafe_unretained NSString *expiresAt;
 	__unsafe_unretained NSString *price;
 	__unsafe_unretained NSString *reference;
-	__unsafe_unretained NSString *seqId;
+	__unsafe_unretained NSString *serial;
 	__unsafe_unretained NSString *ticketId;
 	__unsafe_unretained NSString *validFrom;
 	__unsafe_unretained NSString *voucher;
@@ -70,9 +70,13 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* bitmask;
+@property (nonatomic, strong) NSNumber* bitmask;
 
 
+
+@property int32_t bitmaskValue;
+- (int32_t)bitmaskValue;
+- (void)setBitmaskValue:(int32_t)value_;
 
 //- (BOOL)validateBitmask:(id*)value_ error:(NSError**)error_;
 
@@ -134,15 +138,15 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* seqId;
+@property (nonatomic, strong) NSNumber* serial;
 
 
 
-@property int32_t seqIdValue;
-- (int32_t)seqIdValue;
-- (void)setSeqIdValue:(int32_t)value_;
+@property int32_t serialValue;
+- (int32_t)serialValue;
+- (void)setSerialValue:(int32_t)value_;
 
-//- (BOOL)validateSeqId:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateSerial:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -234,8 +238,11 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
-- (NSString*)primitiveBitmask;
-- (void)setPrimitiveBitmask:(NSString*)value;
+- (NSNumber*)primitiveBitmask;
+- (void)setPrimitiveBitmask:(NSNumber*)value;
+
+- (int32_t)primitiveBitmaskValue;
+- (void)setPrimitiveBitmaskValue:(int32_t)value_;
 
 
 
@@ -273,11 +280,11 @@ extern const struct TXHTicketFetchedProperties {
 
 
 
-- (NSNumber*)primitiveSeqId;
-- (void)setPrimitiveSeqId:(NSNumber*)value;
+- (NSNumber*)primitiveSerial;
+- (void)setPrimitiveSerial:(NSNumber*)value;
 
-- (int32_t)primitiveSeqIdValue;
-- (void)setPrimitiveSeqIdValue:(int32_t)value_;
+- (int32_t)primitiveSerialValue;
+- (void)setPrimitiveSerialValue:(int32_t)value_;
 
 
 

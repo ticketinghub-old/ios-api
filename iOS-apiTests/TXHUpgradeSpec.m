@@ -40,7 +40,7 @@ describe(@"creating an upgrade", ^{
         it(@"can be created after checking if it exists", ^{
             TXHUpgrade *upgrade = [TXHUpgrade updateWithDictionaryCreateIfNeeded:_upgradeDict inManagedObjectContext:_moc];
             expect(upgrade).toNot.beNil();
-            expect(upgrade.bit).to.equal(@"0x1");
+            expect(upgrade.bit).to.equal(@1);
             expect(upgrade.upgradeDescription).to.equal(@"test");
             expect(upgrade.upgradeId).to.equal(@"2ae6571b-f803-48c3-9ece-2bb5614dc3f9");
             expect(upgrade.name).to.equal(@"VIP Access");
@@ -51,7 +51,7 @@ describe(@"creating an upgrade", ^{
         it(@"can be created directly", ^{
             TXHUpgrade *upgrade = [TXHUpgrade createWithDictionary:_upgradeDict inManagedObjectContext:_moc];
             expect(upgrade).toNot.beNil();
-            expect(upgrade.bit).to.equal(@"0x1");
+            expect(upgrade.bit).to.equal(@1);
             expect(upgrade.upgradeDescription).to.equal(@"test");
             expect(upgrade.upgradeId).to.equal(@"2ae6571b-f803-48c3-9ece-2bb5614dc3f9");
             expect(upgrade.name).to.equal(@"VIP Access");

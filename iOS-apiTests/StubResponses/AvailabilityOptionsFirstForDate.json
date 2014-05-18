@@ -10,16 +10,16 @@
                 "limit": 10, 
                 "name": "Adult", 
                 "price": 1000, 
-                "seq_id": 1, 
+                "serial": 1, 
                 "size": 1, 
                 "upgrades": [
                     {
-                        "bit": "0x1", 
+                        "bit": 1, 
                         "description": "", 
                         "id": "2ae6571b-f803-48c3-9ece-2bb5614dc3f9", 
                         "name": "VIP Access", 
                         "price": 1000, 
-                        "seq_id": 1
+                        "serial": 1
                     }
                 ]
             }, 
@@ -30,7 +30,7 @@
                 "limit": 10, 
                 "name": "Child", 
                 "price": 600, 
-                "seq_id": 2, 
+                "serial": 2, 
                 "size": 1, 
                 "upgrades": [
                     {}

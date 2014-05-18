@@ -21,7 +21,7 @@ static NSString * const kProductKey    = @"product";
 static NSString * const kTierKey       = @"tier";
 static NSString * const kUpgradesKey   = @"upgrades";
 static NSString * const kErrorsKey     = @"errors";
-static NSString * const kSeqIDKey      = @"seq_id";
+static NSString * const kSerialKey     = @"serial";
 static NSString * const kReferenceKey  = @"reference";
 
 
@@ -132,13 +132,13 @@ NSString * const kTXHBarcodeSignatureKey            = @"kTXHBarcodeSignatureKey"
     if (![dictionary isKindOfClass:[NSDictionary class]] || ![dictionary count])
         return nil;
     
-    self.ticketId   = castToString(nilIfNSNull(dictionary[kIdKey]));
-    self.bitmask    = castToString(nilIfNSNull(dictionary[kBitmaskKey]));
-    self.reference  = castToString(nilIfNSNull(dictionary[kReferenceKey]));
-    self.code       = castToString(nilIfNSNull(dictionary[kCodeKey]));
+    self.ticketId   = nilIfNSNull(dictionary[kIdKey]);
+    self.bitmask    = nilIfNSNull(dictionary[kBitmaskKey]);
+    self.reference  = nilIfNSNull(dictionary[kReferenceKey]);
+    self.code       = nilIfNSNull(dictionary[kCodeKey]);
     self.price      = nilIfNSNull(dictionary[kPriceKey]);
     self.voucher    = nilIfNSNull(dictionary[kVoucherKey]);
-    self.seqId      = nilIfNSNull(dictionary[kSeqIDKey]);
+    self.serial     = nilIfNSNull(dictionary[kSerialKey]);
     self.expiresAt  = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kExpiresAtKey])];
     self.validFrom  = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kValidFromKey])];
     self.attendedAt = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kAttendedAtKey])];

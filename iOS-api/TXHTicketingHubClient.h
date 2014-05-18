@@ -252,9 +252,9 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
 - (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
 
 
-/** Searching server db with provided ticket seq_id and product
+/** Searching server db with provided ticket serial and product
  
- @param seqID ticket seq_id (interchange between the seq_id and the uuid)
+ @param seqID ticket serial (interchange between the serial and the uuid)
  @param product on whichc the ticket should be updated
  @param completion the completion block to run with the request is completed. The block takes two parameters, a ticket in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the ticket object is nil
  

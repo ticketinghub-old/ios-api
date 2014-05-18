@@ -47,6 +47,11 @@ const struct TXHUpgradeFetchedProperties TXHUpgradeFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"bitValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"bit"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"priceValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"price"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -66,6 +71,25 @@ const struct TXHUpgradeFetchedProperties TXHUpgradeFetchedProperties = {
 
 @dynamic bit;
 
+
+
+- (int32_t)bitValue {
+	NSNumber *result = [self bit];
+	return [result intValue];
+}
+
+- (void)setBitValue:(int32_t)value_ {
+	[self setBit:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveBitValue {
+	NSNumber *result = [self primitiveBit];
+	return [result intValue];
+}
+
+- (void)setPrimitiveBitValue:(int32_t)value_ {
+	[self setPrimitiveBit:[NSNumber numberWithInt:value_]];
+}
 
 
 

@@ -11,7 +11,7 @@ const struct TXHTicketAttributes TXHTicketAttributes = {
 	.expiresAt = @"expiresAt",
 	.price = @"price",
 	.reference = @"reference",
-	.seqId = @"seqId",
+	.serial = @"serial",
 	.ticketId = @"ticketId",
 	.validFrom = @"validFrom",
 	.voucher = @"voucher",
@@ -54,13 +54,18 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"bitmaskValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"bitmask"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"priceValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"price"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
-	if ([key isEqualToString:@"seqIdValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"seqId"];
+	if ([key isEqualToString:@"serialValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"serial"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -80,6 +85,25 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 
 @dynamic bitmask;
 
+
+
+- (int32_t)bitmaskValue {
+	NSNumber *result = [self bitmask];
+	return [result intValue];
+}
+
+- (void)setBitmaskValue:(int32_t)value_ {
+	[self setBitmask:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveBitmaskValue {
+	NSNumber *result = [self primitiveBitmask];
+	return [result intValue];
+}
+
+- (void)setPrimitiveBitmaskValue:(int32_t)value_ {
+	[self setPrimitiveBitmask:[NSNumber numberWithInt:value_]];
+}
 
 
 
@@ -139,26 +163,26 @@ const struct TXHTicketFetchedProperties TXHTicketFetchedProperties = {
 
 
 
-@dynamic seqId;
+@dynamic serial;
 
 
 
-- (int32_t)seqIdValue {
-	NSNumber *result = [self seqId];
+- (int32_t)serialValue {
+	NSNumber *result = [self serial];
 	return [result intValue];
 }
 
-- (void)setSeqIdValue:(int32_t)value_ {
-	[self setSeqId:[NSNumber numberWithInt:value_]];
+- (void)setSerialValue:(int32_t)value_ {
+	[self setSerial:[NSNumber numberWithInt:value_]];
 }
 
-- (int32_t)primitiveSeqIdValue {
-	NSNumber *result = [self primitiveSeqId];
+- (int32_t)primitiveSerialValue {
+	NSNumber *result = [self primitiveSerial];
 	return [result intValue];
 }
 
-- (void)setPrimitiveSeqIdValue:(int32_t)value_ {
-	[self setPrimitiveSeqId:[NSNumber numberWithInt:value_]];
+- (void)setPrimitiveSerialValue:(int32_t)value_ {
+	[self setPrimitiveSerial:[NSNumber numberWithInt:value_]];
 }
 
 

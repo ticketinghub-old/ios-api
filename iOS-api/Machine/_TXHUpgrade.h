@@ -46,9 +46,13 @@ extern const struct TXHUpgradeFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* bit;
+@property (nonatomic, strong) NSNumber* bit;
 
 
+
+@property int32_t bitValue;
+- (int32_t)bitValue;
+- (void)setBitValue:(int32_t)value_;
 
 //- (BOOL)validateBit:(id*)value_ error:(NSError**)error_;
 
@@ -158,8 +162,11 @@ extern const struct TXHUpgradeFetchedProperties {
 @interface _TXHUpgrade (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveBit;
-- (void)setPrimitiveBit:(NSString*)value;
+- (NSNumber*)primitiveBit;
+- (void)setPrimitiveBit:(NSNumber*)value;
+
+- (int32_t)primitiveBitValue;
+- (void)setPrimitiveBitValue:(int32_t)value_;
 
 
 

@@ -19,7 +19,7 @@
                 "code": null,
                 "price": 1100,
                 "voucher": null,
-                "bitmask": "0x1",
+                "bitmask": 1,
                 "customer": null,
                 "product": {
                     "id": "64be7660-ee1d-4230-b36d-39fa752b0ae2",
@@ -42,7 +42,7 @@
                 },
                 "tier": {
                 "id": "5913b1d7-7127-4bfe-bae5-7fbaa9cd65dc",
-                "seq_id": 1,
+                "serial": 1,
                 "name": "Adult",
                 "description": "18 and over.",
                 "size": 1,
@@ -50,7 +50,7 @@
                 "upgrades": [
                              {
                              "id": "cbb8c8ec-59b4-41bf-82f0-62d5e64bb980",
-                             "bit": "0x1",
+                             "bit": 1,
                              "name": "VIP Access",
                              "description": "Get behind the scenes access and a glass of champagne.",
                              "price": 1000

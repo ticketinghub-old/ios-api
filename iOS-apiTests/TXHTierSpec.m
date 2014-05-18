@@ -53,7 +53,7 @@ describe(@"creating a new object", ^{
             expect(_tier.name).to.equal(@"Adult");
             expect(_tier.price).to.equal(@1000);
             expect(_tier.size).to.equal(@1);
-            expect(_tier.seqId).to.equal(@0);
+            expect(_tier.serial).to.equal(@0);
             expect(_tier.upgrades).to.haveCountOf(1);
             
             expect(_tier.internalTierId).to.equal(@"d4d9efc1-a6d7-4b3f-8023-5bd36d96a3bb110000101");
@@ -147,11 +147,11 @@ describe(@"generating internal id", ^{
         });
     });
     
-    context(@"for not equal dictionaries - differnet seq_id", ^{
+    context(@"for not equal dictionaries - differnet serial", ^{
         it(@"generates differnet hashes", ^{
             
-            _dictToChange[@"seq_id"] = @2;
-            expect(_dict[@"seq_id"]).to.equal(@1);
+            _dictToChange[@"serial"] = @2;
+            expect(_dict[@"serial"]).to.equal(@1);
             
             NSString *hash_2 = [TXHTier generateInternalIdFromDictionary:_dictToChange];
             expect(originalHash).notTo.equal(hash_2);

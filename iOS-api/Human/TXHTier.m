@@ -156,13 +156,13 @@
 + (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict
 {
     NSString *tierId   = dict[@"id"];
-    NSString *seqID    = dict[@"seq_id"];
+    NSString *serial   = dict[@"serial"];
     NSNumber *price    = dict[@"price"];
     NSNumber *dicsount = dict[@"discount"];
     NSNumber *limit    = dict[@"limit"];
     NSArray *upgrades  = dict[@"upgrades"];
     
-    NSString *hash = [NSString stringWithFormat:@"%@%@%@%@%@%@",tierId,seqID,price,dicsount,limit,[[NSNumber numberWithInteger:upgrades.hash] stringValue]];
+    NSString *hash = [NSString stringWithFormat:@"%@%@%@%@%@%@",tierId,serial,price,dicsount,limit,[[NSNumber numberWithInteger:upgrades.hash] stringValue]];
     
     return hash;
 }
