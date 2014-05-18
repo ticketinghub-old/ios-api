@@ -7,6 +7,7 @@
 //
 
 #define nilIfNSNull(x) x != [NSNull null] ? x : nil
+#define castToString(x) [x isKindOfClass:[NSNumber class]] ? [x stringValue] : x
 
 
 #ifdef DEBUG
