@@ -15,7 +15,6 @@
 #pragma mark - set up and tear down
 
 + (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSParameterAssert(dictionary);
     // mogenerated code asserts the managed object context
 
     if (![dictionary count]) {

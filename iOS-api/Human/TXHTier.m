@@ -15,7 +15,6 @@
 #pragma mark - Public
 
 + (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSParameterAssert(dict);
     NSParameterAssert(moc);
 
     if (![dict count]) {
@@ -111,7 +110,6 @@
 
 // Create the object in the managed object context from the dictionary
 + (TXHTier *)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSParameterAssert(dict);
     NSParameterAssert(moc);
 
     if (![dict isKindOfClass:[NSDictionary class]] || ![dict count])

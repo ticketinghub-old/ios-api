@@ -14,7 +14,6 @@
 #pragma mark - Public
 
 + (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSParameterAssert(dict);
     NSParameterAssert(moc);
 
     if (![dict isKindOfClass:[NSDictionary class]] || ![dict count])
@@ -81,7 +80,6 @@
 }
 
 + (instancetype)createWithDictionary:(NSDictionary *)dict inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSParameterAssert(dict);
     NSParameterAssert(moc);
 
     if (![dict count]) {
@@ -98,7 +96,6 @@
 }
 
 - (void)updateWithDictionary:(NSDictionary *)dict {
-    NSParameterAssert(dict);
 
     self.bit                = dict[@"bit"];
     self.upgradeDescription = dict[@"description"];
