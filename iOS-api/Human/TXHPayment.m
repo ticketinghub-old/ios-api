@@ -78,7 +78,7 @@ static NSString * const kSignatureKey            = @"signature";
     if (self.signature)
         dictionary[kSignatureKey]          = self.signature;
     if (self.card)
-        dictionary[kCardKey]               = [self.card dictionaryRepresentation];'
+        dictionary[kCardKey]               = [self.card dictionaryRepresentation];
     
     return dictionary;
 }
