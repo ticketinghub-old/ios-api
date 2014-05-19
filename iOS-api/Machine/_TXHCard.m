@@ -14,6 +14,7 @@ const struct TXHCardAttributes TXHCardAttributes = {
 	.number = @"number",
 	.scheme = @"scheme",
 	.securityCode = @"securityCode",
+	.trackData = @"trackData",
 	.year = @"year",
 };
 
@@ -150,6 +151,13 @@ const struct TXHCardFetchedProperties TXHCardFetchedProperties = {
 
 
 @dynamic securityCode;
+
+
+
+
+
+
+@dynamic trackData;
 
 
 

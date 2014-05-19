@@ -13,6 +13,12 @@ static NSString * const kPaymentKey      = @"payment";
 static NSString * const kSecurityCodeKey = @"security_code";
 static NSString * const kNumberKey       = @"number";
 
+static NSString * const kExpMonthKey     = @"exp_month";
+static NSString * const kExpYearKey      = @"exp_year";
+static NSString * const kCVCKey          = @"security_code";
+static NSString * const kTrackDataKey    = @"track_data";
+
+
 @interface TXHCard ()
 
 
@@ -41,6 +47,24 @@ static NSString * const kNumberKey       = @"number";
     card.number       = dictionary[kNumberKey];
     
     return card;
+}
+
+- (NSDictionary *)dictionaryRepresentation
+{
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+
+    if (self.number)
+        dictionary[kNumberKey]    = self.number;
+    if (self.month)
+        dictionary[kExpMonthKey]  = self.month;
+    if (self.year)
+        dictionary[kExpYearKey]   = self.year;
+    if (self.securityCode)
+        dictionary[kCVCKey]       = self.securityCode;
+    if (self.trackData)
+        dictionary[kTrackDataKey] = self.trackData;
+
+    return dictionary;
 }
 
 @end

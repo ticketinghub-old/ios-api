@@ -24,6 +24,7 @@ static NSString * const kCardSchemeKey           = @"scheme";
 static NSString * const kSignatureKey            = @"signature";
 
 
+
 @interface TXHPayment ()
 
 @end
@@ -76,6 +77,8 @@ static NSString * const kSignatureKey            = @"signature";
         dictionary[kCardKey]               = @{kCardSchemeKey : self.card.scheme};
     if (self.signature)
         dictionary[kSignatureKey]          = self.signature;
+    if (self.card)
+        dictionary[kCardKey]               = [self.card dictionaryRepresentation];'
     
     return dictionary;
 }
