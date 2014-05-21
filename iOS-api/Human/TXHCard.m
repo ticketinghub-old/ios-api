@@ -53,15 +53,15 @@ static NSString * const kTrackDataKey    = @"track_data";
 {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
 
-    if (self.number)
+    if ([self.number length])
         dictionary[kNumberKey]    = self.number;
-    if (self.month)
+    if ([self.month intValue])
         dictionary[kExpMonthKey]  = self.month;
-    if (self.year)
+    if ([self.year intValue])
         dictionary[kExpYearKey]   = self.year;
-    if (self.securityCode)
+    if ([self.securityCode length])
         dictionary[kCVCKey]       = self.securityCode;
-    if (self.trackData)
+    if ([self.trackData length])
         dictionary[kTrackDataKey] = self.trackData;
 
     return dictionary;
