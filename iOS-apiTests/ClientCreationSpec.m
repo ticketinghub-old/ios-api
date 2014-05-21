@@ -30,7 +30,7 @@ SpecBegin(ClientCreation)
 __block TXHTicketingHubClient *_client;
 
 beforeEach(^{
-    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil];
+    _client = [[TXHTicketingHubClient alloc] initWithStoreURL:nil andBaseServerURL:nil];
 });
 
 afterEach(^{
@@ -55,30 +55,8 @@ describe(@"when creating a client", ^{
         expect(_client.sessionManager.responseSerializer).to.beKindOf([AFJSONResponseSerializer class]);
     });
 
-    it(@"has a managed object context with the required entities in the model", ^{
-        expect(_client.managedObjectContext).to.beKindOf([NSManagedObjectContext class]);
-
-        NSManagedObjectModel *model = [[_client.managedObjectContext persistentStoreCoordinator] managedObjectModel];
-        NSArray *entityNames = [[model entitiesByName] allKeys];
-
-        expect(entityNames).toNot.beNil();
-        expect(entityNames).to.haveCountOf(6);
-
-    });
-
 });
 
-describe(@"setDefaultAcceptLanguage", ^{
-    before(^{
-        [_client setDefaultAcceptLanguage:@"el_GR"];
-    });
-
-    it(@"passes the language setting to the session managers", ^{
-        NSString *sessionManagerAcceptLanguage = _client.sessionManager.requestSerializer.HTTPRequestHeaders[@"Accept-Language"];
-
-        expect(sessionManagerAcceptLanguage).to.equal(@"el_GR");
-    });
-});
 
 
 SpecEnd

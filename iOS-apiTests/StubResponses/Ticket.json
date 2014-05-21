@@ -1,0 +1,47 @@
+{
+    "id": "bfec2ad1-0e05-4846-a044-e6bbf769bb75",
+    "valid_from": "2012-01-01T09:00:00+00:00",
+    "expires_at": "2012-01-01T11:00:00+00:00",
+    "code": null,
+    "price": 1100,
+    "voucher": null,
+    "bitmask": 1,
+    "customer": null,
+    "product": {
+        "id": "64be7660-ee1d-4230-b36d-39fa752b0ae2",
+        "name": "London Eye",
+        "address": {
+            "recipient": null,
+            "building": "20 Welmar Mews",
+            "street": "London",
+            "city": "London",
+            "region": "",
+            "postal_code": "SW4 7DD",
+            "country": "GB",
+            "formatted": "London\nLondon\nSW4 7DD\nUnited Kingdom"
+        },
+        "contact": {
+            "email": "ollym@me.com",
+            "telephone": "07840739436",
+            "website": ""
+        }
+    },
+    "tier": {
+        "id": "5913b1d7-7127-4bfe-bae5-7fbaa9cd65dc",
+        "serial": 1,
+        "name": "Adult",
+        "description": "18 and over.",
+        "size": 1,
+        "price": 1100,
+        "upgrades": [
+                     {
+                     "id": "cbb8c8ec-59b4-41bf-82f0-62d5e64bb980",
+                     "bit": 1,
+                     "name": "VIP Access",
+                     "description": "Get behind the scenes access and a glass of champagne.",
+                     "price": 1000
+                     }
+                     ]
+    },
+    "errors": {}
+}

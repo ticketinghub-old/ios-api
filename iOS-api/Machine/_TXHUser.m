@@ -96,23 +96,4 @@ const struct TXHUserFetchedProperties TXHUserFetchedProperties = {
 
 
 
-#if TARGET_OS_IPHONE
-
-
-- (NSFetchedResultsController*)newSuppliersFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors {
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
-	
-	fetchRequest.entity = [NSEntityDescription entityForName:@"Supplier" inManagedObjectContext:self.managedObjectContext];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"user == %@", self];
-	fetchRequest.sortDescriptors = sortDescriptors;
-	
-	return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-											   managedObjectContext:self.managedObjectContext
-												 sectionNameKeyPath:nil
-														  cacheName:nil];
-}
-
-
-#endif
-
 @end

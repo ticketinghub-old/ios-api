@@ -1,4 +1,5 @@
 #import "TXHAvailability.h"
+#import "TXHDefines.h"
 
 #import "TXHProduct.h"
 #import "TXHTier.h"
@@ -126,14 +127,16 @@
         return nil;
     }
 
-    self.duration = dictionary[@"duration"] != [NSNull null] ? dictionary[@"duration"] : nil;
-    self.limit = dictionary[@"limit"] != [NSNull null] ? dictionary [@"limit"] : nil;
-    self.timeString = dictionary[@"time"] != [NSNull null] ? dictionary[@"time"] : nil;
-
+    self.duration   = nilIfNSNull(dictionary[@"duration"]);
+    self.limit      = nilIfNSNull(dictionary[@"limit"]);
+    self.timeString = nilIfNSNull(dictionary[@"time"]);
+    self.coupon     = nil; // when updated coupon is invalidated
+    
+    [self removeTiers:self.tiers];
     if (dictionary[@"tiers"]) {
         for (NSDictionary *tiersDict in dictionary[@"tiers"]) {
             TXHTier *tier = [TXHTier updateWithDictionaryCreateIfNeeded:tiersDict inManagedObjectContext:self.managedObjectContext];
-            tier.availability = self;
+            [tier addAvailabilitiesObject:self];
         }
     }
 

@@ -5,14 +5,17 @@
 
 const struct TXHUpgradeAttributes TXHUpgradeAttributes = {
 	.bit = @"bit",
+	.internalUpgradeId = @"internalUpgradeId",
 	.name = @"name",
 	.price = @"price",
+	.seqId = @"seqId",
 	.upgradeDescription = @"upgradeDescription",
 	.upgradeId = @"upgradeId",
 };
 
 const struct TXHUpgradeRelationships TXHUpgradeRelationships = {
-	.tier = @"tier",
+	.tickets = @"tickets",
+	.tiers = @"tiers",
 };
 
 const struct TXHUpgradeFetchedProperties TXHUpgradeFetchedProperties = {
@@ -44,8 +47,18 @@ const struct TXHUpgradeFetchedProperties TXHUpgradeFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"bitValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"bit"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"priceValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"price"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"seqIdValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"seqId"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -57,6 +70,32 @@ const struct TXHUpgradeFetchedProperties TXHUpgradeFetchedProperties = {
 
 
 @dynamic bit;
+
+
+
+- (int32_t)bitValue {
+	NSNumber *result = [self bit];
+	return [result intValue];
+}
+
+- (void)setBitValue:(int32_t)value_ {
+	[self setBit:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveBitValue {
+	NSNumber *result = [self primitiveBit];
+	return [result intValue];
+}
+
+- (void)setPrimitiveBitValue:(int32_t)value_ {
+	[self setPrimitiveBit:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic internalUpgradeId;
 
 
 
@@ -96,6 +135,32 @@ const struct TXHUpgradeFetchedProperties TXHUpgradeFetchedProperties = {
 
 
 
+@dynamic seqId;
+
+
+
+- (int32_t)seqIdValue {
+	NSNumber *result = [self seqId];
+	return [result intValue];
+}
+
+- (void)setSeqIdValue:(int32_t)value_ {
+	[self setSeqId:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveSeqIdValue {
+	NSNumber *result = [self primitiveSeqId];
+	return [result intValue];
+}
+
+- (void)setPrimitiveSeqIdValue:(int32_t)value_ {
+	[self setPrimitiveSeqId:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
 @dynamic upgradeDescription;
 
 
@@ -110,19 +175,35 @@ const struct TXHUpgradeFetchedProperties TXHUpgradeFetchedProperties = {
 
 
 
-@dynamic tier;
+@dynamic tickets;
 
+	
+- (NSMutableSet*)ticketsSet {
+	[self willAccessValueForKey:@"tickets"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"tickets"];
+  
+	[self didAccessValueForKey:@"tickets"];
+	return result;
+}
+	
+
+@dynamic tiers;
+
+	
+- (NSMutableSet*)tiersSet {
+	[self willAccessValueForKey:@"tiers"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"tiers"];
+  
+	[self didAccessValueForKey:@"tiers"];
+	return result;
+}
 	
 
 
 
 
 
-
-#if TARGET_OS_IPHONE
-
-
-
-#endif
 
 @end

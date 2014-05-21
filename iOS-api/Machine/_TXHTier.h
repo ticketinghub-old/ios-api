@@ -6,16 +6,19 @@
 
 extern const struct TXHTierAttributes {
 	__unsafe_unretained NSString *discount;
+	__unsafe_unretained NSString *internalTierId;
 	__unsafe_unretained NSString *limit;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *price;
+	__unsafe_unretained NSString *serial;
 	__unsafe_unretained NSString *size;
 	__unsafe_unretained NSString *tierDescription;
 	__unsafe_unretained NSString *tierId;
 } TXHTierAttributes;
 
 extern const struct TXHTierRelationships {
-	__unsafe_unretained NSString *availability;
+	__unsafe_unretained NSString *availabilities;
+	__unsafe_unretained NSString *tickets;
 	__unsafe_unretained NSString *upgrades;
 } TXHTierRelationships;
 
@@ -23,7 +26,10 @@ extern const struct TXHTierFetchedProperties {
 } TXHTierFetchedProperties;
 
 @class TXHAvailability;
+@class TXHTicket;
 @class TXHUpgrade;
+
+
 
 
 
@@ -55,6 +61,16 @@ extern const struct TXHTierFetchedProperties {
 - (void)setDiscountValue:(int32_t)value_;
 
 //- (BOOL)validateDiscount:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* internalTierId;
+
+
+
+//- (BOOL)validateInternalTierId:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -98,6 +114,20 @@ extern const struct TXHTierFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSNumber* serial;
+
+
+
+@property int32_t serialValue;
+- (int32_t)serialValue;
+- (void)setSerialValue:(int32_t)value_;
+
+//- (BOOL)validateSerial:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSNumber* size;
 
 
@@ -132,9 +162,16 @@ extern const struct TXHTierFetchedProperties {
 
 
 
-@property (nonatomic, strong) TXHAvailability *availability;
+@property (nonatomic, strong) NSSet *availabilities;
 
-//- (BOOL)validateAvailability:(id*)value_ error:(NSError**)error_;
+- (NSMutableSet*)availabilitiesSet;
+
+
+
+
+@property (nonatomic, strong) NSSet *tickets;
+
+- (NSMutableSet*)ticketsSet;
 
 
 
@@ -147,19 +184,19 @@ extern const struct TXHTierFetchedProperties {
 
 
 
-#if TARGET_OS_IPHONE
-
-
-
-
-- (NSFetchedResultsController*)newUpgradesFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
-
-
-#endif
-
 @end
 
 @interface _TXHTier (CoreDataGeneratedAccessors)
+
+- (void)addAvailabilities:(NSSet*)value_;
+- (void)removeAvailabilities:(NSSet*)value_;
+- (void)addAvailabilitiesObject:(TXHAvailability*)value_;
+- (void)removeAvailabilitiesObject:(TXHAvailability*)value_;
+
+- (void)addTickets:(NSSet*)value_;
+- (void)removeTickets:(NSSet*)value_;
+- (void)addTicketsObject:(TXHTicket*)value_;
+- (void)removeTicketsObject:(TXHTicket*)value_;
 
 - (void)addUpgrades:(NSSet*)value_;
 - (void)removeUpgrades:(NSSet*)value_;
@@ -176,6 +213,12 @@ extern const struct TXHTierFetchedProperties {
 
 - (int32_t)primitiveDiscountValue;
 - (void)setPrimitiveDiscountValue:(int32_t)value_;
+
+
+
+
+- (NSString*)primitiveInternalTierId;
+- (void)setPrimitiveInternalTierId:(NSString*)value;
 
 
 
@@ -204,6 +247,15 @@ extern const struct TXHTierFetchedProperties {
 
 
 
+- (NSNumber*)primitiveSerial;
+- (void)setPrimitiveSerial:(NSNumber*)value;
+
+- (int32_t)primitiveSerialValue;
+- (void)setPrimitiveSerialValue:(int32_t)value_;
+
+
+
+
 - (NSNumber*)primitiveSize;
 - (void)setPrimitiveSize:(NSNumber*)value;
 
@@ -226,8 +278,13 @@ extern const struct TXHTierFetchedProperties {
 
 
 
-- (TXHAvailability*)primitiveAvailability;
-- (void)setPrimitiveAvailability:(TXHAvailability*)value;
+- (NSMutableSet*)primitiveAvailabilities;
+- (void)setPrimitiveAvailabilities:(NSMutableSet*)value;
+
+
+
+- (NSMutableSet*)primitiveTickets;
+- (void)setPrimitiveTickets:(NSMutableSet*)value;
 
 
 

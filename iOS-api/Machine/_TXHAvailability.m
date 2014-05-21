@@ -4,6 +4,7 @@
 #import "_TXHAvailability.h"
 
 const struct TXHAvailabilityAttributes TXHAvailabilityAttributes = {
+	.coupon = @"coupon",
 	.dateString = @"dateString",
 	.duration = @"duration",
 	.limit = @"limit",
@@ -52,6 +53,13 @@ const struct TXHAvailabilityFetchedProperties TXHAvailabilityFetchedProperties =
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic coupon;
+
+
 
 
 
@@ -124,26 +132,5 @@ const struct TXHAvailabilityFetchedProperties TXHAvailabilityFetchedProperties =
 
 
 
-
-#if TARGET_OS_IPHONE
-
-
-
-
-- (NSFetchedResultsController*)newTiersFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors {
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
-	
-	fetchRequest.entity = [NSEntityDescription entityForName:@"Tier" inManagedObjectContext:self.managedObjectContext];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"availability == %@", self];
-	fetchRequest.sortDescriptors = sortDescriptors;
-	
-	return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-											   managedObjectContext:self.managedObjectContext
-												 sectionNameKeyPath:nil
-														  cacheName:nil];
-}
-
-
-#endif
 
 @end

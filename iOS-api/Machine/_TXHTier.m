@@ -5,16 +5,19 @@
 
 const struct TXHTierAttributes TXHTierAttributes = {
 	.discount = @"discount",
+	.internalTierId = @"internalTierId",
 	.limit = @"limit",
 	.name = @"name",
 	.price = @"price",
+	.serial = @"serial",
 	.size = @"size",
 	.tierDescription = @"tierDescription",
 	.tierId = @"tierId",
 };
 
 const struct TXHTierRelationships TXHTierRelationships = {
-	.availability = @"availability",
+	.availabilities = @"availabilities",
+	.tickets = @"tickets",
 	.upgrades = @"upgrades",
 };
 
@@ -62,6 +65,11 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
+	if ([key isEqualToString:@"serialValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"serial"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"sizeValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"size"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -95,6 +103,13 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 - (void)setPrimitiveDiscountValue:(int32_t)value_ {
 	[self setPrimitiveDiscount:[NSNumber numberWithInt:value_]];
 }
+
+
+
+
+
+@dynamic internalTierId;
+
 
 
 
@@ -159,6 +174,32 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 
 
 
+@dynamic serial;
+
+
+
+- (int32_t)serialValue {
+	NSNumber *result = [self serial];
+	return [result intValue];
+}
+
+- (void)setSerialValue:(int32_t)value_ {
+	[self setSerial:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveSerialValue {
+	NSNumber *result = [self primitiveSerial];
+	return [result intValue];
+}
+
+- (void)setPrimitiveSerialValue:(int32_t)value_ {
+	[self setPrimitiveSerial:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
 @dynamic size;
 
 
@@ -199,8 +240,30 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 
 
 
-@dynamic availability;
+@dynamic availabilities;
 
+	
+- (NSMutableSet*)availabilitiesSet {
+	[self willAccessValueForKey:@"availabilities"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"availabilities"];
+  
+	[self didAccessValueForKey:@"availabilities"];
+	return result;
+}
+	
+
+@dynamic tickets;
+
+	
+- (NSMutableSet*)ticketsSet {
+	[self willAccessValueForKey:@"tickets"];
+  
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"tickets"];
+  
+	[self didAccessValueForKey:@"tickets"];
+	return result;
+}
 	
 
 @dynamic upgrades;
@@ -220,26 +283,5 @@ const struct TXHTierFetchedProperties TXHTierFetchedProperties = {
 
 
 
-
-#if TARGET_OS_IPHONE
-
-
-
-
-- (NSFetchedResultsController*)newUpgradesFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors {
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
-	
-	fetchRequest.entity = [NSEntityDescription entityForName:@"Upgrade" inManagedObjectContext:self.managedObjectContext];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"tier == %@", self];
-	fetchRequest.sortDescriptors = sortDescriptors;
-	
-	return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-											   managedObjectContext:self.managedObjectContext
-												 sectionNameKeyPath:nil
-														  cacheName:nil];
-}
-
-
-#endif
 
 @end

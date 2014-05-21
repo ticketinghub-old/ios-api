@@ -13,6 +13,7 @@ extern const struct TXHSupplierAttributes {
 } TXHSupplierAttributes;
 
 extern const struct TXHSupplierRelationships {
+	__unsafe_unretained NSString *contact;
 	__unsafe_unretained NSString *products;
 	__unsafe_unretained NSString *user;
 } TXHSupplierRelationships;
@@ -20,6 +21,7 @@ extern const struct TXHSupplierRelationships {
 extern const struct TXHSupplierFetchedProperties {
 } TXHSupplierFetchedProperties;
 
+@class TXHContact;
 @class TXHProduct;
 @class TXHUser;
 
@@ -92,6 +94,13 @@ extern const struct TXHSupplierFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHContact *contact;
+
+//- (BOOL)validateContact:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) NSSet *products;
 
 - (NSMutableSet*)productsSet;
@@ -106,16 +115,6 @@ extern const struct TXHSupplierFetchedProperties {
 
 
 
-
-#if TARGET_OS_IPHONE
-
-
-- (NSFetchedResultsController*)newProductsFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors;
-
-
-
-
-#endif
 
 @end
 
@@ -159,6 +158,11 @@ extern const struct TXHSupplierFetchedProperties {
 - (void)setPrimitiveTimeZoneName:(NSString*)value;
 
 
+
+
+
+- (TXHContact*)primitiveContact;
+- (void)setPrimitiveContact:(TXHContact*)value;
 
 
 

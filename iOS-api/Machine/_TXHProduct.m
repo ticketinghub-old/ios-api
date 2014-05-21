@@ -10,8 +10,11 @@ const struct TXHProductAttributes TXHProductAttributes = {
 };
 
 const struct TXHProductRelationships TXHProductRelationships = {
+	.address = @"address",
 	.availabilities = @"availabilities",
+	.contact = @"contact",
 	.supplier = @"supplier",
+	.ticket = @"ticket",
 };
 
 const struct TXHProductFetchedProperties TXHProductFetchedProperties = {
@@ -71,6 +74,10 @@ const struct TXHProductFetchedProperties TXHProductFetchedProperties = {
 
 
 
+@dynamic address;
+
+	
+
 @dynamic availabilities;
 
 	
@@ -84,34 +91,21 @@ const struct TXHProductFetchedProperties TXHProductFetchedProperties = {
 }
 	
 
+@dynamic contact;
+
+	
+
 @dynamic supplier;
 
 	
 
+@dynamic ticket;
 
-
-
-
-
-#if TARGET_OS_IPHONE
-
-
-- (NSFetchedResultsController*)newAvailabilitiesFetchedResultsControllerWithSortDescriptors:(NSArray*)sortDescriptors {
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
 	
-	fetchRequest.entity = [NSEntityDescription entityForName:@"Availability" inManagedObjectContext:self.managedObjectContext];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"product == %@", self];
-	fetchRequest.sortDescriptors = sortDescriptors;
-	
-	return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-											   managedObjectContext:self.managedObjectContext
-												 sectionNameKeyPath:nil
-														  cacheName:nil];
-}
 
 
 
 
-#endif
+
 
 @end

@@ -1,61 +1,191 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Address" representedClassName="TXHAddress" syncable="YES">
+        <attribute name="building" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="formatted" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postal_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="region" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="address" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="address" inverseEntity="Order" syncable="YES"/>
+        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="address" inverseEntity="Payment" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="address" inverseEntity="Product" syncable="YES"/>
+    </entity>
     <entity name="Availability" representedClassName="TXHAvailability" syncable="YES">
+        <attribute name="coupon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="limit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="timeString" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="product" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="availabilities" inverseEntity="Product" syncable="YES"/>
-        <relationship name="tiers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tier" inverseName="availability" inverseEntity="Tier" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="availabilities" inverseEntity="Product" syncable="YES"/>
+        <relationship name="tiers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tier" inverseName="availabilities" inverseEntity="Tier" syncable="YES"/>
+    </entity>
+    <entity name="Card" representedClassName="TXHCard" syncable="YES">
+        <attribute name="brand" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fingerprint" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mask" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="month" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scheme" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="securityCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="card" inverseEntity="Payment" syncable="YES"/>
+    </entity>
+    <entity name="Contact" representedClassName="TXHContact" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="website" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="contact" inverseEntity="Product" syncable="YES"/>
+        <relationship name="supplier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="contact" inverseEntity="Supplier" syncable="YES"/>
+    </entity>
+    <entity name="Customer" representedClassName="TXHCustomer" syncable="YES">
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errors" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="customer" inverseEntity="Address" syncable="YES"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="customer" inverseEntity="Order" syncable="YES"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ticket" inverseName="customer" inverseEntity="Ticket" syncable="YES"/>
+    </entity>
+    <entity name="Gateway" representedClassName="TXHGateway" syncable="YES">
+        <attribute name="gatewayId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inputTypesString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publishableKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sharedSecret" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="gateway" inverseEntity="Payment" syncable="YES"/>
+    </entity>
+    <entity name="Order" representedClassName="TXHOrder" syncable="YES">
+        <attribute name="cancelledAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="confirmedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="coupon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="delivery" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errors" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="expiresAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="orderId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="payment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postage" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tax" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="taxName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="order" inverseEntity="Address" syncable="YES"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="order" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="order" inverseEntity="Ticket" syncable="YES"/>
+    </entity>
+    <entity name="Payment" representedClassName="TXHPayment" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="authorization" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="avsResult" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inputType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postalMatch" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="securityCodeResult" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="signature" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="streetMatch" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verificationMethod" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="payment" inverseEntity="Address" syncable="YES"/>
+        <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="payment" inverseEntity="Card" syncable="YES"/>
+        <relationship name="gateway" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Gateway" inverseName="payment" inverseEntity="Gateway" syncable="YES"/>
     </entity>
     <entity name="Product" representedClassName="TXHProduct" syncable="YES">
         <attribute name="availabilitiesUpdated" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="productId" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="product" inverseEntity="Address" syncable="YES"/>
         <relationship name="availabilities" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Availability" inverseName="product" inverseEntity="Availability" syncable="YES"/>
-        <relationship name="supplier" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="products" inverseEntity="Supplier" syncable="YES"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="product" inverseEntity="Contact" syncable="YES"/>
+        <relationship name="supplier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Supplier" inverseName="products" inverseEntity="Supplier" syncable="YES"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ticket" inverseName="product" inverseEntity="Ticket" syncable="YES"/>
     </entity>
     <entity name="Supplier" representedClassName="TXHSupplier" syncable="YES">
-        <attribute name="accessToken" attributeType="String" syncable="YES"/>
-        <attribute name="country" attributeType="String" syncable="YES"/>
-        <attribute name="currency" attributeType="String" syncable="YES"/>
-        <attribute name="refreshToken" attributeType="String" syncable="YES"/>
-        <attribute name="timeZoneName" attributeType="String" syncable="YES"/>
+        <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="refreshToken" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeZoneName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="supplier" inverseEntity="Contact" syncable="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="supplier" inverseEntity="Product" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="suppliers" inverseEntity="User" syncable="YES"/>
     </entity>
+    <entity name="Ticket" representedClassName="TXHTicket" syncable="YES">
+        <attribute name="attendedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="bitmask" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="errors" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="expiresAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serial" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="ticketId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="validFrom" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="voucher" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="ticket" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="tickets" inverseEntity="Order" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="ticket" inverseEntity="Product" syncable="YES"/>
+        <relationship name="tier" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tier" inverseName="tickets" inverseEntity="Tier" syncable="YES"/>
+        <relationship name="upgrades" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Upgrade" inverseName="tickets" inverseEntity="Upgrade" syncable="YES"/>
+    </entity>
     <entity name="Tier" representedClassName="TXHTier" syncable="YES">
         <attribute name="discount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="internalTierId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="limit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="serial" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="tierDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tierId" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="availability" maxCount="1" deletionRule="Nullify" destinationEntity="Availability" inverseName="tiers" inverseEntity="Availability" syncable="YES"/>
-        <relationship name="upgrades" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Upgrade" inverseName="tier" inverseEntity="Upgrade" syncable="YES"/>
+        <relationship name="availabilities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Availability" inverseName="tiers" inverseEntity="Availability" syncable="YES"/>
+        <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="tier" inverseEntity="Ticket" syncable="YES"/>
+        <relationship name="upgrades" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Upgrade" inverseName="tiers" inverseEntity="Upgrade" syncable="YES"/>
     </entity>
     <entity name="Upgrade" representedClassName="TXHUpgrade" syncable="YES">
-        <attribute name="bit" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="internalUpgradeId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="seqId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="upgradeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="upgradeId" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tier" maxCount="1" deletionRule="Nullify" destinationEntity="Tier" inverseName="upgrades" inverseEntity="Tier" syncable="YES"/>
+        <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="upgrades" inverseEntity="Ticket" syncable="YES"/>
+        <relationship name="tiers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tier" inverseName="upgrades" inverseEntity="Tier" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="TXHUser" syncable="YES">
-        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="suppliers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Supplier" inverseName="user" inverseEntity="Supplier" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Availability" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Product" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Supplier" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Tier" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Upgrade" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Address" positionX="162" positionY="297" width="128" height="208"/>
+        <element name="Availability" positionX="-83" positionY="-117" width="128" height="148"/>
+        <element name="Card" positionX="-108" positionY="657" width="128" height="240"/>
+        <element name="Contact" positionX="-450" positionY="495" width="128" height="118"/>
+        <element name="Customer" positionX="718" positionY="414" width="128" height="193"/>
+        <element name="Gateway" positionX="295" positionY="612" width="128" height="135"/>
+        <element name="Order" positionX="376" positionY="176" width="128" height="328"/>
+        <element name="Payment" positionX="72" positionY="599" width="128" height="270"/>
+        <element name="Product" positionX="-27" positionY="344" width="128" height="163"/>
+        <element name="Supplier" positionX="-281" positionY="18" width="128" height="163"/>
+        <element name="Ticket" positionX="628" positionY="92" width="128" height="283"/>
+        <element name="Tier" positionX="315" positionY="-133" width="128" height="225"/>
+        <element name="Upgrade" positionX="549" positionY="-126" width="128" height="180"/>
+        <element name="User" positionX="-522" positionY="54" width="128" height="118"/>
     </elements>
 </model>

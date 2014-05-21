@@ -5,7 +5,7 @@
     "limit": 10, 
     "name": "Child", 
     "price": 600, 
-    "seq_id": 2, 
+    "serial": 2, 
     "size": 1, 
     "upgrades": [
         {}

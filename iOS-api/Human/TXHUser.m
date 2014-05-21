@@ -1,5 +1,6 @@
 #import "TXHUser.h"
 #import "NSDictionary+JCSKeyMapping.h"
+#import "TXHDefines.h"
 
 
 @interface TXHUser ()
@@ -14,7 +15,6 @@
 #pragma mark - set up and tear down
 
 + (instancetype)updateWithDictionaryCreateIfNeeded:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSParameterAssert(dictionary);
     // mogenerated code asserts the managed object context
 
     if (![dictionary count]) {
@@ -72,9 +72,9 @@
     static NSDictionary *dict = nil;
 
     if (!dict) {
-        dict = @{@"first_name": @"firstName",
-                 @"last_name": @"lastName",
-                 @"id": @"userId"};
+        dict = @{@"first_name" : @"firstName",
+                 @"last_name"  : @"lastName",
+                 @"id"         : @"userId"};
     }
 
     return dict;
@@ -88,12 +88,12 @@
     NSError *error;
     NSArray *users = [moc executeFetchRequest:request error:&error];
     if (!users) {
-        NSLog(@"Unable to fetch users because: %@", error);
+        DLog(@"Unable to fetch users because: %@", error);
         return nil;
     }
 
     if ([users count] > 1) {
-        NSLog(@"Too many users");
+        DLog(@"Too many users");
         return nil;
     }
 
