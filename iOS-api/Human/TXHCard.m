@@ -17,6 +17,7 @@ static NSString * const kExpMonthKey     = @"exp_month";
 static NSString * const kExpYearKey      = @"exp_year";
 static NSString * const kCVCKey          = @"security_code";
 static NSString * const kTrackDataKey    = @"track_data";
+static NSString * const kSchemeKey       = @"scheme";
 
 
 @interface TXHCard ()
@@ -63,6 +64,8 @@ static NSString * const kTrackDataKey    = @"track_data";
         dictionary[kCVCKey]       = self.securityCode;
     if ([self.trackData length])
         dictionary[kTrackDataKey] = self.trackData;
+    if ([self.scheme length])
+        dictionary[kSchemeKey]    = self.scheme;
 
     return dictionary;
 }
