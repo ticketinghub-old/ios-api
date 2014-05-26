@@ -13,4 +13,6 @@
 - (NSString *)isoDateString;
 - (NSString *)isoTimeString;
 
++ (NSDate *)dateFromISOString:(NSString *)isoString;
+
 @end

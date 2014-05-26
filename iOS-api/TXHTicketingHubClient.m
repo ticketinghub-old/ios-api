@@ -396,6 +396,39 @@
 
 #pragma mark - Availabilities
 
+- (void)availableDatesForProduct:(TXHProduct *)product startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void(^)(NSArray *availableDates, NSError *error))completion
+{
+    NSParameterAssert(completion);
+
+    if (!startDate || !endDate)
+    {
+        completion(nil, [NSError errorWithDomain:@"" code:1 userInfo:nil]); // TODO: mhmm
+        return;
+    }
+    
+    NSDictionary *parameters = @{@"from"    : [startDate isoDateString],
+                                 @"to"      : [endDate isoDateString]};
+    
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:AvailableDatesSearch];
+    [self.sessionManager POST:endpoint
+                   parameters:parameters
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          
+                          NSMutableArray *dates = [NSMutableArray array];
+                          for (NSString *dateString in responseObject)
+                          {
+                              NSDate *date = [NSDate dateFromISOString:dateString];
+                              [dates addObject:date];
+                          }
+                          
+                          completion(dates, nil);
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          completion(nil, error);
+                      }];
+}
+
 - (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate coupon:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 {
     NSParameterAssert(product);

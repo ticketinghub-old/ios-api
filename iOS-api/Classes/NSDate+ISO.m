@@ -48,5 +48,9 @@
 }
 
 
++ (NSDate *)dateFromISOString:(NSString *)isoString
+{
+    return [[self isoDateFormatter] dateFromString:isoString];
+}
 
 @end

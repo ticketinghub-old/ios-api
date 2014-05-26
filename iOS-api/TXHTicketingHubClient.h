@@ -103,6 +103,8 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)tiersForProduct:(TXHProduct *)product completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
+
+- (void)availableDatesForProduct:(TXHProduct *)product startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void(^)(NSArray *availableDates, NSError *error))completion;
 /** Update the availabilities for a product for a day or a range of days.
  
  If `from` and `to` are `nil`, the generic availabilities call is made. If only `from` is given, the availbilities for that date only are provided. If only `to` is given, the range of availabilities from today to that date is given. For the options first calls, just pass the date in the from parameter.
