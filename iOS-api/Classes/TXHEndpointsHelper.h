@@ -34,7 +34,9 @@ typedef NS_ENUM(NSInteger, TXHEndpoint)
     TicketTemplatesEndpoint,                    //
     OrderTicketsForTemplateEndpoint,            // requires 2 parameters: orderID, ticketFormat (pdf, ps, png), templeatID
     PaymentGatewaysEndpoint,                    //
-    AvailableDatesSearch                        // requires 1 parameter: productID
+    AvailableDatesSearch,                       // requires 1 parameter: productID
+    ProductAvailabilitiesForDateAndTickets,     // requires 2 parameters: productID, datestring (yyyy-mm-dd)
+
 };
 
 typedef NS_ENUM(NSInteger, TXHEndpointHTTPMethod)

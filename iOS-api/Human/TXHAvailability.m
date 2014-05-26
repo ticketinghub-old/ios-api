@@ -117,6 +117,18 @@
     return [availabilities firstObject];
 }
 
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    if (![dictionary isKindOfClass:[NSDictionary class]] || ![dictionary count])
+        return nil;
+    
+    TXHAvailability *availability = [[self class] insertInManagedObjectContext:moc];
+
+    [availability updateWithDictionary:dictionary];
+    
+    return availability;
+}
+
 /** Updates the object with values from the dictionary
  @param dictionary A dictionary of key values to update with. These are raw values, the keys are substituted to those of the actual properties internally.
 
@@ -130,6 +142,8 @@
     self.duration   = nilIfNSNull(dictionary[@"duration"]);
     self.limit      = nilIfNSNull(dictionary[@"limit"]);
     self.timeString = nilIfNSNull(dictionary[@"time"]);
+    self.capacity   = nilIfNSNull(dictionary[@"capacity"]);
+    self.total      = nilIfNSNull(dictionary[@"total"]);
     self.coupon     = nil; // when updated coupon is invalidated
     
     [self removeTiers:self.tiers];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Address" representedClassName="TXHAddress" syncable="YES">
         <attribute name="building" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,11 +14,13 @@
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="address" inverseEntity="Product" syncable="YES"/>
     </entity>
     <entity name="Availability" representedClassName="TXHAvailability" syncable="YES">
+        <attribute name="capacity" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="coupon" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="limit" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="timeString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="total" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="availabilities" inverseEntity="Product" syncable="YES"/>
         <relationship name="tiers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tier" inverseName="availabilities" inverseEntity="Tier" syncable="YES"/>
     </entity>
@@ -174,7 +176,7 @@
     </entity>
     <elements>
         <element name="Address" positionX="162" positionY="297" width="128" height="208"/>
-        <element name="Availability" positionX="-83" positionY="-117" width="128" height="148"/>
+        <element name="Availability" positionX="-83" positionY="-117" width="128" height="180"/>
         <element name="Card" positionX="-108" positionY="657" width="128" height="240"/>
         <element name="Contact" positionX="-450" positionY="495" width="128" height="118"/>
         <element name="Customer" positionX="718" positionY="414" width="128" height="193"/>

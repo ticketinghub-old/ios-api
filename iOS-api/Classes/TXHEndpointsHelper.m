@@ -37,6 +37,7 @@
         case UserEndpoint:                          return @"user";
         case ProductTiersEndpointFormat:            return @"supplier/products/%@/tiers";
         case ProductAvailabilitiesEndpointForamt:   return @"supplier/products/%@/availability";
+        case ProductAvailabilitiesForDateAndTickets:return @"supplier/products/%@/options/available/dates/%@/times/search.json";
         case ReserveOrderTicketsEndpoint:           return @"supplier/orders";
         case RemoveOrderTicketsEndpointFormat:      return @"supplier/orders/%@";
         case TicketUpgradesEndpointFormat:          return @"supplier/tickets/%@/available/upgrades";
@@ -83,6 +84,7 @@
         case AttendProductTicketEndpointFormat:
         case OrdersForMSRCardTrackDataEndpoint:
         case AvailableDatesSearch:
+        case ProductAvailabilitiesForDateAndTickets:
             return POSTMethod;
         
         case RemoveOrderTicketsEndpointFormat:

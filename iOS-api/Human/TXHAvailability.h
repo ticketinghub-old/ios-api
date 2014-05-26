@@ -24,4 +24,7 @@
 
  */
 + (void)deleteForDateIfExists:(NSString *)date productId:(NSManagedObjectID *)productId fromManagedObjectContext:(NSManagedObjectContext *)moc;
+
++ (instancetype)createWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)moc;
+
 @end

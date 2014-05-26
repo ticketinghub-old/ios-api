@@ -4,11 +4,13 @@
 #import "_TXHAvailability.h"
 
 const struct TXHAvailabilityAttributes TXHAvailabilityAttributes = {
+	.capacity = @"capacity",
 	.coupon = @"coupon",
 	.dateString = @"dateString",
 	.duration = @"duration",
 	.limit = @"limit",
 	.timeString = @"timeString",
+	.total = @"total",
 };
 
 const struct TXHAvailabilityRelationships TXHAvailabilityRelationships = {
@@ -45,14 +47,50 @@ const struct TXHAvailabilityFetchedProperties TXHAvailabilityFetchedProperties =
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"capacityValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"capacity"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"limitValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"limit"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"totalValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"total"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic capacity;
+
+
+
+- (int32_t)capacityValue {
+	NSNumber *result = [self capacity];
+	return [result intValue];
+}
+
+- (void)setCapacityValue:(int32_t)value_ {
+	[self setCapacity:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveCapacityValue {
+	NSNumber *result = [self primitiveCapacity];
+	return [result intValue];
+}
+
+- (void)setPrimitiveCapacityValue:(int32_t)value_ {
+	[self setPrimitiveCapacity:[NSNumber numberWithInt:value_]];
+}
+
 
 
 
@@ -106,6 +144,32 @@ const struct TXHAvailabilityFetchedProperties TXHAvailabilityFetchedProperties =
 
 @dynamic timeString;
 
+
+
+
+
+
+@dynamic total;
+
+
+
+- (int32_t)totalValue {
+	NSNumber *result = [self total];
+	return [result intValue];
+}
+
+- (void)setTotalValue:(int32_t)value_ {
+	[self setTotal:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveTotalValue {
+	NSNumber *result = [self primitiveTotal];
+	return [result intValue];
+}
+
+- (void)setPrimitiveTotalValue:(int32_t)value_ {
+	[self setPrimitiveTotal:[NSNumber numberWithInt:value_]];
+}
 
 
 

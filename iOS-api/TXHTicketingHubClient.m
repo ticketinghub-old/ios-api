@@ -425,6 +425,47 @@
                       }];
 }
 
+- (void)availabilitiesForProduct:(TXHProduct *)product dateString:(NSString *)dateString tickets:(NSArray *)tickets completion:(void(^)(NSArray *availabilities, NSError *error))completion
+{
+    
+    NSArray *ticketsArray = [NSArray arrayWithArray:tickets];// make sure we have an array;
+    
+    NSDictionary *parameters = @{@"tickets" : ticketsArray};
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductAvailabilitiesForDateAndTickets
+                                                               parameters:@[product.productId, dateString]];
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager POST:endpoint
+                   parameters:parameters
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          
+                          NSMutableArray *availabilities = [NSMutableArray array];
+                          
+                          for (NSDictionary *dictionary in responseObject)
+                          {
+                              TXHAvailability *availability = [TXHAvailability createWithDictionary:dictionary
+                                                                             inManagedObjectContext:moc];
+                              [availabilities addObject:availability];
+                          }
+                          
+                          NSError *error;
+                          BOOL success = [self.importContext save:&error];
+                          
+                          if (!success) {
+                              completion(nil, error);
+                              return;
+                          }
+                          
+                          completion([self objectsInMainManagedObjectContext:availabilities], nil);
+                          
+                      } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          completion(nil, error);
+                      }];
+
+}
+
 - (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate coupon:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 {
     NSParameterAssert(product);

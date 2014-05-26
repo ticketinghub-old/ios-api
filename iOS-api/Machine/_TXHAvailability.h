@@ -5,11 +5,13 @@
 
 
 extern const struct TXHAvailabilityAttributes {
+	__unsafe_unretained NSString *capacity;
 	__unsafe_unretained NSString *coupon;
 	__unsafe_unretained NSString *dateString;
 	__unsafe_unretained NSString *duration;
 	__unsafe_unretained NSString *limit;
 	__unsafe_unretained NSString *timeString;
+	__unsafe_unretained NSString *total;
 } TXHAvailabilityAttributes;
 
 extern const struct TXHAvailabilityRelationships {
@@ -29,6 +31,8 @@ extern const struct TXHAvailabilityFetchedProperties {
 
 
 
+
+
 @interface TXHAvailabilityID : NSManagedObjectID {}
 @end
 
@@ -37,6 +41,20 @@ extern const struct TXHAvailabilityFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (TXHAvailabilityID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* capacity;
+
+
+
+@property int32_t capacityValue;
+- (int32_t)capacityValue;
+- (void)setCapacityValue:(int32_t)value_;
+
+//- (BOOL)validateCapacity:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -96,6 +114,20 @@ extern const struct TXHAvailabilityFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSNumber* total;
+
+
+
+@property int32_t totalValue;
+- (int32_t)totalValue;
+- (void)setTotalValue:(int32_t)value_;
+
+//- (BOOL)validateTotal:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) TXHProduct *product;
 
 //- (BOOL)validateProduct:(id*)value_ error:(NSError**)error_;
@@ -123,6 +155,15 @@ extern const struct TXHAvailabilityFetchedProperties {
 @end
 
 @interface _TXHAvailability (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSNumber*)primitiveCapacity;
+- (void)setPrimitiveCapacity:(NSNumber*)value;
+
+- (int32_t)primitiveCapacityValue;
+- (void)setPrimitiveCapacityValue:(int32_t)value_;
+
+
 
 
 - (NSString*)primitiveCoupon;
@@ -154,6 +195,15 @@ extern const struct TXHAvailabilityFetchedProperties {
 
 - (NSString*)primitiveTimeString;
 - (void)setPrimitiveTimeString:(NSString*)value;
+
+
+
+
+- (NSNumber*)primitiveTotal;
+- (void)setPrimitiveTotal:(NSNumber*)value;
+
+- (int32_t)primitiveTotalValue;
+- (void)setPrimitiveTotalValue:(int32_t)value_;
 
 
 
