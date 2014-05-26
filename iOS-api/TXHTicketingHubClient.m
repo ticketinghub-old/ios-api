@@ -409,7 +409,6 @@
     NSDictionary *parameters = @{@"from"    : [startDate isoDateString],
                                  @"to"      : [endDate isoDateString]};
     
-    
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:AvailableDatesSearch parameters:@[product.productId]];
     [self.sessionManager POST:endpoint
                    parameters:parameters
@@ -417,10 +416,7 @@
                           
                           NSMutableArray *dates = [NSMutableArray array];
                           for (NSString *dateString in responseObject)
-                          {
-                              NSDate *date = [NSDate dateFromISOString:dateString];
-                              [dates addObject:date];
-                          }
+                              [dates addObject:dateString];
                           
                           completion(dates, nil);
                       }
