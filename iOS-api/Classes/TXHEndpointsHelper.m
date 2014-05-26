@@ -39,7 +39,7 @@
         case ProductAvailabilitiesEndpointForamt:   return @"supplier/products/%@/availability";
         case ReserveOrderTicketsEndpoint:           return @"supplier/orders";
         case RemoveOrderTicketsEndpointFormat:      return @"supplier/orders/%@";
-        case TicketUpgradesEndpointFormat:          return @"supplier/tickets/%@/upgrades";
+        case TicketUpgradesEndpointFormat:          return @"supplier/tickets/%@/available/upgrades";
         case TicketFieldsEndpointFormat:            return @"supplier/tickets/%@/fields";
         case UpdateOrderEndpointFormat:             return @"supplier/orders/%@";
         case TicketOwnerFieldsEndpointFormat:       return @"supplier/orders/%@/fields";
