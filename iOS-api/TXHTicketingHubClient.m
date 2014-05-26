@@ -410,7 +410,7 @@
                                  @"to"      : [endDate isoDateString]};
     
     
-    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:AvailableDatesSearch];
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:AvailableDatesSearch parameters:@[product.productId]];
     [self.sessionManager POST:endpoint
                    parameters:parameters
                       success:^(NSURLSessionDataTask *task, id responseObject) {

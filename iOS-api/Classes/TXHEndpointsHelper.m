@@ -55,7 +55,7 @@
         case TicketTemplatesEndpoint:               return @"supplier/templates";
         case OrderTicketsForTemplateEndpoint:       return @"supplier/orders/%@/tickets.%@?template=%@";
         case PaymentGatewaysEndpoint:               return @"supplier/gateways.json";
-        case AvailableDatesSearch:                  return @"supplier/options/available/dates/search";
+        case AvailableDatesSearch:                  return @"supplier/products/%@/options/available/dates/search";
     }
     return nil;
 }
