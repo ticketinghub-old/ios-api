@@ -57,6 +57,7 @@
         case OrderTicketsForTemplateEndpoint:       return @"supplier/orders/%@/tickets.%@?template=%@";
         case PaymentGatewaysEndpoint:               return @"supplier/gateways.json";
         case AvailableDatesSearch:                  return @"supplier/products/%@/options/available/dates/search";
+        case ProductTicketsSearch:                  return @"supplier/products/:%@/tickets/search.json";
     }
     return nil;
 }
@@ -85,6 +86,7 @@
         case OrdersForMSRCardTrackDataEndpoint:
         case AvailableDatesSearch:
         case ProductAvailabilitiesForDateAndTickets:
+        case ProductTicketsSearch:
             return POSTMethod;
         
         case RemoveOrderTicketsEndpointFormat:

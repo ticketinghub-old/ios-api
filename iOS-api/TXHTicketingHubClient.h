@@ -17,6 +17,7 @@
 @class TXHTicket;
 @class TXHTicketTemplate;
 @class TXHUser;
+@class TXHPartialResponsInfo;
 
 typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
     TXHDocumentFormatPDF,
@@ -232,6 +233,25 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  @warning `order` and `completion` must not be `nil`.
  */
 - (void)confirmOrder:(TXHOrder *)order completion:(void (^)(TXHOrder *order, NSError *error))completion;
+
+
+/////////
+
+//{
+//    "order": ["valid_from"],
+//    "filters": {
+//        "attended": false,
+//        "order": {
+//            "confirmed": true,
+//            "active": true
+//        },
+//        "valid_from": {
+//            "gt": "2014-05-14T11:29:00Z"
+//        }
+//    }
+//}
+
+- (void)ticketRecordsForProduct:(TXHProduct *)product validFromDate:(NSDate *)date includingAttended:(BOOL)attended query:(NSString *)query completion:(void(^)(TXHPartialResponsInfo *info, NSArray *ricketRecords, NSError *error))completion;
 
 /** Provides an array of reserved tickets for provided product and its availability
  

@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, TXHEndpoint)
     PaymentGatewaysEndpoint,                    //
     AvailableDatesSearch,                       // requires 1 parameter: productID
     ProductAvailabilitiesForDateAndTickets,     // requires 2 parameters: productID, datestring (yyyy-mm-dd)
-
+    ProductTicketsSearch,                       // requires 1 parameter: productID
 };
 
 typedef NS_ENUM(NSInteger, TXHEndpointHTTPMethod)

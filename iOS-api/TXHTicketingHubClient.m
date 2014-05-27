@@ -27,8 +27,10 @@
 #import "TXHUser.h"
     
 #import "NSDate+ISO.h"
+#import "NSDateFormatter+TicketingHubFormat.h"
 #import "TXHDefines.h"
 
+#import "TXHPartialResponsInfo.h"
 #import "TXHEndpointsHelper.h"
 
 @interface TXHTicketingHubClient ()
@@ -946,6 +948,49 @@
 }
 
 #pragma mark - ticket records
+
+- (void)ticketRecordsForProduct:(TXHProduct *)product validFromDate:(NSDate *)date includingAttended:(BOOL)attended query:(NSString *)query completion:(void(^)(TXHPartialResponsInfo *info, NSArray *ricketRecords, NSError *error))completion
+{
+    NSParameterAssert(product);
+    NSParameterAssert(date);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketsSearch
+                                                               parameters:@[product.productId]];
+
+    NSMutableDictionary *filters = [NSMutableDictionary dictionary];
+    
+    filters[@"order"]      = @{ @"confirmed" : @YES, @"active" : @YES };
+    filters[@"valid_from"] = @{ @"gt" : [NSDateFormatter txh_stringFromDate:date]};
+    
+    if (!attended)
+        filters[@"attended"] = @NO;
+    if ([query length])
+        filters[@"search"]   = query;
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"order"]   = @[ @"valid_from" ];
+    params[@"filters"] = filters;
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
+    
+    NSURL *URL = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    NSString *authHeader = self.sessionManager.requestSerializer.HTTPRequestHeaders[@"Authorization"];
+    [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+    
+    [self.sessionManager dataTaskWithRequest:request
+                           completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                               if (error)
+                               {
+                                   
+                               }
+                               else
+                               {
+                                   
+                               }
+                           }];
+}
 
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion
 {
