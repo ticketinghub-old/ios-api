@@ -949,7 +949,8 @@
 
 #pragma mark - ticket records
 
-- (void)ticketRecordsForProduct:(TXHProduct *)product validFromDate:(NSDate *)date includingAttended:(BOOL)attended query:(NSString *)query completion:(void(^)(TXHPartialResponsInfo *info, NSArray *ricketRecords, NSError *error))completion
+// TODO: Lord have mercy....
+- (void)ticketRecordsForProduct:(TXHProduct *)product validFromDate:(NSDate *)date includingAttended:(BOOL)attended query:(NSString *)query paginationInfo:(TXHPartialResponsInfo *)info completion:(void(^)(TXHPartialResponsInfo *info, NSArray *ticketRecords, NSError *error))completion
 {
     NSParameterAssert(product);
     NSParameterAssert(date);
@@ -957,7 +958,7 @@
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketsSearch
                                                                parameters:@[product.productId]];
-
+    
     NSMutableDictionary *filters = [NSMutableDictionary dictionary];
     
     filters[@"order"]      = @{ @"confirmed" : @YES, @"active" : @YES };
@@ -974,22 +975,83 @@
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
     
-    NSURL *URL = [NSURL URLWithString:urlString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:nil];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:60.0];
+    
     NSString *authHeader = self.sessionManager.requestSerializer.HTTPRequestHeaders[@"Authorization"];
     [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    if (info)
+        [request addValue:info.range forHTTPHeaderField:@"Range"];
     
-    [self.sessionManager dataTaskWithRequest:request
-                           completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-                               if (error)
-                               {
-                                   
-                               }
-                               else
-                               {
-                                   
-                               }
-                           }];
+    NSError *error;
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+    [request setHTTPBody:postData];
+    [request setHTTPMethod:@"POST"];
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        
+        
+        if(error == nil)
+        {
+            NSError *e = nil;
+            NSArray *responseArray  = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableLeaves error: &e];
+            
+            if (e)
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(info, nil, e);
+                });
+            }
+            else
+            {
+                TXHPartialResponsInfo *nextInfo = [[TXHPartialResponsInfo alloc] initWithNSURLResponse:response];
+                
+                NSMutableArray *tickets = [NSMutableArray array];
+                
+                for (NSDictionary *ticketdDic in responseArray)
+                {
+                    TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:ticketdDic inManagedObjectContext:moc];
+                    if (ticket)
+                        [tickets addObject:ticket];
+                }
+                
+                NSError *error;
+                if (![moc save:&error]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(info, nil, error);
+                    });
+                    
+                    return;
+                };
+                
+                NSArray *mainContextObjects = [self objectsInMainManagedObjectContext:tickets];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(nextInfo , mainContextObjects ,nil);
+                });
+            }
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(info, nil, error);
+            });
+        }
+    }];
+    
+    [postDataTask resume];
 }
 
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion

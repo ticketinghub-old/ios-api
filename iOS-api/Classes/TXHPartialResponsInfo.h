@@ -10,4 +10,10 @@
 
 @interface TXHPartialResponsInfo : NSObject
 
+@property (nonatomic, assign, readonly) BOOL hasMore;
+@property (nonatomic, strong, readonly) NSString *range;
+
+- (instancetype)initWithNSURLResponse:(NSURLResponse *)response;
+
+
 @end
