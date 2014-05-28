@@ -627,6 +627,8 @@
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ReserveOrderTicketsEndpoint];
     
+    __weak typeof(self) wself = self;
+    
     [self.sessionManager POST:endpoint
                    parameters:requestPayload
                       success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -641,7 +643,7 @@
                               return;
                           }
                           
-                          order = (TXHOrder *)[self.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                          order = (TXHOrder *)[wself.managedObjectContext existingObjectWithID:order.objectID error:&error];
                           
                           completion(order, nil);
                           
@@ -849,6 +851,8 @@
     
     NSManagedObjectContext *moc = self.importContext;
     
+    __weak typeof(self) wself = self;
+    
     [self.sessionManager GET:endpoint
                   parameters:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -862,7 +866,7 @@
                              return;
                          }
                          
-                         order = (TXHOrder *)[self.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                         order = (TXHOrder *)[wself.managedObjectContext existingObjectWithID:order.objectID error:&error];
                          
                          completion(order, nil);
                      }
@@ -884,7 +888,7 @@
                                                                parameters:@[order.orderId]];
     
     NSManagedObjectContext *moc = self.importContext;
-    
+    __weak typeof(self) wself = self;
     [self.sessionManager POST:endpoint
                    parameters:nil
                       success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -898,7 +902,7 @@
                               return;
                           }
                           
-                          order = (TXHOrder *)[self.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                          order = (TXHOrder *)[wself.managedObjectContext existingObjectWithID:order.objectID error:&error];
                           
                           completion(order, nil);
                       }
@@ -920,7 +924,7 @@
                                                                parameters:@[order.orderId]];
     
     NSManagedObjectContext *moc = self.importContext;
-    
+    __weak typeof(self) wself = self;
     [self.sessionManager PATCH:endpoint
                     parameters:payload
                        success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -934,7 +938,7 @@
                                return;
                            }
                            
-                           order = (TXHOrder *)[self.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                           order = (TXHOrder *)[wself.managedObjectContext existingObjectWithID:order.objectID error:&error];
                            
                            completion(order, nil);
                        }
@@ -1163,7 +1167,7 @@
                                                                parameters:@[product.productId, seqID]];
     
     NSManagedObjectContext *moc = self.importContext;
-    
+    __weak typeof(self) wself = self;
     [self.sessionManager GET:endpoint
                   parameters:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -1177,7 +1181,7 @@
                              return;
                          }
                          
-                         ticket = (TXHTicket *)[self.managedObjectContext existingObjectWithID:ticket.objectID error:&error];
+                         ticket = (TXHTicket *)[wself.managedObjectContext existingObjectWithID:ticket.objectID error:&error];
                          
                          completion(ticket, nil);
                      }
@@ -1197,7 +1201,7 @@
                                                                parameters:@[product.productId, ticket.ticketId]];
     
     NSManagedObjectContext *moc = self.importContext;
-
+    __weak typeof(self) wself = self;
     [self.sessionManager GET:endpoint
                   parameters:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -1211,7 +1215,7 @@
                              return;
                          }
                          
-                         order = (TXHOrder *)[self.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                         order = (TXHOrder *)[wself.managedObjectContext existingObjectWithID:order.objectID error:&error];
                          
                          completion(order, nil);
                      }
@@ -1297,7 +1301,7 @@
                 
                 for (NSDictionary *orderDic in responseArray)
                 {
-                    TXHOrder *order = [TXHTicket updateWithDictionaryOrCreateIfNeeded:orderDic
+                    TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:orderDic
                                                                inManagedObjectContext:moc];
                     if (order)
                         [orders addObject:order];
@@ -1329,6 +1333,41 @@
     
     [postDataTask resume];
     
+}
+
+- (void)cancelOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order,NSError *error))completion
+{
+    NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:RemoveOrderTicketsEndpointFormat
+                                                                parameters:@[order.orderId]];
+    
+    __weak typeof (self) wself = self;
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager DELETE:endpoint
+                     parameters:nil
+                        success:^(NSURLSessionDataTask *task, id responseObject) {
+                            
+                            TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+                            
+                            NSError *error;
+                            BOOL success = [moc save:&error];
+                            
+                            if (!success) {
+                                completion(nil, error);
+                                return;
+                            }
+                            
+                            order = (TXHOrder *)[wself.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                            
+                            completion(order, nil);
+                            
+                        }
+                        failure:^(NSURLSessionDataTask *task, NSError *error) {
+                            
+                            DLog(@"Unable to reserve tickets because: %@", error);
+                            completion(nil, error);
+                        }];
 }
 
 - (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion

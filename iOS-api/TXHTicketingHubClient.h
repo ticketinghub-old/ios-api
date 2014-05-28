@@ -292,6 +292,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
 - (void)getOrdersForCardMSRString:(NSString *)msrInfo paginationInfo:(TXHPartialResponsInfo *)info completion:(void(^)(TXHPartialResponsInfo *info, NSArray *orders, NSError *error))completion;
 - (void)getOrdersForQuery:(NSString *)query paginationInfo:(TXHPartialResponsInfo *)info completion:(void(^)(TXHPartialResponsInfo *info,NSArray *orders, NSError *error))completion;
 
+- (void)cancelOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order,NSError *error))completion;
 /** Gets a receipt for given order
  
  @param order for which the receipt wil be fetched
