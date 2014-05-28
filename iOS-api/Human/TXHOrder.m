@@ -4,6 +4,7 @@
 #import "TXHAddress.h"
 #import "TXHTicket.h"
 #import "TXHCustomer.h"
+#import "TXHPayment.h"
 #import "NSDateFormatter+TicketingHubFormat.h"
 
 static NSString * const kIdKey          = @"id";
@@ -25,6 +26,11 @@ static NSString * const kCanceledAtKey  = @"cancelled_at";
 static NSString * const kExpiresAtKey   = @"expires_at";
 static NSString * const kConfirmedAtKey = @"confirmed_at";
 static NSString * const kErrorsKey      = @"errors";
+static NSString * const kDirectKey      = @"direct";
+static NSString * const kGroupKey       = @"group";
+static NSString * const kProvisionalKey = @"provisional";
+
+
 
 
 @interface TXHOrder ()
@@ -99,6 +105,9 @@ static NSString * const kErrorsKey      = @"errors";
     self.delivery    = nilIfNSNull(dictionary[kDeliveryKey]);
     self.coupon      = nilIfNSNull(dictionary[kCouponKey]);
     self.errors      = nilIfNSNull(dictionary[kErrorsKey]);
+    self.directt     = nilIfNSNull(dictionary[kDirectKey]);
+    self.group       = nilIfNSNull(dictionary[kGroupKey]);
+    self.provisional = nilIfNSNull(dictionary[kProvisionalKey]);
     self.expiresAt   = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kExpiresAtKey])];
     self.updatedAt   = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kUpdatedAtKey])];
     self.createdAt   = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kCreatedAtKey])];
@@ -108,9 +117,12 @@ static NSString * const kErrorsKey      = @"errors";
     NSDictionary *ticketDictionary  = nilIfNSNull(dictionary[kCustomerKey]);
     self.customer = [TXHCustomer createWithDictionary:ticketDictionary inManagedObjectContext:moc];
 
+    NSDictionary *paymentDictionary  = nilIfNSNull(dictionary[kPaymentKey]);
+    self.payment = [TXHPayment createWithDictionary:paymentDictionary inManagedObjectContext:moc];
+
     NSDictionary *addressDictionary  = nilIfNSNull(dictionary[kAddressKey]);
     self.address = [TXHAddress createWithDictionary:addressDictionary inManagedObjectContext:moc];
-
+    
     NSArray *tickets = nilIfNSNull(dictionary[kTicketsKey]);
     [self removeTickets:self.tickets];
 

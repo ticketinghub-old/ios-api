@@ -73,11 +73,13 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="delivery" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="directt" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="errors" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="expiresAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="group" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="orderId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="payment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postage" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="provisional" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="reference" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tax" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="taxName" optional="YES" attributeType="String" syncable="YES"/>
@@ -85,6 +87,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="order" inverseEntity="Address" syncable="YES"/>
         <relationship name="customer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Customer" inverseName="order" inverseEntity="Customer" syncable="YES"/>
+        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="order" inverseEntity="Payment" syncable="YES"/>
         <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket" inverseName="order" inverseEntity="Ticket" syncable="YES"/>
     </entity>
     <entity name="Payment" representedClassName="TXHPayment" syncable="YES">
@@ -103,6 +106,7 @@
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="payment" inverseEntity="Address" syncable="YES"/>
         <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="payment" inverseEntity="Card" syncable="YES"/>
         <relationship name="gateway" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Gateway" inverseName="payment" inverseEntity="Gateway" syncable="YES"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Order" inverseName="payment" inverseEntity="Order" syncable="YES"/>
     </entity>
     <entity name="Product" representedClassName="TXHProduct" syncable="YES">
         <attribute name="availabilitiesUpdated" optional="YES" attributeType="Date" syncable="YES"/>
@@ -181,8 +185,8 @@
         <element name="Contact" positionX="-450" positionY="495" width="128" height="118"/>
         <element name="Customer" positionX="718" positionY="414" width="128" height="193"/>
         <element name="Gateway" positionX="295" positionY="612" width="128" height="135"/>
-        <element name="Order" positionX="376" positionY="176" width="128" height="328"/>
-        <element name="Payment" positionX="72" positionY="599" width="128" height="270"/>
+        <element name="Order" positionX="376" positionY="176" width="128" height="373"/>
+        <element name="Payment" positionX="72" positionY="599" width="128" height="283"/>
         <element name="Product" positionX="-27" positionY="344" width="128" height="163"/>
         <element name="Supplier" positionX="-281" positionY="18" width="128" height="163"/>
         <element name="Ticket" positionX="628" positionY="92" width="128" height="283"/>

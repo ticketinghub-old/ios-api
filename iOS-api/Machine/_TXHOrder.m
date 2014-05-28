@@ -10,11 +10,13 @@ const struct TXHOrderAttributes TXHOrderAttributes = {
 	.createdAt = @"createdAt",
 	.currency = @"currency",
 	.delivery = @"delivery",
+	.directt = @"directt",
 	.errors = @"errors",
 	.expiresAt = @"expiresAt",
+	.group = @"group",
 	.orderId = @"orderId",
-	.payment = @"payment",
 	.postage = @"postage",
+	.provisional = @"provisional",
 	.reference = @"reference",
 	.tax = @"tax",
 	.taxName = @"taxName",
@@ -25,6 +27,7 @@ const struct TXHOrderAttributes TXHOrderAttributes = {
 const struct TXHOrderRelationships TXHOrderRelationships = {
 	.address = @"address",
 	.customer = @"customer",
+	.payment = @"payment",
 	.tickets = @"tickets",
 };
 
@@ -57,8 +60,23 @@ const struct TXHOrderFetchedProperties TXHOrderFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"directtValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"directt"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"groupValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"group"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 	if ([key isEqualToString:@"postageValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"postage"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
+	if ([key isEqualToString:@"provisionalValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"provisional"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -121,6 +139,32 @@ const struct TXHOrderFetchedProperties TXHOrderFetchedProperties = {
 
 
 
+@dynamic directt;
+
+
+
+- (int32_t)directtValue {
+	NSNumber *result = [self directt];
+	return [result intValue];
+}
+
+- (void)setDirecttValue:(int32_t)value_ {
+	[self setDirectt:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveDirecttValue {
+	NSNumber *result = [self primitiveDirectt];
+	return [result intValue];
+}
+
+- (void)setPrimitiveDirecttValue:(int32_t)value_ {
+	[self setPrimitiveDirectt:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
 @dynamic errors;
 
 
@@ -135,14 +179,33 @@ const struct TXHOrderFetchedProperties TXHOrderFetchedProperties = {
 
 
 
+@dynamic group;
+
+
+
+- (int32_t)groupValue {
+	NSNumber *result = [self group];
+	return [result intValue];
+}
+
+- (void)setGroupValue:(int32_t)value_ {
+	[self setGroup:[NSNumber numberWithInt:value_]];
+}
+
+- (int32_t)primitiveGroupValue {
+	NSNumber *result = [self primitiveGroup];
+	return [result intValue];
+}
+
+- (void)setPrimitiveGroupValue:(int32_t)value_ {
+	[self setPrimitiveGroup:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
 @dynamic orderId;
-
-
-
-
-
-
-@dynamic payment;
 
 
 
@@ -169,6 +232,32 @@ const struct TXHOrderFetchedProperties TXHOrderFetchedProperties = {
 
 - (void)setPrimitivePostageValue:(int32_t)value_ {
 	[self setPrimitivePostage:[NSNumber numberWithInt:value_]];
+}
+
+
+
+
+
+@dynamic provisional;
+
+
+
+- (int16_t)provisionalValue {
+	NSNumber *result = [self provisional];
+	return [result shortValue];
+}
+
+- (void)setProvisionalValue:(int16_t)value_ {
+	[self setProvisional:[NSNumber numberWithShort:value_]];
+}
+
+- (int16_t)primitiveProvisionalValue {
+	NSNumber *result = [self primitiveProvisional];
+	return [result shortValue];
+}
+
+- (void)setPrimitiveProvisionalValue:(int16_t)value_ {
+	[self setPrimitiveProvisional:[NSNumber numberWithShort:value_]];
 }
 
 
@@ -253,6 +342,10 @@ const struct TXHOrderFetchedProperties TXHOrderFetchedProperties = {
 	
 
 @dynamic customer;
+
+	
+
+@dynamic payment;
 
 	
 

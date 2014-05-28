@@ -11,11 +11,13 @@ extern const struct TXHOrderAttributes {
 	__unsafe_unretained NSString *createdAt;
 	__unsafe_unretained NSString *currency;
 	__unsafe_unretained NSString *delivery;
+	__unsafe_unretained NSString *directt;
 	__unsafe_unretained NSString *errors;
 	__unsafe_unretained NSString *expiresAt;
+	__unsafe_unretained NSString *group;
 	__unsafe_unretained NSString *orderId;
-	__unsafe_unretained NSString *payment;
 	__unsafe_unretained NSString *postage;
+	__unsafe_unretained NSString *provisional;
 	__unsafe_unretained NSString *reference;
 	__unsafe_unretained NSString *tax;
 	__unsafe_unretained NSString *taxName;
@@ -26,6 +28,7 @@ extern const struct TXHOrderAttributes {
 extern const struct TXHOrderRelationships {
 	__unsafe_unretained NSString *address;
 	__unsafe_unretained NSString *customer;
+	__unsafe_unretained NSString *payment;
 	__unsafe_unretained NSString *tickets;
 } TXHOrderRelationships;
 
@@ -34,6 +37,7 @@ extern const struct TXHOrderFetchedProperties {
 
 @class TXHAddress;
 @class TXHCustomer;
+@class TXHPayment;
 @class TXHTicket;
 
 
@@ -42,7 +46,9 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
+
 @class NSObject;
+
 
 
 
@@ -126,6 +132,20 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSNumber* directt;
+
+
+
+@property int32_t directtValue;
+- (int32_t)directtValue;
+- (void)setDirecttValue:(int32_t)value_;
+
+//- (BOOL)validateDirectt:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) id errors;
 
 
@@ -146,21 +166,25 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
+@property (nonatomic, strong) NSNumber* group;
+
+
+
+@property int32_t groupValue;
+- (int32_t)groupValue;
+- (void)setGroupValue:(int32_t)value_;
+
+//- (BOOL)validateGroup:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
 @property (nonatomic, strong) NSString* orderId;
 
 
 
 //- (BOOL)validateOrderId:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* payment;
-
-
-
-//- (BOOL)validatePayment:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -175,6 +199,20 @@ extern const struct TXHOrderFetchedProperties {
 - (void)setPostageValue:(int32_t)value_;
 
 //- (BOOL)validatePostage:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* provisional;
+
+
+
+@property int16_t provisionalValue;
+- (int16_t)provisionalValue;
+- (void)setProvisionalValue:(int16_t)value_;
+
+//- (BOOL)validateProvisional:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -252,6 +290,13 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
+@property (nonatomic, strong) TXHPayment *payment;
+
+//- (BOOL)validatePayment:(id*)value_ error:(NSError**)error_;
+
+
+
+
 @property (nonatomic, strong) NSSet *tickets;
 
 - (NSMutableSet*)ticketsSet;
@@ -310,6 +355,15 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
+- (NSNumber*)primitiveDirectt;
+- (void)setPrimitiveDirectt:(NSNumber*)value;
+
+- (int32_t)primitiveDirecttValue;
+- (void)setPrimitiveDirecttValue:(int32_t)value_;
+
+
+
+
 - (id)primitiveErrors;
 - (void)setPrimitiveErrors:(id)value;
 
@@ -322,14 +376,17 @@ extern const struct TXHOrderFetchedProperties {
 
 
 
+- (NSNumber*)primitiveGroup;
+- (void)setPrimitiveGroup:(NSNumber*)value;
+
+- (int32_t)primitiveGroupValue;
+- (void)setPrimitiveGroupValue:(int32_t)value_;
+
+
+
+
 - (NSString*)primitiveOrderId;
 - (void)setPrimitiveOrderId:(NSString*)value;
-
-
-
-
-- (NSString*)primitivePayment;
-- (void)setPrimitivePayment:(NSString*)value;
 
 
 
@@ -339,6 +396,15 @@ extern const struct TXHOrderFetchedProperties {
 
 - (int32_t)primitivePostageValue;
 - (void)setPrimitivePostageValue:(int32_t)value_;
+
+
+
+
+- (NSNumber*)primitiveProvisional;
+- (void)setPrimitiveProvisional:(NSNumber*)value;
+
+- (int16_t)primitiveProvisionalValue;
+- (void)setPrimitiveProvisionalValue:(int16_t)value_;
 
 
 
@@ -387,6 +453,11 @@ extern const struct TXHOrderFetchedProperties {
 
 - (TXHCustomer*)primitiveCustomer;
 - (void)setPrimitiveCustomer:(TXHCustomer*)value;
+
+
+
+- (TXHPayment*)primitivePayment;
+- (void)setPrimitivePayment:(TXHPayment*)value;
 
 
 
