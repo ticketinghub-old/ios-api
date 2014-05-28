@@ -1220,76 +1220,116 @@
                      }];
 }
 
-- (void)getOrdersForCardMSRString:(NSString *)msrInfo completion:(void(^)(NSArray *orders, NSError *error))completion
+- (void)getOrdersForCardMSRString:(NSString *)msrInfo paginationInfo:(TXHPartialResponsInfo *)info completion:(void(^)(TXHPartialResponsInfo *info, NSArray *orders, NSError *error))completion
 {
     NSParameterAssert(msrInfo);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrdersForMSRCardTrackDataEndpoint];
     NSDictionary *parameters = @{ @"filters": @{ @"card": @{ @"track_data": msrInfo } } };
     
-    NSManagedObjectContext *moc = self.importContext;
-    
-    [self.sessionManager POST:endpoint
-                   parameters:parameters
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
-                          NSMutableArray *orders = [NSMutableArray array];
-                          
-                          for (NSDictionary *orderDic in responseObject)
-                          {
-                              TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:orderDic inManagedObjectContext:moc];
-                              if (orderDic)
-                                  [orders addObject:order];
-                          }
-                          
-                          NSError *error;
-                          if (![moc save:&error]) {
-                              completion(orders, error);
-                              return;
-                          };
-                          
-                          completion([self objectsInMainManagedObjectContext:orders],nil);
-                      }
-                      failure:^(NSURLSessionDataTask *task, NSError *error) {
-                          completion(nil,error);
-                      }];
+    [self getOrdersWithParameters:parameters
+                   paginationInfo:info
+                       completion:completion];
 }
 
-- (void)getOrdersForQuery:(NSString *)query completion:(void(^)(NSArray *orders, NSError *error))completion
+- (void)getOrdersForQuery:(NSString *)query paginationInfo:(TXHPartialResponsInfo *)info completion:(void(^)(TXHPartialResponsInfo *info,NSArray *orders, NSError *error))completion
 {
     NSParameterAssert(query);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrdersForMSRCardTrackDataEndpoint];
     NSDictionary *parameters = @{ @"filters": @{ @"search": query } };
+    
+    [self getOrdersWithParameters:parameters
+                   paginationInfo:info
+                       completion:completion];
+}
+
+- (void)getOrdersWithParameters:(NSDictionary *)parameters paginationInfo:(TXHPartialResponsInfo *)info completion:(void (^)(TXHPartialResponsInfo *info, NSArray *, NSError *))completion
+{
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrdersForMSRCardTrackDataEndpoint];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:nil];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:60.0];
+    
+    NSString *authHeader = self.sessionManager.requestSerializer.HTTPRequestHeaders[@"Authorization"];
+    [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    if (info)
+        [request addValue:info.range forHTTPHeaderField:@"Range"];
+    
+    NSError *error;
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:&error];
+    [request setHTTPBody:postData];
+    [request setHTTPMethod:@"POST"];
     
     NSManagedObjectContext *moc = self.importContext;
     
-    [self.sessionManager POST:endpoint
-                   parameters:parameters
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
-                          NSMutableArray *orders = [NSMutableArray array];
-                          
-                          for (NSDictionary *orderDic in responseObject)
-                          {
-                              TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:orderDic inManagedObjectContext:moc];
-                              if (orderDic)
-                                  [orders addObject:order];
-                          }
-                          
-                          NSError *error;
-                          if (![moc save:&error]) {
-                              completion(orders, error);
-                              return;
-                          };
-                          
-                          completion([self objectsInMainManagedObjectContext:orders],nil);
-                      }
-                      failure:^(NSURLSessionDataTask *task, NSError *error) {
-                          completion(nil,error);
-                      }];
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        
+        
+        if(error == nil)
+        {
+            NSError *e = nil;
+            NSArray *responseArray  = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableLeaves error: &e];
+            
+            if (e)
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(info, nil, e);
+                });
+            }
+            else
+            {
+                TXHPartialResponsInfo *nextInfo = [[TXHPartialResponsInfo alloc] initWithNSURLResponse:response];
+                
+                NSMutableArray *orders = [NSMutableArray array];
+                
+                for (NSDictionary *orderDic in responseArray)
+                {
+                    TXHOrder *order = [TXHTicket updateWithDictionaryOrCreateIfNeeded:orderDic
+                                                               inManagedObjectContext:moc];
+                    if (order)
+                        [orders addObject:order];
+                }
+                
+                NSError *error;
+                if (![moc save:&error]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        completion(info, nil, error);
+                    });
+                    
+                    return;
+                };
+                
+                NSArray *mainContextObjects = [self objectsInMainManagedObjectContext:orders];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(nextInfo , mainContextObjects ,nil);
+                });
+            }
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(info, nil, error);
+            });
+        }
+    }];
+    
+    [postDataTask resume];
+    
 }
-
 
 - (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion
 {
