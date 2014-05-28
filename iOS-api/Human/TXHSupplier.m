@@ -34,11 +34,11 @@ static NSString * const kContactKey      = @"contact";
     TXHSupplier *supplier = [[self class] insertInManagedObjectContext:moc];
 
     // These values are all required, so they should be provided by the API
-    supplier.accessToken  = dictionary[kTokenKey][kAccessTokenKey];
-    supplier.refreshToken = dictionary[kTokenKey][kRefreshTokenKey];
-    supplier.country      = dictionary[kCountryKey];
-    supplier.currency     = dictionary[kCurrencyKey];
-    supplier.timeZoneName = dictionary[kTimeZoneKey];
+    supplier.accessToken  = nilIfNSNull(dictionary[kTokenKey][kAccessTokenKey]);
+    supplier.refreshToken = nilIfNSNull(dictionary[kTokenKey][kRefreshTokenKey]);
+    supplier.country      = nilIfNSNull(dictionary[kCountryKey]);
+    supplier.currency     = nilIfNSNull(dictionary[kCurrencyKey]);
+    supplier.timeZoneName = nilIfNSNull(dictionary[kTimeZoneKey]);
 
     NSArray *products = dictionary[kProductsKey];
     for (NSDictionary *productDictionary in products) {

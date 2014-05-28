@@ -97,11 +97,11 @@
 
 - (void)updateWithDictionary:(NSDictionary *)dict {
 
-    self.bit                = dict[@"bit"];
-    self.upgradeDescription = dict[@"description"];
-    self.upgradeId          = dict[@"id"];
-    self.name               = dict[@"name"];
-    self.price              = dict[@"price"];
+    self.bit                = nilIfNSNull(dict[@"bit"]);
+    self.upgradeDescription = nilIfNSNull(dict[@"description"]);
+    self.upgradeId          = nilIfNSNull(dict[@"id"]);
+    self.name               = nilIfNSNull(dict[@"name"]);
+    self.price              = nilIfNSNull(dict[@"price"]);
 }
 
 + (NSString *)generateInternalIdFromDictionary:(NSDictionary *)dict

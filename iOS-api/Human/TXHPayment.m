@@ -39,14 +39,14 @@ static NSString * const kSignatureKey            = @"signature";
     
     TXHPayment *payment = [[self class] insertInManagedObjectContext:moc];
     
-    payment.amount             = dictionary[kAmountKey];
-    payment.authorization      = dictionary[kAuthorizationKey];
-    payment.avsResult          = dictionary[kAVSResultKey];
-    payment.currency           = dictionary[kCurrencyKey];
-    payment.postalMatch        = dictionary[kPostalMatchKey];
-    payment.securityCodeResult = dictionary[kSecurityCodeResultKey];
-    payment.streetMatch        = dictionary[kStreetMatchKey];
-    payment.type               = dictionary[kTypeKey];
+    payment.amount             = nilIfNSNull(dictionary[kAmountKey]);
+    payment.authorization      = nilIfNSNull(dictionary[kAuthorizationKey]);
+    payment.avsResult          = nilIfNSNull(dictionary[kAVSResultKey]);
+    payment.currency           = nilIfNSNull(dictionary[kCurrencyKey]);
+    payment.postalMatch        = nilIfNSNull(dictionary[kPostalMatchKey]);
+    payment.securityCodeResult = nilIfNSNull(dictionary[kSecurityCodeResultKey]);
+    payment.streetMatch        = nilIfNSNull(dictionary[kStreetMatchKey]);
+    payment.type               = nilIfNSNull(dictionary[kTypeKey]);
 
     NSDictionary *addresDictionary = dictionary[kAddressKey];
     payment.address = [TXHAddress createWithDictionary:addresDictionary inManagedObjectContext:moc];

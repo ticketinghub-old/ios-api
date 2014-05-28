@@ -35,17 +35,17 @@ static NSString * const kSchemeKey       = @"scheme";
     
     TXHCard *card = [[self class] insertInManagedObjectContext:moc];
     
-    card.brand        = dictionary[kBrandKey];
-    card.fingerprint  = dictionary[kFingerprintKey];
-    card.firstName    = dictionary[kFirstNameKey];
-    card.lastName     = dictionary[kLastNameKey];
-    card.last4        = dictionary[kLast4Key];
-    card.mask         = dictionary[kMaskKey];
-    card.month        = dictionary[kMontKey];
-    card.year         = dictionary[kYearKey];
-    card.payment      = dictionary[kPaymentKey];
-    card.securityCode = dictionary[kSecurityCodeKey];
-    card.number       = dictionary[kNumberKey];
+    card.brand        = nilIfNSNull(dictionary[kBrandKey]);
+    card.fingerprint  = nilIfNSNull(dictionary[kFingerprintKey]);
+    card.firstName    = nilIfNSNull(dictionary[kFirstNameKey]);
+    card.lastName     = nilIfNSNull(dictionary[kLastNameKey]);
+    card.last4        = nilIfNSNull(dictionary[kLast4Key]);
+    card.mask         = nilIfNSNull(dictionary[kMaskKey]);
+    card.month        = nilIfNSNull(dictionary[kMontKey]);
+    card.year         = nilIfNSNull(dictionary[kYearKey]);
+    card.payment      = nilIfNSNull(dictionary[kPaymentKey]);
+    card.securityCode = nilIfNSNull(dictionary[kSecurityCodeKey]);
+    card.number       = nilIfNSNull(dictionary[kNumberKey]);
     
     return card;
 }
