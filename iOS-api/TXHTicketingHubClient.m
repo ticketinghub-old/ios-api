@@ -1226,7 +1226,7 @@
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrdersForMSRCardTrackDataEndpoint];
-    NSDictionary *parameters = @{ @"card" : @{ @"track_data" : msrInfo } };
+    NSDictionary *parameters = @{ @"filters": @{ @"card": @{ @"track_data": msrInfo } } };
     
     NSManagedObjectContext *moc = self.importContext;
     
@@ -1254,6 +1254,42 @@
                           completion(nil,error);
                       }];
 }
+
+- (void)getOrdersForQuery:(NSString *)query completion:(void(^)(NSArray *orders, NSError *error))completion
+{
+    NSParameterAssert(query);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrdersForMSRCardTrackDataEndpoint];
+    NSDictionary *parameters = @{ @"filters": @{ @"search": query } };
+    
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager POST:endpoint
+                   parameters:parameters
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          NSMutableArray *orders = [NSMutableArray array];
+                          
+                          for (NSDictionary *orderDic in responseObject)
+                          {
+                              TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:orderDic inManagedObjectContext:moc];
+                              if (orderDic)
+                                  [orders addObject:order];
+                          }
+                          
+                          NSError *error;
+                          if (![moc save:&error]) {
+                              completion(orders, error);
+                              return;
+                          };
+                          
+                          completion([self objectsInMainManagedObjectContext:orders],nil);
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          completion(nil,error);
+                      }];
+}
+
 
 - (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion
 {

@@ -290,6 +290,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  @warning `msrInfo` and `completion` must not be `nil`.
  */
 - (void)getOrdersForCardMSRString:(NSString *)msrInfo completion:(void(^)(NSArray *orders, NSError *error))completion;
+- (void)getOrdersForQuery:(NSString *)query completion:(void(^)(NSArray *orders, NSError *error))completion;
 
 /** Gets a receipt for given order
  
