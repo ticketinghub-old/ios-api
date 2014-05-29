@@ -33,6 +33,8 @@
 #import "TXHPartialResponsInfo.h"
 #import "TXHEndpointsHelper.h"
 
+#warning - refactor this shit, for crying out loud!
+
 @interface TXHTicketingHubClient ()
 
 @property (readonly, nonatomic) NSString *baseURL;
@@ -1154,6 +1156,42 @@
                             failure:failureBlock];
         
     }
+}
+
+- (void)setAllTicketsAttendedForOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion
+{
+    NSParameterAssert(order);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderAttenAll parameters:@[order.orderId]];
+
+    NSManagedObjectContext *moc = self.importContext;
+    __weak typeof(self) wself = self;
+    
+    [self.sessionManager POST:endpoint
+                   parameters:nil
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          
+                          TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+                          
+                          NSError *error;
+                          BOOL success = [moc save:&error];
+                          
+                          if (!success) {
+                              completion(nil, error);
+                              return;
+                          }
+                          
+                          order = (TXHOrder *)[wself.managedObjectContext existingObjectWithID:order.objectID error:&error];
+                          
+                          completion(order, nil);
+                          
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          
+                          DLog(@"Unable to reserve tickets because: %@", error);
+                          completion(nil, error);
+                      }];
 }
 
 

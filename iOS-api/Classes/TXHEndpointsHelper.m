@@ -58,6 +58,7 @@
         case PaymentGatewaysEndpoint:               return @"supplier/gateways.json";
         case AvailableDatesSearch:                  return @"supplier/products/%@/options/available/dates/search";
         case ProductTicketsSearch:                  return @"supplier/products/:%@/tickets/search.json";
+        case OrderAttenAll:                         return @"/supplier/orders/%@/attend";
     }
     return nil;
 }
@@ -87,6 +88,7 @@
         case AvailableDatesSearch:
         case ProductAvailabilitiesForDateAndTickets:
         case ProductTicketsSearch:
+        case OrderAttenAll:
             return POSTMethod;
         
         case RemoveOrderTicketsEndpointFormat:

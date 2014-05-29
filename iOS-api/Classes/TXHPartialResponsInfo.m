@@ -53,7 +53,7 @@
     NSInteger nextEndRange   = nextStartRange + (endRange - startRange);
     nextEndRange = nextEndRange <= total ? nextEndRange : total;
     
-    self.range = [NSString stringWithFormat:@"%@=%d-%d",acceptRanges, nextStartRange, nextEndRange];
+    self.range = [NSString stringWithFormat:@"%@=%ld-%ld",acceptRanges, (long)nextStartRange, (long)nextEndRange];
     
     return self;
 }

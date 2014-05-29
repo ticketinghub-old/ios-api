@@ -258,7 +258,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  @warning `ticket` and `product` and `completion` must not be `nil`.
  */
 - (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
-
+- (void)setAllTicketsAttendedForOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
 /** Searching server db with provided ticket serial and product
  
