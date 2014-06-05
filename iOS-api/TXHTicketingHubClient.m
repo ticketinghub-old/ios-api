@@ -967,7 +967,7 @@
     
     NSMutableDictionary *filters = [NSMutableDictionary dictionary];
     
-    filters[@"orders"]      = @{ @"confirmed" : @YES, @"active" : @YES };
+    filters[@"order"]      = @{ @"confirmed" : @YES, @"active" : @YES };
     filters[@"expires_at"] = @{ @"gt" : [NSDateFormatter txh_stringFromDate:date]};
     
     if (!attended)
