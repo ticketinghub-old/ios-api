@@ -976,7 +976,7 @@
         filters[@"search"]   = query;
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"order"]   = @[ @"valid_from" ];
+    params[@"order"]   = @[ @"expires_at" ];
     params[@"filters"] = filters;
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
