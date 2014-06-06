@@ -18,6 +18,7 @@
 @class TXHTicketTemplate;
 @class TXHUser;
 @class TXHPartialResponsInfo;
+@class UIImage;
 
 typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
     TXHDocumentFormatPDF,
@@ -320,6 +321,17 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  @warning `order`, `template` and `completion` must not be `nil`.
  */
 - (void)getTicketToPrintForOrder:(TXHOrder *)order withTemplet:(TXHTicketTemplate *)template format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion;
+
+/** Gets ticket image to print for given ticket, templet and format
+ 
+ @param ticket for which the ticket image wil be fetched
+ @param template in wich the ticket will be returned
+ @param format for the ticket (pdf, png, ps)
+ @param completion the completion block to run with the request is completed. The block takes two parameters, a ticket image and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the url object is nil
+ 
+ @warning `ticket`, `template` and `completion` must not be `nil`.
+ */
+- (void)getTicketImageToPrintForTicket:(TXHTicket *)ticket withTemplet:(TXHTicketTemplate *)template format:(TXHDocumentFormat)format completion:(void(^)(UIImage *image,NSError *error))completion;
 
 /** Gets available payment gaytways
  

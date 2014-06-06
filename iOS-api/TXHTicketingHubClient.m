@@ -1508,6 +1508,37 @@
     [downloadTask resume];
 }
 
+- (void)getTicketImageToPrintForTicket:(TXHTicket *)ticket withTemplet:(TXHTicketTemplate *)templet format:(TXHDocumentFormat)format completion:(void(^)(UIImage *image,NSError *error))completion
+{
+    NSParameterAssert(ticket);
+    NSParameterAssert(templet);
+    NSParameterAssert(completion);
+    
+    NSString *extension = [self extendionForFormat:format];
+    NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketImageForTemplateEndpoint
+                                                                parameters:@[ticket.ticketId,extension,templet.templateId]];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
+    
+    NSURL *URL = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    NSString *authHeader = self.sessionManager.requestSerializer.HTTPRequestHeaders[@"Authorization"];
+    [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+    
+    NSURLSessionDownloadTask *downloadTask = [self.sessionManager downloadTaskWithRequest:request
+                                                                                 progress:nil
+                                                                              destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+                                                                                  NSURL *documentsDirectoryPath = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]];
+                                                                                  return [documentsDirectoryPath URLByAppendingPathComponent:[targetPath lastPathComponent]];
+                                                                                  
+                                                                              } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+                                                                                  UIImage * img = [UIImage imageWithContentsOfFile:filePath.path];
+                                                                                  completion(img, error);
+                                                                              }];
+    
+    [downloadTask resume];
+}
+
+
 - (void)getPaymentGatewaysWithCompletion:(void(^)(NSArray *gateways,NSError *error))completion;
 {
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:PaymentGatewaysEndpoint];

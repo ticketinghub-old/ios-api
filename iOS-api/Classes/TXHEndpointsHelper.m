@@ -55,6 +55,7 @@
         case OrderReceiptEndpointFormat:            return @"supplier/orders/%@/receipt.%@";
         case TicketTemplatesEndpoint:               return @"supplier/templates";
         case OrderTicketsForTemplateEndpoint:       return @"supplier/orders/%@/tickets.%@?template=%@";
+        case TicketImageForTemplateEndpoint:        return @"supplier/tickets/%@.%@?template=%@";
         case PaymentGatewaysEndpoint:               return @"supplier/gateways.json";
         case AvailableDatesSearch:                  return @"supplier/products/%@/options/available/dates/search";
         case ProductTicketsSearch:                  return @"supplier/products/:%@/tickets/search.json";
@@ -100,6 +101,7 @@
 
         case OrderReceiptEndpointFormat:
         case OrderTicketsForTemplateEndpoint:
+        case TicketImageForTemplateEndpoint:
             
         default:
             break;
