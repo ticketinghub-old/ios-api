@@ -249,6 +249,17 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 
+/** Provides an array of reserved tickets for provided product and its availability
+ 
+ @param date date for which tickets count should be fetch
+ @param product product for which tickets count should be fetch
+ @param attended value saying if should be returned only attendes or total count
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an tickets array in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the firlds object is not nil (it can be empty)
+ 
+ @warning `date` and `product` and `completion` must not be `nil`.
+ */
+- (void)getTicketsCountFromValidDate:(NSDate *)date forProduct:(TXHProduct *)product attended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion;
+
 /** Marks givent ticket as attended
  
  @param ticket that should be marked as atteneded

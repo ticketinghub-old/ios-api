@@ -1105,6 +1105,38 @@
                      }];
 }
 
+- (void)getTicketsCountFromValidDate:(NSDate *)date forProduct:(TXHProduct *)product attended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion
+{
+    NSParameterAssert(date);
+    NSParameterAssert(product);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketsSearch
+                                                               parameters:@[product.productId]];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSMutableDictionary *filters = [NSMutableDictionary dictionary];
+    filters[@"order"] = @{ @"confirmed" : @YES, @"active" : @YES };
+    filters[@"valid_from"] = [NSDateFormatter txh_stringFromDate:date];
+    if (attended)
+        filters[@"attended"] = @YES;
+    params[@"filters"] = filters;
+    
+    [self.sessionManager POST:endpoint
+                   parameters:params
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          NSMutableArray *objects = responseObject;
+                          TXHPartialResponsInfo *info = [[TXHPartialResponsInfo alloc] initWithNSURLResponse:task.response];
+                          NSInteger total = info.total;
+                          if (!info.hasMore) total = objects.count;
+                          completion(@(total), nil);
+                      }
+                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          completion(nil,error);
+                      }];
+}
+
+
 - (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
 {
     NSParameterAssert(ticket);
