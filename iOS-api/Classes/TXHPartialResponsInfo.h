@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign, readonly) BOOL hasMore;
 @property (nonatomic, strong, readonly) NSString *range;
+@property (nonatomic, readonly        ) NSInteger total;
 
 - (instancetype)initWithNSURLResponse:(NSURLResponse *)response;
 

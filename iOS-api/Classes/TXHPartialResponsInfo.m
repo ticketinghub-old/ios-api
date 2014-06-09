@@ -11,8 +11,8 @@
 @interface TXHPartialResponsInfo ()
 
 @property (nonatomic, assign, readwrite) BOOL hasMore;
-
 @property (nonatomic, strong, readwrite) NSString *range;
+@property (nonatomic, readwrite        ) NSInteger total;
 
 @end
 
@@ -44,6 +44,7 @@
     NSInteger endRange   = [rangeComponents[2] integerValue];
     NSInteger total      = [rangeComponents[3] integerValue];
     
+    self.total = total;
     self.hasMore = total > endRange;
     
     if (!self.hasMore)
