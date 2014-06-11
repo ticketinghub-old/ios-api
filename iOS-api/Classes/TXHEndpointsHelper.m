@@ -33,8 +33,9 @@
 {
     switch (endpoint)
     {
-        case SuppliersEndpoint:                     return @"suppliers";
+        case SuppliersEndpoint:                     return @"user/suppliers";
         case UserEndpoint:                          return @"user";
+        case UserTokenEndpoint:                     return @"user/token";
         case ProductTiersEndpointFormat:            return @"supplier/products/%@/tiers";
         case ProductAvailabilitiesEndpointForamt:   return @"supplier/products/%@/availability";
         case ProductAvailabilitiesForDateAndTickets:return @"supplier/products/%@/options/available/dates/%@/times/search.json";
@@ -94,6 +95,7 @@
         case ProductAvailabilitiesForDateAndTickets:
         case ProductTicketsSearch:
         case OrderAttenAll:
+        case UserTokenEndpoint:
             return POSTMethod;
         
         case RemoveOrderTicketsEndpointFormat:

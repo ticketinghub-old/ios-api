@@ -74,16 +74,29 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
 - (TXHUser *)currentUser;
 
 /** Fetches the suppliers and the associated user from the login parameters.
-
+ 
  On a successful login the `updateUser:completion:` method is called in the background.
  
  @param username The username
  @param password The password
- @param completion The completion block to run when the fetch is completed. This parameter cannot be nil. The block takes two parameters; an array of TXHSuppliers (in the main managed object context) and an error parameter. The error is `nil` for successful requests. On error, this contains an NSError object and the suppliers array is `nil`;
+ @param completion The completion block to run when the fetch is completed. This parameter cannot be nil. The block takes two parameters; an access token and an error parameter. The error is `nil` for successful requests. On error, this contains an NSError object and cannot generate access token;
  
  @warning `username`, `password`, and `completion` must not be nil.
  */
-- (void)fetchSuppliersForUsername:(NSString *)username password:(NSString *)password withCompletion:(void(^)(NSArray *suppliers, NSError *error))completion;
+
+- (void)generateAccessTokenForUsername:(NSString *)username passwors:(NSString *)password withCompletion:(void (^)(NSString *, NSError *))completion;
+
+/** Fetches the suppliers and the associated user from the login parameters.
+
+ On a successful login the `updateUser:completion:` method is called in the background.
+ 
+ @param username The username
+ @param accessToken The accessToken
+ @param completion The completion block to run when the fetch is completed. This parameter cannot be nil. The block takes two parameters; an array of TXHSuppliers (in the main managed object context) and an error parameter. The error is `nil` for successful requests. On error, this contains an NSError object and the suppliers array is `nil`;
+ 
+ @warning `username`, `accessToken`, and `completion` must not be nil.
+ */
+- (void)fetchSuppliersForUsername:(NSString *)username accessToken:(NSString *)accessToken withCompletion:(void (^)(NSArray *, NSError *))completion;
 
 /** Fetches the user details for a TXHUser object.
 

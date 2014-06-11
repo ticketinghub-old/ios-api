@@ -222,17 +222,43 @@
 
 #pragma mark - Suppliers, User, Products
 
-- (void)fetchSuppliersForUsername:(NSString *)username password:(NSString *)password withCompletion:(void (^)(NSArray *, NSError *))completion
+- (void)generateAccessTokenForUsername:(NSString *)username passwors:(NSString *)password withCompletion:(void (^)(NSString *, NSError *))completion
 {
     NSParameterAssert(username);
     NSParameterAssert(password);
     NSParameterAssert(completion);
 
-    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
+    NSMutableDictionary * params = [NSMutableDictionary dictionary];
+    params[@"grant_type"] = password;
+    params[@"username"]   = username;
+    params[@"password"]   = password;
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:UserTokenEndpoint];
+    
+    [self.sessionManager POST:endpoint
+                   parameters:params
+                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                          NSDictionary * response = responseObject;
+                          NSString * accessToken    = response[@"access_token"];
+                          completion(accessToken, nil);
+                      } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          DLog(@"Unable to get user token because: %@", error);
+                          completion(nil, error);
+                      }];
+    
+}
+
+- (void)fetchSuppliersForUsername:(NSString *)username accessToken:(NSString *)accessToken withCompletion:(void (^)(NSArray *, NSError *))completion
+{
+    NSParameterAssert(username);
+    NSParameterAssert(accessToken);
+    NSParameterAssert(completion);
+
+//    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:SuppliersEndpoint];
     
-    [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.sessionManager GET:endpoint parameters:@{@"access_token" : accessToken} success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSArray *suppliers = [self suppliersFromResponseArray:responseObject inManagedObjectContext:self.importContext];
         
