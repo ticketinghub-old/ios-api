@@ -256,8 +256,6 @@
     NSParameterAssert(username);
     NSParameterAssert(accessToken);
     NSParameterAssert(completion);
-
-//    [self.sessionManager.requestSerializer setAuthorizationHeaderFieldWithUsername:username password:password];
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:SuppliersEndpoint];
     
@@ -280,7 +278,7 @@
             return;
         }
         
-        [self updateUser:user completion:^(TXHUser *user, NSError *error) {
+        [self updateUser:user accessToken:accessToken completion:^(TXHUser *user, NSError *error) {
             if (error) {
                 DLog(@"Unable to update the user because: %@", error);
             }
@@ -310,14 +308,15 @@
 }
 
 
-- (void)updateUser:(TXHUser *)user completion:(void (^)(TXHUser *, NSError *))completion
+- (void)updateUser:(TXHUser *)user accessToken:(NSString *)accessToken completion:(void (^)(TXHUser *, NSError *))completion
 {
     NSParameterAssert(user);
+    NSParameterAssert(accessToken);
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:UserEndpoint];
     
-    [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [self.sessionManager GET:endpoint parameters:@{@"access_token" : accessToken} success:^(NSURLSessionDataTask *task, id responseObject) {
         TXHUser *updatedUser = (TXHUser *)[self.importContext existingObjectWithID:user.objectID error:NULL];
         [updatedUser updateWithDictionary:responseObject];
 

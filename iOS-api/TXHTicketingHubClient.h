@@ -103,11 +103,12 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  The basic TXHUser object is created at login with just the email address, this fetches the fields required to create the full name. It uses an access token from a random object from it's list of suppliers.
  
  @param user the partially created TXHUser object. Can be on any context as lonimportg as it has been saved.
+ @param accessToken the accessToken
  @param completion The completion block to run when the user object has been updated which takes a user and an error parameter. The TXHUser object is in the main managed object context.
  
- @warning `user` or `completion` must not be `nil`.
+ @warning `user`, `accessToken` or `completion` must not be `nil`.
  */
-- (void)updateUser:(TXHUser *)user completion:(void(^)(TXHUser *user, NSError *error))completion;
+- (void)updateUser:(TXHUser *)user accessToken:(NSString *)accessToken completion:(void (^)(TXHUser *, NSError *))completion;
 
 /** Update the tiers for a product.
 
