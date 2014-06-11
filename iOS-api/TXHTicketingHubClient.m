@@ -312,11 +312,15 @@
     NSParameterAssert(supplier);
     NSParameterAssert(completion);
     
-    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:UserEndpoint];
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductsForSupplierEndpointFormat];
     
     [self.sessionManager GET:endpoint parameters:@{@"access_token" : supplier.accessToken} success:^(NSURLSessionDataTask *task, id responseObject) {
         TXHSupplier *updatedSupplier = (TXHSupplier *)[self.importContext existingObjectWithID:supplier.objectID error:NULL];
-        updatedSupplier.products = responseObject;
+        
+        for (NSDictionary *productDictionary in responseObject) {
+            TXHProduct *product = [TXHProduct createWithDictionary:productDictionary inManagedObjectContext:self.importContext];
+            product.supplier = updatedSupplier;
+        }
         
         NSError *error;
         BOOL success = [self.importContext save:&error];
