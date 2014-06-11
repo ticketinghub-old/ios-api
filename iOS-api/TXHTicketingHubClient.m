@@ -1144,7 +1144,7 @@
                      }];
 }
 
-- (void)getTicketsCountFromValidDate:(NSDate *)date forProduct:(TXHProduct *)product attended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion
+- (void)getTicketsCountFromValidDate:(NSDate *)date forProduct:(TXHProduct *)product onlyAttended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion
 {
     NSParameterAssert(date);
     NSParameterAssert(product);

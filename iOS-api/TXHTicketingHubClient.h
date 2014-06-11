@@ -267,7 +267,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  
  @warning `date` and `product` and `completion` must not be `nil`.
  */
-- (void)getTicketsCountFromValidDate:(NSDate *)date forProduct:(TXHProduct *)product attended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion;
+- (void)getTicketsCountFromValidDate:(NSDate *)date forProduct:(TXHProduct *)product onlyAttended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion;
 
 /** Marks givent ticket as attended
  
