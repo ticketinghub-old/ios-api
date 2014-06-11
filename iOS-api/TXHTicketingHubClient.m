@@ -680,12 +680,12 @@
 
 #pragma mark - Upgrades
 
-- (void)upgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion
+- (void)availableUpgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion
 {
     NSParameterAssert(ticket);
     NSParameterAssert(completion);
 
-    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketUpgradesEndpointFormat
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketAvailableUpgradesEndpointFormat
                                                                parameters:@[ticket.ticketId]];
     NSManagedObjectContext *moc = self.importContext;
 
@@ -717,6 +717,45 @@
         completion(nil, error);
     }];
 }
+
+- (void)upgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion
+{
+    NSParameterAssert(ticket);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketUpgradesEndpointFormat
+                                                               parameters:@[ticket.ticketId]];
+    NSManagedObjectContext *moc = self.importContext;
+    
+    [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSMutableArray *upgrades = [NSMutableArray array];
+        
+        for (NSDictionary *dic in responseObject)
+        {
+            TXHUpgrade *upgrade = [TXHUpgrade updateWithDictionaryCreateIfNeeded:dic
+                                                          inManagedObjectContext:moc];
+            if (upgrade)
+                [upgrades addObject:upgrade];
+        }
+        
+        NSError *error;
+        BOOL success = [moc save:&error];
+        
+        if (!success) {
+            completion(nil, error);
+            return;
+        }
+        
+        NSArray *upgradeArray = [self objectsInMainManagedObjectContext:upgrades];
+        completion(upgradeArray,nil);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        DLog(@"Unable to get the user because: %@", error);
+        completion(nil, error);
+    }];
+}
+
 
 - (void)updateOrder:(TXHOrder *)order withUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void(^)(TXHOrder *order, NSError *error))completion
 {

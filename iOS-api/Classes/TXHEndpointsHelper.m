@@ -40,7 +40,8 @@
         case ProductAvailabilitiesForDateAndTickets:return @"supplier/products/%@/options/available/dates/%@/times/search.json";
         case ReserveOrderTicketsEndpoint:           return @"supplier/orders";
         case RemoveOrderTicketsEndpointFormat:      return @"supplier/orders/%@";
-        case TicketUpgradesEndpointFormat:          return @"supplier/tickets/%@/available/upgrades";
+        case TicketAvailableUpgradesEndpointFormat: return @"supplier/tickets/%@/available/upgrades";
+        case TicketUpgradesEndpointFormat:          return @"supplier/tickets/%@/upgrades";
         case TicketFieldsEndpointFormat:            return @"supplier/tickets/%@/fields";
         case UpdateOrderEndpointFormat:             return @"supplier/orders/%@";
         case TicketOwnerFieldsEndpointFormat:       return @"supplier/orders/%@/fields";
@@ -58,8 +59,8 @@
         case TicketImageForTemplateEndpoint:        return @"supplier/tickets/%@.%@?template=%@";
         case PaymentGatewaysEndpoint:               return @"supplier/gateways.json";
         case AvailableDatesSearch:                  return @"supplier/products/%@/options/available/dates/search";
-        case ProductTicketsSearch:                  return @"supplier/products/:%@/tickets/search.json";
-        case OrderAttenAll:                         return @"/supplier/orders/%@/attend";
+        case ProductTicketsSearch:                  return @"supplier/products/%@/tickets/search.json";
+        case OrderAttenAll:                         return @"supplier/orders/%@/attend";
     }
     return nil;
 }
@@ -71,6 +72,7 @@
         case UserEndpoint:
         case ProductTiersEndpointFormat:
         case ProductAvailabilitiesEndpointForamt:
+        case TicketAvailableUpgradesEndpointFormat:
         case TicketUpgradesEndpointFormat:
         case TicketFieldsEndpointFormat:
         case TicketOwnerFieldsEndpointFormat:

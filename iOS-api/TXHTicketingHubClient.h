@@ -154,6 +154,15 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  
  @warning `ticket` or `completion` must not be `nil`.
  */
+- (void)availableUpgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion;
+
+/** Provides an array of upgrades for given ticket
+ 
+ @param ticket object for which upgrades will be fetched
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an upgrades array in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
+ 
+ @warning `ticket` or `completion` must not be `nil`.
+ */
 - (void)upgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion;
 
 
