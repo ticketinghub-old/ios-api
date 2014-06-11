@@ -135,6 +135,9 @@
     sessionManager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
     [sessionManager.requestSerializer setValue:[[NSLocale preferredLanguages] firstObject]
                             forHTTPHeaderField:@"Accept-Language"];
+    [sessionManager.requestSerializer setValue:@"v1"
+                            forHTTPHeaderField:@"Accept-Version"];
+    
     
     return sessionManager;
 }
@@ -222,14 +225,14 @@
 
 #pragma mark - Suppliers, User, Products
 
-- (void)generateAccessTokenForUsername:(NSString *)username passwors:(NSString *)password withCompletion:(void (^)(NSString *, NSError *))completion
+- (void)generateAccessTokenForUsername:(NSString *)username password:(NSString *)password withCompletion:(void (^)(NSString *, NSError *))completion
 {
     NSParameterAssert(username);
     NSParameterAssert(password);
     NSParameterAssert(completion);
 
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    params[@"grant_type"] = password;
+    params[@"grant_type"] = @"password";
     params[@"username"]   = username;
     params[@"password"]   = password;
     
@@ -1059,6 +1062,7 @@
     [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"v1" forHTTPHeaderField:@"Accept-Version"];
     if (info)
         [request addValue:info.range forHTTPHeaderField:@"Range"];
     
@@ -1447,6 +1451,7 @@
     [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"v1" forHTTPHeaderField:@"Accept-Version"];
     if (info)
         [request addValue:info.range forHTTPHeaderField:@"Range"];
     

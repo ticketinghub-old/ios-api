@@ -84,7 +84,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  @warning `username`, `password`, and `completion` must not be nil.
  */
 
-- (void)generateAccessTokenForUsername:(NSString *)username passwors:(NSString *)password withCompletion:(void (^)(NSString *, NSError *))completion;
+- (void)generateAccessTokenForUsername:(NSString *)username password:(NSString *)password withCompletion:(void (^)(NSString *, NSError *))completion;
 
 /** Fetches the suppliers and the associated user from the login parameters.
 
