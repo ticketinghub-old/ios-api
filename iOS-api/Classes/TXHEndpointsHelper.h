@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, TXHEndpoint)
     ProductTiersEndpointFormat,                 // requires 1 parameter: productID
     ProductAvailabilitiesEndpointForamt,        // requires 1 parameter: productID
     ReserveOrderTicketsEndpoint,                //
+    TicketsForOrderEndpointFormat,              // requires 1 parameter: orderID
     RemoveOrderTicketsEndpointFormat,           // requires 1 parameter: orderID
     TicketAvailableUpgradesEndpointFormat,      // requires 1 parameter: ticketID
     TicketUpgradesEndpointFormat,               // requires 1 parameter: ticketID

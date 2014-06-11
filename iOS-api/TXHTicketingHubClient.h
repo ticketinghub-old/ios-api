@@ -258,16 +258,34 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion;
 
-/** Provides an array of reserved tickets for provided product and its availability
+/** Provides tickets count for given valid date and product
  
  @param date date for which tickets count should be fetch
  @param product product for which tickets count should be fetch
- @param attended value saying if should be returned only attendes or total count
- @param completion the completion block to run with the request is completed. The block takes two parameters, an tickets array in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the firlds object is not nil (it can be empty)
+ @param attendees value saying if should be returned only attendes or total count
+ @param completion the completion block to run with the request is completed. The block takes two parameters, tickets count and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the firlds object is not nil (it can be empty)
  
  @warning `date` and `product` and `completion` must not be `nil`.
  */
-- (void)getTicketsCountFromValidDate:(NSDate *)date forProduct:(TXHProduct *)product onlyAttended:(BOOL)attended completion:(void(^)(NSNumber *count, NSError *error))completion;
+- (void)getTicketsCountFromValidDate:(NSDate *)date forProduct:(TXHProduct *)product onlyAttendees:(BOOL)attendees completion:(void(^)(NSNumber *count, NSError *error))completion;
+
+/** Provides tickets count for given order
+ 
+ @param order order for which tickets count should be fetch
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an tickets count and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the firlds object is not nil (it can be empty)
+ 
+ @warning `order` and `completion` must not be `nil`.
+ */
+- (void)getTicketsCountForOrder:(TXHOrder *)order completion:(void(^)(NSNumber *count, NSError *error))completion;
+
+/** Provides attendees count for given order
+ 
+ @param order order for which tickets count should be fetch
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an tickets count and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the firlds object is not nil (it can be empty)
+ 
+ @warning `order` and `completion` must not be `nil`.
+ */
+- (void)getAttendeesCountForOrder:(TXHOrder *)order completion:(void(^)(NSNumber *count, NSError *error))completion;
 
 /** Marks givent ticket as attended
  

@@ -38,6 +38,7 @@
         case ProductTiersEndpointFormat:            return @"supplier/products/%@/tiers";
         case ProductAvailabilitiesEndpointForamt:   return @"supplier/products/%@/availability";
         case ProductAvailabilitiesForDateAndTickets:return @"supplier/products/%@/options/available/dates/%@/times/search.json";
+        case TicketsForOrderEndpointFormat:         return @"supplier/order/%@/tickets";
         case ReserveOrderTicketsEndpoint:           return @"supplier/orders";
         case RemoveOrderTicketsEndpointFormat:      return @"supplier/orders/%@";
         case TicketAvailableUpgradesEndpointFormat: return @"supplier/tickets/%@/available/upgrades";
@@ -82,6 +83,7 @@
         case OrderForTicketProductEndpointFormat:
         case PaymentGatewaysEndpoint:
         case TicketTemplatesEndpoint:
+        case TicketsForOrderEndpointFormat:
             return GETMethod;
             
         case ReserveOrderTicketsEndpoint:
