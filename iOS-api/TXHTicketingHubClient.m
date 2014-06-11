@@ -1245,18 +1245,18 @@
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketsForOrderEndpointFormat
                                                                parameters:@[order.orderId]];
     
-    [self.sessionManager POST:endpoint
-                   parameters:@{}
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
-                          NSMutableArray *objects = responseObject;
-                          TXHPartialResponsInfo *info = [[TXHPartialResponsInfo alloc] initWithNSURLResponse:task.response];
-                          NSInteger total = info.total;
-                          if (!info.hasMore) total = objects.count;
-                          completion(@(total), nil);
-                      }
-                      failure:^(NSURLSessionDataTask *task, NSError *error) {
-                          completion(nil,error);
-                      }];
+    [self.sessionManager GET:endpoint
+                  parameters:@{}
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         NSMutableArray *objects = responseObject;
+                         TXHPartialResponsInfo *info = [[TXHPartialResponsInfo alloc] initWithNSURLResponse:task.response];
+                         NSInteger total = info.total;
+                         if (!info.hasMore) total = objects.count;
+                         completion(@(total), nil);
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         completion(nil,error);
+                     }];
 }
 
 - (void)getAttendeesCountForOrder:(TXHOrder *)order completion:(void (^)(NSNumber *, NSError *))completion
@@ -1266,19 +1266,22 @@
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketsForOrderEndpointFormat
                                                                parameters:@[order.orderId]];
-    
-    [self.sessionManager POST:endpoint
-                   parameters:@{@"filter[attended]": @NO}
-                      success:^(NSURLSessionDataTask *task, id responseObject) {
-                          NSMutableArray *objects = responseObject;
-                          TXHPartialResponsInfo *info = [[TXHPartialResponsInfo alloc] initWithNSURLResponse:task.response];
-                          NSInteger total = info.total;
-                          if (!info.hasMore) total = objects.count;
-                          completion(@(total), nil);
-                      }
-                      failure:^(NSURLSessionDataTask *task, NSError *error) {
-                          completion(nil,error);
-                      }];
+    NSMutableDictionary * filter = [NSMutableDictionary dictionary];
+    filter[@"attended"] = @YES;
+    NSMutableDictionary * params = [NSMutableDictionary dictionary];
+    params[@"filters"] = filter;
+    [self.sessionManager GET:endpoint
+                  parameters:params
+                     success:^(NSURLSessionDataTask *task, id responseObject) {
+                         NSMutableArray *objects = responseObject;
+                         TXHPartialResponsInfo *info = [[TXHPartialResponsInfo alloc] initWithNSURLResponse:task.response];
+                         NSInteger total = info.total;
+                         if (!info.hasMore) total = objects.count;
+                         completion(@(total), nil);
+                     }
+                     failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         completion(nil,error);
+                     }];
 }
 
 
