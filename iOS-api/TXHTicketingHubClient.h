@@ -98,6 +98,18 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)fetchSuppliersForUsername:(NSString *)username accessToken:(NSString *)accessToken withCompletion:(void (^)(NSArray *, NSError *))completion;
 
+/** Fetches the products for a TXHSupplier object.
+ 
+ The basic TXHUser object is created at login with just the email address, this fetches the fields required to create the full name. It uses an access token from a random object from it's list of suppliers.
+ 
+ @param supplier the supplier for which products will be fetched
+ @param completion The completion block to run when the suplier object has been updated which takes a suplier and an error parameter. The TXHUser object is in the main managed object context.
+ 
+ @warning `supplier` or `completion` must not be `nil`.
+ */
+
+- (void)productsForSupplier:(TXHSupplier *)supplier withCompletion:(void (^)(TXHSupplier *supplier, NSError *error))completion;
+
 /** Fetches the user details for a TXHUser object.
 
  The basic TXHUser object is created at login with just the email address, this fetches the fields required to create the full name. It uses an access token from a random object from it's list of suppliers.
@@ -108,7 +120,8 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  
  @warning `user`, `accessToken` or `completion` must not be `nil`.
  */
-- (void)updateUser:(TXHUser *)user accessToken:(NSString *)accessToken completion:(void (^)(TXHUser *, NSError *))completion;
+
+- (void)updateUser:(TXHUser *)user accessToken:(NSString *)accessToken completion:(void (^)(TXHUser *user, NSError *error))completion;
 
 /** Update the tiers for a product.
 

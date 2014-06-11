@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, TXHEndpoint)
     SuppliersEndpoint,                          //
     UserEndpoint,                               //
     UserTokenEndpoint,                          //
+    ProductsForSupplierEndpointFormat,           //
     ProductTiersEndpointFormat,                 // requires 1 parameter: productID
     ProductAvailabilitiesEndpointForamt,        // requires 1 parameter: productID
     ReserveOrderTicketsEndpoint,                //

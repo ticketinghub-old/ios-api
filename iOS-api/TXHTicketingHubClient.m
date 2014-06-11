@@ -307,6 +307,35 @@
     return [suppliers copy];
 }
 
+- (void)productsForSupplier:(TXHSupplier *)supplier withCompletion:(void (^)(TXHSupplier *, NSError *))completion
+{
+    NSParameterAssert(supplier);
+    NSParameterAssert(completion);
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:UserEndpoint];
+    
+    [self.sessionManager GET:endpoint parameters:@{@"access_token" : supplier.accessToken} success:^(NSURLSessionDataTask *task, id responseObject) {
+        TXHSupplier *updatedSupplier = (TXHSupplier *)[self.importContext existingObjectWithID:supplier.objectID error:NULL];
+        updatedSupplier.products = responseObject;
+        
+        NSError *error;
+        BOOL success = [self.importContext save:&error];
+        
+        if (!success)
+        {
+            completion(nil, error);
+            return;
+        }
+        
+        completion([[self objectsInMainManagedObjectContext:@[updatedSupplier]] firstObject], nil);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        DLog(@"Unable to get the user because: %@", error);
+        completion(nil, error);
+    }];
+
+}
+
 
 - (void)updateUser:(TXHUser *)user accessToken:(NSString *)accessToken completion:(void (^)(TXHUser *, NSError *))completion
 {

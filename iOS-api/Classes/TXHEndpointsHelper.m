@@ -36,6 +36,7 @@
         case SuppliersEndpoint:                     return @"user/suppliers";
         case UserEndpoint:                          return @"user";
         case UserTokenEndpoint:                     return @"user/token";
+        case ProductsForSupplierEndpointFormat:     return @"supplier/products";
         case ProductTiersEndpointFormat:            return @"supplier/products/%@/tiers";
         case ProductAvailabilitiesEndpointForamt:   return @"supplier/products/%@/availability";
         case ProductAvailabilitiesForDateAndTickets:return @"supplier/products/%@/options/available/dates/%@/times/search.json";
@@ -85,6 +86,7 @@
         case PaymentGatewaysEndpoint:
         case TicketTemplatesEndpoint:
         case TicketsForOrderEndpointFormat:
+        case ProductsForSupplierEndpointFormat:
             return GETMethod;
             
         case ReserveOrderTicketsEndpoint:
