@@ -1411,14 +1411,13 @@
 }
 
 
-- (void)getOrderForTicekt:(TXHTicket *)ticket withProduct:(TXHProduct *)product completion:(void(^)(TXHOrder *order, NSError *error))completion
+- (void)getOrderForTicket:(TXHTicket *)ticket completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
     NSParameterAssert(ticket);
-    NSParameterAssert(product);
     NSParameterAssert(completion);
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderForTicketProductEndpointFormat
-                                                               parameters:@[product.productId, ticket.ticketId]];
+                                                               parameters:@[ticket.ticketId]];
     
     NSManagedObjectContext *moc = self.importContext;
     __weak typeof(self) wself = self;

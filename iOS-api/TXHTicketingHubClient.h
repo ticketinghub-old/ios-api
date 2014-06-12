@@ -337,15 +337,14 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
 - (void)searchForTicketWithSeqId:(NSNumber *)seqID withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
 
 
-/** Gets a order for a given ticket and product
+/** Gets a order for a given ticket
  
  @param ticket for which the order wil be fetched
- @param product for which the ticket belongs
  @param completion the completion block to run with the request is completed. The block takes two parameters, an order in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is nil
  
- @warning `ticket` and `product` and `completion` must not be `nil`.
+ @warning `ticket` and `completion` must not be `nil`.
  */
-- (void)getOrderForTicekt:(TXHTicket *)ticket withProduct:(TXHProduct *)product completion:(void(^)(TXHOrder *order, NSError *error))completion;
+- (void)getOrderForTicket:(TXHTicket *)ticket completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
 
 /** Gets list of orders connected to given credit card info (msr trac from the card)
