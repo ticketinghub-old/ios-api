@@ -1349,13 +1349,14 @@
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderAttenAll parameters:@[order.orderId]];
 
     NSManagedObjectContext *moc = self.importContext;
-    __weak typeof(self) wself = self;
+    __unused __weak typeof(self) wself = self;
     
     [self.sessionManager POST:endpoint
                    parameters:nil
                       success:^(NSURLSessionDataTask *task, id responseObject) {
                           
-                          TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
+                          for (NSDictionary * dict in responseObject)
+                              [TXHTicket updateWithDictionaryOrCreateIfNeeded:dict inManagedObjectContext:moc];
                           
                           NSError *error;
                           BOOL success = [moc save:&error];
@@ -1364,8 +1365,6 @@
                               completion(nil, error);
                               return;
                           }
-                          
-                          order = (TXHOrder *)[wself.managedObjectContext existingObjectWithID:order.objectID error:&error];
                           
                           completion(order, nil);
                           
