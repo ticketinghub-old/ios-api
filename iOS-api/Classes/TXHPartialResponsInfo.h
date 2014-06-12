@@ -11,8 +11,9 @@
 @interface TXHPartialResponsInfo : NSObject
 
 @property (nonatomic, assign, readonly) BOOL hasMore;
-@property (nonatomic, strong, readonly) NSString *range;
-@property (nonatomic, readonly        ) NSInteger total;
+@property (nonatomic, assign, readonly) NSInteger total;
+@property (nonatomic, assign, readonly) NSInteger limit;
+@property (nonatomic, assign, readonly) NSInteger offset;
 
 - (instancetype)initWithNSURLResponse:(NSURLResponse *)response;
 

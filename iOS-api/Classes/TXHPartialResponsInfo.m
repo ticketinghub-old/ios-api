@@ -11,8 +11,9 @@
 @interface TXHPartialResponsInfo ()
 
 @property (nonatomic, assign, readwrite) BOOL hasMore;
-@property (nonatomic, strong, readwrite) NSString *range;
-@property (nonatomic, readwrite        ) NSInteger total;
+@property (nonatomic, assign, readwrite) NSInteger total;
+@property (nonatomic, assign, readwrite) NSInteger limit;
+@property (nonatomic, assign, readwrite) NSInteger offset;
 
 @end
 
@@ -32,29 +33,26 @@
     
     NSDictionary* headers = [(NSHTTPURLResponse *)response allHeaderFields];
     
-    NSString *acceptRanges = headers[@"Accept-Ranges"];
-    NSString *contentRange = headers[@"Content-Range"];
+    NSString *totalString  = headers[@"X-Row-Count"];
+    NSString *limitString  = headers[@"X-Limit"];
+    NSString *offsetString = headers[@"X-Offset"];
     
-    NSArray *rangeComponents = [contentRange componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" -/"]];
     
-    if ([rangeComponents count] != 4)
-        return nil;
-    
-    NSInteger startRange = [rangeComponents[1] integerValue];
-    NSInteger endRange   = [rangeComponents[2] integerValue];
-    NSInteger total      = [rangeComponents[3] integerValue];
+    NSInteger limit  = [totalString integerValue];
+    NSInteger offset = [limitString integerValue];
+    NSInteger total  = [offsetString integerValue];
     
     self.total = total;
-    self.hasMore = total > endRange;
+    self.hasMore = total > limit + offset;
     
     if (!self.hasMore)
         return self;
     
-    NSInteger nextStartRange = endRange + 1;
-    NSInteger nextEndRange   = nextStartRange + (endRange - startRange);
-    nextEndRange = nextEndRange <= total ? nextEndRange : total;
+    NSInteger nextLimit  = limit;
+    NSInteger nextOffset = offset + limit;
     
-    self.range = [NSString stringWithFormat:@"%@=%ld-%ld",acceptRanges, (long)nextStartRange, (long)nextEndRange];
+    self.limit  = nextLimit;
+    self.offset = nextOffset;
     
     return self;
 }
