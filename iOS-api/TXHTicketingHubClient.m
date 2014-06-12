@@ -263,8 +263,6 @@
         
         NSArray *suppliers = [self suppliersFromResponseArray:responseObject inManagedObjectContext:self.importContext];
         
-        [self setAuthorizationTokenForSupplier:[suppliers firstObject]];
-        
         TXHUser *user = [TXHUser updateWithDictionaryCreateIfNeeded:@{@"email" : username}
                                              inManagedObjectContext:self.importContext];
         user.suppliers = [NSSet setWithArray:suppliers];
@@ -1096,7 +1094,10 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:@"v1" forHTTPHeaderField:@"Accept-Version"];
     if (info)
-        [request addValue:info.range forHTTPHeaderField:@"Range"];
+    {
+        [request addValue:[NSString stringWithFormat:@"%ld", info.limit] forHTTPHeaderField:@"X-Limit"];
+        [request addValue:[NSString stringWithFormat:@"%ld", info.offset] forHTTPHeaderField:@"X-Offset"];
+    }
     
     NSError *error;
     NSData *postData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
@@ -1488,7 +1489,10 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request addValue:@"v1" forHTTPHeaderField:@"Accept-Version"];
     if (info)
-        [request addValue:info.range forHTTPHeaderField:@"Range"];
+    {
+        [request addValue:[NSString stringWithFormat:@"%ld", info.limit] forHTTPHeaderField:@"X-Limit"];
+        [request addValue:[NSString stringWithFormat:@"%ld", info.offset] forHTTPHeaderField:@"X-Offset"];
+    }
     
     NSError *error;
     NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:&error];
@@ -1601,7 +1605,7 @@
     NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL,endpoint];
     
     if (width > 0 && dpi > 0)
-        urlString = [urlString stringByAppendingFormat:@"?size=%dmm&dpi=%d",width,dpi];
+        urlString = [urlString stringByAppendingFormat:@"?size=%lumm&dpi=%lu",(unsigned long)width,(unsigned long)dpi];
     
     NSURL *URL = [NSURL URLWithString:urlString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
