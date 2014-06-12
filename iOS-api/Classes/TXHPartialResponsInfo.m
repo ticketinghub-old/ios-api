@@ -38,9 +38,9 @@
     NSString *offsetString = headers[@"X-Offset"];
     
     
-    NSInteger limit  = [totalString integerValue];
-    NSInteger offset = [limitString integerValue];
-    NSInteger total  = [offsetString integerValue];
+    NSInteger limit  = [limitString integerValue];
+    NSInteger offset = [offsetString integerValue];
+    NSInteger total  = [totalString integerValue];
     
     self.total = total;
     self.hasMore = total > limit + offset;
