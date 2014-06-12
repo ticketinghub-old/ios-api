@@ -54,7 +54,7 @@
         case UnattendProductTicketEndpointFormat:   return @"supplier/products/%@/tickets/%@/attend";
         case AttendProductTicketEndpointFormat:     return @"supplier/products/%@/tickets/%@/attend";
         case ProductTicketForSeqIdEndpointFormat:   return @"supplier/products/%@/tickets/%@";
-        case OrderForTicketProductEndpointFormat:   return @"supplier/products/%@/tickets/%@/order";
+        case OrderForTicketProductEndpointFormat:   return @"supplier/tickets/%@/order";
         case OrdersForMSRCardTrackDataEndpoint:     return @"supplier/orders/search.json";
         case OrderReceiptEndpointFormat:            return @"supplier/orders/%@/receipt.%@";
         case TicketTemplatesEndpoint:               return @"supplier/templates";
