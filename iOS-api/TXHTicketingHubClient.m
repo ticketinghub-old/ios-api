@@ -1070,12 +1070,13 @@
     
     if (!attended)
         filters[@"attended"] = @NO;
-    if ([query length])
-        filters[@"search"]   = query;
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"order"]   = @[ @"valid_from" ];
     params[@"filters"] = filters;
+    
+    if ([query length])
+        params[@"search"] = query;
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
     
@@ -1460,7 +1461,7 @@
     NSParameterAssert(query);
     NSParameterAssert(completion);
     
-    NSDictionary *parameters = @{ @"filters": @{ @"search": query } };
+    NSDictionary *parameters = @{ @"search": query };
     
     [self getOrdersWithParameters:parameters
                    paginationInfo:info
