@@ -42,6 +42,7 @@
 #pragma mark - Public methods
 
 - (id)updateWithDictionary:(NSDictionary *)dictionary {
+    dictionary = [[self class] filterDictionary:dictionary WithKeys:[[[self class] mappingDictionary] allKeys]];
     NSDictionary *userDictionary = [dictionary jcsRemapKeysWithMapping:[[self class] mappingDictionary] removingNullValues:YES];
 
     [self setValuesForKeysWithDictionary:userDictionary];
@@ -78,6 +79,16 @@
     }
 
     return dict;
+}
+
++ (NSDictionary *)filterDictionary:(NSDictionary *)dict WithKeys:(NSArray *)keys
+{
+    NSMutableDictionary * mutableDict = [NSMutableDictionary dictionary];
+    for (id key in keys) {
+        id value = dict[key];
+        if (value) mutableDict[key] = value;
+    }
+    return [mutableDict copy];
 }
 
 + (instancetype)userWithEmail:(NSString *)email inManagedObjectContext:(NSManagedObjectContext *)moc {
