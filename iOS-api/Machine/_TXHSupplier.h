@@ -7,7 +7,6 @@
 extern const struct TXHSupplierAttributes {
 	__unsafe_unretained NSString *accessToken;
 	__unsafe_unretained NSString *country;
-	__unsafe_unretained NSString *currency;
 	__unsafe_unretained NSString *refreshToken;
 	__unsafe_unretained NSString *timeZoneName;
 } TXHSupplierAttributes;
@@ -59,16 +58,6 @@ extern const struct TXHSupplierFetchedProperties {
 
 
 //- (BOOL)validateCountry:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* currency;
-
-
-
-//- (BOOL)validateCurrency:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -138,12 +127,6 @@ extern const struct TXHSupplierFetchedProperties {
 
 - (NSString*)primitiveCountry;
 - (void)setPrimitiveCountry:(NSString*)value;
-
-
-
-
-- (NSString*)primitiveCurrency;
-- (void)setPrimitiveCurrency:(NSString*)value;
 
 
 

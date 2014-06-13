@@ -9,7 +9,6 @@ static NSString * const kTokenKey        = @"token";
 static NSString * const kAccessTokenKey  = @"access_token";
 static NSString * const kRefreshTokenKey = @"refresh_token";
 static NSString * const kCountryKey      = @"country";
-static NSString * const kCurrencyKey     = @"currency";
 static NSString * const kTimeZoneKey     = @"time_zone";
 static NSString * const kProductsKey     = @"products";
 static NSString * const kContactKey      = @"contact";
@@ -37,7 +36,6 @@ static NSString * const kContactKey      = @"contact";
     supplier.accessToken  = nilIfNSNull(dictionary[kTokenKey][kAccessTokenKey]);
     supplier.refreshToken = nilIfNSNull(dictionary[kTokenKey][kRefreshTokenKey]);
     supplier.country      = nilIfNSNull(dictionary[kCountryKey]);
-    supplier.currency     = nilIfNSNull(dictionary[kCurrencyKey]);
     supplier.timeZoneName = nilIfNSNull(dictionary[kTimeZoneKey]);
 
     NSArray *products = dictionary[kProductsKey];

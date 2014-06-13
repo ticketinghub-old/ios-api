@@ -8,6 +8,7 @@ static NSString * const kIdKey                    = @"id";
 static NSString * const kNameKey                  = @"name";
 static NSString * const kAvailabilitiesUpdatedKey = @"availabilities_updated";
 static NSString * const kContactKey               = @"contact";
+static NSString * const kCurrencyKey     = @"currency";
 
 
 @interface TXHProduct ()
@@ -31,6 +32,7 @@ static NSString * const kContactKey               = @"contact";
     product.productId             = nilIfNSNull(dictionary[kIdKey]);
     product.name                  = nilIfNSNull(dictionary[kNameKey]);
     product.availabilitiesUpdated = [NSDateFormatter txh_dateFromString:nilIfNSNull(dictionary[kAvailabilitiesUpdatedKey])];
+    product.currency     = nilIfNSNull(dictionary[kCurrencyKey]);
     
     NSDictionary *contact = dictionary[kContactKey];
     product.contact = [TXHContact createWithDictionary:contact inManagedObjectContext:moc];

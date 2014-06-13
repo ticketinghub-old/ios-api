@@ -6,7 +6,6 @@
 const struct TXHSupplierAttributes TXHSupplierAttributes = {
 	.accessToken = @"accessToken",
 	.country = @"country",
-	.currency = @"currency",
 	.refreshToken = @"refreshToken",
 	.timeZoneName = @"timeZoneName",
 };
@@ -61,13 +60,6 @@ const struct TXHSupplierFetchedProperties TXHSupplierFetchedProperties = {
 
 
 @dynamic country;
-
-
-
-
-
-
-@dynamic currency;
 
 
 

@@ -10,12 +10,12 @@
 
 #define TXHNUMBERFORMATTERCACHE [TXHNumberFormatterCache sharedCache]
 
-@class TXHSupplier;
+@class TXHProduct;
 
 @interface TXHNumberFormatterCache : NSObject
 
 + (instancetype)sharedCache;
 
-- (NSNumberFormatter *)formatterForSuplier:(TXHSupplier *)suplier;
+- (NSNumberFormatter *)formatterForProduct:(TXHProduct *)product;
 
 @end

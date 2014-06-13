@@ -8,6 +8,7 @@ extern const struct TXHProductAttributes {
 	__unsafe_unretained NSString *availabilitiesUpdated;
 	__unsafe_unretained NSString *name;
 	__unsafe_unretained NSString *productId;
+	__unsafe_unretained NSString *currency;
 } TXHProductAttributes;
 
 extern const struct TXHProductRelationships {
@@ -69,6 +70,16 @@ extern const struct TXHProductFetchedProperties {
 
 
 //- (BOOL)validateProductId:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* currency;
+
+
+
+//- (BOOL)validateCurrency:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -139,6 +150,11 @@ extern const struct TXHProductFetchedProperties {
 - (NSString*)primitiveProductId;
 - (void)setPrimitiveProductId:(NSString*)value;
 
+
+
+
+- (NSString*)primitiveCurrency;
+- (void)setPrimitiveCurrency:(NSString*)value;
 
 
 

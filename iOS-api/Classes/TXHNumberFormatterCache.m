@@ -7,7 +7,7 @@
 //
 
 #import "TXHNumberFormatterCache.h"
-#import "TXHSupplier.h"
+#import "TXHProduct.h"
 
 @interface TXHNumberFormatterCache ()
 
@@ -39,16 +39,16 @@
     return self;
 }
 
-- (NSNumberFormatter *)formatterForSuplier:(TXHSupplier *)suplier
+- (NSNumberFormatter *)formatterForProduct:(TXHProduct *)product
 {
-    NSNumberFormatter *formatter = [self.cache objectForKey:suplier];
+    NSNumberFormatter *formatter = [self.cache objectForKey:product];
     
     if (!formatter)
     {
         formatter = [[NSNumberFormatter alloc] init];
         formatter.numberStyle = NSNumberFormatterCurrencyStyle;
-        formatter.currencyCode = suplier.currency;
-        [self.cache setObject:formatter forKey:suplier];
+        formatter.currencyCode = product.currency;
+        [self.cache setObject:formatter forKey:product];
     }
    
     return formatter;

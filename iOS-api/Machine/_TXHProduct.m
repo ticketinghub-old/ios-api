@@ -7,6 +7,7 @@ const struct TXHProductAttributes TXHProductAttributes = {
 	.availabilitiesUpdated = @"availabilitiesUpdated",
 	.name = @"name",
 	.productId = @"productId",
+    .currency = @"currency",
 };
 
 const struct TXHProductRelationships TXHProductRelationships = {
@@ -54,6 +55,13 @@ const struct TXHProductFetchedProperties TXHProductFetchedProperties = {
 
 
 @dynamic availabilitiesUpdated;
+
+
+
+
+
+
+@dynamic currency;
 
 
 

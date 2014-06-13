@@ -110,6 +110,7 @@
     </entity>
     <entity name="Product" representedClassName="TXHProduct" syncable="YES">
         <attribute name="availabilitiesUpdated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productId" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Address" inverseName="product" inverseEntity="Address" syncable="YES"/>
@@ -121,7 +122,6 @@
     <entity name="Supplier" representedClassName="TXHSupplier" syncable="YES">
         <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="refreshToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeZoneName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="supplier" inverseEntity="Contact" syncable="YES"/>
@@ -187,8 +187,8 @@
         <element name="Gateway" positionX="295" positionY="612" width="128" height="135"/>
         <element name="Order" positionX="376" positionY="176" width="128" height="373"/>
         <element name="Payment" positionX="72" positionY="599" width="128" height="283"/>
-        <element name="Product" positionX="-27" positionY="344" width="128" height="163"/>
-        <element name="Supplier" positionX="-281" positionY="18" width="128" height="163"/>
+        <element name="Product" positionX="-27" positionY="344" width="128" height="178"/>
+        <element name="Supplier" positionX="-281" positionY="18" width="128" height="148"/>
         <element name="Ticket" positionX="628" positionY="92" width="128" height="283"/>
         <element name="Tier" positionX="315" positionY="-133" width="128" height="225"/>
         <element name="Upgrade" positionX="549" positionY="-126" width="128" height="180"/>
