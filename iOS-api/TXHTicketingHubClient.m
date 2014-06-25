@@ -1630,6 +1630,7 @@
         case TXHDocumentFormatPDF: return @"pdf";
         case TXHDocumentFormatPS:  return @"ps";
         case TXHDocumentFormatPNG: return @"png";
+        case TXHDocumentFormatBMP: return @"bmp";
         default:
             break;
     }
@@ -1693,15 +1694,15 @@
     [downloadTask resume];
 }
 
-- (void)getTicketImageToPrintForTicket:(TXHTicket *)ticket withTemplet:(TXHTicketTemplate *)templet format:(TXHDocumentFormat)format completion:(void(^)(UIImage *image,NSError *error))completion
+- (void)getTicketImageToPrintForTicket:(TXHTicket *)ticket withTemplet:(TXHTicketTemplate *)templet dpi:(NSUInteger)dpi format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion
 {
     NSParameterAssert(ticket);
     NSParameterAssert(templet);
     NSParameterAssert(completion);
-    
+    format = TXHDocumentFormatBMP;
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketImageForTemplateEndpoint
-                                                                parameters:@[ticket.ticketId,extension,templet.templateId]];
+                                                                parameters:@[ticket.ticketId,extension,templet.templateId,@(dpi)]];
     NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL, endpoint];
     
     NSURL *URL = [NSURL URLWithString:urlString];
@@ -1716,8 +1717,7 @@
                                                                                   return [documentsDirectoryPath URLByAppendingPathComponent:[targetPath lastPathComponent]];
                                                                                   
                                                                               } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-                                                                                  UIImage * img = [UIImage imageWithContentsOfFile:filePath.path];
-                                                                                  completion(img, error);
+                                                                                  completion(filePath, error);
                                                                               }];
     
     [downloadTask resume];

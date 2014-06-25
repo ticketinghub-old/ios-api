@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 TicketingHub. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 @class NSManagedObjectContext;
 @class TXHAvailability;
@@ -23,7 +23,8 @@
 typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
     TXHDocumentFormatPDF,
     TXHDocumentFormatPS,
-    TXHDocumentFormatPNG
+    TXHDocumentFormatPNG,
+    TXHDocumentFormatBMP
 };
 
 @interface TXHTicketingHubClient : NSObject
@@ -384,7 +385,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
 
  @warning `order`, `template` and `completion` must not be `nil`.
  */
-- (void)getTicketToPrintForOrder:(TXHOrder *)order withTemplet:(TXHTicketTemplate *)template format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion;
+- (void)getTicketToPrintForOrder:(TXHOrder *)order withTemplet:(TXHTicketTemplate *)templat format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion;
 
 /** Gets ticket image to print for given ticket, templet and format
  
@@ -395,7 +396,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  
  @warning `ticket`, `template` and `completion` must not be `nil`.
  */
-- (void)getTicketImageToPrintForTicket:(TXHTicket *)ticket withTemplet:(TXHTicketTemplate *)template format:(TXHDocumentFormat)format completion:(void(^)(UIImage *image,NSError *error))completion;
+- (void)getTicketImageToPrintForTicket:(TXHTicket *)ticket withTemplet:(TXHTicketTemplate *)templat dpi:(NSUInteger)dpi format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion;
 
 /** Gets available payment gaytways
  
