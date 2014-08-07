@@ -529,12 +529,13 @@
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductAvailabilitiesForDateAndTickets
                                                                parameters:@[product.productId, dateString]];
-    
-    NSManagedObjectContext *moc = self.importContext;
+    __weak typeof(self) wself = self;
     
     [self.sessionManager POST:endpoint
                    parameters:parameters
                       success:^(NSURLSessionDataTask *task, id responseObject) {
+                         
+                          NSManagedObjectContext *moc = wself.importContext;
                           
                           NSMutableArray *availabilities = [NSMutableArray array];
                           
@@ -726,8 +727,6 @@
         requestPayload            = [temp copy];
     }
     
-    NSManagedObjectContext *moc = self.importContext;
-    
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ReserveOrderTicketsEndpoint];
     
     __weak typeof(self) wself = self;
@@ -736,6 +735,9 @@
                    parameters:requestPayload
                       success:^(NSURLSessionDataTask *task, id responseObject) {
                       
+                          NSManagedObjectContext *moc = wself.importContext;
+
+                          
                           TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
                           
                           NSError *error;
@@ -794,10 +796,14 @@
 
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketAvailableUpgradesEndpointFormat
                                                                parameters:@[ticket.ticketId]];
-    NSManagedObjectContext *moc = self.importContext;
 
+    
+    __weak typeof(self) wself = self;
+    
     [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
+        NSManagedObjectContext *moc = wself.importContext;
+
         NSMutableArray *upgrades = [NSMutableArray array];
         
         for (NSDictionary *dic in responseObject)
@@ -836,10 +842,12 @@
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketUpgradesEndpointFormat
                                                                parameters:@[ticket.ticketId]];
-    NSManagedObjectContext *moc = self.importContext;
+    __weak typeof(self) wself = self;
     
     [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+    
+        NSManagedObjectContext *moc = wself.importContext;
+
         NSMutableArray *upgrades = [NSMutableArray array];
         
         for (NSDictionary *dic in responseObject)
@@ -1029,13 +1037,14 @@
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderEndpointFormat
                                                                parameters:@[order.orderId]];
     
-    NSManagedObjectContext *moc = self.importContext;
-    
     __weak typeof(self) wself = self;
     
     [self.sessionManager GET:endpoint
                   parameters:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                         
+                         NSManagedObjectContext *moc = wself.importContext;
+                         
                          TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
                          
                          NSError *error;
@@ -1051,6 +1060,8 @@
                          completion(order, nil);
                      }
                      failure:^(NSURLSessionDataTask *task, NSError *error) {
+                         NSManagedObjectContext *moc = wself.importContext;
+
                          NSDictionary *dic =  error.userInfo[JSONResponseSerializerWithDataKey];
                          TXHOrder *order;
                          if (dic)
@@ -1071,11 +1082,12 @@
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ConfirmOrderEndpointFormat
                                                                parameters:@[order.orderId]];
     
-    NSManagedObjectContext *moc = self.importContext;
     __weak typeof(self) wself = self;
     [self.sessionManager POST:endpoint
                    parameters:nil
                       success:^(NSURLSessionDataTask *task, id responseObject) {
+                          NSManagedObjectContext *moc = wself.importContext;
+
                           TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
                           
                           NSError *error;
@@ -1091,6 +1103,8 @@
                           completion(order, nil);
                       }
                       failure:^(NSURLSessionDataTask *task, NSError *error) {
+                          NSManagedObjectContext *moc = wself.importContext;
+
                           NSDictionary *dic =  error.userInfo[JSONResponseSerializerWithDataKey];
                           TXHOrder *order;
                           if (dic)
@@ -1107,11 +1121,12 @@
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:UpdateOrderEndpointFormat
                                                                parameters:@[order.orderId]];
     
-    NSManagedObjectContext *moc = self.importContext;
     __weak typeof(self) wself = self;
     [self.sessionManager PATCH:endpoint
                     parameters:payload
                        success:^(NSURLSessionDataTask *task, id responseObject) {
+                           NSManagedObjectContext *moc = wself.importContext;
+
                            TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
                            
                            NSError *error;
@@ -1127,6 +1142,8 @@
                            completion(order, nil);
                        }
                        failure:^(NSURLSessionDataTask *task, NSError *error) {
+                           NSManagedObjectContext *moc = wself.importContext;
+
                            NSDictionary *dic =  error.userInfo[JSONResponseSerializerWithDataKey];
                            TXHOrder *order;
                            if (dic)
@@ -1192,11 +1209,10 @@
     [request setHTTPBody:postData];
     [request setHTTPMethod:@"POST"];
     
-    NSManagedObjectContext *moc = self.importContext;
-    
+    __weak typeof(self) wself = self;
+
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        
+        NSManagedObjectContext *moc = wself.importContext;
         
         if(error == nil)
         {
@@ -1272,11 +1288,13 @@
     if (query)
         params[@"search"] = query;
     
-    NSManagedObjectContext *moc = self.importContext;
+    __weak typeof(self) wself = self;
     
     [self.sessionManager GET:endpoint
                   parameters:params
                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                         NSManagedObjectContext *moc = wself.importContext;
+
                          NSMutableArray *tickets = [NSMutableArray array];
                          
                          for (NSDictionary *ticketdDic in responseObject)
@@ -1399,11 +1417,11 @@
         }
     }
     
-    
-    NSManagedObjectContext *moc = self.importContext;
-    
+    __weak typeof(self) wself = self;
+
     void(^successBlock)(NSURLSessionDataTask *task, id responseObject) = ^(NSURLSessionDataTask *task, id responseObject) {
-        
+        NSManagedObjectContext *moc = wself.importContext;
+
         TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
         
         NSError *error;
@@ -1457,13 +1475,13 @@
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderAttenAll parameters:@[order.orderId]];
 
-    NSManagedObjectContext *moc = self.importContext;
-    __unused __weak typeof(self) wself = self;
+    __weak typeof(self) wself = self;
     
     [self.sessionManager POST:endpoint
                    parameters:nil
                       success:^(NSURLSessionDataTask *task, id responseObject) {
-                          
+                          NSManagedObjectContext *moc = wself.importContext;
+
                           for (NSDictionary * dict in responseObject)
                               [TXHTicket updateWithDictionaryOrCreateIfNeeded:dict inManagedObjectContext:moc];
                           
@@ -1498,11 +1516,12 @@
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketForSeqIdEndpointFormat
                                                                parameters:@[product.productId, seqID]];
     
-    NSManagedObjectContext *moc = self.importContext;
     __weak typeof(self) wself = self;
     [self.sessionManager GET:endpoint
                   parameters:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                         NSManagedObjectContext *moc = wself.importContext;
+
                          TXHTicket *ticket = [TXHTicket updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
                          
                          NSError *error;
@@ -1535,11 +1554,12 @@
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderForTicketProductEndpointFormat
                                                                parameters:@[ticket.ticketId]];
     
-    NSManagedObjectContext *moc = self.importContext;
     __weak typeof(self) wself = self;
     [self.sessionManager GET:endpoint
                   parameters:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
+                         NSManagedObjectContext *moc = wself.importContext;
+
                          TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
                          
                          NSError *error;
@@ -1622,11 +1642,11 @@
     [request setHTTPBody:postData];
     [request setHTTPMethod:@"POST"];
     
-    NSManagedObjectContext *moc = self.importContext;
+    __weak typeof(self) wself = self;
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        
+        NSManagedObjectContext *moc = wself.importContext;
         
         if(error == nil)
         {
@@ -1696,12 +1716,11 @@
     
     __weak typeof (self) wself = self;
     
-    NSManagedObjectContext *moc = self.importContext;
-    
     [self.sessionManager DELETE:endpoint
                      parameters:nil
                         success:^(NSURLSessionDataTask *task, id responseObject) {
-                            
+                            NSManagedObjectContext *moc = wself.importContext;
+
                             TXHOrder *order = [TXHOrder updateWithDictionaryOrCreateIfNeeded:responseObject inManagedObjectContext:moc];
                             
                             NSError *error;
@@ -1875,12 +1894,13 @@
 {
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:PaymentGatewaysEndpoint];
     
-    NSManagedObjectContext *moc = self.importContext;
+    __weak typeof(self) wself = self;
     
     [self.sessionManager GET:endpoint
                   parameters:nil
                      success:^(NSURLSessionDataTask *task, id responseObject) {
-                         
+                         NSManagedObjectContext *moc = wself.importContext;
+
                          NSMutableArray *gateways = [NSMutableArray array];
                          
                          for (NSDictionary *gatewayDic in responseObject)
