@@ -33,6 +33,8 @@
 #import "TXHPartialResponsInfo.h"
 #import "TXHEndpointsHelper.h"
 
+#import "NSError+TXHAPIClient.h"
+
 #warning - refactor this shit, for crying out loud!
 
 @interface TXHTicketingHubClient ()
@@ -227,10 +229,14 @@
 
 - (void)generateAccessTokenForUsername:(NSString *)username password:(NSString *)password withCompletion:(void (^)(NSString *, NSError *))completion
 {
-    NSParameterAssert(username);
-    NSParameterAssert(password);
-    NSParameterAssert(completion);
+    if (!username || !password || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
 
+    
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     params[@"grant_type"] = @"password";
     params[@"username"]   = username;
@@ -253,9 +259,12 @@
 
 - (void)fetchSuppliersForUsername:(NSString *)username accessToken:(NSString *)accessToken withCompletion:(void (^)(NSArray *, NSError *))completion
 {
-    NSParameterAssert(username);
-    NSParameterAssert(accessToken);
-    NSParameterAssert(completion);
+    if (!username || !accessToken || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:SuppliersEndpoint];
     
@@ -307,8 +316,12 @@
 
 - (void)productsForSupplier:(TXHSupplier *)supplier withCompletion:(void (^)(TXHSupplier *, NSError *))completion
 {
-    NSParameterAssert(supplier);
-    NSParameterAssert(completion);
+    if (!supplier || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductsForSupplierEndpointFormat];
     
@@ -341,9 +354,13 @@
 
 - (void)updateUser:(TXHUser *)user accessToken:(NSString *)accessToken completion:(void (^)(TXHUser *, NSError *))completion
 {
-    NSParameterAssert(user);
-    NSParameterAssert(accessToken);
-    NSParameterAssert(completion);
+    if (!user || !accessToken || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:UserEndpoint];
     
@@ -374,8 +391,12 @@
 
 - (void)tiersForProduct:(TXHProduct *)product completion:(void(^)(NSArray *availabilities, NSError *error))completion
 {
-    NSParameterAssert(product);
-    NSParameterAssert(completion);
+    if (!product.productId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTiersEndpointFormat
                                                                parameters:@[product.productId]];
@@ -461,7 +482,12 @@
 
 - (void)availableDatesForProduct:(TXHProduct *)product startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void(^)(NSArray *availableDates, NSError *error))completion
 {
-    NSParameterAssert(completion);
+    if (!product.productId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
 
     if (!startDate || !endDate)
     {
@@ -490,6 +516,12 @@
 
 - (void)availabilitiesForProduct:(TXHProduct *)product dateString:(NSString *)dateString tickets:(NSArray *)tickets completion:(void(^)(NSArray *availabilities, NSError *error))completion
 {
+    if (!product.productId || !dateString || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSArray *ticketsArray = [NSArray arrayWithArray:tickets];// make sure we have an array;
     
@@ -531,8 +563,12 @@
 
 - (void)availabilitiesForProduct:(TXHProduct *)product fromDate:(NSDate *)fromDate toDate:(NSDate *)toDate coupon:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 {
-    NSParameterAssert(product);
-    NSParameterAssert(completion);
+    if (!product.productId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
 
     NSDictionary *params;
 
@@ -647,8 +683,12 @@
 
 - (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability latitude:(float)latitude longitude:(float)longitude isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
-    NSParameterAssert(tierQuantities);
-    NSParameterAssert(completion);
+    if (!tierQuantities || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSMutableArray *tickets = [NSMutableArray array];
     
@@ -720,10 +760,12 @@
 
 - (void)removeTickets:(NSArray *)ticketIDs fromOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
-    NSParameterAssert(ticketIDs);
-    NSParameterAssert(order);
-    NSParameterAssert(completion);
-
+    if (!ticketIDs || !order || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSMutableArray *tickets = [NSMutableArray array];
     
@@ -743,8 +785,12 @@
 
 - (void)availableUpgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion
 {
-    NSParameterAssert(ticket);
-    NSParameterAssert(completion);
+    if (!ticket.ticketId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
 
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketAvailableUpgradesEndpointFormat
                                                                parameters:@[ticket.ticketId]];
@@ -781,8 +827,12 @@
 
 - (void)upgradesForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *upgrades, NSError *error))completion
 {
-    NSParameterAssert(ticket);
-    NSParameterAssert(completion);
+    if (!ticket.ticketId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketUpgradesEndpointFormat
                                                                parameters:@[ticket.ticketId]];
@@ -820,9 +870,13 @@
 
 - (void)updateOrder:(TXHOrder *)order withUpgradesInfo:(NSDictionary *)upgradesInfo completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(upgradesInfo);
-    NSParameterAssert(completion);
+    if (!order || !upgradesInfo || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+
     
     NSMutableArray *tickets = [NSMutableArray array];
     
@@ -843,9 +897,13 @@
 
 - (void)fieldsForTicket:(TXHTicket *)ticket completion:(void(^)(NSArray *fields, NSError *error))completion
 {
-    NSParameterAssert(ticket);
-    NSParameterAssert(completion);
-    
+    if (!ticket.ticketId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+
     NSString *endpoint = [TXHEndpointsHelper  endpointStringForTXHEndpoint:TicketFieldsEndpointFormat
                                                                 parameters:@[ticket.ticketId]];
     
@@ -871,9 +929,13 @@
 
 - (void)updateOrder:(TXHOrder *)order withCustomersInfo:(NSDictionary *)customersInfo completion:(void (^)(TXHOrder *, NSError *))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(customersInfo);
-    NSParameterAssert(completion);
+    if (!order || !customersInfo || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+
     
     NSMutableArray *tickets = [NSMutableArray array];
     
@@ -891,9 +953,12 @@
 
 - (void)updateOrder:(TXHOrder *)order withPayment:(TXHPayment *)payment completion:(void (^)(TXHOrder *order, NSError *error))completion;
 {
-    NSParameterAssert(order);
-    NSParameterAssert(payment);
-    NSParameterAssert(completion);
+    if (!order || !payment || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSDictionary *paymentDictionary = [payment dictionaryRepresentation];
     
@@ -904,8 +969,12 @@
 
 - (void)fieldsForOrderOwner:(TXHOrder *)order completion:(void(^)(NSArray *fields, NSError *error))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(completion);
+    if (!order || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketOwnerFieldsEndpointFormat
                                                                parameters:@[order.orderId]];
@@ -934,9 +1003,13 @@
 
 - (void)updateOrder:(TXHOrder *)order withOwnerInfo:(NSDictionary *)ownerInfo completion:(void (^)(TXHOrder *order, NSError *error))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(ownerInfo);
-    NSParameterAssert(completion);
+    if (!order || !ownerInfo || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+
     
     NSDictionary *requestPayload = @{@"customer" : ownerInfo};
     
@@ -945,8 +1018,13 @@
 
 - (void)getOrderUpdated:(TXHOrder *)order completion:(void (^)(TXHOrder *order, NSError *error))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(completion);
+    if (!order.orderId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderEndpointFormat
                                                                parameters:@[order.orderId]];
@@ -983,8 +1061,12 @@
 
 - (void)confirmOrder:(TXHOrder *)order completion:(void (^)(TXHOrder *, NSError *))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(completion);
+    if (!order.orderId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ConfirmOrderEndpointFormat
                                                                parameters:@[order.orderId]];
@@ -1058,9 +1140,12 @@
 // TODO: Lord have mercy....
 - (void)ticketRecordsForProduct:(TXHProduct *)product validFromDate:(NSDate *)date includingAttended:(BOOL)attended query:(NSString *)query paginationInfo:(TXHPartialResponsInfo *)info completion:(void(^)(TXHPartialResponsInfo *info, NSArray *ticketRecords, NSError *error))completion
 {
-    NSParameterAssert(product);
-    NSParameterAssert(date);
-    NSParameterAssert(completion);
+    if (!product.productId || !date || !completion)
+    {
+        if (completion) {
+            completion(nil, nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketsSearch
                                                                parameters:@[product.productId]];
@@ -1168,9 +1253,12 @@
 
 - (void)ticketRecordsForProduct:(TXHProduct *)product availability:(TXHAvailability *)availability withQuery:(NSString *)query completion:(void(^)(NSArray *ricketRecords, NSError *error))completion
 {
-    NSParameterAssert(product);
-    NSParameterAssert(availability);
-    NSParameterAssert(completion);
+    if (!product.productId || !availability || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketsWithParamsEndpointFormat
                                                                parameters:@[product.productId]];
@@ -1213,9 +1301,12 @@
 
 - (void)getTicketsCountFromValidDate:(NSDate *)date forProduct:(TXHProduct *)product onlyAttendees:(BOOL)attendees completion:(void(^)(NSNumber *count, NSError *error))completion
 {
-    NSParameterAssert(date);
-    NSParameterAssert(product);
-    NSParameterAssert(completion);
+    if (!product.productId || !date || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketsSearch
                                                                parameters:@[product.productId]];
@@ -1244,8 +1335,12 @@
 
 - (void)getTicketsCountForOrder:(TXHOrder *)order completion:(void (^)(NSNumber *, NSError *))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(completion);
+    if (!order.orderId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketsForOrderEndpointFormat
                                                                parameters:@[order.orderId]];
@@ -1266,8 +1361,12 @@
 
 - (void)getAttendeesCountForOrder:(TXHOrder *)order completion:(void (^)(NSNumber *, NSError *))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(completion);
+    if (!order.orderId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketsForOrderEndpointFormat
                                                                parameters:@[order.orderId]];
@@ -1293,9 +1392,12 @@
 
 - (void)setTicket:(TXHTicket *)ticket attended:(BOOL)attended withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion;
 {
-    NSParameterAssert(ticket);
-    NSParameterAssert(product);
-    NSParameterAssert(completion);
+    if (!ticket.ticketId || !product.productId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     
     NSManagedObjectContext *moc = self.importContext;
@@ -1346,8 +1448,12 @@
 
 - (void)setAllTicketsAttendedForOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(completion);
+    if (!order.orderId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderAttenAll parameters:@[order.orderId]];
 
@@ -1382,9 +1488,12 @@
 
 - (void)searchForTicketWithSeqId:(NSNumber *)seqID withProduct:(TXHProduct *)product completion:(void(^)(TXHTicket *ticket, NSError *error))completion
 {
-    NSParameterAssert(seqID);
-    NSParameterAssert(product);
-    NSParameterAssert(completion);
+    if (!product.productId || !seqID || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketForSeqIdEndpointFormat
                                                                parameters:@[product.productId, seqID]];
@@ -1416,8 +1525,12 @@
 
 - (void)getOrderForTicket:(TXHTicket *)ticket completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
-    NSParameterAssert(ticket);
-    NSParameterAssert(completion);
+    if (!ticket.ticketId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderForTicketProductEndpointFormat
                                                                parameters:@[ticket.ticketId]];
@@ -1448,8 +1561,12 @@
 
 - (void)getOrdersForCardMSRString:(NSString *)msrInfo paginationInfo:(TXHPartialResponsInfo *)info completion:(void(^)(TXHPartialResponsInfo *info, NSArray *orders, NSError *error))completion
 {
-    NSParameterAssert(msrInfo);
-    NSParameterAssert(completion);
+    if (!msrInfo || !completion)
+    {
+        if (completion) {
+            completion(nil, nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSDictionary *parameters = @{ @"filters": @{ @"card": @{ @"track_data": msrInfo } } };
     
@@ -1460,8 +1577,12 @@
 
 - (void)getOrdersForQuery:(NSString *)query paginationInfo:(TXHPartialResponsInfo *)info completion:(void(^)(TXHPartialResponsInfo *info,NSArray *orders, NSError *error))completion
 {
-    NSParameterAssert(query);
-    NSParameterAssert(completion);
+    if (!query || !completion)
+    {
+        if (completion) {
+            completion(nil, nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSDictionary *parameters = @{ @"search": query };
     
@@ -1563,6 +1684,13 @@
 
 - (void)cancelOrder:(TXHOrder *)order completion:(void(^)(TXHOrder *order,NSError *error))completion
 {
+    if (!order.orderId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+    
     NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:RemoveOrderTicketsEndpointFormat
                                                                 parameters:@[order.orderId]];
     
@@ -1598,8 +1726,12 @@
 
 - (void)getReciptForOrder:(TXHOrder *)order format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion
 {
-    NSParameterAssert(order);
-    NSParameterAssert(completion);
+    if (!order.orderId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderReceiptEndpointFormat
@@ -1644,7 +1776,12 @@
 
 - (void)getTicketTemplatesCompletion:(void(^)(NSArray *templates,NSError *error))completion
 {
-    NSParameterAssert(completion);
+    if (!completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketTemplatesEndpoint];
     
@@ -1670,9 +1807,12 @@
 
 - (void)getTicketToPrintForOrder:(TXHOrder *)order withTemplet:(TXHTicketTemplate *)templet format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion;
 {
-    NSParameterAssert(order);
-    NSParameterAssert(templet);
-    NSParameterAssert(completion);
+    if (!order.orderId || !templet.templateId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
     
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderTicketsForTemplateEndpoint
@@ -1699,9 +1839,13 @@
 
 - (void)getTicketImageToPrintForTicket:(TXHTicket *)ticket withTemplet:(TXHTicketTemplate *)templet dpi:(NSUInteger)dpi format:(TXHDocumentFormat)format completion:(void(^)(NSURL *url,NSError *error))completion
 {
-    NSParameterAssert(ticket);
-    NSParameterAssert(templet);
-    NSParameterAssert(completion);
+    if (!ticket.ticketId || !templet.templateId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+    
     format = TXHDocumentFormatBMP;
     NSString *extension = [self extendionForFormat:format];
     NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketImageForTemplateEndpoint

@@ -381,7 +381,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
 /** Gets ticket to print for given order, templet and format
  
  @param order for which the ticket wil be fetched
- @param template in wich the ticket will be returned
+ @param templat in wich the ticket will be returned
  @param format for the ticket (pdf, png, ps)
  @param completion the completion block to run with the request is completed. The block takes two parameters, an loacl disk url to the tivket file and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the url object is nil
 
@@ -392,7 +392,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
 /** Gets ticket image to print for given ticket, templet and format
  
  @param ticket for which the ticket image wil be fetched
- @param template in wich the ticket will be returned
+ @param templat in wich the ticket will be returned
  @param format for the ticket (pdf, png, ps)
  @param completion the completion block to run with the request is completed. The block takes two parameters, a ticket image and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the url object is nil
  
