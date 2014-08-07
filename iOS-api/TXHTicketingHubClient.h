@@ -157,13 +157,15 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  
  @param tierQuantities dictionary with internaTierIds as keys and selectd quantities as values
  @param availability availability for selected tickets
+ @param latitude current user latitude
+ @param longitude current user longitude
  @param group 'true' means you don't have to add customer details for individual tickets
  @param notify 'false" means you plan on printing the tickets and giving them to the customer directly, therefore an email/phone isn't necessary as we don't need to send the tickets to them.
  @param completion the completion block to run with the request is completed. The block takes two parameters, an order object in the (main managed object context) and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the order object is not nil (it can be empty)
  
  @warning `tierQuantities` or `completion` must not be `nil`.
  */
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion;
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability latitude:(float)latitude longitude:(float)longitude isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
 /** Marks provided tickets as deleted and sends the request to delete tickets from given order
  

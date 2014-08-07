@@ -645,7 +645,7 @@
 
 #pragma mark - Tickets
 
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion;
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability latitude:(float)latitude longitude:(float)longitude isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
     NSParameterAssert(tierQuantities);
     NSParameterAssert(completion);
@@ -666,6 +666,8 @@
         ticketInfo[@"time"]     = availability.timeString;
         ticketInfo[@"product"]  = availability.product.productId;
         ticketInfo[@"quantity"] = tierQuantities[internalTierId];
+        if (latitude && longitude)
+            ticketInfo[@"address"] =  @{@"latitude": @(latitude), @"longitude": @(longitude)};
 
         [tickets addObject:ticketInfo];
     }
@@ -1149,6 +1151,7 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(nextInfo , mainContextObjects ,nil);
+
                 });
             }
         }
