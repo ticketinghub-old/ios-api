@@ -64,7 +64,7 @@
         case AvailableDatesSearch:                  return @"supplier/products/%@/options/available/dates/search";
         case ProductTicketsSearch:                  return @"supplier/products/%@/tickets/search.json";
         case OrderAttenAll:                         return @"supplier/orders/%@/tickets/attend";
-        case SummaryEndpointFormat:                 return @"user/summary.%@?&access_token=%@";
+        case SummaryEndpointFormat:                 return @"user/summary.%@?access_token=%@";
     }
     return nil;
 }
