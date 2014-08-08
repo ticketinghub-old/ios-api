@@ -4,6 +4,7 @@
 #import "_TXHUser.h"
 
 const struct TXHUserAttributes TXHUserAttributes = {
+	.accessToken = @"accessToken",
 	.email = @"email",
 	.firstName = @"firstName",
 	.lastName = @"lastName",
@@ -46,6 +47,13 @@ const struct TXHUserFetchedProperties TXHUserFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic accessToken;
+
+
 
 
 

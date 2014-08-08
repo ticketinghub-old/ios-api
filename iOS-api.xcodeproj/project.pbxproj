@@ -217,6 +217,7 @@
 		3EB1AB661907F80A00233A26 /* _TXHCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TXHCard.m; sourceTree = "<group>"; };
 		3EBF42CA18BE34A30065E7A7 /* JSONResponseSerializerWithData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONResponseSerializerWithData.h; path = Classes/JSONResponseSerializerWithData.h; sourceTree = "<group>"; };
 		3EBF42CB18BE34A30065E7A7 /* JSONResponseSerializerWithData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONResponseSerializerWithData.m; path = Classes/JSONResponseSerializerWithData.m; sourceTree = "<group>"; };
+		3EC5052C1994C9F300EB041C /* CoreDataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		3ED7560918BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+TicketingHubFormat.h"; path = "iOS-api/Classes/NSDateFormatter+TicketingHubFormat.h"; sourceTree = SOURCE_ROOT; };
 		3ED7560A18BCDFEA00D8F60B /* NSDateFormatter+TicketingHubFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+TicketingHubFormat.m"; path = "iOS-api/Classes/NSDateFormatter+TicketingHubFormat.m"; sourceTree = SOURCE_ROOT; };
 		3ED7560D18BD0AB500D8F60B /* ClientOrderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientOrderSpec.m; sourceTree = "<group>"; };
@@ -1191,9 +1192,10 @@
 		EED7E84C183E2BC500853E73 /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				3EC5052C1994C9F300EB041C /* CoreDataModel 2.xcdatamodel */,
 				EED7E84D183E2BC500853E73 /* CoreDataModel 1.xcdatamodel */,
 			);
-			currentVersion = EED7E84D183E2BC500853E73 /* CoreDataModel 1.xcdatamodel */;
+			currentVersion = 3EC5052C1994C9F300EB041C /* CoreDataModel 2.xcdatamodel */;
 			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

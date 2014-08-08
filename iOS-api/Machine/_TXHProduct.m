@@ -5,9 +5,9 @@
 
 const struct TXHProductAttributes TXHProductAttributes = {
 	.availabilitiesUpdated = @"availabilitiesUpdated",
+	.currency = @"currency",
 	.name = @"name",
 	.productId = @"productId",
-    .currency = @"currency",
 };
 
 const struct TXHProductRelationships TXHProductRelationships = {

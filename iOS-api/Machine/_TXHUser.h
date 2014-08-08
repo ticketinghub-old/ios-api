@@ -5,6 +5,7 @@
 
 
 extern const struct TXHUserAttributes {
+	__unsafe_unretained NSString *accessToken;
 	__unsafe_unretained NSString *email;
 	__unsafe_unretained NSString *firstName;
 	__unsafe_unretained NSString *lastName;
@@ -25,6 +26,7 @@ extern const struct TXHUserFetchedProperties {
 
 
 
+
 @interface TXHUserID : NSManagedObjectID {}
 @end
 
@@ -33,6 +35,16 @@ extern const struct TXHUserFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (TXHUserID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSString* accessToken;
+
+
+
+//- (BOOL)validateAccessToken:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -98,6 +110,12 @@ extern const struct TXHUserFetchedProperties {
 @end
 
 @interface _TXHUser (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveAccessToken;
+- (void)setPrimitiveAccessToken:(NSString*)value;
+
+
 
 
 - (NSString*)primitiveEmail;

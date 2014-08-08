@@ -274,6 +274,7 @@
         
         TXHUser *user = [TXHUser updateWithDictionaryCreateIfNeeded:@{@"email" : username}
                                              inManagedObjectContext:self.importContext];
+        user.accessToken = accessToken;
         user.suppliers = [NSSet setWithArray:suppliers];
 
         NSError *error;
