@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.8" systemVersion="14A314h" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Address" representedClassName="TXHAddress" syncable="YES">
         <attribute name="building" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -172,6 +172,7 @@
         <relationship name="tiers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tier" inverseName="upgrades" inverseEntity="Tier" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="TXHUser" syncable="YES">
+        <attribute name="accessToken" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
@@ -192,6 +193,6 @@
         <element name="Ticket" positionX="628" positionY="92" width="128" height="283"/>
         <element name="Tier" positionX="315" positionY="-133" width="128" height="225"/>
         <element name="Upgrade" positionX="549" positionY="-126" width="128" height="180"/>
-        <element name="User" positionX="-522" positionY="54" width="128" height="118"/>
+        <element name="User" positionX="-522" positionY="54" width="128" height="135"/>
     </elements>
 </model>

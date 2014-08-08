@@ -10,7 +10,7 @@
 @end
 
 
-@implementattxhion TXHUser
+@implementation TXHUser
 
 #pragma mark - set up and tear down
 
