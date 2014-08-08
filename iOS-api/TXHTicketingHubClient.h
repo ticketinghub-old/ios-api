@@ -408,4 +408,15 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)getPaymentGatewaysWithCompletion:(void(^)(NSArray *gateways,NSError *error))completion;
 
+/** Gets a summary for a given user with selected format, width and dpi
+ 
+ @param user for which the summary wil be fetched
+ @param format for the summary (pdf, png, ps)
+ @param width width of the summary
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an loacl disk url to the receipt file and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the url object is nil
+ 
+ @warning `user` and `completion` must not be `nil`.
+ */
+- (void)getSummaryForUser:(TXHUser *)user format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion;
+
 @end

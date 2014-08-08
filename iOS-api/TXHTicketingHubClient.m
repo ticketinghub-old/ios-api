@@ -1924,5 +1924,40 @@
                      }];
 }
 
+- (void)getSummaryForUser:(TXHUser *)user format:(TXHDocumentFormat)format width:(NSUInteger)width dpi:(NSUInteger)dpi completion:(void(^)(NSURL *url,NSError *error))completion
+{
+    if (!user.accessToken || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+    
+    NSString *extension = [self extendionForFormat:format];
+    NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:SummaryEndpointFormat
+                                                                parameters:@[extension, user.accessToken]];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@",self.baseURL,endpoint];
+    
+    if (width > 0)
+        urlString = [urlString stringByAppendingFormat:@"&size=%lumm",(unsigned long)width];
+    if (dpi > 0)
+        urlString = [urlString stringByAppendingFormat:@"&dpi=%lu",(unsigned long)dpi];
+    
+    NSURL *URL = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    
+    NSURLSessionDownloadTask *downloadTask = [self.sessionManager downloadTaskWithRequest:request
+                                                                                 progress:nil
+                                                                              destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+                                                                                  NSURL *documentsDirectoryPath = [NSURL fileURLWithPath:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]];
+                                                                                  return [documentsDirectoryPath URLByAppendingPathComponent:[targetPath lastPathComponent]];
+                                                                                  
+                                                                              } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+                                                                                  completion(filePath, error);
+                                                                              }];
+    
+    [downloadTask resume];
+}
+
 
 @end

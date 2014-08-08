@@ -36,13 +36,14 @@ typedef NS_ENUM(NSInteger, TXHEndpoint)
     OrdersForMSRCardTrackDataEndpoint,          //
     OrderReceiptEndpointFormat,                 // requires 2 parameters: orderID, receiptType (pdf, ps, png)
     TicketTemplatesEndpoint,                    //
-    OrderTicketsForTemplateEndpoint,            // requires 2 parameters: orderID, ticketFormat (pdf, ps, png), templeatID
-    TicketImageForTemplateEndpoint,             // requires 2 parameters: ticketID, ticketFormat (pdf, ps, png), templeatID
+    OrderTicketsForTemplateEndpoint,            // requires 3 parameters: orderID, ticketFormat (pdf, ps, png), templeatID
+    TicketImageForTemplateEndpoint,             // requires 4 parameters: ticketID, ticketFormat (pdf, ps, png), templeatID, dpi
     PaymentGatewaysEndpoint,                    //
     AvailableDatesSearch,                       // requires 1 parameter: productID
     ProductAvailabilitiesForDateAndTickets,     // requires 2 parameters: productID, datestring (yyyy-mm-dd)
     ProductTicketsSearch,                       // requires 1 parameter: productID
     OrderAttenAll,                              // requires 1 parameter: orderID
+    SummaryEndpointFormat                       // requires 2 parameters: summary format, accesToken
 };
 
 typedef NS_ENUM(NSInteger, TXHEndpointHTTPMethod)
