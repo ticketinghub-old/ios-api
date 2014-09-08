@@ -436,6 +436,29 @@
     }];
 }
 
+- (void)couponCodesForPoduct:(TXHProduct *)product completion:(void(^)(NSArray *coupons, NSError *error))completion
+{
+    if (!product.productId || !completion)
+    {
+        if (completion) {
+            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
+        }
+    }
+    
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:CouponCodesEndpointFormat
+                                                               parameters:@[product.productId]];
+    
+    [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSArray *coupons = [NSArray arrayWithArray:responseObject];
+        completion(coupons, nil);
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        DLog(@"Unable to get the coupons because: %@", error);
+        completion(nil, error);
+    }];
+}
+
 - (NSArray *)updateTiersFromArray:(NSArray *)array inProductID:(TXHProductID *)productId {
     NSUInteger numberOfTiers = [array count];
     

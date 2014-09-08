@@ -65,6 +65,7 @@
         case ProductTicketsSearch:                  return @"supplier/products/%@/tickets/search.json";
         case OrderAttenAll:                         return @"supplier/orders/%@/tickets/attend";
         case SummaryEndpointFormat:                 return @"user/summary.%@?access_token=%@";
+        case CouponCodesEndpointFormat:             return @"/supplier/product/%@/coupons";
     }
     return nil;
 }
@@ -88,6 +89,7 @@
         case TicketTemplatesEndpoint:
         case TicketsForOrderEndpointFormat:
         case ProductsForSupplierEndpointFormat:
+        case CouponCodesEndpointFormat:
             return GETMethod;
             
         case ReserveOrderTicketsEndpoint:

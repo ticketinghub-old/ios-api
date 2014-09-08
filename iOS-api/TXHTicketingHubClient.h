@@ -134,6 +134,15 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  */
 - (void)tiersForProduct:(TXHProduct *)product couponCode:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 
+/** List of available Coupon Codes for a given product
+ 
+ @param product The product for which the tiers are to be updated - can be on any managed object context. Cannot be nil
+ @param completion the completion block to run with the request is completed. The block takes two parameters, an array of NSStrings and an error parameter. error is `nil` for successful requests. If there is an error, this containes the error object and the coupons array is not nil (it can be empty)
+ 
+ @warning `product` or `completion` must not be `nil`.
+ */
+- (void)couponCodesForPoduct:(TXHProduct *)product completion:(void(^)(NSArray *coupons, NSError *error))completion;
+
 
 - (void)availableDatesForProduct:(TXHProduct *)product startDate:(NSDate *)startDate endDate:(NSDate *)endDate completion:(void(^)(NSArray *availableDates, NSError *error))completion;
 

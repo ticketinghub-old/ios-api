@@ -43,7 +43,8 @@ typedef NS_ENUM(NSInteger, TXHEndpoint)
     ProductAvailabilitiesForDateAndTickets,     // requires 2 parameters: productID, datestring (yyyy-mm-dd)
     ProductTicketsSearch,                       // requires 1 parameter: productID
     OrderAttenAll,                              // requires 1 parameter: orderID
-    SummaryEndpointFormat                       // requires 2 parameters: summary format, accesToken
+    SummaryEndpointFormat,                      // requires 2 parameters: summary format, accesToken
+    CouponCodesEndpointFormat                   // requires 1 parameter: productID
 };
 
 typedef NS_ENUM(NSInteger, TXHEndpointHTTPMethod)
