@@ -10,6 +10,7 @@
 
 @class NSManagedObjectContext;
 @class TXHAvailability;
+@class TXHCoupon;
 @class TXHOrder;
 @class TXHPayment;
 @class TXHProduct;
@@ -166,6 +167,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  
  @param tierQuantities dictionary with internaTierIds as keys and selectd quantities as values
  @param availability availability for selected tickets
+ @param coupon coupon object for discount if exists, if nil no coupon applied
  @param latitude current user latitude
  @param longitude current user longitude
  @param group 'true' means you don't have to add customer details for individual tickets
@@ -174,7 +176,7 @@ typedef NS_ENUM(NSUInteger, TXHDocumentFormat) {
  
  @warning `tierQuantities` or `completion` must not be `nil`.
  */
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability latitude:(float)latitude longitude:(float)longitude isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion;
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability coupon:(TXHCoupon *)coupon latitude:(float)latitude longitude:(float)longitude isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion;
 
 /** Marks provided tickets as deleted and sends the request to delete tickets from given order
  

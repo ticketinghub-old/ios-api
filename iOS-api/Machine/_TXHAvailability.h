@@ -6,7 +6,6 @@
 
 extern const struct TXHAvailabilityAttributes {
 	__unsafe_unretained NSString *capacity;
-	__unsafe_unretained NSString *coupon;
 	__unsafe_unretained NSString *dateString;
 	__unsafe_unretained NSString *duration;
 	__unsafe_unretained NSString *limit;
@@ -24,7 +23,6 @@ extern const struct TXHAvailabilityFetchedProperties {
 
 @class TXHProduct;
 @class TXHTier;
-
 
 
 
@@ -55,16 +53,6 @@ extern const struct TXHAvailabilityFetchedProperties {
 - (void)setCapacityValue:(int32_t)value_;
 
 //- (BOOL)validateCapacity:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSString* coupon;
-
-
-
-//- (BOOL)validateCoupon:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -162,12 +150,6 @@ extern const struct TXHAvailabilityFetchedProperties {
 
 - (int32_t)primitiveCapacityValue;
 - (void)setPrimitiveCapacityValue:(int32_t)value_;
-
-
-
-
-- (NSString*)primitiveCoupon;
-- (void)setPrimitiveCoupon:(NSString*)value;
 
 
 

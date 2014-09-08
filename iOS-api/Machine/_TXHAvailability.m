@@ -5,7 +5,6 @@
 
 const struct TXHAvailabilityAttributes TXHAvailabilityAttributes = {
 	.capacity = @"capacity",
-	.coupon = @"coupon",
 	.dateString = @"dateString",
 	.duration = @"duration",
 	.limit = @"limit",
@@ -90,13 +89,6 @@ const struct TXHAvailabilityFetchedProperties TXHAvailabilityFetchedProperties =
 - (void)setPrimitiveCapacityValue:(int32_t)value_ {
 	[self setPrimitiveCapacity:[NSNumber numberWithInt:value_]];
 }
-
-
-
-
-
-@dynamic coupon;
-
 
 
 

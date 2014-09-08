@@ -713,7 +713,7 @@
 
 #pragma mark - Tickets
 
-- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability latitude:(float)latitude longitude:(float)longitude isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion
+- (void)reserveTicketsWithTierQuantities:(NSDictionary *)tierQuantities availability:(TXHAvailability *)availability coupon:(TXHCoupon *)coupon latitude:(float)latitude longitude:(float)longitude isGroup:(BOOL)group shouldNotify:(BOOL)notify completion:(void(^)(TXHOrder *order, NSError *error))completion
 {
     if (!tierQuantities || !completion)
     {
@@ -751,10 +751,10 @@
                                      @"direct"  : groupValue,
                                      @"notify"  : notifyValue};
 
-    if ([availability.coupon length])
+    if ([coupon.code length])
     {
         NSMutableDictionary *temp = requestPayload.mutableCopy;
-        temp[@"coupon"]           = availability.coupon;
+        temp[@"coupon"]           = coupon.code;
         requestPayload            = [temp copy];
     }
     
