@@ -390,7 +390,7 @@
 
 #pragma mark - Tiers
 
-- (void)tiersForProduct:(TXHProduct *)product completion:(void(^)(NSArray *availabilities, NSError *error))completion
+- (void)tiersForProduct:(TXHProduct *)product couponCode:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion;
 {
     if (!product.productId || !completion)
     {
@@ -402,7 +402,11 @@
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTiersEndpointFormat
                                                                parameters:@[product.productId]];
     
-    [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSDictionary *params;
+    if ([coupon length])
+        params = @{ @"coupon" : coupon };
+    
+    [self.sessionManager GET:endpoint parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSArray *tiers;
         
