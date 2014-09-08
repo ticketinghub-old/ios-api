@@ -8,6 +8,7 @@
 
 #import "TXHCoupon.h"
 #import "NSDate+ISO.h"
+#import "TXHDefines.h"
 
 static NSString * const kCouponCodeKey           = @"code";
 static NSString * const kCouponExpiresOnKey      = @"expires_on";
@@ -21,10 +22,10 @@ static NSString * const kCouponRedemptionsKey    = @"redemptions";
     if (!(self = [super init]))
         return nil;
     
-    self.code           = dictionary[kCouponCodeKey];
-    self.maxRedemptions = dictionary[kCopuonMaxRedemptionsKey];
-    self.redemptions    = dictionary[kCouponRedemptionsKey];
-    self.expiresOn      = [NSDate dateFromISOString:dictionary[kCouponExpiresOnKey]];
+    self.code           = nilIfNSNull(dictionary[kCouponCodeKey]);
+    self.maxRedemptions = nilIfNSNull(dictionary[kCopuonMaxRedemptionsKey]);
+    self.redemptions    = nilIfNSNull(dictionary[kCouponRedemptionsKey]);
+    self.expiresOn      = [NSDate dateFromISOString:nilIfNSNull(dictionary[kCouponExpiresOnKey])];
     
     return self;
 }
