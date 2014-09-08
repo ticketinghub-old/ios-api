@@ -439,12 +439,8 @@
 
 - (void)couponCodesWithCompletion:(void(^)(NSArray *coupons, NSError *error))completion
 {
-    if (!product.productId || !completion)
-    {
-        if (completion) {
-            completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
-        }
-    }
+    if (!completion)
+        return;
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:CouponCodesEndpointFormat];
     
