@@ -21,10 +21,10 @@ static NSString * const kCouponRedemptionsKey    = @"redemptions";
     if (!(self = [super init]))
         return nil;
     
-    self.code           = dictionary[kNameKey];
-    self.maxRedemptions = dictionary[kDataTypeKey];
-    self.redemptions    = dictionary[kInputTypeKey];
-    self.expiresOn      = [NSDate dateFromISOString:dictionary[kLabelKey]];
+    self.code           = dictionary[kCouponCodeKey];
+    self.maxRedemptions = dictionary[kCopuonMaxRedemptionsKey];
+    self.redemptions    = dictionary[kCouponRedemptionsKey];
+    self.expiresOn      = [NSDate dateFromISOString:dictionary[kCouponExpiresOnKey]];
     
     return self;
 }
