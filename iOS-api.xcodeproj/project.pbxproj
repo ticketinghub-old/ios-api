@@ -229,6 +229,7 @@
 		3ED7561318BD500E00D8F60B /* TXHField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TXHField.m; path = Classes/TXHField.m; sourceTree = "<group>"; };
 		3EF722D518ACC8C000E86FBE /* NSDate+ISO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+ISO.h"; path = "Classes/NSDate+ISO.h"; sourceTree = "<group>"; };
 		3EF722D618ACC8C000E86FBE /* NSDate+ISO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+ISO.m"; path = "Classes/NSDate+ISO.m"; sourceTree = "<group>"; };
+		3EFF908719BDE7220013667A /* CoreDataModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CoreDataModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		6D08F867AC524A9BBF9B4173 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C6B38C5037A349A8B3384700 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
 		DBF275EF2FB24D9098ECDDBE /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1199,9 +1200,10 @@
 			isa = XCVersionGroup;
 			children = (
 				3EC5052C1994C9F300EB041C /* CoreDataModel 2.xcdatamodel */,
+				3EFF908719BDE7220013667A /* CoreDataModel 3.xcdatamodel */,
 				EED7E84D183E2BC500853E73 /* CoreDataModel 1.xcdatamodel */,
 			);
-			currentVersion = 3EC5052C1994C9F300EB041C /* CoreDataModel 2.xcdatamodel */;
+			currentVersion = 3EFF908719BDE7220013667A /* CoreDataModel 3.xcdatamodel */;
 			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

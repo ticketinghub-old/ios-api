@@ -144,7 +144,6 @@
     self.timeString = nilIfNSNull(dictionary[@"time"]);
     self.capacity   = nilIfNSNull(dictionary[@"capacity"]);
     self.total      = nilIfNSNull(dictionary[@"total"]);
-    self.coupon     = nil; // when updated coupon is invalidated
     
     [self removeTiers:self.tiers];
     if (dictionary[@"tiers"]) {
