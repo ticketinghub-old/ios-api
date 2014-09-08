@@ -25,6 +25,7 @@
 #import "TXHTier.h"
 #import "TXHUpgrade.h"
 #import "TXHUser.h"
+#import "TXHCoupon.h"
     
 #import "NSDate+ISO.h"
 #import "NSDateFormatter+TicketingHubFormat.h"
@@ -436,7 +437,7 @@
     }];
 }
 
-- (void)couponCodesForPoduct:(TXHProduct *)product completion:(void(^)(NSArray *coupons, NSError *error))completion
+- (void)couponCodesWithCompletion:(void(^)(NSArray *coupons, NSError *error))completion
 {
     if (!product.productId || !completion)
     {
@@ -445,12 +446,18 @@
         }
     }
     
-    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:CouponCodesEndpointFormat
-                                                               parameters:@[product.productId]];
+    NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:CouponCodesEndpointFormat];
     
     [self.sessionManager GET:endpoint parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSArray *coupons = [NSArray arrayWithArray:responseObject];
+        NSMutableArray *coupons = [NSMutableArray array];
+        for (NSDictionary *couponDic in responseObject)
+        {
+            TXHCoupon *coupon = [[TXHCoupon alloc] initWithDictionary:couponDic];
+            if (couponDic)
+                [coupons addObject:coupon];
+        }
+
         completion(coupons, nil);
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

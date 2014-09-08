@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		3E16A78319BDCDDF00F3D474 /* TXHCoupon.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E16A78219BDCDDF00F3D474 /* TXHCoupon.m */; };
 		3E2C6AB318BBCA44005BEE6C /* TXHTicketSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C6AB218BBCA44005BEE6C /* TXHTicketSpec.m */; };
 		3E2C6AB518BBCA4C005BEE6C /* TXHOrderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C6AB418BBCA4C005BEE6C /* TXHOrderSpec.m */; };
 		3E2C6AB818BBCA6D005BEE6C /* _TXHAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2C6AB718BBCA6D005BEE6C /* _TXHAddress.m */; };
@@ -166,6 +167,8 @@
 
 /* Begin PBXFileReference section */
 		104872410D26403FA500E626 /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E16A78119BDCDDF00F3D474 /* TXHCoupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXHCoupon.h; sourceTree = "<group>"; };
+		3E16A78219BDCDDF00F3D474 /* TXHCoupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHCoupon.m; sourceTree = "<group>"; };
 		3E2C6AB218BBCA44005BEE6C /* TXHTicketSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHTicketSpec.m; sourceTree = "<group>"; };
 		3E2C6AB418BBCA4C005BEE6C /* TXHOrderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXHOrderSpec.m; sourceTree = "<group>"; };
 		3E2C6AB618BBCA6D005BEE6C /* _TXHAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TXHAddress.h; sourceTree = "<group>"; };
@@ -349,6 +352,8 @@
 				3ED7561318BD500E00D8F60B /* TXHField.m */,
 				3E53C54618E5824100FF6F9B /* TXHTicketTemplate.h */,
 				3E53C54718E5824100FF6F9B /* TXHTicketTemplate.m */,
+				3E16A78119BDCDDF00F3D474 /* TXHCoupon.h */,
+				3E16A78219BDCDDF00F3D474 /* TXHCoupon.m */,
 			);
 			name = "Not core data";
 			sourceTree = "<group>";
@@ -861,6 +866,7 @@
 				3E67416F1993CE52008FE297 /* NSError+TXHAPIClient.m in Sources */,
 				EE4926BD1850C28C00336A2D /* _TXHAvailability.m in Sources */,
 				3E2C6ABB18BBCA74005BEE6C /* _TXHOrder.m in Sources */,
+				3E16A78319BDCDDF00F3D474 /* TXHCoupon.m in Sources */,
 				EE4926B71850C27800336A2D /* TXHUpgrade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

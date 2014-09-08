@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger, TXHEndpoint)
     ProductTicketsSearch,                       // requires 1 parameter: productID
     OrderAttenAll,                              // requires 1 parameter: orderID
     SummaryEndpointFormat,                      // requires 2 parameters: summary format, accesToken
-    CouponCodesEndpointFormat                   // requires 1 parameter: productID
+    CouponCodesEndpointFormat                   // 
 };
 
 typedef NS_ENUM(NSInteger, TXHEndpointHTTPMethod)

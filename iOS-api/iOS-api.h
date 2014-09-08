@@ -26,3 +26,4 @@
 #import "TXHTier.h"
 #import "TXHUpgrade.h"
 #import "TXHUser.h"
+#import "TXHCoupon.h"
