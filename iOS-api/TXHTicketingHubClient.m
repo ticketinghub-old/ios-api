@@ -545,7 +545,7 @@
                       }];
 }
 
-- (void)availabilitiesForProduct:(TXHProduct *)product dateString:(NSString *)dateString tickets:(NSArray *)tickets completion:(void(^)(NSArray *availabilities, NSError *error))completion
+- (void)availabilitiesForProduct:(TXHProduct *)product dateString:(NSString *)dateString tickets:(NSArray *)tickets couponCode:(NSString *)coupon completion:(void(^)(NSArray *availabilities, NSError *error))completion
 {
     if (!product.productId || !dateString || !completion)
     {
@@ -557,6 +557,13 @@
     NSArray *ticketsArray = [NSArray arrayWithArray:tickets];// make sure we have an array;
     
     NSDictionary *parameters = @{@"tickets" : ticketsArray};
+
+    if ([coupon length])
+    {
+        NSMutableDictionary *edit = [parameters mutableCopy];
+        edit[@"coupon"] = coupon;
+        parameters = [edit copy];
+    }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductAvailabilitiesForDateAndTickets
                                                                parameters:@[product.productId, dateString]];
