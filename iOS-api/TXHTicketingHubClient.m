@@ -235,6 +235,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     
@@ -265,6 +266,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:SuppliersEndpoint];
@@ -323,6 +325,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductsForSupplierEndpointFormat];
@@ -361,6 +364,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     
@@ -398,6 +402,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTiersEndpointFormat
@@ -517,6 +522,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     if (!startDate || !endDate)
@@ -551,6 +557,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSArray *ticketsArray = [NSArray arrayWithArray:tickets];// make sure we have an array;
@@ -606,6 +613,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     NSDictionary *params;
@@ -726,6 +734,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSMutableArray *tickets = [NSMutableArray array];
@@ -804,6 +813,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSMutableArray *tickets = [NSMutableArray array];
@@ -829,6 +839,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketAvailableUpgradesEndpointFormat
@@ -875,6 +886,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketUpgradesEndpointFormat
@@ -920,6 +932,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     
@@ -947,6 +960,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     NSString *endpoint = [TXHEndpointsHelper  endpointStringForTXHEndpoint:TicketFieldsEndpointFormat
@@ -979,6 +993,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     
@@ -1003,6 +1018,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSDictionary *paymentDictionary = [payment dictionaryRepresentation];
@@ -1019,6 +1035,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketOwnerFieldsEndpointFormat
@@ -1053,6 +1070,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     
@@ -1068,6 +1086,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
 
     
@@ -1114,6 +1133,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ConfirmOrderEndpointFormat
@@ -1199,6 +1219,7 @@
         if (completion) {
             completion(nil, nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketsSearch
@@ -1311,6 +1332,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketsWithParamsEndpointFormat
@@ -1361,6 +1383,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketsSearch
@@ -1395,6 +1418,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketsForOrderEndpointFormat
@@ -1421,6 +1445,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketsForOrderEndpointFormat
@@ -1452,6 +1477,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     __weak typeof(self) wself = self;
@@ -1508,6 +1534,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderAttenAll parameters:@[order.orderId]];
@@ -1548,6 +1575,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:ProductTicketForSeqIdEndpointFormat
@@ -1586,6 +1614,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:OrderForTicketProductEndpointFormat
@@ -1623,6 +1652,7 @@
         if (completion) {
             completion(nil, nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSDictionary *parameters = @{ @"filters": @{ @"card": @{ @"track_data": msrInfo } } };
@@ -1639,6 +1669,7 @@
         if (completion) {
             completion(nil, nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSDictionary *parameters = @{ @"search": query };
@@ -1746,6 +1777,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint  = [TXHEndpointsHelper endpointStringForTXHEndpoint:RemoveOrderTicketsEndpointFormat
@@ -1787,6 +1819,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *extension = [self extendionForFormat:format];
@@ -1837,6 +1870,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *endpoint = [TXHEndpointsHelper endpointStringForTXHEndpoint:TicketTemplatesEndpoint];
@@ -1868,6 +1902,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *extension = [self extendionForFormat:format];
@@ -1900,6 +1935,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     format = TXHDocumentFormatBMP;
@@ -1967,6 +2003,7 @@
         if (completion) {
             completion(nil, [NSError clientErrorWithCode:kTXHAPIClientArgsInconsistencyError]);
         }
+        return;
     }
     
     NSString *extension = [self extendionForFormat:format];
