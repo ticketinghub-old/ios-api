@@ -82,21 +82,11 @@
     return [tiers firstObject];
 }
 
-+ (void)deleteTiersForProductId:(NSManagedObjectID *)productId fromManagedObjectContext:(NSManagedObjectContext *)moc {
-    NSParameterAssert(productId);
++ (void)deleteTiersFromManagedObjectContext:(NSManagedObjectContext *)moc
+{
     NSParameterAssert(moc);
     
-    TXHProduct *product = (TXHProduct *)[moc existingObjectWithID:productId error:NULL];
-    
-    static NSPredicate *formattedPredicate = nil;
-    if (!formattedPredicate) {
-        formattedPredicate = [NSPredicate predicateWithFormat:@"product == $PRODUCT"];
-    }
-    NSDictionary *variables = @{@"PRODUCT" : product};
-    
-    NSPredicate *predicate = [formattedPredicate predicateWithSubstitutionVariables:variables];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self entityName]];
-    [request setPredicate:predicate];
     
     NSArray *tiers = [moc executeFetchRequest:request error:NULL];
     

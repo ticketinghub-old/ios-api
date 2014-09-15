@@ -33,11 +33,9 @@
 + (instancetype)tierWithInternalID:(NSString *)internalTierID inManagedObjectContext:(NSManagedObjectContext *)moc;
 
 /** Delete all tiers for privided product
- 
- @param productId NSManagedObjectID of product for which tiers should be deleted
  @param moc the managed object in which to search for the Tier object
  */
-+ (void)deleteTiersForProductId:(NSManagedObjectID *)productId fromManagedObjectContext:(NSManagedObjectContext *)moc;
++ (void)deleteTiersFromManagedObjectContext:(NSManagedObjectContext *)moc;
 
 
 /** generets unique internal id for a Tier from providede dictionary representation

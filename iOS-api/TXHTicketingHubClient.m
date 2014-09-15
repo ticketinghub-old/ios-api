@@ -412,8 +412,7 @@
         NSArray *tiers;
         
         if ([responseObject isKindOfClass:[NSArray class]]) {
-            tiers = [self updateTiersFromArray:responseObject
-                                   inProductID:product.objectID];
+            tiers = [self updateTiersFromArray:responseObject];
         } else {
             tiers = [self updateTiresFromDictionary:responseObject
                                         inProductID:product.objectID];
@@ -462,12 +461,12 @@
     }];
 }
 
-- (NSArray *)updateTiersFromArray:(NSArray *)array inProductID:(TXHProductID *)productId {
+- (NSArray *)updateTiersFromArray:(NSArray *)array {
     NSUInteger numberOfTiers = [array count];
     
     if (!numberOfTiers)
     {
-        [TXHTier deleteTiersForProductId:productId fromManagedObjectContext:self.importContext];
+        [TXHTier deleteTiersFromManagedObjectContext:self.importContext];
         return @[];
     }
     
