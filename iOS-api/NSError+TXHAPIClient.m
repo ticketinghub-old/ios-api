@@ -7,6 +7,7 @@
 //
 
 #import "NSError+TXHAPIClient.h"
+#import "JSONResponseSerializerWithData.h"
 
 NSString * const TXHAPIClientErrorDomain = @"TXHAPIClientErrorDomain";
 
@@ -62,6 +63,15 @@ NSString * const TXHAPIClientErrorDomain = @"TXHAPIClientErrorDomain";
     }
     
     return NSLocalizedString(@"PRINTER_ERROR_UNKNOWN_RECOVERY", nil);
+}
+
+- (NSString *)errorDescription
+{
+    NSString *description = self.userInfo[JSONResponseSerializerWithDataKey][@"error_description"];
+    if (description)
+        return description;
+    
+    return self.localizedDescription;
 }
 
 @end

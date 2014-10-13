@@ -19,4 +19,6 @@ typedef NS_ENUM(NSInteger, TXHAPIClientErrorCode)
 
 + (NSError *)clientErrorWithCode:(TXHAPIClientErrorCode)errorCode;
 
+- (NSString *)errorDescription;
+
 @end
