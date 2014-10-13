@@ -9,6 +9,8 @@
 
 #import "TXHTicketingHubClient.h"
 
+#import "NSError+TXHAPIClient.h"
+
 #import "TXHAddress.h"
 #import "TXHAvailability.h"
 #import "TXHCard.h"
